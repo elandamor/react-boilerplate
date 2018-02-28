@@ -11,10 +11,7 @@ import Wrapper from './styles';
 class App extends React.Component {
   render() {
     return (
-      <Wrapper>
-        <h1>React-Boilerplate</h1>
-        <small>Built with love by Elandamor</small>
-      </Wrapper>
+      <Wrapper />
     );
   }
 }
