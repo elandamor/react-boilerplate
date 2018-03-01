@@ -4,6 +4,9 @@
 
 import React from 'react';
 // import PropTypes from 'prop-types';
+import { Route, Switch, withRouter } from 'react-router-dom';
+// Pages
+import Home from '../../pages/Home/Loadable';
 // Styled-Components
 import Wrapper from './styles';
 
@@ -11,7 +14,17 @@ import Wrapper from './styles';
 class App extends React.Component {
   render() {
     return (
-      <Wrapper />
+      <Wrapper>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Home {...props} />
+            )}
+          />
+        </Switch>
+      </Wrapper>
     );
   }
 }
@@ -20,4 +33,4 @@ App.propTypes = {
 
 };
 
-export default App;
+export default withRouter(App);

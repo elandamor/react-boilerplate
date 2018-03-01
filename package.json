@@ -13,7 +13,8 @@
     "build:dll": "node internals/scripts/dependencies.js",
     "generate": "plop --plopfile internals/generators/index.js",
     "postinstall": "npm run build:dll",
-    "start": "cross-env NODE_ENV=development node server"
+    "start": "cross-env NODE_ENV=development node server",
+    "start:prod": "cross-env NODE_ENV=production node server"
   },
   "dllPlugin": {
     "path": "node_modules/react-boilerplate-dlls",
@@ -49,6 +50,7 @@
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
     "hoist-non-react-statics": "^2.5.0",
+    "intl": "^1.2.5",
     "localforage": "^1.5.7",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
@@ -60,7 +62,8 @@
     "react-transition-group": "^2.2.1",
     "sanitize.css": "^5.0.0",
     "styled-components": "^3.1.6",
-    "subscriptions-transport-ws": "^0.9.6"
+    "subscriptions-transport-ws": "^0.9.6",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "add-asset-html-webpack-plugin": "^2.1.2",
@@ -91,6 +94,7 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-security": "^1.4.0",
     "eventsource-polyfill": "^0.9.6",
     "exports-loader": "^0.7.0",
     "express": "^4.16.2",

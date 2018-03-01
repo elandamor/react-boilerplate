@@ -63,11 +63,25 @@ if (module.hot) {
   });
 }
 
-render();
+// Chunked polyfill for browsers without Intl support
+if (!window.Intl) {
+  (new Promise((resolve) => {
+    resolve(import('intl'));
+  }))
+    .then(() => Promise.all([
+      import('intl/locale-data/jsonp/en.js'),
+    ]))
+    .then(() => render())
+    .catch((err) => {
+      throw err;
+    });
+} else {
+  render();
+}
 
 // Install ServiceWorker and AppCache in the end since
 // it's not most important operation and if main code fails,
 // we do not want it installed
-// if (process.env.NODE_ENV === 'production') {
-//   require('offline-plugin/runtime').install(); // eslint-disable-line global-require
-// }
+if (process.env.NODE_ENV === 'production') {
+  require('offline-plugin/runtime').install(); // eslint-disable-line global-require
+}
