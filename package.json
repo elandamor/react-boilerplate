@@ -108,6 +108,7 @@
     "image-webpack-loader": "4.1.0",
     "ip": "1.1.5",
     "json-loader": "0.5.7",
+    "lint-staged": "7.0.0",
     "lodash": "4.17.5",
     "minimist": "1.2.0",
     "ngrok": "2.2.26",
