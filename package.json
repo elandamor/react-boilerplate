@@ -12,6 +12,7 @@
     "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.js && node internals/scripts/minifyServiceWorker.js",
     "build:dll": "cross-env NODE_ENV=development node internals/scripts/dependencies.js",
     "generate": "plop --plopfile internals/generators/index.js",
+    "postinstall": "npm run build:dll",
     "precommit": "lint-staged",
     "start": "cross-env NODE_ENV=development node server",
     "start:prod": "cross-env NODE_ENV=production node server"
@@ -34,7 +35,10 @@
     ]
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "apollo-cache-inmemory": "1.1.9",
@@ -107,7 +111,7 @@
     "file-loader": "1.1.10",
     "glob": "7.1.2",
     "html-loader": "0.5.5",
-    "html-webpack-plugin": "3.0.4",
+    "html-webpack-plugin": "3.0.6",
     "image-webpack-loader": "4.1.0",
     "ip": "1.1.5",
     "json-loader": "0.5.7",
