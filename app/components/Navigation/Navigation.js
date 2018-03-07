@@ -25,6 +25,7 @@ const Navigation = ({ links }) => (
         links.map((link, index) => (
           <li key={index}>
             <NavLink
+              exact={link.exact}
               activeClassName="-active"
               className={classNames('a-nav-item', link.className)}
               to={link.href}
