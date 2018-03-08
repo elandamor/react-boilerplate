@@ -25,7 +25,7 @@ import Wrapper from './styles';
  */
 // eslint-disable-next-line react/prefer-stateless-function
 export class {{ properCase name }} extends {{{ type }}} {
-  componentWillReceiveProps({ error, result, loading }) {
+  componentWillReceiveProps({ error, expectedResult, loading }) {
     if (error || !loading) {
       // Handle data fetch error here
     }
@@ -39,14 +39,16 @@ export class {{ properCase name }} extends {{{ type }}} {
     const { className } = this.props;
 
     return (
+    {{#if wantHeaders}}
       <Wrapper className={classNames('', className)}>
-      {{#if wantHeaders}}
         <Helmet>
           <title>{{properCase name}}</title>
           <meta name="description" content="Description of {{properCase name}}" />
         </Helmet>
-      {{/if}}
       </Wrapper>
+    {{else}}
+      <Wrapper className={classNames('', className)} />
+    {{/if}}
     );
   }
 }
@@ -57,8 +59,8 @@ export class {{ properCase name }} extends {{{ type }}} {
 
 {{ properCase name }}.propTypes = {
   className: PropTypes.string,
-  error: PropTypes.bool,
-  loading: PropTypes.bool,
+  error: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
 {{#if wantMutation}}
   {{ camelCase name }}: PropTypes.func.isRequired,
 {{/if}}
@@ -73,17 +75,17 @@ const mapResultsToProps = ({ data }) => {
     };
   }
 
-  if (!data.result) {
+  if (!data.expectedResult) {
     return {
       loading: data.loading,
     };
   }
 
-  const { result } = data;
+  const { expectedResult } = data;
 
   return {
     loading: data.loading,
-    result,
+    expectedResult,
   };
 };
 {{/if}}
