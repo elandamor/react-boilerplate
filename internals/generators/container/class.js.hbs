@@ -2,7 +2,7 @@ import React, { {{{ type }}} } from 'react';
 {{#if wantHeaders}}
 import { Helmet } from 'react-helmet';
 {{/if}}
-import classNames from 'classnames';
+import cls from 'classnames';
 import PropTypes from 'prop-types';
 import { compose, graphql } from 'react-apollo';
 {{#if wantMutation}}
@@ -13,7 +13,7 @@ import {{ camelCase name }}GQL from '../../graphql/mutations/{{ camelCase name }
 // Query
 import {{ camelCase name }}GQL from '../../graphql/queries/{{ camelCase name }}.gql';
 {{/if}}
-// Styled-Components
+// Styles
 import Wrapper from './styles';
 
 /**
@@ -40,14 +40,14 @@ export class {{ properCase name }} extends {{{ type }}} {
 
     return (
     {{#if wantHeaders}}
-      <Wrapper className={classNames('', className)}>
+      <Wrapper className={cls('', className)}>
         <Helmet>
           <title>{{properCase name}}</title>
           <meta name="description" content="Description of {{properCase name}}" />
         </Helmet>
       </Wrapper>
     {{else}}
-      <Wrapper className={classNames('', className)} />
+      <Wrapper className={cls('', className)} />
     {{/if}}
     );
   }
