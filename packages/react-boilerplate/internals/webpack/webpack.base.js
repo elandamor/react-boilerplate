@@ -12,6 +12,7 @@ module.exports = (options) => ({
     path: path.resolve(process.cwd(), 'build'),
     publicPath: '/',
   }, options.output), // Merge with env dependent settings
+  mode: process.env.NODE_ENV || 'none',
   module: {
     rules: [
       {
@@ -85,20 +86,19 @@ module.exports = (options) => ({
       },
     ],
   },
+  // optimization: options.optimization || {},
   plugins: options.plugins.concat([
     new webpack.ProvidePlugin({
       // make fetch available
       fetch: 'exports-loader?self.fetch!whatwg-fetch',
     }),
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
-    // inside your code for any environment checks; UglifyJS will automatically
-    // drop any unreachable code.
+    // inside your code for any environment checks.
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
-    new webpack.NamedModulesPlugin(),
     new Dotenv(),
   ]),
   resolve: {

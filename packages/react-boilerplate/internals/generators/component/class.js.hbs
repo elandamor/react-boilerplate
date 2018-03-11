@@ -1,31 +1,33 @@
+import React, { {{{ type }}} } from 'react';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+// Styled-Components
+import Wrapper from './styles';
+
 /**
-*
-* {{ properCase name }}
-*
-*/
-
-import React from 'react';
-// import styled from 'styled-components';
-
-{{#if wantMessages}}
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-{{/if}}
-
-class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line react/prefer-stateless-function
+ * @render react
+ * @name {{ properCase name }} component
+ * @description {{ properCase name }} component.
+ * @example
+ * <{{ properCase name }} />
+ */
+// eslint-disable-next-line react/prefer-stateless-function
+class {{ properCase name }} extends {{{ type }}} {
   render() {
+    const { className } = this.props;
+
     return (
-      <div>
-      {{#if wantMessages}}
-        <FormattedMessage {...messages.header} />
-      {{/if}}
-      </div>
+      <Wrapper className={classNames('', className)} />
     );
   }
 }
 
-{{ properCase name }}.propTypes = {
+{{ properCase name }}.defaultProps = {
+  className: '',
+};
 
+{{ properCase name }}.propTypes = {
+  className: PropTypes.string,
 };
 
 export default {{ properCase name }};

@@ -1,19 +1,26 @@
-/**
- * {{ properCase name }}
- * @type {Component} Presentational
- */
-
 import React from 'react';
-// import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 // Styled-Components
 import Wrapper from './styles';
 
-const {{ properCase name }} = () => (
-  <Wrapper />
+/**
+ * @render react
+ * @name {{ properCase name }} component
+ * @description {{ properCase name }} component.
+ * @example
+ * <{{ properCase name }} />
+ */
+const {{ properCase name }} = ({ className }) => (
+  <Wrapper className={classNames('', className)} />
 );
 
-{{ properCase name }}.propTypes = {
+{{ properCase name }}.defaultProps = {
+  className: '',
+};
 
+{{ properCase name }}.propTypes = {
+  className: PropTypes.string,
 };
 
 export default {{ properCase name }};

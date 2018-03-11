@@ -2,9 +2,9 @@
 
 // Important modules this config uses
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = require('./webpack.base')({
   // In production, we skip all hot-reloading stuff
@@ -19,14 +19,12 @@ module.exports = require('./webpack.base')({
   },
 
   plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      children: true,
-      minChunks: 2,
-      async: true,
-    }),
-
+    new CleanWebpackPlugin(
+      [path.resolve(process.cwd(), 'build')],
+      {
+        allowExternal: true,
+      },
+    ),
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({
       template: 'app/index.html',
@@ -48,6 +46,10 @@ module.exports = require('./webpack.base')({
     // Put it in the end to capture all the HtmlWebpackPlugin's
     // assets manipulations and do leak its manipulations to HtmlWebpackPlugin
     new OfflinePlugin({
+      ServiceWorker: {
+        minify: false,
+      },
+
       relativePaths: false,
       publicPath: '/',
 
