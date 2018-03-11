@@ -15,7 +15,7 @@ module.exports = {
     name: 'type',
     message: 'Select the type of component',
     default: 'Stateless Function',
-    choices: () => ['Stateless Function', 'React.PureComponent', 'React.Component'],
+    choices: () => ['Stateless Function', 'PureComponent', 'Component'],
   }, {
     type: 'input',
     name: 'name',
@@ -56,11 +56,16 @@ module.exports = {
     const actions = [{
       type: 'add',
       path: '../../app/components/{{properCase name}}/index.js',
+      templateFile: './component/index.js.hbs',
+      abortOnFail: true,
+    }, {
+      type: 'add',
+      path: '../../app/components/{{properCase name}}/{{properCase name}}.js',
       templateFile: componentTemplate,
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/components/{{properCase name}}/tests/index.test.js',
+      path: '../../app/components/{{properCase name}}/{{properCase name}}.spec.js',
       templateFile: './component/test.js.hbs',
       abortOnFail: true,
     }, {

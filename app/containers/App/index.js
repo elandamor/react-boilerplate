@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import { hot } from 'react-hot-loader';
 // import PropTypes from 'prop-types';
 import { Route, Switch, withRouter } from 'react-router-dom';
 // Pages
@@ -33,4 +34,4 @@ App.propTypes = {
 
 };
 
-export default withRouter(App);
+export default withRouter(hot(module)(App));

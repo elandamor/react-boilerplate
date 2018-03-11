@@ -1,89 +1,106 @@
-/**
- *
- * {{properCase name }}
- *
- */
-
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { {{{ type }}} } from 'react';
 {{#if wantHeaders}}
 import { Helmet } from 'react-helmet';
 {{/if}}
-{{#if wantMessages}}
-import { FormattedMessage } from 'react-intl';
+import cls from 'classnames';
+import PropTypes from 'prop-types';
+import { compose, graphql } from 'react-apollo';
+{{#if wantMutation}}
+// Mutations
+import {{ camelCase name }}GQL from '../../graphql/mutations/{{ camelCase name }}.gql';
 {{/if}}
-{{#if wantActionsAndReducer}}
-import { createStructuredSelector } from 'reselect';
+{{#if wantQuery}}
+// Query
+import {{ camelCase name }}GQL from '../../graphql/queries/{{ camelCase name }}.gql';
 {{/if}}
-import { compose } from 'redux';
+// Styles
+import Wrapper from './styles';
 
-{{#if wantSaga}}
-import injectSaga from 'utils/injectSaga';
-{{/if}}
-{{#if wantActionsAndReducer}}
-import injectReducer from 'utils/injectReducer';
-import makeSelect{{properCase name}} from './selectors';
-import reducer from './reducer';
-{{/if}}
-{{#if wantSaga}}
-import saga from './saga';
-{{/if}}
-{{#if wantMessages}}
-import messages from './messages';
-{{/if}}
+/**
+ * @render react
+ * @name {{ properCase name }} container
+ * @description {{ properCase name }} container.
+ * @example
+ * <{{ properCase name }} />
+ */
+// eslint-disable-next-line react/prefer-stateless-function
+export class {{ properCase name }} extends {{{ type }}} {
+  componentWillReceiveProps({ error, expectedResult, loading }) {
+    if (error || !loading) {
+      // Handle data fetch error here
+    }
 
-export class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line react/prefer-stateless-function
+    if (!loading && !error) {
+      // Handle resolved data here
+    }
+  }
+
   render() {
+    const { className } = this.props;
+
     return (
-      <div>
-      {{#if wantHeaders}}
+    {{#if wantHeaders}}
+      <Wrapper className={cls('', className)}>
         <Helmet>
           <title>{{properCase name}}</title>
           <meta name="description" content="Description of {{properCase name}}" />
         </Helmet>
-      {{/if}}
-      {{#if wantMessages}}
-        <FormattedMessage {...messages.header} />
-      {{/if}}
-      </div>
+      </Wrapper>
+    {{else}}
+      <Wrapper className={cls('', className)} />
+    {{/if}}
     );
   }
 }
 
-{{ properCase name }}.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+{{ properCase name }}.defaultProps = {
+  className: '',
 };
 
-{{#if wantActionsAndReducer}}
-const mapStateToProps = createStructuredSelector({
-  {{ lowerCase name }}: makeSelect{{properCase name}}(),
-});
+{{ properCase name }}.propTypes = {
+  className: PropTypes.string,
+  error: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+{{#if wantMutation}}
+  {{ camelCase name }}: PropTypes.func.isRequired,
 {{/if}}
+};
 
-function mapDispatchToProps(dispatch) {
+{{#if wantQuery}}
+const mapResultsToProps = ({ data }) => {
+  if (data.error) {
+    return {
+      error: data.error,
+      loading: data.loading,
+    };
+  }
+
+  if (!data.expectedResult) {
+    return {
+      loading: data.loading,
+    };
+  }
+
+  const { expectedResult } = data;
+
   return {
-    dispatch,
+    loading: data.loading,
+    expectedResult,
   };
-}
-
-{{#if wantActionsAndReducer}}
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-
-const withReducer = injectReducer({ key: '{{ camelCase name }}', reducer });
-{{else}}
-const withConnect = connect(null, mapDispatchToProps);
-{{/if}}
-{{#if wantSaga}}
-const withSaga = injectSaga({ key: '{{ camelCase name }}', saga });
+};
 {{/if}}
 
 export default compose(
-{{#if wantActionsAndReducer}}
-  withReducer,
+{{#if wantMutation}}
+  graphql({{ camelCase name }}GQL, {
+    // @doc https://www.apollographql.com/docs/react/basics/mutations.html
+    name: '{{ camelCase name }}'
+  }),
 {{/if}}
-{{#if wantSaga}}
-  withSaga,
+{{#if wantQuery}}
+  graphql({{ camelCase name }}GQL, {
+    // @doc https://www.apollographql.com/docs/react/basics/queries.html
+    props: mapResultsToProps,
+  }),
 {{/if}}
-  withConnect,
 )({{ properCase name }});

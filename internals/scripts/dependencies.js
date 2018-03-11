@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-undef, security/detect-non-literal-require */
 // No need to build the DLL in production
 if (process.env.NODE_ENV === 'production') {
   process.exit(0);
@@ -47,4 +47,4 @@ if (!exists(dllManifestPath)) {
 }
 
 // the BUILDING_DLL env var is set to avoid confusing the development environment
-exec('cross-env BUILDING_DLL=true webpack --display-chunks --color --config internals/webpack/webpack.dll.js --hide-modules');
+exec('cross-env BUILDING_DLL=true webpack --mode development --display-chunks --color --config internals/webpack/webpack.dll.js --hide-modules');
