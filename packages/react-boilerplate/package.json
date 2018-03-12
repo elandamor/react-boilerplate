@@ -111,7 +111,7 @@
     "eslint-plugin-security": "1.4.0",
     "eventsource-polyfill": "0.9.6",
     "exports-loader": "0.7.0",
-    "express": "4.16.2",
+    "express": "4.16.3",
     "file-loader": "1.1.11",
     "glob": "7.1.2",
     "html-loader": "0.5.5",
