@@ -75,7 +75,7 @@
     "react-router-dom": "4.2.2",
     "react-transition-group": "2.2.1",
     "sanitize.css": "5.0.0",
-    "styled-components": "3.2.1",
+    "styled-components": "3.2.2",
     "subscriptions-transport-ws": "0.9.6",
     "whatwg-fetch": "2.0.3"
   },
