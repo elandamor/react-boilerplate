@@ -7,6 +7,12 @@
 </div>
 <br />
 <div align="center">
+  <a href="https://greenkeeper.io/">
+    <img src="https://badges.greenkeeper.io/elandamor/react-boilerplate.svg" alt="Greenkeeper badge" />
+  </a>
+  <a href="https://ci.appveyor.com/project/elandamor/react-boilerplate">
+    <img src="https://ci.appveyor.com/api/projects/status/4ookmmq40hhjiejb?svg=true" alt="Appveyor build" />
+  </a>
   <a href="https://snyk.io/test/github/elandamor/react-boilerplate?targetFile=package.json"><img src="https://snyk.io/test/github/elandamor/react-boilerplate/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/elandamor/react-boilerplate?targetFile=package.json" style="max-width:100%;"></a>
   <a href="https://codeclimate.com/github/elandamor/react-boilerplate/maintainability"><img src="https://api.codeclimate.com/v1/badges/b0469536c559dd1b3b65/maintainability" alt="Maintainability"/></a>
 </div>
