@@ -10,7 +10,7 @@ import { compose, graphql } from 'react-apollo';
 import {{ camelCase name }}GQL from '../../graphql/mutations/{{ camelCase name }}.gql';
 {{/if}}
 {{#if wantQuery}}
-// Query
+// Queries
 import {{ camelCase name }}GQL from '../../graphql/queries/{{ camelCase name }}.gql';
 {{/if}}
 // Styles
@@ -24,7 +24,8 @@ import Wrapper from './styles';
  * <{{ properCase name }} />
  */
 // eslint-disable-next-line react/prefer-stateless-function
-export class {{ properCase name }} extends {{{ type }}} {
+class {{ properCase name }} extends {{{ type }}} {
+{{#if wantQuery}}
   componentWillReceiveProps({ error, expectedResult, loading }) {
     if (error || !loading) {
       // Handle data fetch error here
@@ -34,7 +35,7 @@ export class {{ properCase name }} extends {{{ type }}} {
       // Handle resolved data here
     }
   }
-
+{{/if}}
   render() {
     const { className } = this.props;
 
@@ -55,12 +56,17 @@ export class {{ properCase name }} extends {{{ type }}} {
 
 {{ properCase name }}.defaultProps = {
   className: '',
+{{#if wantQuery}}
+  loading: true,
+{{/if}}
 };
 
 {{ properCase name }}.propTypes = {
   className: PropTypes.string,
-  error: PropTypes.bool.isRequired,
-  loading: PropTypes.bool.isRequired,
+{{#if wantQuery}}
+  error: PropTypes.object,
+  loading: PropTypes.bool,
+{{/if}}
 {{#if wantMutation}}
   {{ camelCase name }}: PropTypes.func.isRequired,
 {{/if}}
@@ -91,16 +97,15 @@ const mapResultsToProps = ({ data }) => {
 {{/if}}
 
 export default compose(
-{{#if wantMutation}}
   graphql({{ camelCase name }}GQL, {
-    // @doc https://www.apollographql.com/docs/react/basics/mutations.html
+{{#if wantMutation}}
+    /** @see https://www.apollographql.com/docs/react/basics/mutations.html */
     name: '{{ camelCase name }}'
   }),
 {{/if}}
 {{#if wantQuery}}
-  graphql({{ camelCase name }}GQL, {
-    // @doc https://www.apollographql.com/docs/react/basics/queries.html
+    /** @see https://www.apollographql.com/docs/react/basics/queries.html */
     props: mapResultsToProps,
-  }),
 {{/if}}
+  }),
 )({{ properCase name }});
