@@ -3,10 +3,12 @@
   A scalable, offline-first foundation for your next <a href="https://reactjs.org/">React</a> project, with a focus on performance and best practices.
 </div>
 <div align="center">
-  <a href="https://snyk.io/test/github/elandamor/react-boilerplate?targetFile=package.json"><img src="https://snyk.io/test/github/elandamor/react-boilerplate/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/elandamor/react-boilerplate?targetFile=package.json" style="max-width:100%;"></a>
-</div>
-<div align="center">
   <sub>Created and maintained with ❤️ by <a href="https://twitter.com/elandamor">Thandolwethu Mpofu</a>.</sub>
+</div>
+<br />
+<div align="center">
+  <a href="https://snyk.io/test/github/elandamor/react-boilerplate?targetFile=package.json"><img src="https://snyk.io/test/github/elandamor/react-boilerplate/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/elandamor/react-boilerplate?targetFile=package.json" style="max-width:100%;"></a>
+  <a href="https://codeclimate.com/github/elandamor/react-boilerplate/maintainability"><img src="https://api.codeclimate.com/v1/badges/b0469536c559dd1b3b65/maintainability" alt="Maintainability"/></a>
 </div>
 
 ## License
