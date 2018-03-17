@@ -5,6 +5,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = require('./webpack.base')({
   // In production, we skip all hot-reloading stuff
@@ -71,6 +72,8 @@ module.exports = require('./webpack.base')({
 
       AppCache: false,
     }),
+
+    new BundleAnalyzerPlugin(),
   ],
 
   performance: {
