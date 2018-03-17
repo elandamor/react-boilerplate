@@ -5,6 +5,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = (options) => ({
   entry: options.entry,
@@ -25,6 +26,10 @@ module.exports = (options) => ({
           },
           {
             loader: 'ts-loader',
+            options: {
+              // disable type checker - we will use it in fork plugin
+              transpileOnly: true,
+            },
           },
         ],
       }, {
@@ -105,6 +110,9 @@ module.exports = (options) => ({
       },
     }),
     new Dotenv(),
+    new ForkTsCheckerWebpackPlugin({
+      checkSyntacticErrors: true,
+    }),
   ]),
   resolve: {
     modules: ['app', 'node_modules'],
