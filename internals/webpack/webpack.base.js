@@ -112,6 +112,7 @@ module.exports = (options) => ({
     new Dotenv(),
     new ForkTsCheckerWebpackPlugin({
       checkSyntacticErrors: true,
+      memoryLimit: 256,
     }),
   ]),
   resolve: {
