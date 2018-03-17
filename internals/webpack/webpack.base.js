@@ -1,7 +1,7 @@
 /**
  * COMMON WEBPACK CONFIGURATION
  */
-/* eslint-disable import/no-extraneous-dependencies, import/no-unresolved */
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
