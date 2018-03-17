@@ -4,8 +4,6 @@
 
 import React, { PureComponent } from 'react';
 import { Helmet } from 'react-helmet';
-// Components
-import Input from '../../components/Input/Loadable';
 // Styles
 import Wrapper from './styles';
 
@@ -18,7 +16,6 @@ class Home extends PureComponent {
           <title>Home</title>
           <meta name="description" content="Description of Home" />
         </Helmet>
-        <Input id="name" label="Name" />
       </Wrapper>
     );
   }
