@@ -5,6 +5,7 @@ injectGlobal`
   * {
     -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
+    /* outline: thin dashed red; */
   }
 
   *::-webkit-scrollbar {
