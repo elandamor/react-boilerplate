@@ -14,8 +14,10 @@ import localForage from 'localforage';
 import errorLink from '../packages/apollo-link-error';
 import loggerLink from '../packages/apollo-link-logger';
 
-const SERVER_URI = 'https://api.graph.cool/simple/v1/react-boilerplate';
-const SUBSCRIPTIONS_URI = 'wss://subscriptions.graph.cool/v1/react-boilerplate';
+/* eslint-disable prefer-destructuring */
+const SERVER_URI = process.env.SERVER_URI;
+const SUBSCRIPTIONS_URI = process.env.SUBSCRIPTIONS_URI;
+/* eslint-enaable prefer-destructuring */
 
 const defaultState = {};
 

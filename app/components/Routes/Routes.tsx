@@ -1,5 +1,5 @@
-import React, { ComponentType, SFC } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React, { ComponentType, SFC } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 /**
  * @render react
@@ -16,17 +16,17 @@ import { Route, Switch } from 'react-router-dom'
  * />
  */
 
-type R = {
-  path: string
-  component: ComponentType
-  subRoutes?: Array<R>
+interface IRoute { // tslint:disable-line:interface-over-type-literal
+  path: string;
+  component: ComponentType;
+  subRoutes?: IRoute[];
 }
 
-type Props = {
-  routes: Array<R>
+interface IProps {
+  routes: IRoute[];
 }
 
-const RouteWithSubRoutes = (route: R) => (
+const RouteWithSubRoutes = (route: IRoute) => (
   <Route
     path={route.path}
     render={(props) => (
@@ -34,16 +34,16 @@ const RouteWithSubRoutes = (route: R) => (
       <route.component routes={route.subRoutes} {...props} />
     )}
   />
-)
+);
 
-const Routes:SFC<Props> = ({ routes }) => (
+const Routes: SFC<IProps> = ({ routes }) => (
   <Switch>
     {
-      routes.map((route: R, index: number) => (
+      routes.map((route: IRoute, index: number) => (
         <RouteWithSubRoutes key={index} {...route} />
       ))
     }
   </Switch>
-)
+);
 
-export default Routes
+export default Routes;
