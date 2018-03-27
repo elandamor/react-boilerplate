@@ -90,16 +90,16 @@ class GetCategories extends Component<IProps, IState> {
 }
 
 // tslint:disable-next-line:interface-over-type-literal
-type GQLProps = {
+type GQLResponse = {
   categories: {
     edges: ICategory[],
   },
 };
 
-type ChildProps = ChildDataProps<{}, GQLProps>;
+type ChildProps = ChildDataProps<{}, GQLResponse>;
 
 export default compose(
-  graphql<{}, GQLProps, {}, ChildProps>(getCategoriesGQL, {
+  graphql<{}, GQLResponse, {}, ChildProps>(getCategoriesGQL, {
     props: (props) => {
       const { data: { categories, error, loading }} = props;
 
