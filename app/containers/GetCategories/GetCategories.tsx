@@ -1,8 +1,7 @@
-/// <reference path="../../graphql/index.d.ts" />
 import React, { Component } from 'react';
 import cls from 'classnames';
 import PropTypes from 'prop-types';
-import { compose, graphql } from 'react-apollo';
+import { ChildDataProps, compose, graphql } from 'react-apollo';
 // Query
 import getCategoriesGQL from '../../graphql/queries/getCategories.gql';
 // Styles
@@ -18,29 +17,27 @@ import Wrapper, { Category } from './styles';
  * />
  */
 
-type Category = {
+interface ICategory {
   node: {
-    id: string
-    name: string
-  }
+    id: string,
+    name: string,
+  };
 }
 
-interface Props {
-  categories?: Array<Category>
-  className?: string
-  error?: object
-  loading?: boolean
-  onSelect(category: Category): void
+interface IProps {
+  categories?: ICategory[];
+  className?: string;
+  onSelect(category: ICategory): void;
 }
 
-interface State {
-  hasCategories: boolean
-  staleCategories: object[]
+interface IState {
+  hasCategories: boolean;
+  staleCategories: ICategory[];
 }
 
 // eslint-disable-next-line react/prefer-stateless-function
-class GetCategories extends Component<Props, State> {
-  constructor(props: Props) {
+class GetCategories extends Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -50,7 +47,7 @@ class GetCategories extends Component<Props, State> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  public componentWillReceiveProps(nextProps) {
     const { categories, error, loading } = nextProps;
 
     if (!loading && !error) {
@@ -65,23 +62,19 @@ class GetCategories extends Component<Props, State> {
     }
   }
 
-  onSelect = (category) => {
-    this.props.onSelect(category);
-  }
-
-  render() {
+  public render() {
     const { className } = this.props;
     const { hasCategories, staleCategories } = this.state;
 
     let categories = null;
 
-    categories = hasCategories && staleCategories.map((category: Category) => {
+    categories = hasCategories && staleCategories.map((category: ICategory) => {
       const { node } = category;
 
       return (
         <Category
           key={node.id}
-          onClick={() => this.onSelect(node)}
+          onClick={() => this.props.onSelect(category)}
         >
           { node.name }
         </Category>
@@ -96,27 +89,39 @@ class GetCategories extends Component<Props, State> {
   }
 }
 
+// tslint:disable-next-line:interface-over-type-literal
+type GQLProps = {
+  categories: {
+    edges: ICategory[],
+  },
+};
+
+type ChildProps = ChildDataProps<{}, GQLProps>;
+
 export default compose(
-  graphql(getCategoriesGQL, {
-    props: ({ data }) => {
-      if (data.error) {
+  graphql<{}, GQLProps, {}, ChildProps>(getCategoriesGQL, {
+    props: (props) => {
+      const { data: { categories, error, loading }} = props;
+
+      if (error) {
         return {
-          error: data.error,
-          loading: data.loading,
+          data: props.data,
+          error,
+          loading,
         };
       }
 
-      if (!data.categories) {
+      if (!categories) {
         return {
-          loading: data.loading,
+          data: props.data,
+          loading,
         };
       }
-
-      const { categories } = data;
 
       return {
         categories: categories.edges,
-        loading: data.loading,
+        data: props.data,
+        loading,
       };
     },
   }),
