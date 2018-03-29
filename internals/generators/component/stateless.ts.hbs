@@ -1,0 +1,27 @@
+import React, { SFC } from 'react';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+// Styles
+import Wrapper from './styles';
+
+/**
+ * @render react
+ * @name {{ properCase name }} component
+ * @description {{ properCase name }} component.
+ * @example
+ * <{{ properCase name }} />
+ */
+
+interface Props {
+  className?: string;
+};
+
+const {{ properCase name }}:SFC<Props> = ({ className }) => (
+  <Wrapper className={classNames('', className)} />
+);
+
+{{ properCase name }}.defaultProps = {
+  className: '',
+};
+
+export default {{ properCase name }};

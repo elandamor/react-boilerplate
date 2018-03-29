@@ -5,11 +5,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = require('./webpack.base')({
   // In production, we skip all hot-reloading stuff
   entry: [
-    path.join(process.cwd(), 'app/app.js'),
+    path.join(process.cwd(), 'app/app.tsx'),
   ],
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
@@ -71,6 +72,8 @@ module.exports = require('./webpack.base')({
 
       AppCache: false,
     }),
+
+    new BundleAnalyzerPlugin(),
   ],
 
   performance: {
