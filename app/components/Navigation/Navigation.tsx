@@ -18,22 +18,22 @@ import Wrapper from './styles';
  * />
  */
 
-type Link = {
-  className?: string,
-  exact?: boolean,
-  href: string,
-  label: string,
-};
+interface ILink {
+  className?: string;
+  exact?: boolean;
+  href: string;
+  label: string;
+}
 
-interface Props {
-  links: object[];
-};
+interface IProps {
+  links: ILink[];
+}
 
-const Navigation:SFC<Props> = ({ links }) => (
+const Navigation: SFC<IProps> = ({ links }) => (
   <Wrapper>
     <ul>
       {
-        links.map((link: Link, index) => (
+        links.map((link: ILink, index) => (
           <li key={index}>
             <NavLink
               exact={link.exact}
