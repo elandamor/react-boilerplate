@@ -16,7 +16,8 @@ import { Route, Switch } from 'react-router-dom';
  * />
  */
 
-interface IRoute { // tslint:disable-line:interface-over-type-literal
+// tslint:disable-next-line:interface-over-type-literal
+interface IRoute {
   path: string;
   component: ComponentType;
   subRoutes?: IRoute[];
