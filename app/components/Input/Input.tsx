@@ -9,28 +9,23 @@ import Wrapper from './styles';
  * @description Input component.
  * @example
  * <Input
- *  id="text"
- *  label="Text"
- *  type="text"
+ *  id="password"
+ *  label="Password"
+ *  type="password"
  * />
  */
 
-interface Props {
+interface IProps {
   className?: string;
   id: string;
   label: string;
-  sronly?: boolean;
   type?: string;
 }
 
-const Input: SFC<Props> = ({ className, id, label, sronly, ...rest }) => (
+const Input: SFC<IProps> = ({ className, id, label, ...rest }) => (
   <Wrapper className={classNames('c-input-wrapper', className)}>
     <label htmlFor={id}>
-      <span
-        className={classNames('a-label', {
-          'sr-only': sronly,
-        })}
-      >
+      <span className={classNames('a-label')}>
         { label }
       </span>
       <input id={id} className="a-input" {...rest} />
@@ -39,7 +34,6 @@ const Input: SFC<Props> = ({ className, id, label, sronly, ...rest }) => (
 );
 
 Input.defaultProps = {
-  sronly: false,
   type: 'text',
 };
 
