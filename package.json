@@ -137,7 +137,7 @@
     "ts-loader": "4.1.0",
     "tslint": "5.9.1",
     "typescript": "2.8.1",
-    "uglify-js": "3.3.16",
+    "uglify-js": "3.3.17",
     "url-loader": "1.0.1",
     "webpack": "4.4.1",
     "webpack-bundle-analyzer": "2.11.1",
