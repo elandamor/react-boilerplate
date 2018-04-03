@@ -16,7 +16,7 @@ import Wrapper from './styles';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component<{}> {
-  render() {
+  public render() {
     return (
       <Wrapper>
         <Switch>

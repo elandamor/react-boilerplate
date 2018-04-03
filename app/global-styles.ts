@@ -1,6 +1,7 @@
+// tslint:disable:max-line-length
 import { injectGlobal } from 'styled-components';
 
-/* eslint no-unused-expressions: 0 */
+// tslint:disable-next-line:no-unused-expression
 injectGlobal`
   * {
     -webkit-tap-highlight-color: transparent;

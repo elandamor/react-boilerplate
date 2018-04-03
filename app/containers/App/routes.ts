@@ -1,3 +1,5 @@
+// tslint:disable:object-literal-sort-keys
+
 // Pages
 import Home from '../../pages/Home/Loadable';
 
