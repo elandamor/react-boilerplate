@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { SFC } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
+// Styles
 import Wrapper from './styles';
 
 /**
@@ -11,25 +11,35 @@ import Wrapper from './styles';
  * @example
  * <Navigation
  *    links={[
- *      { label: 'My List', href: '/my-list' },
- *      { label: 'Top Picks', href: '/top' },
- *      { label: 'Recent', href: '/recent' }
+ *      { exact: true, label: 'Home', href: '/' },
+ *      { label: 'About', href: '/about' }
+ *      { label: 'Contact', href: '/contact' },
  *    ]}
  * />
  */
-/* eslint-disable react/no-array-index-key */
-const Navigation = ({ links }) => (
+
+interface ILink {
+  className?: string;
+  exact?: boolean;
+  href: string;
+  label: string;
+}
+
+interface IProps {
+  links: ILink[];
+}
+
+const Navigation: SFC<IProps> = ({ links }) => (
   <Wrapper>
     <ul>
       {
-        links.map((link, index) => (
+        links.map((link: ILink, index) => (
           <li key={index}>
             <NavLink
               exact={link.exact}
               activeClassName="-active"
               className={classNames('a-nav-item', link.className)}
               to={link.href}
-              aria-label={link.label}
             >
               {link.label}
             </NavLink>
@@ -39,9 +49,5 @@ const Navigation = ({ links }) => (
     </ul>
   </Wrapper>
 );
-
-Navigation.propTypes = {
-  links: PropTypes.array.isRequired,
-};
 
 export default Navigation;

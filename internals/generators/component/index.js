@@ -11,6 +11,11 @@ const componentExists = require('../utils/componentExists');
 module.exports = {
   description: 'Add an unconnected component',
   prompts: [{
+    type: 'confirm',
+    name: 'wantTyping',
+    default: true,
+    message: 'Do you want to use TypeScript?',
+  }, {
     type: 'list',
     name: 'type',
     message: 'Select the type of component',
@@ -43,9 +48,11 @@ module.exports = {
     // Generate index.js, index.test.js and styles.js.
     let componentTemplate;
 
+    const useTyping = data.wantTyping;
+
     switch (data.type) {
       case 'Stateless Function': {
-        componentTemplate = './component/stateless.js.hbs';
+        componentTemplate = `./component/stateless.${useTyping ? 'ts' : 'js'}.hbs`;
         break;
       }
       default: {
@@ -55,12 +62,12 @@ module.exports = {
 
     const actions = [{
       type: 'add',
-      path: '../../app/components/{{properCase name}}/index.js',
+      path: `../../app/components/{{properCase name}}/index.${useTyping ? 'ts' : 'js'}`,
       templateFile: './component/index.js.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/components/{{properCase name}}/{{properCase name}}.js',
+      path: `../../app/components/{{properCase name}}/{{properCase name}}.${useTyping ? 'tsx' : 'js'}`,
       templateFile: componentTemplate,
       abortOnFail: true,
     }, {

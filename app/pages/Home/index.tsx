@@ -2,14 +2,14 @@
  * Home
  */
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Helmet } from 'react-helmet';
-// import PropTypes from 'prop-types';
+// Styles
 import Wrapper from './styles';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class Home extends React.PureComponent {
-  render() {
+class Home extends PureComponent {
+  public render() {
     return (
       <Wrapper>
         <Helmet>
@@ -20,9 +20,5 @@ class Home extends React.PureComponent {
     );
   }
 }
-
-Home.propTypes = {
-
-};
 
 export default Home;

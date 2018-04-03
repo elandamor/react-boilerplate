@@ -69,9 +69,9 @@ class IOLazyImageLoader {
    * @param {element} img - The image to be loaded
    * @return {callback} applyImage - A method that adds the image to the DOM
    */
-  preloadImage(image) {
+  preloadImage = (image) => {
     // Get the source for the image.
-    const src = image.dataset.src;
+    const { src } = image.dataset;
     // Do nothing if image source is missing.
     if (!src) {
       return;
@@ -82,7 +82,7 @@ class IOLazyImageLoader {
   /**
    * Add the respective image to the DOM
    */
-  applyImage(img, src) {
+  applyImage = (img, src) => {
     const el = img;
 
     el.classList.add('-lazy--loaded');
