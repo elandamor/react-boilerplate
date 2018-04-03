@@ -12,7 +12,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { ApolloProvider } from 'react-apollo';
+import FontFaceObserver from 'fontfaceobserver';
 
 import 'sanitize.css/sanitize.css';
 
@@ -37,18 +37,25 @@ import App from './containers/App';
 // Import CSS reset and Global Styles
 import './global-styles';
 
-// Import apollo client
-import client from './configs/apollo-client';
+// Observe loading of Merriweather & Montserrat (to remove open sans, remove the <link> tag in
+// the index.html file and this observer)
+const merriweatherObserver = new FontFaceObserver('Merriweather', {});
+const montserratObserver = new FontFaceObserver('Montserrat', {});
+
+// When Merriweather is loaded, add a font-family using Merriweather to the body
+Promise.all([merriweatherObserver.load(), montserratObserver.load()]).then(() => {
+  document.body.classList.add('fontsLoaded');
+}, () => {
+  document.body.classList.remove('fontsLoaded');
+});
 
 const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
   ReactDOM.render(
-    <ApolloProvider client={client}>
-      <Router>
-        <App />
-      </Router>
-    </ApolloProvider>,
+    <Router>
+      <App />
+    </Router>,
     MOUNT_NODE,
   );
 };
@@ -83,5 +90,6 @@ if (!global.Intl) {
 // it's not most important operation and if main code fails,
 // we do not want it installed
 if (process.env.NODE_ENV === 'production') {
-  require('offline-plugin/runtime').install(); // eslint-disable-line global-require
+  // tslint:disable-next-line:no-var-requires
+  require('offline-plugin/runtime').install();
 }

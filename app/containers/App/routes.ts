@@ -1,4 +1,4 @@
-// Pages
+// tslint:disable:object-literal-sort-keys
 import Home from '../../pages/Home/Loadable';
 
 const routes = [{

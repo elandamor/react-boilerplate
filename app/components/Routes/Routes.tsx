@@ -19,7 +19,7 @@ import { Route, Switch } from 'react-router-dom';
 interface IRoute { // tslint:disable-line:interface-over-type-literal
   path: string;
   component: ComponentType;
-  subRoutes?: IRoute[];
+  routes?: IRoute[];
 }
 
 interface IProps {
@@ -31,7 +31,7 @@ const RouteWithSubRoutes = (route: IRoute) => (
     path={route.path}
     render={(props) => (
       // pass the sub-routes down to keep nesting
-      <route.component routes={route.subRoutes} {...props} />
+      <route.component routes={route.routes} {...props} />
     )}
   />
 );

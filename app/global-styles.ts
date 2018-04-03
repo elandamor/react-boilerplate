@@ -1,6 +1,6 @@
 import { injectGlobal } from 'styled-components';
 
-/* eslint no-unused-expressions: 0 */
+// tslint:disable-next-line:no-unused-expression
 injectGlobal`
   * {
     -webkit-tap-highlight-color: transparent;
@@ -29,7 +29,6 @@ injectGlobal`
     font-kerning: normal;
     font-weight: 400;
     height: 100%;
-    letter-spacing: 0.01rem;
     margin: 0;
     padding: 0;
     text-rendering: optimizeLegibility;
@@ -42,6 +41,20 @@ injectGlobal`
 
   body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: Georgia,serif;
+      font-weight: 700;
+    }
+
+    &.fontsLoaded {
+      font-family: 'Montserrat',-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: Merriweather,Georgia,serif;
+        font-weight: 900;
+      }
+    }
   }
 
   .sr-only {
