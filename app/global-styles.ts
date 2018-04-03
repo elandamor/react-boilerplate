@@ -5,9 +5,10 @@ injectGlobal`
   * {
     -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
+    /* outline: thin dashed red; */
   }
 
-    *::-webkit-scrollbar {
+  *::-webkit-scrollbar {
     width: 0px !important;
     height: 2px !important
   }
@@ -41,5 +42,12 @@ injectGlobal`
 
   body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  }
+
+  .sr-only {
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    width: 0;
   }
 `;
