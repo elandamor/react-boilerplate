@@ -15,7 +15,7 @@ import Wrapper from './styles';
  * />
  */
 
-interface Props {
+interface IProps {
   className?: string;
   id: string;
   label: string;
@@ -23,7 +23,7 @@ interface Props {
   type?: string;
 }
 
-const Input: SFC<Props> = ({ className, id, label, sronly, ...rest }) => (
+const Input: SFC<IProps> = ({ className, id, label, sronly, ...rest }) => (
   <Wrapper className={classNames('c-input-wrapper', className)}>
     <label htmlFor={id}>
       <span

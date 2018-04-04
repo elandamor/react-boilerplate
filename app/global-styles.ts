@@ -40,21 +40,37 @@ injectGlobal`
   }
 
   body {
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen
+      ,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 
     h1, h2, h3, h4, h5, h6 {
       font-family: Georgia,serif;
-      font-weight: 700;
     }
 
     &.fontsLoaded {
-      font-family: 'Montserrat',-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+      font-family: 'Montserrat',-apple-system,BlinkMacSystemFont,Segoe UI
+        ,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 
       h1, h2, h3, h4, h5, h6 {
         font-family: Merriweather,Georgia,serif;
-        font-weight: 900;
       }
     }
+  }
+
+  .-fw400 {
+    font-weight: 400;
+  }
+
+  .-fw500 {
+    font-weight: 500;
+  }
+
+  .-fw700 {
+    font-weight: 700;
+  }
+
+  .-fw900 {
+    font-weight: 900;
   }
 
   .sr-only {

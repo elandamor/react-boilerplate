@@ -18,6 +18,7 @@ import Wrapper from './styles';
  * />
  */
 
+// tslint:disable-next-line:interface-over-type-literal
 type Link = {
   className?: string,
   exact?: boolean,
@@ -25,11 +26,11 @@ type Link = {
   label: string,
 };
 
-interface Props {
-  links: object[];
-};
+interface IProps {
+  links: Link[];
+}
 
-const Navigation:SFC<Props> = ({ links }) => (
+const Navigation: SFC<IProps> = ({ links }) => (
   <Wrapper>
     <ul>
       {
