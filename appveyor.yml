@@ -11,7 +11,6 @@ environment:
 
   matrix:
     # Node versions to run
-    - nodejs_version: 9
     - nodejs_version: 8
 
 # Fix line endings in Windows. (runs before repo cloning)
