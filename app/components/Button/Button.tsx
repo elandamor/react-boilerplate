@@ -1,6 +1,5 @@
 import React, { MouseEvent, SFC } from 'react';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 // Styles
 import Wrapper from './styles';
 
