@@ -27,14 +27,15 @@ type Link = {
 };
 
 interface IProps {
+  className?: string;
   links: Link[];
 }
 
-const Navigation: SFC<IProps> = ({ links }) => (
-  <Wrapper>
+const Navigation: SFC<IProps> = ({ className, links }) => (
+  <Wrapper className={classNames('c-nav', className)}>
     <ul>
       {
-        links.map((link: Link, index) => (
+        links.map((link: Link, index: number) => (
           <li key={index}>
             <NavLink
               exact={link.exact}
