@@ -7,7 +7,6 @@ import { Helmet } from 'react-helmet';
 // Styles
 import Wrapper from './styles';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class Home extends PureComponent {
   public render() {
     return (
