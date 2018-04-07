@@ -14,7 +14,6 @@ import Wrapper from './styles';
  * contain code that should be seen on all pages. (e.g. navigation bar).
  */
 
-// eslint-disable-next-line react/prefer-stateless-function
 class App extends Component<{}> {
   public render() {
     return (
