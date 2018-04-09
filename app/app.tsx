@@ -86,6 +86,11 @@ if (!global.Intl) {
   render();
 }
 
+// Persist "debug" package's enable state in localStorage
+if (process.env.NODE_ENV !== 'production') {
+  window.localStorage.setItem('debug', 'reactBoilerplate:*');
+}
+
 // Install ServiceWorker and AppCache in the end since
 // it's not most important operation and if main code fails,
 // we do not want it installed
