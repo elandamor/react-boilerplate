@@ -10,13 +10,13 @@ module.exports = {
     type: 'list',
     name: 'type',
     message: 'Select the base component type:',
-    default: 'Stateless Function',
-    choices: () => ['Stateless Function', 'PureComponent', 'Component'],
+    default: 'Component',
+    choices: () => ['Component', 'PureComponent', 'Stateless Function'],
   }, {
     type: 'input',
     name: 'name',
     message: 'What should it be called?',
-    default: 'Form',
+    default: 'Language',
     validate: (value) => {
       if ((/.+/).test(value)) {
         return componentExists(value) ? 'A component or container with this name already exists' : true;
@@ -51,45 +51,44 @@ module.exports = {
     message: 'Do you want to load resources asynchronously?',
   }],
   actions: (data) => {
-    // Generate index.js and index.test.js
-    var componentTemplate; // eslint-disable-line no-var
+    let componentTemplate;
 
     switch (data.type) {
       case 'Stateless Function': {
-        componentTemplate = './container/stateless.js.hbs';
+        componentTemplate = './container/stateless.hbs';
         break;
       }
       default: {
-        componentTemplate = './container/class.js.hbs';
+        componentTemplate = './container/class.hbs';
       }
     }
 
     const actions = [{
       type: 'add',
-      path: '../../app/containers/{{properCase name}}/index.js',
-      templateFile: './container/index.js.hbs',
+      path: '../../app/containers/{{properCase name}}/index.ts',
+      templateFile: './container/index.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/containers/{{properCase name}}/{{properCase name}}.js',
+      path: '../../app/containers/{{properCase name}}/{{properCase name}}.tsx',
       templateFile: componentTemplate,
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/containers/{{properCase name}}/{{properCase name}}.spec.js',
-      templateFile: './container/test.js.hbs',
+      path: '../../app/containers/{{properCase name}}/{{properCase name}}.spec.ts',
+      templateFile: './container/spec.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
       path: '../../app/containers/{{properCase name}}/styles.js',
-      templateFile: './component/styles.js.hbs',
+      templateFile: './component/styles.hbs',
     }];
 
     if (data.wantLoadable) {
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/Loadable.js',
-        templateFile: './component/loadable.js.hbs',
+        path: '../../app/containers/{{properCase name}}/Loadable.ts',
+        templateFile: './component/loadable.hbs',
         abortOnFail: true,
       });
     }
