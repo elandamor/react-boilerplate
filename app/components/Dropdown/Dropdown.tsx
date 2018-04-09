@@ -2,28 +2,22 @@ import React from 'react';
 import classNames from 'classnames';
 // Components
 import Icon from '../Icon';
-// Styled-Components
+// Libraries
+import { makeDebugger, shallowEqual } from '../../lib';
+// Styles
 import Wrapper from './styles';
 
-// tslint:disable-next-line:interface-over-type-literal
-type Option = {
-  name: string,
-  value: string | number,
-};
+const debug = makeDebugger('Dropdown');
 
-interface IProps {
-  className?: string;
-  label?: string;
-  name: string;
-  onChange: (object) => void;
-  options: Option[];
-  selected?: Option;
-}
-
-interface IState {
-  isExpanded: boolean;
-  selected: Option;
-}
+/**
+ * @render react
+ * @name Button component
+ * @description Button component.
+ * @example
+ * <Dropdown
+ *  options={[]}
+ * />
+ */
 
 class Dropdown extends React.Component<IProps, IState> {
   constructor(props: IProps) {
@@ -40,6 +34,14 @@ class Dropdown extends React.Component<IProps, IState> {
     };
 
     props.onChange(this.state.selected);
+  }
+
+  public componentWillReceiveProps(nextProps) {
+    if (!shallowEqual(nextProps.selected, this.props.selected)) {
+      this.setState({
+        selected: nextProps.selected,
+      });
+    }
   }
 
   public render() {
@@ -82,7 +84,7 @@ class Dropdown extends React.Component<IProps, IState> {
           <span className="a-text">{selected.name}</span>
           <span className="c-icon-wrapper">
             <Icon
-              icon="expand-arrow"
+              icon="expand_arrow"
               viewBox="0 0 20 12"
             />
           </span>
@@ -122,6 +124,26 @@ class Dropdown extends React.Component<IProps, IState> {
       isExpanded: !this.state.isExpanded,
     });
   }
+}
+
+// tslint:disable-next-line:interface-over-type-literal
+type Option = {
+  name: string,
+  value: string | number,
+};
+
+interface IProps {
+  className?: string;
+  label?: string;
+  name: string;
+  onChange?: (object) => object;
+  options: Option[];
+  selected?: Option;
+}
+
+interface IState {
+  isExpanded: boolean;
+  selected: Option;
 }
 
 export default Dropdown;
