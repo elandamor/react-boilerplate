@@ -11,8 +11,8 @@ const debug = makeDebugger('Dropdown');
 
 /**
  * @render react
- * @name Button component
- * @description Button component.
+ * @name Dropdown component
+ * @description Dropdown component.
  * @example
  * <Dropdown
  *  options={[]}
@@ -20,6 +20,8 @@ const debug = makeDebugger('Dropdown');
  */
 
 class Dropdown extends React.Component<IProps, IState> {
+  private node: any;
+
   constructor(props: IProps) {
     super(props);
 
@@ -36,12 +38,20 @@ class Dropdown extends React.Component<IProps, IState> {
     props.onChange(this.state.selected);
   }
 
+  public componentWillMount() {
+    document.addEventListener('mousedown', this.handleClick, false);
+  }
+
   public componentWillReceiveProps(nextProps) {
     if (!shallowEqual(nextProps.selected, this.props.selected)) {
       this.setState({
         selected: nextProps.selected,
       });
     }
+  }
+
+  public componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClick, false);
   }
 
   public render() {
@@ -66,6 +76,7 @@ class Dropdown extends React.Component<IProps, IState> {
     return (
       <Wrapper
         className={classNames('c-dropdown', className)}
+        innerRef={(node) => this.node = node}
       >
         <div
           id={`dd-${name}`}
@@ -116,6 +127,16 @@ class Dropdown extends React.Component<IProps, IState> {
     this.props.onChange({
       name: target.getAttribute('data-option-name'),
       value: target.getAttribute('data-option-value'),
+    });
+  }
+
+  private handleClick = (evt) => {
+    if (this.node.contains(evt.target)) {
+      return;
+    }
+
+    this.setState({
+      isExpanded: false,
     });
   }
 
