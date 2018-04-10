@@ -20,7 +20,7 @@ const debug = makeDebugger('Dropdown');
  */
 
 class Dropdown extends React.Component<IProps, IState> {
-  private node: any;
+  private node: HTMLElement | Node;
 
   constructor(props: IProps) {
     super(props);
