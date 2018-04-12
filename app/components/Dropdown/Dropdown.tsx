@@ -20,6 +20,16 @@ const debug = makeDebugger('Dropdown');
  */
 
 class Dropdown extends React.Component<IProps, IState> {
+  private static getDerivedStateFromProps(nextProps, prevState) {
+    if (!shallowEqual(nextProps.selected, prevState.selected)) {
+      return {
+        selected: nextProps.selected,
+      };
+    }
+
+    return null;
+  }
+
   private node: HTMLElement | Node;
 
   constructor(props: IProps) {
@@ -38,16 +48,8 @@ class Dropdown extends React.Component<IProps, IState> {
     props.onChange(this.state.selected);
   }
 
-  public componentWillMount() {
+  public componentDidMount() {
     document.addEventListener('mousedown', this.handleClick, false);
-  }
-
-  public componentWillReceiveProps(nextProps) {
-    if (!shallowEqual(nextProps.selected, this.props.selected)) {
-      this.setState({
-        selected: nextProps.selected,
-      });
-    }
   }
 
   public componentWillUnmount() {
