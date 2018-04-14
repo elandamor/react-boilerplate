@@ -3,6 +3,8 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 // Components
 import Routes from '../../components/Routes';
+// Libraries
+import { makeDebugger, matchMedia } from '../../lib';
 // Routes
 import routes from './routes';
 // Styles
@@ -30,6 +32,10 @@ const themeLight = {
 };
 /* tslint:enable:object-literal-sort-keys */
 
+const debug = makeDebugger('app');
+
+const mql648 = matchMedia('(min-width: 648px)');
+
 /**
  * @render react
  * @name App container
@@ -42,8 +48,33 @@ class App extends Component<{}, IState> {
     super(props);
 
     this.state = {
+      mq648: false,
+      mql648,
       theme: themeLight,
     };
+  }
+
+  public componentDidMount() {
+    mql648.addListener(this.mediaQueryChanged);
+    this.setState({
+      mq648: mql648.matches,
+      mql648,
+    });
+  }
+
+  public componentWillUnmount() {
+    // tslint:disable-next-line:no-shadowed-variable
+    const { mql648 } = this.state;
+
+    if (mql648) {
+      mql648.removeListener(this.mediaQueryChanged);
+    }
+  }
+
+  public mediaQueryChanged = () => {
+    this.setState({
+      mq648: this.state.mql648.matches,
+    });
   }
 
   public render() {
@@ -60,6 +91,12 @@ class App extends Component<{}, IState> {
 }
 
 interface IState {
+  mq648: boolean;
+  mql648: {
+    addListener: (func) => void,
+    matches: false,
+    removeListener: (func) => void,
+  };
   theme: object;
 }
 
