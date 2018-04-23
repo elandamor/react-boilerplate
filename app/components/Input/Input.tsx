@@ -11,6 +11,7 @@ import Wrapper from './styles';
  * <Input
  *  id="text"
  *  label="Text"
+ *  name="text"
  *  type="text"
  * />
  */
@@ -19,8 +20,11 @@ interface IProps {
   className?: string;
   id: string;
   label: string;
+  name: string;
+  onChange: (event: any) => void;
   sronly?: boolean;
   type?: string;
+  value?: any;
 }
 
 const Input: SFC<IProps> = ({ className, id, label, sronly, ...rest }) => (
