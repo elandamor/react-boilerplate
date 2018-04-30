@@ -66,7 +66,7 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@babel/runtime@^7.0.0-beta.44":
+"@babel/runtime@^7.0.0-beta.46":
   version "7.0.0-beta.46"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.46.tgz#466a9c0498f6d12d054a185981eef742d59d4871"
   dependencies:
@@ -8150,11 +8150,11 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-spring@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.0.1.tgz#cf45795842febda8f72a60884e927f04c920c870"
+react-spring@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.1.0.tgz#f11ea99c965d241d61a17c7d2568c8afd4a6ba43"
   dependencies:
-    "@babel/runtime" "^7.0.0-beta.44"
+    "@babel/runtime" "^7.0.0-beta.46"
 
 react-test-renderer@^16.0.0-0:
   version "16.3.2"
