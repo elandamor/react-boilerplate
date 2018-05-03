@@ -1,3 +1,14 @@
 {
-    "typescript.tsdk": "node_modules/typescript/lib"
+  "editor.rulers": [80, 100],
+  "emmet.triggerExpansionOnTab": true,
+  "files.exclude": {
+    "node_modules": true,
+    "**/node_modules": true,
+    "**/node_modules/**": true,
+  },
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 15,
+  "editor.fontWeight": "400",
+  "typescript.tsdk": "node_modules/typescript/lib",
 }

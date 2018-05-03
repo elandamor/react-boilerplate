@@ -17,8 +17,7 @@ const Wrapper = styled.div`
     -webkit-appearance: none;
     align-items: center;
     background-color: ${(props) => props.theme.palette.cardBackground};
-    border: thin solid ${(props) => props.theme.palette.cardBackground};
-    border-color: #E4E6E9;
+    border: thin solid ${(props) => props.theme.palette.cardBorderColor};
     border-radius: 4px;
     color: ${(props) => props.theme.isDark ? '#ffffff' : '#000000'};
     cursor: pointer;
@@ -26,7 +25,6 @@ const Wrapper = styled.div`
     font-family: inherit;
     font-size: 14px;
     font-weight: 500;
-    letter-spacing: 0.01rem;
     line-height: 1.5;
     margin: 4px 0 2px;
     outline: none;
@@ -39,7 +37,7 @@ const Wrapper = styled.div`
       border-bottom-right-radius: 0;
     }
 
-    &[aria-expanded="true"] .icon > svg {
+    &[aria-expanded="true"] .c-icon > svg {
       transform: rotate(180deg);
     }
 
@@ -58,14 +56,15 @@ const Wrapper = styled.div`
     .c-icon-wrapper {
       justify-self: flex-end;
 
-      .icon,
-      .icon > svg {
+      .c-icon,
+      .c-icon > svg {
         height: 8px;
+        line-height: 1;
         width: 16px;
       }
 
-      .icon > svg {
-        vertical-align: middle;
+      .c-icon > svg {
+        transform-origin: 50% 45%;
       }
     }
   }
@@ -78,17 +77,20 @@ const Wrapper = styled.div`
     transform-origin: top left;
     position: absolute;
     top: 100%;
-    left: 0;
-    z-index: 4;
+    left: 12px;
+    z-index: 0;
     background: #fff;
-    min-width: 100%;
+    margin: 0;
     opacity: 0;
     pointer-events: none;
-    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    border: thin solid ${(props) => props.theme.palette.cardBackground};
+    border-color: #E4E6E9;
+    border-top: none;
     border-radius: 0 0 4px 4px;
     max-height: 200px;
     overflow-y: auto;
     padding: 0;
+    right: 12px;
 
     div {
       position: relative;
@@ -97,7 +99,8 @@ const Wrapper = styled.div`
 
   [role="option"] {
     color: #333;
-    padding: 8px 8px;
+    font-size: 14px;
+    padding: 8px 12px;
     cursor: pointer;
     transition: all .2s;
 
@@ -108,6 +111,7 @@ const Wrapper = styled.div`
     &[aria-selected="true"] {
       background-color: #000000;
       color: #ffffff;
+      font-weight: 500;
     }
   }
 `;
