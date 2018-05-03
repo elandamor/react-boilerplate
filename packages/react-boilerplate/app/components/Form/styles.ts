@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.{{ tag }}`
+const Wrapper = styled.form`
 
 `;
 

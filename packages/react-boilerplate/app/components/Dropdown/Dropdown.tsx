@@ -2,30 +2,36 @@ import React from 'react';
 import classNames from 'classnames';
 // Components
 import Icon from '../Icon';
-// Styled-Components
+// Libraries
+import { makeDebugger, shallowEqual } from '../../lib';
+// Styles
 import Wrapper from './styles';
 
-// tslint:disable-next-line:interface-over-type-literal
-type Option = {
-  name: string,
-  value: string | number,
-};
+const debug = makeDebugger('Dropdown');
 
-interface IProps {
-  className?: string;
-  label?: string;
-  name: string;
-  onChange: (object) => void;
-  options: Option[];
-  selected?: Option;
-}
-
-interface IState {
-  isExpanded: boolean;
-  selected: Option;
-}
+/**
+ * @render react
+ * @name Dropdown component
+ * @description Dropdown component.
+ * @example
+ * <Dropdown
+ *  options={[]}
+ * />
+ */
 
 class Dropdown extends React.Component<IProps, IState> {
+  private static getDerivedStateFromProps(nextProps, prevState) {
+    if (!shallowEqual(nextProps.selected, prevState.selected)) {
+      return {
+        selected: nextProps.selected,
+      };
+    }
+
+    return null;
+  }
+
+  private node: HTMLElement | Node;
+
   constructor(props: IProps) {
     super(props);
 
@@ -40,6 +46,14 @@ class Dropdown extends React.Component<IProps, IState> {
     };
 
     props.onChange(this.state.selected);
+  }
+
+  public componentDidMount() {
+    document.addEventListener('mousedown', this.handleClick, false);
+  }
+
+  public componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClick, false);
   }
 
   public render() {
@@ -64,6 +78,7 @@ class Dropdown extends React.Component<IProps, IState> {
     return (
       <Wrapper
         className={classNames('c-dropdown', className)}
+        innerRef={(node) => this.node = node}
       >
         <div
           id={`dd-${name}`}
@@ -82,7 +97,7 @@ class Dropdown extends React.Component<IProps, IState> {
           <span className="a-text">{selected.name}</span>
           <span className="c-icon-wrapper">
             <Icon
-              icon="expand-arrow"
+              icon="expand_arrow"
               viewBox="0 0 20 12"
             />
           </span>
@@ -117,11 +132,41 @@ class Dropdown extends React.Component<IProps, IState> {
     });
   }
 
+  private handleClick = (evt) => {
+    if (this.node.contains(evt.target)) {
+      return;
+    }
+
+    this.setState({
+      isExpanded: false,
+    });
+  }
+
   private handleToggle = () => {
     this.setState({
       isExpanded: !this.state.isExpanded,
     });
   }
+}
+
+// tslint:disable-next-line:interface-over-type-literal
+type Option = {
+  name: string,
+  value: string | number,
+};
+
+interface IProps {
+  className?: string;
+  label?: string;
+  name: string;
+  onChange?: (object) => object;
+  options: Option[];
+  selected?: Option;
+}
+
+interface IState {
+  isExpanded: boolean;
+  selected: Option;
 }
 
 export default Dropdown;
