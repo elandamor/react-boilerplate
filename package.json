@@ -120,7 +120,7 @@
     "minimist": "1.2.0",
     "ngrok": "3.0.1",
     "node-plop": "0.13.0",
-    "offline-plugin": "5.0.2",
+    "offline-plugin": "5.0.3",
     "plop": "2.0.0",
     "style-loader": "0.21.0",
     "ts-jest": "22.4.4",
