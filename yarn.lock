@@ -8150,9 +8150,9 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-spring@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.1.0.tgz#f11ea99c965d241d61a17c7d2568c8afd4a6ba43"
+react-spring@5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.1.1.tgz#6d8425e6bccf7472e4daaa51431ca328e0c505ef"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.46"
 
