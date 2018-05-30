@@ -11,3 +11,6 @@ stats.json
 
 *.log
 
+package-lock.json
+yarn.lock
+
