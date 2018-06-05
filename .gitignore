@@ -1,3 +1,5 @@
+app/third-party/
+
 coverage
 build
 node_modules
@@ -13,4 +15,3 @@ stats.json
 
 *-lock.json
 *.lock
-
