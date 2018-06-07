@@ -5,13 +5,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = require('./webpack.base')({
   // In production, we skip all hot-reloading stuff
-  entry: [
-    path.join(process.cwd(), 'app/app.tsx'),
-  ],
+  entry: [path.join(process.cwd(), 'app/app.tsx')],
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
@@ -20,12 +17,9 @@ module.exports = require('./webpack.base')({
   },
 
   plugins: [
-    new CleanWebpackPlugin(
-      [path.resolve(process.cwd(), 'build')],
-      {
-        allowExternal: true,
-      },
-    ),
+    new CleanWebpackPlugin([path.resolve(process.cwd(), 'build')], {
+      allowExternal: true,
+    }),
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({
       template: 'app/index.html',
@@ -72,11 +66,10 @@ module.exports = require('./webpack.base')({
 
       AppCache: false,
     }),
-
-    new BundleAnalyzerPlugin(),
   ],
 
   performance: {
-    assetFilter: (assetFilename) => !(/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename)),
+    assetFilter: (assetFilename) =>
+      !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
   },
 });
