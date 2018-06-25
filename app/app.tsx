@@ -13,7 +13,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
-
+import FontFaceObserver from 'fontfaceobserver';
 import 'sanitize.css/sanitize.css';
 
 // Import apollo client
@@ -22,23 +22,23 @@ import client from './configs/apollo';
 // Import root app
 import App from './containers/App';
 
-// Load the favicon, the manifest.json file and the .htaccess file
+// Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
-// import '!file-loader?name=[name].[ext]!./images/favicon.ico';
-// import '!file-loader?name=[name].[ext]!./images/icon-72x72.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-96x96.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-128x128.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-144x144.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-152x152.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-192x192.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-384x384.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-512x512.png';
-// import '!file-loader?name=[name].[ext]!./manifest.json';
-// import 'file-loader?name=[name].[ext]!./.htaccess';
+import '!file-loader?name=[name].[ext]!./images/favicon.ico';
+import 'file-loader?name=[name].[ext]!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 // Import CSS reset and Global Styles
 import './global-styles';
+
+// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
+// the index.html file and this observer)
+const montserratObserver = new FontFaceObserver('Montserrat', {});
+
+// When Open Sans is loaded, add a font-family using Open Sans to the body
+montserratObserver.load().then(() => {
+  document.body.classList.add('fontLoaded');
+});
 
 const MOUNT_NODE = document.getElementById('app');
 

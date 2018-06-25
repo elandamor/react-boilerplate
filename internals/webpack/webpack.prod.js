@@ -3,10 +3,14 @@
 // Important modules this config uses
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const OfflinePlugin = require('offline-plugin');
+const { HashedModuleIdsPlugin } = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = require('./webpack.base')({
+  mode: 'production',
+
   // In production, we skip all hot-reloading stuff
   entry: [path.join(process.cwd(), 'app/app.tsx')],
 
@@ -14,6 +18,15 @@ module.exports = require('./webpack.base')({
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].chunk.js',
+  },
+
+  optimization: {
+    minimize: true,
+    nodeEnv: 'production',
+    sideEffects: true,
+    concatenateModules: true,
+    splitChunks: { chunks: 'all' },
+    runtimeChunk: true,
   },
 
   plugins: [
@@ -47,6 +60,7 @@ module.exports = require('./webpack.base')({
 
       relativePaths: false,
       publicPath: '/',
+      appShell: '/',
 
       // No need to cache .htaccess. See http://mxs.is/googmp,
       // this is applied before any match in `caches` section
@@ -65,6 +79,26 @@ module.exports = require('./webpack.base')({
       safeToUseOptionalCaches: true,
 
       AppCache: false,
+    }),
+
+    new WebpackPwaManifest({
+      name: 'React Boilerplate',
+      short_name: 'React BP',
+      description: 'My React Boilerplate-based project!',
+      background_color: '#fafafa',
+      theme_color: '#b1624d',
+      icons: [
+        {
+          src: path.resolve('app/images/icon-512x512.png'),
+          sizes: [72, 96, 120, 128, 144, 152, 167, 180, 192, 384, 512],
+        },
+      ],
+    }),
+
+    new HashedModuleIdsPlugin({
+      hashFunction: 'sha256',
+      hashDigest: 'hex',
+      hashDigestLength: 20,
     }),
   ],
 

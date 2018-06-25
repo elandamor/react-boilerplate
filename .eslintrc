@@ -6,7 +6,9 @@
     "es6": true
   },
   "extends": [
-    "airbnb"
+    "airbnb",
+    "prettier",
+    "prettier/react",
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -17,6 +19,7 @@
     }
   },
   "plugins": [
+    "prettier",
     "react",
     "jsx-a11y"
   ],
