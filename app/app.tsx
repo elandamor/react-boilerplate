@@ -12,9 +12,12 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import FontFaceObserver from 'fontfaceobserver';
+import { ApolloProvider } from 'react-apollo';
 
 import 'sanitize.css/sanitize.css';
+
+// Import apollo client
+import client from './configs/apollo';
 
 // Import root app
 import App from './containers/App';
@@ -41,24 +44,14 @@ const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
   ReactDOM.render(
-    <Router>
-      <App />
-    </Router>,
+    <ApolloProvider client={client}>
+      <Router>
+        <App />
+      </Router>
+    </ApolloProvider>,
     MOUNT_NODE,
   );
 };
-
-// // Observe loading of Merriweather & Montserrat (to remove open sans, remove the <link> tag in
-// // the index.html file and this observer)
-// const merriweatherObserver = new FontFaceObserver('Merriweather', {});
-// const montserratObserver = new FontFaceObserver('Montserrat', {});
-
-// // When Merriweather is loaded, add a font-family using Merriweather to the body
-// Promise.all([merriweatherObserver.load(), montserratObserver.load()]).then(() => {
-//   document.body.classList.add('fontsLoaded');
-// }, () => {
-//   document.body.classList.remove('fontsLoaded');
-// });
 
 if (module.hot) {
   // Hot reloadable React components and translation json files
@@ -72,12 +65,10 @@ if (module.hot) {
 
 // Chunked polyfill for browsers without Intl support
 if (!global.Intl) {
-  (new Promise((resolve) => {
+  new Promise((resolve) => {
     resolve(import('intl'));
-  }))
-    .then(() => Promise.all([
-      import('intl/locale-data/jsonp/en.js'),
-    ]))
+  })
+    .then(() => Promise.all([import('intl/locale-data/jsonp/en.js')]))
     .then(() => render())
     .catch((err) => {
       throw err;

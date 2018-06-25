@@ -1,14 +1,34 @@
+import classNames from 'classnames';
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import Measure from 'react-measure';
+import { withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 // Components
+import ErrorBoundary from '../../components/ErrorBoundary';
 import Routes from '../../components/Routes';
-// Libraries
-import { makeDebugger, matchMedia } from '../../lib';
 // Routes
 import routes from './routes';
 // Styles
 import Wrapper from './styles';
+
+export const breakpoints = (width) => {
+  if (width < 600) {
+    return 'v-xsmall';
+  }
+  if (width >= 600 && width < 1024) {
+    return 'v-small';
+  }
+  if (width >= 1024 && width < 1440) {
+    return 'v-medium';
+  }
+  if (width >= 1440 && width < 1920) {
+    return 'v-large';
+  }
+  if (width >= 1920) {
+    return 'v-xlarge';
+  }
+  return 'v-unknown';
+};
 
 /* tslint:disable:object-literal-sort-keys */
 const themeDark = {
@@ -32,9 +52,8 @@ const themeLight = {
 };
 /* tslint:enable:object-literal-sort-keys */
 
+import { makeDebugger } from '../../lib';
 const debug = makeDebugger('app');
-
-const mql648 = matchMedia('(min-width: 648px)');
 
 /**
  * @render react
@@ -44,58 +63,62 @@ const mql648 = matchMedia('(min-width: 648px)');
  */
 
 class App extends Component<{}, IState> {
+  protected componentIsMounted: boolean;
+
   constructor(props) {
     super(props);
 
     this.state = {
-      mq648: false,
-      mql648,
+      dimensions: {
+        height: 0,
+        width: 0,
+      },
       theme: themeLight,
     };
   }
 
   public componentDidMount() {
-    mql648.addListener(this.mediaQueryChanged);
-    this.setState({
-      mq648: mql648.matches,
-      mql648,
-    });
+    this.componentIsMounted = true;
   }
 
   public componentWillUnmount() {
-    // tslint:disable-next-line:no-shadowed-variable
-    const { mql648 } = this.state;
-
-    if (mql648) {
-      mql648.removeListener(this.mediaQueryChanged);
-    }
-  }
-
-  public mediaQueryChanged = () => {
-    this.setState({
-      mq648: this.state.mql648.matches,
-    });
+    this.componentIsMounted = false;
   }
 
   public render() {
+    const { dimensions } = this.state;
+
     return (
       <ThemeProvider theme={this.state.theme}>
-        <Wrapper>
-          <Switch>
-            <Routes routes={routes} />
-          </Switch>
-        </Wrapper>
+        <Measure
+          bounds
+          onResize={(contentRect) => {
+            this.setState({ dimensions: contentRect.bounds });
+          }}
+        >
+          {({ measureRef }) => (
+            <Wrapper
+              className={classNames(
+                'c-app__container',
+                breakpoints(dimensions),
+              )}
+              innerRef={measureRef}
+            >
+              <ErrorBoundary>
+                <Routes routes={routes} />
+              </ErrorBoundary>
+            </Wrapper>
+          )}
+        </Measure>
       </ThemeProvider>
     );
   }
 }
 
 interface IState {
-  mq648: boolean;
-  mql648: {
-    addListener: (func) => void,
-    matches: false,
-    removeListener: (func) => void,
+  dimensions: {
+    height: number;
+    width: number;
   };
   theme: object;
 }
