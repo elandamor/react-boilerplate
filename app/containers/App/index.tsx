@@ -69,7 +69,7 @@ class App extends Component<{}, IState> {
     super(props);
 
     this.state = {
-      dimensions: {
+      bounds: {
         height: 0,
         width: 0,
       },
@@ -86,22 +86,21 @@ class App extends Component<{}, IState> {
   }
 
   public render() {
-    const { dimensions } = this.state;
+    const {
+      bounds: { width },
+    } = this.state;
 
     return (
       <ThemeProvider theme={this.state.theme}>
         <Measure
           bounds
           onResize={(contentRect) => {
-            this.setState({ dimensions: contentRect.bounds });
+            this.setState({ bounds: contentRect.bounds });
           }}
         >
           {({ measureRef }) => (
             <Wrapper
-              className={classNames(
-                'c-app__container',
-                breakpoints(dimensions),
-              )}
+              className={classNames('c-app__container', breakpoints(width))}
               innerRef={measureRef}
             >
               <ErrorBoundary>
@@ -116,7 +115,7 @@ class App extends Component<{}, IState> {
 }
 
 interface IState {
-  dimensions: {
+  bounds: {
     height: number;
     width: number;
   };
