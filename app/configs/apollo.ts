@@ -65,7 +65,6 @@ const link = split(
 
 persistCache({
   cache,
-  debug: process.env.NODE_ENV !== 'production',
   key: 'pdDB-persist',
   storage: window.localStorage,
 });
