@@ -7,6 +7,8 @@
 
 // Needed for redux-saga es6 generator support
 import 'babel-polyfill';
+import bugsnag from 'bugsnag-js';
+import createPlugin from 'bugsnag-react';
 
 // Import all the third party stuff
 import React from 'react';
@@ -40,15 +42,20 @@ montserratObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 });
 
+const bugsnagClient = bugsnag('9d24977be84737cd07c89c02221caf9a');
+const BugSnag = bugsnagClient.use(createPlugin(React));
+
 const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
   ReactDOM.render(
-    <ApolloProvider client={client}>
-      <Router>
-        <App />
-      </Router>
-    </ApolloProvider>,
+    <BugSnag>
+      <ApolloProvider client={client}>
+        <Router>
+          <App />
+        </Router>
+      </ApolloProvider>
+    </BugSnag>,
     MOUNT_NODE,
   );
 };
