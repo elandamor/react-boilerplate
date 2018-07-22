@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   position: relative;
 
   .a-label {
-    color: ${(props) => props.theme.isDark ? '#ffffff' : '#8B919D'};
+    color: ${(props) => (props.theme.isDark ? '#ffffff' : '#8B919D')};
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.01rem;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     background-color: ${(props) => props.theme.palette.cardBackground};
     border: thin solid ${(props) => props.theme.palette.cardBorderColor};
     border-radius: 4px;
-    color: ${(props) => props.theme.isDark ? '#ffffff' : '#000000'};
+    color: ${(props) => (props.theme.isDark ? '#ffffff' : '#000000')};
     cursor: pointer;
     display: flex;
     font-family: inherit;
@@ -83,8 +83,8 @@ const Wrapper = styled.div`
     margin: 0;
     opacity: 0;
     pointer-events: none;
-    border: thin solid ${(props) => props.theme.palette.cardBackground};
-    border-color: #E4E6E9;
+    border: thin solid ${(props) => props.theme.palette.cardBorderColor};
+    /* border-color: #E4E6E9; */
     border-top: none;
     border-radius: 0 0 4px 4px;
     max-height: 200px;
@@ -102,15 +102,15 @@ const Wrapper = styled.div`
     font-size: 14px;
     padding: 8px 12px;
     cursor: pointer;
-    transition: all .2s;
+    transition: all 0.2s;
 
     &:hover {
       background-color: #dbdbdb;
     }
 
     &[aria-selected="true"] {
-      background-color: #000000;
-      color: #ffffff;
+      background-color: ${(props) => props.theme.palette.cardBorderColor};
+      color: ${(props) => (props.theme.isDark ? '#ffffff' : '#000000')};
       font-weight: 500;
     }
   }

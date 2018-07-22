@@ -9,11 +9,16 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = (options) => ({
   entry: options.entry,
-  output: Object.assign({ // Compile into js/build.js
-    path: path.resolve(process.cwd(), 'build'),
-    publicPath: '/',
-  }, options.output), // Merge with env dependent settings
-  mode: process.env.NODE_ENV || 'none',
+  output: Object.assign(
+    {
+      // Compile into js/build.js
+      path: path.resolve(process.cwd(), 'build'),
+      publicPath: '/',
+    },
+    options.output,
+  ), // Merge with env dependent settings
+  mode: options.mode,
+  optimization: options.optimization,
   module: {
     rules: [
       {
@@ -32,29 +37,34 @@ module.exports = (options) => ({
             },
           },
         ],
-      }, {
+      },
+      {
         test: /\.js$/, // Transform all .js files required somewhere with Babel
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: options.babelQuery,
         },
-      }, {
+      },
+      {
         // Preprocess our own .css files
         // This is the place to add your own loaders (e.g. sass/less etc.)
         // for a list of loaders, see https://webpack.js.org/loaders/#styling
         test: /\.css$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
-      }, {
+      },
+      {
         // Preprocess 3rd party .css files located in node_modules
         test: /\.css$/,
         include: /node_modules/,
         use: ['style-loader', 'css-loader'],
-      }, {
+      },
+      {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
         use: 'file-loader',
-      }, {
+      },
+      {
         test: /\.(gif|jpe?g|png|svg|webp)$/i,
         use: [
           'file-loader',
@@ -75,13 +85,16 @@ module.exports = (options) => ({
             },
           },
         ],
-      }, {
+      },
+      {
         test: /\.html$/,
         use: 'html-loader',
-      }, {
+      },
+      {
         test: /\.json$/,
         use: 'json-loader',
-      }, {
+      },
+      {
         test: /\.(mp4|webm)$/,
         use: {
           loader: 'url-loader',
@@ -89,7 +102,8 @@ module.exports = (options) => ({
             limit: 10000,
           },
         },
-      }, {
+      },
+      {
         test: /\.(graphql|gql)$/,
         exclude: /node_modules/,
         loader: 'graphql-tag/loader',
@@ -117,18 +131,8 @@ module.exports = (options) => ({
   ]),
   resolve: {
     modules: ['app', 'node_modules'],
-    extensions: [
-      '.js',
-      '.jsx',
-      '.react.js',
-      '.ts',
-      '.tsx',
-    ],
-    mainFields: [
-      'browser',
-      'jsnext:main',
-      'main',
-    ],
+    extensions: ['.js', '.jsx', '.react.js', '.ts', '.tsx'],
+    mainFields: ['browser', 'jsnext:main', 'main'],
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window

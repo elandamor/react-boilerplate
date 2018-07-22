@@ -16,7 +16,7 @@ import { Route, Switch } from 'react-router-dom';
  * />
  */
 
-interface IRoute { // tslint:disable-line:interface-over-type-literal
+interface IRoute {
   path: string;
   component: ComponentType;
   routes?: IRoute[];
@@ -38,11 +38,9 @@ const RouteWithSubRoutes = (route: IRoute) => (
 
 const Routes: SFC<IProps> = ({ routes }) => (
   <Switch>
-    {
-      routes.map((route: IRoute, index: number) => (
-        <RouteWithSubRoutes key={index} {...route} />
-      ))
-    }
+    {routes.map((route: IRoute, index: number) => (
+      <RouteWithSubRoutes key={index} {...route} />
+    ))}
   </Switch>
 );
 

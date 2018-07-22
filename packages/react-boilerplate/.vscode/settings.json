@@ -11,4 +11,16 @@
   "editor.fontSize": 15,
   "editor.fontWeight": "400",
   "typescript.tsdk": "node_modules/typescript/lib",
+  "[javascript]": {
+    "editor.foldingStrategy": "indentation"
+  },
+  "[javascriptreact]": {
+    "editor.foldingStrategy": "indentation"
+  },
+  "[typescript]": {
+    "editor.foldingStrategy": "indentation"
+  },
+  "[typescriptreact]": {
+    "editor.foldingStrategy": "indentation"
+  }
 }
