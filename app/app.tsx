@@ -7,58 +7,58 @@
 
 // Needed for redux-saga es6 generator support
 import 'babel-polyfill';
+import bugsnag from 'bugsnag-js';
+import createPlugin from 'bugsnag-react';
 
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import FontFaceObserver from 'fontfaceobserver';
-
+import { ApolloProvider } from 'react-apollo';
+import FontFaceObserver from 'fontfaceobserver';
 import 'sanitize.css/sanitize.css';
+
+// Import apollo client
+import client from './configs/apollo';
 
 // Import root app
 import App from './containers/App';
 
-// Load the favicon, the manifest.json file and the .htaccess file
+// Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
-// import '!file-loader?name=[name].[ext]!./images/favicon.ico';
-// import '!file-loader?name=[name].[ext]!./images/icon-72x72.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-96x96.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-128x128.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-144x144.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-152x152.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-192x192.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-384x384.png';
-// import '!file-loader?name=[name].[ext]!./images/icon-512x512.png';
-// import '!file-loader?name=[name].[ext]!./manifest.json';
-// import 'file-loader?name=[name].[ext]!./.htaccess';
+import '!file-loader?name=[name].[ext]!./images/favicon.ico';
+import 'file-loader?name=[name].[ext]!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 // Import CSS reset and Global Styles
 import './global-styles';
 
+// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
+// the index.html file and this observer)
+const montserratObserver = new FontFaceObserver('Montserrat', {});
+
+// When Open Sans is loaded, add a font-family using Open Sans to the body
+montserratObserver.load().then(() => {
+  document.body.classList.add('fontLoaded');
+});
+
+const bugsnagClient = bugsnag('9d24977be84737cd07c89c02221caf9a');
+const BugSnag = bugsnagClient.use(createPlugin(React));
+
 const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
   ReactDOM.render(
-    <Router>
-      <App />
-    </Router>,
+    <BugSnag>
+      <ApolloProvider client={client}>
+        <Router>
+          <App />
+        </Router>
+      </ApolloProvider>
+    </BugSnag>,
     MOUNT_NODE,
   );
 };
-
-// // Observe loading of Merriweather & Montserrat (to remove open sans, remove the <link> tag in
-// // the index.html file and this observer)
-// const merriweatherObserver = new FontFaceObserver('Merriweather', {});
-// const montserratObserver = new FontFaceObserver('Montserrat', {});
-
-// // When Merriweather is loaded, add a font-family using Merriweather to the body
-// Promise.all([merriweatherObserver.load(), montserratObserver.load()]).then(() => {
-//   document.body.classList.add('fontsLoaded');
-// }, () => {
-//   document.body.classList.remove('fontsLoaded');
-// });
 
 if (module.hot) {
   // Hot reloadable React components and translation json files
@@ -72,12 +72,10 @@ if (module.hot) {
 
 // Chunked polyfill for browsers without Intl support
 if (!global.Intl) {
-  (new Promise((resolve) => {
+  new Promise((resolve) => {
     resolve(import('intl'));
-  }))
-    .then(() => Promise.all([
-      import('intl/locale-data/jsonp/en.js'),
-    ]))
+  })
+    .then(() => Promise.all([import('intl/locale-data/jsonp/en.js')]))
     .then(() => render())
     .catch((err) => {
       throw err;
