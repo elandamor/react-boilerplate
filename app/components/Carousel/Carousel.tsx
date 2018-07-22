@@ -5,11 +5,15 @@ import Icon from '../Icon';
 // Styles
 import Wrapper from './styles';
 
-function Next(props) {
-  const { onClick } = props;
+function Arrow(props) {
+  const { direction, onClick } = props;
+
   return (
     <div
-      className="c-arrow c-arrow--next"
+      className={classNames(
+        'c-arrow',
+        direction === 'next' ? 'c-arrow--next' : 'c-arrow--prev',
+      )}
       onClick={onClick}
       role="button"
       tabIndex={0}
@@ -19,23 +23,9 @@ function Next(props) {
   );
 }
 
-function Prev(props) {
-  const { onClick } = props;
-  return (
-    <div
-      className="c-arrow c-arrow--prev"
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-    >
-      <Icon icon="remove" />
-    </div>
-  );
-}
-
 const defaultSettings = {
-  nextArrow: <Next />,
-  prevArrow: <Prev />,
+  nextArrow: <Arrow direction="next" />,
+  prevArrow: <Arrow direction="prev" />,
   slidesToScroll: 1,
   slidesToShow: 1,
   speed: 300,
