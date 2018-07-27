@@ -22,6 +22,13 @@ const Wrapper = styled.div`
       transition: all 0.3s ease-in-out;
     }
   }
+
+  .c-icon {
+    svg {
+      fill: red;
+      stroke: 1;
+    }
+  }
 `;
 
 export default Wrapper;

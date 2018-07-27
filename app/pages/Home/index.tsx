@@ -6,6 +6,7 @@ import React, { PureComponent } from 'react';
 import { Helmet } from 'react-helmet';
 // Styles
 import Wrapper from './styles';
+import { Modal } from '../../components';
 
 class Home extends PureComponent<{}, {}> {
   protected wrapper: any;
@@ -16,6 +17,9 @@ class Home extends PureComponent<{}, {}> {
         <Helmet>
           <title>Home</title>
         </Helmet>
+        <Modal defaultOpen trigger={<button>Modal</button>}>
+          hello
+        </Modal>
       </Wrapper>
     );
   }

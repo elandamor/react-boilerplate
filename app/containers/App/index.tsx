@@ -85,6 +85,12 @@ class App extends Component<{}, IState> {
     this.componentIsMounted = false;
   }
 
+  public setState(nextState, cb?: () => void) {
+    if (this.componentIsMounted) {
+      super.setState(nextState, cb);
+    }
+  }
+
   public render() {
     const {
       bounds: { width },

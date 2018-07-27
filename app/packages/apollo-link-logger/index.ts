@@ -13,8 +13,8 @@ const loggerLink = new ApolloLink((operation, forward) => {
 
     console.groupCollapsed(...group);
 
-    console.log('INIT', operation);
-    console.log('RESULT', result);
+    console.info('INIT', operation);
+    console.info('RESULT', result);
 
     console.groupEnd();
 

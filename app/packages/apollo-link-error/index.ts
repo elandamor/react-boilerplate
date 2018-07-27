@@ -13,7 +13,7 @@ const errorLink = onError(({ graphQLErrors, networkError, operation }) => {
 
     graphQLErrors.map(({ message, path }) => {
       const error = formatError(message, path);
-      console.log(...error);
+      console.error(...error);
       return { message, path };
     });
 
@@ -27,7 +27,7 @@ const errorLink = onError(({ graphQLErrors, networkError, operation }) => {
     console.groupCollapsed(...group);
 
     const error = formatError(networkError.message);
-    console.log(...error);
+    console.error(...error);
 
     console.groupEnd();
   }
