@@ -1,5 +1,14 @@
-import React, { ComponentType, SFC } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { SFC } from 'react';
+import { Route, RouteProps, Switch } from 'react-router-dom';
+
+export interface IRouteProps extends RouteProps {
+  routes?: IRouteProps[];
+}
+
+export interface IProps {
+  location?: any;
+  routes: IRouteProps[];
+}
 
 /**
  * @render react
@@ -9,28 +18,22 @@ import { Route, Switch } from 'react-router-dom';
  * <Routes
  *  routes={[
  *    {
+ *      exact: true,
  *      path: '/',
  *      component: Home,
  *    }
  *  ]}
  * />
  */
-
-interface IRoute {
-  path: string;
-  component: ComponentType<any>;
-  routes?: IRoute[];
-}
-
-interface IProps {
-  routes: IRoute[];
-}
-
-const Routes: SFC<IProps> = ({ routes }) => (
-  <Switch>
+const Routes: SFC<IProps> = ({ location, routes }) => (
+  <Switch location={location}>
     {routes.map(
-      ({ component: Component, path, routes }: IRoute, index: number) => (
+      (
+        { component: Component, exact, path, routes }: IRouteProps,
+        index: number,
+      ) => (
         <Route
+          {...(exact ? { exact } : {})}
           key={index}
           path={path}
           render={(props) => (
