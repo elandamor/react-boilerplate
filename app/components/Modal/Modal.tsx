@@ -1,4 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
+import noScroll from 'no-scroll';
 // Components
 import ErrorBoundary from '../ErrorBoundary';
 import Popup from './Popup/Loadable';
@@ -41,7 +42,7 @@ interface IDefaultProps {
 }
 
 interface IProps extends IDefaultProps {
-  trigger: JSX.Element;
+  trigger?: JSX.Element;
 }
 
 interface IState {
@@ -55,6 +56,11 @@ class Modal extends PureComponent<IProps, IState> {
     closeOnDocumentClick: true,
     closeOnEscape: true,
     defaultOpen: false,
+    modalStyles: {
+      container: {},
+      inner: {},
+      overlay: {},
+    },
     offsetX: 0,
     offsetY: 0,
     onClose: () => null,
@@ -64,6 +70,7 @@ class Modal extends PureComponent<IProps, IState> {
     position: 'bottom center',
   };
 
+  protected componentIsMounted: boolean;
   protected content: HTMLElement;
   protected helper: HTMLElement;
   protected trigger: HTMLElement;
@@ -74,16 +81,22 @@ class Modal extends PureComponent<IProps, IState> {
     const { defaultOpen, open, popup } = props;
 
     this.state = {
-      isOpen: open || defaultOpen,
       popup,
+      isOpen: open || defaultOpen,
     };
   }
 
   public componentDidMount() {
+    this.componentIsMounted = true;
+
     const { closeOnEscape, defaultOpen } = this.props;
 
     if (defaultOpen) {
       this.setPosition();
+    }
+
+    if (!this.state.popup) {
+      noScroll.on();
     }
 
     if (closeOnEscape) {
@@ -107,14 +120,26 @@ class Modal extends PureComponent<IProps, IState> {
     }
   }
 
+  public componentWillUnmount() {
+    this.componentIsMounted = false;
+  }
+
+  public setState(nextState, cb?: () => void) {
+    if (this.componentIsMounted) {
+      super.setState(nextState, cb);
+    }
+  }
+
   public render() {
     const { children, modalStyles, popup } = this.props;
     const { isOpen } = this.state;
 
-    const trigger = React.cloneElement(this.props.trigger, {
-      onClick: this.toggleModal,
-      ref: (c) => (this.trigger = c),
-    });
+    const trigger = this.props.trigger
+      ? React.cloneElement(this.props.trigger, {
+          onClick: this.toggleModal,
+          ref: (c) => (this.trigger = c),
+        })
+      : null;
 
     const T = popup ? Popup : Portal;
 
@@ -157,10 +182,11 @@ class Modal extends PureComponent<IProps, IState> {
         isOpen: false,
       },
       () => {
-        this.props.onOpen();
+        this.props.onClose();
+        noScroll.off();
       },
     );
-  }
+  };
 
   private openModal = () => {
     this.setState(
@@ -170,9 +196,10 @@ class Modal extends PureComponent<IProps, IState> {
       () => {
         this.setPosition();
         this.props.onOpen();
+        noScroll.on();
       },
     );
-  }
+  };
 
   private toggleModal = () => {
     if (this.state.isOpen) {
@@ -180,7 +207,7 @@ class Modal extends PureComponent<IProps, IState> {
     } else {
       this.openModal();
     }
-  }
+  };
 
   private setPosition = () => {
     const { offsetX, offsetY, position } = this.props;
@@ -214,7 +241,7 @@ class Modal extends PureComponent<IProps, IState> {
     }
 
     debug({ cords, offsetX, offsetY, popup, position, trigger });
-  }
+  };
 }
 
 export default Modal;
