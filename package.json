@@ -82,6 +82,7 @@
     "hoist-non-react-statics": "3.0.0",
     "intl": "1.2.5",
     "localforage": "1.7.2",
+    "no-scroll": "^2.1.1",
     "prop-types": "15.6.2",
     "react": "16.4.1",
     "react-apollo": "2.1.9",
