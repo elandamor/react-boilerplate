@@ -9,5 +9,4 @@ export { default as Input } from './Input';
 export { default as Modal } from './Modal';
 export { default as MultiStep } from './MultiStep';
 export { default as Navigation } from './Navigation';
-export { default as Popup } from './Popup';
 export { default as Routes } from './Routes';
