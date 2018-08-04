@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for Home
+ * Asynchronously loads the component for Gallery
  *
  */
 

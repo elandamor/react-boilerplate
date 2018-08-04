@@ -1,3 +1,4 @@
+export { default as calculatePosition } from './calculatePosition';
 export { debug, makeDebugger } from './debug';
 
 export { default as isBrowser } from './isBrowser';

@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 import React, { Component } from 'react';
 import Measure from 'react-measure';
-import { withRouter } from 'react-router-dom';
+import { Route, RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 // Components
-import ErrorBoundary from '../../components/ErrorBoundary';
-import Routes from '../../components/Routes';
+import { ErrorBoundary, Modal, Navigation, Routes } from '../../components';
 // Routes
 import routes from './routes';
 // Styles
@@ -53,7 +52,9 @@ const themeLight = {
 /* tslint:enable:object-literal-sort-keys */
 
 import { makeDebugger } from '../../lib';
-const debug = makeDebugger('app');
+const debug = makeDebugger('App');
+
+export interface IProps extends RouteComponentProps<any> {}
 
 /**
  * @render react
@@ -61,11 +62,11 @@ const debug = makeDebugger('app');
  * @description The skeleton around the actual pages, and should only
  * contain code that should be seen on all pages. (e.g. navigation bar).
  */
-
-class App extends Component<{}, IState> {
+class App extends Component<IProps, IState> {
   protected componentIsMounted: boolean;
+  protected previousLocation: object;
 
-  constructor(props) {
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -75,20 +76,46 @@ class App extends Component<{}, IState> {
       },
       theme: themeLight,
     };
+
+    this.previousLocation = props.location;
   }
 
   public componentDidMount() {
     this.componentIsMounted = true;
   }
 
+  public componentWillUpdate(nextProps) {
+    const { location } = this.props;
+    // set previousLocation if props.location is not modal
+    if (
+      nextProps.history.action !== 'POP' &&
+      (!location.state || !location.state.modal)
+    ) {
+      this.previousLocation = this.props.location;
+    }
+  }
+
   public componentWillUnmount() {
     this.componentIsMounted = false;
   }
 
+  public setState(nextState, cb?: () => void) {
+    if (this.componentIsMounted) {
+      super.setState(nextState, cb);
+    }
+  }
+
   public render() {
+    const { location } = this.props;
     const {
       bounds: { width },
     } = this.state;
+
+    const isModal = !!(
+      location.state &&
+      location.state.modal &&
+      this.previousLocation !== location
+    );
 
     return (
       <ThemeProvider theme={this.state.theme}>
@@ -103,8 +130,25 @@ class App extends Component<{}, IState> {
               className={classNames('c-app__container', breakpoints(width))}
               innerRef={measureRef}
             >
+              <Navigation
+                links={[
+                  { exact: true, href: '/', label: 'Home' },
+                  { href: '/gallery', label: 'Gallery' },
+                ]}
+              />
               <ErrorBoundary>
-                <Routes routes={routes} />
+                <Routes
+                  location={isModal ? this.previousLocation : location}
+                  routes={routes}
+                />
+                {isModal ? (
+                  <Route
+                    path="/img/:id"
+                    render={({ history }) => (
+                      <Modal defaultOpen onClose={() => history.goBack()} />
+                    )}
+                  />
+                ) : null}
               </ErrorBoundary>
             </Wrapper>
           )}

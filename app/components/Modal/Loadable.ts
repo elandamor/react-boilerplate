@@ -1,12 +1,12 @@
 /**
  *
- * Asynchronously loads the component for Home
+ * Asynchronously loads the component for Modal
  *
  */
 
 import Loadable from 'react-loadable';
 
 export default Loadable({
-  loader: () => import('.'),
+  loader: () => import('./index'),
   loading: () => null,
 });

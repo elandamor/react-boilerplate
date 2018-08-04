@@ -54,7 +54,6 @@ interface IDefinition {
 }
 
 const link = split(
-  // split based on operation type
   ({ query }) => {
     const { kind, operation }: IDefinition = getMainDefinition(query);
     return kind === 'OperationDefinition' && operation === 'subscription';

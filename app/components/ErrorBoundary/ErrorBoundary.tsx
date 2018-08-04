@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// Styles
-import Wrapper from './styles';
 
 // For debugging only.
 import { makeDebugger } from '../../lib';
@@ -19,7 +17,7 @@ interface IProps {
 }
 
 interface IState {
-  hasError: boolean,
+  hasError: boolean;
 }
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -32,7 +30,7 @@ class ErrorBoundary extends Component<IProps, IState> {
     };
   }
 
-  componentDidCatch(error, errorInfo) {
+  public componentDidCatch(error, errorInfo) {
     this.setState({
       hasError: true,
     });
@@ -44,7 +42,7 @@ class ErrorBoundary extends Component<IProps, IState> {
     const { hasError } = this.state;
 
     if (hasError) {
-      return <h1>Something went wrong.</h1>
+      return <h1>Something went wrong.</h1>;
     }
 
     return this.props.children;

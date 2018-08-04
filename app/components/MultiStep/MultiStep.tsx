@@ -74,6 +74,8 @@ const checkNavState = (currentStep, stepsLength) => {
 
 // eslint-disable-next-line react/prefer-stateless-function
 class MultiStep extends Component<IProps, IState> {
+  protected componentIsMounted: boolean;
+
   constructor(props: IProps) {
     super(props);
 
@@ -83,6 +85,20 @@ class MultiStep extends Component<IProps, IState> {
       showNextBtn: true,
       showPreviousBtn: false,
     };
+  }
+
+  public componentDidMount() {
+    this.componentIsMounted = true;
+  }
+
+  public componentWillUnmount() {
+    this.componentIsMounted = false;
+  }
+
+  public setState(nextState, cb?: () => void) {
+    if (this.componentIsMounted) {
+      super.setState(nextState, cb);
+    }
   }
 
   public setNavState = (next) => {
