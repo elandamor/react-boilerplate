@@ -1,1 +1,1 @@
-export { default, IProps, IRouteProps } from './Routes';
+export { default } from './Routes';

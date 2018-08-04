@@ -3,7 +3,7 @@ import Gallery from '../../pages/Gallery/Loadable';
 import Home from '../../pages/Home/Loadable';
 import { Viewer } from '../../pages/Gallery';
 
-import { IRouteProps } from '../../components/Routes';
+import { IRouteProps } from '../../components/Routes/Routes';
 
 const routes: IRouteProps[] = [
   {
