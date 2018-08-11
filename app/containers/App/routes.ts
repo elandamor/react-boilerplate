@@ -2,7 +2,7 @@
 import { Gallery, Home } from '../../pages';
 import { Viewer } from '../../pages/Gallery';
 
-import { IRouteProps } from '../../components/Routes/Routes';
+import { IRouteProps } from '../../components/Routes';
 
 const routes: IRouteProps[] = [
   {
