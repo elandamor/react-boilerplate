@@ -1,6 +1,5 @@
 // tslint:disable:object-literal-sort-keys
-import Gallery from '../../pages/Gallery/Loadable';
-import Home from '../../pages/Home/Loadable';
+import { Gallery, Home } from '../../pages';
 import { Viewer } from '../../pages/Gallery';
 
 import { IRouteProps } from '../../components/Routes/Routes';
