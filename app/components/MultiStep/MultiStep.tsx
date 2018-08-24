@@ -22,13 +22,15 @@ import Wrapper, { Actions, Tracker } from './styles';
  * <MultiStep steps={steps} />
  */
 
+interface IStep {
+  component: JSX.Element;
+  name: string;
+}
+
 interface IProps {
   className?: string;
   onSubmit: () => void;
-  steps: Array<{
-    component: JSX.Element;
-    name: string;
-  }>;
+  steps: IStep[];
 }
 
 interface IState {
@@ -38,7 +40,7 @@ interface IState {
 const getNavStates = (indx, length) => {
   const styles = [];
 
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < length; i += 1) {
     if (i < indx) {
       styles.push('done');
     } else if (i === indx) {
@@ -47,7 +49,7 @@ const getNavStates = (indx, length) => {
       styles.push('todo');
     }
   }
-  return { current: indx, styles };
+  return { styles, current: indx };
 };
 
 const checkNavState = (currentStep, stepsLength) => {
@@ -57,19 +59,21 @@ const checkNavState = (currentStep, stepsLength) => {
       showNextBtn: true,
       showPreviousBtn: true,
     };
-  } else if (currentStep === 0) {
+  }
+
+  if (currentStep === 0) {
     return {
       showDoneBtn: false,
       showNextBtn: true,
       showPreviousBtn: false,
     };
-  } else {
-    return {
-      showDoneBtn: true,
-      showNextBtn: false,
-      showPreviousBtn: true,
-    };
   }
+
+  return {
+    showDoneBtn: true,
+    showNextBtn: false,
+    showPreviousBtn: true,
+  };
 };
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -109,13 +113,13 @@ class MultiStep extends Component<IProps, IState> {
       this.setState({ currentStep: next });
     }
     this.setState(checkNavState(next, this.props.steps.length));
-  }
+  };
 
   public handleKeyDown = (event) => {
     if (event.which === 13) {
       this.next();
     }
-  }
+  };
 
   public handleClick = (event) => {
     const { steps } = this.props;
@@ -128,11 +132,11 @@ class MultiStep extends Component<IProps, IState> {
     } else {
       this.setNavState(event.currentTarget.value);
     }
-  }
+  };
 
   public next = () => {
     this.setNavState(this.state.currentStep + 1);
-  }
+  };
 
   public previous = () => {
     const { currentStep } = this.state;
@@ -140,7 +144,7 @@ class MultiStep extends Component<IProps, IState> {
     if (currentStep > 0) {
       this.setNavState(currentStep - 1);
     }
-  }
+  };
 
   public renderSteps = () => {
     const { navState } = this.state;
@@ -156,7 +160,7 @@ class MultiStep extends Component<IProps, IState> {
         <span>{this.props.steps[i].name}</span>
       </li>
     ));
-  }
+  };
 
   public render() {
     const { className } = this.props;
