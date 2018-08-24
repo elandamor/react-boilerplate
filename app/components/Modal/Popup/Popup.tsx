@@ -54,7 +54,7 @@ class Popup extends Component<IProps, IState> {
         className={classNames('c-popup', className)}
         {...(styles.container ? { style: styles.container } : {})}
       >
-        {children}
+        {children({ onClose: this.props.onClose })}
       </Wrapper>
     );
   }
