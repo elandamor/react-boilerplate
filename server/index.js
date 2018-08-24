@@ -1,4 +1,4 @@
-/* eslint consistent-return:0 */
+/* eslint-disable consistent-return, import/order */
 
 const express = require('express');
 const logger = require('./logger');

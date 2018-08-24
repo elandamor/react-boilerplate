@@ -41,8 +41,8 @@ class Dropdown extends React.Component<IProps, IState> {
     };
 
     this.state = {
-      isExpanded: false,
       selected,
+      isExpanded: false,
     };
 
     props.onChange(this.state.selected);
@@ -126,7 +126,7 @@ class Dropdown extends React.Component<IProps, IState> {
       label: target.getAttribute('data-option-label'),
       value: target.getAttribute('data-option-value'),
     });
-  }
+  };
 
   private handleClick = (evt) => {
     if (this.node.contains(evt.target)) {
@@ -136,13 +136,13 @@ class Dropdown extends React.Component<IProps, IState> {
     this.setState({
       isExpanded: false,
     });
-  }
+  };
 
   private handleToggle = () => {
     this.setState({
       isExpanded: !this.state.isExpanded,
     });
-  }
+  };
 }
 
 // tslint:disable-next-line:interface-over-type-literal

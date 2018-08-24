@@ -5,7 +5,7 @@ import Icon from '../Icon';
 // Styles
 import Wrapper from './styles';
 
-function Arrow(props) {
+const Arrow = (props) => {
   const { direction, onClick } = props;
 
   return (
@@ -21,7 +21,7 @@ function Arrow(props) {
       <Icon icon="add" />
     </div>
   );
-}
+};
 
 const defaultSettings = {
   nextArrow: <Arrow direction="next" />,
