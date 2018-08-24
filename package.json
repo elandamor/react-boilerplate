@@ -21,15 +21,20 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.js && node internals/scripts/minifyServiceWorker.js",
     "build:dll": "cross-env NODE_ENV=development node internals/scripts/dependencies.js",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "generate": "plop --plopfile internals/generators/index.js",
-    "lint": "npm run lint:js",
+    "lint": "npm run lint:js && npm run lint:ts",
     "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern 'internals/scripts'",
     "lint:js": "npm run lint:eslint -- .",
+    "lint:ts": "npm run lint:tslint",
+    "lint:tslint": "tslint --project tsconfig.json --config tslint.json",
     "postinstall": "npm run build:dll",
     "precommit": "lint-staged",
     "pretest": "npm run lint",
     "start": "cross-env NODE_ENV=development node server",
-    "start:prod": "cross-env NODE_ENV=production node server"
+    "start:prod": "cross-env NODE_ENV=production node server",
+    "test": "cross-env NODE_ENV=test jest --coverage",
+    "test:watch": "cross-env NODE_ENV=test jest --watchAll"
   },
   "dllPlugin": {
     "path": "node_modules/react-boilerplate-dlls",
@@ -46,6 +51,20 @@
       "core-js",
       "lodash",
       "eventsource-polyfill"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
     ]
   },
   "lint-staged": {
@@ -129,6 +148,7 @@
     "circular-dependency-plugin": "5.0.2",
     "clean-webpack-plugin": "0.1.19",
     "compression": "1.7.3",
+    "coveralls": "3.0.2",
     "cross-env": "5.2.0",
     "css-loader": "1.0.0",
     "debug": "3.1.0",
