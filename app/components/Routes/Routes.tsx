@@ -5,7 +5,7 @@ export interface IRouteProps extends RouteProps {
   routes?: IRouteProps[];
 }
 
-export interface IProps {
+interface IProps {
   location?: any;
   routes: IRouteProps[];
 }
