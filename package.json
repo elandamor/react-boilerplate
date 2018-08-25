@@ -7,7 +7,7 @@
     "url": "git://github.com/elandamor/react-boilerplate.git"
   },
   "resolutions": {
-    "@types/node": "8.11.4",
+    "@types/node": "8.10.28",
     "@types/react": "16.4.11",
     "@types/react-router-dom": "4.3.0"
   },
@@ -67,8 +67,10 @@
       "app"
     ],
     "setupFiles": [
-      "raf/polyfill",
       "<rootDir>/internals/testing/enzyme-setup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "transform": {
@@ -163,6 +165,7 @@
     "dotenv-webpack": "1.5.7",
     "enzyme": "3.5.0",
     "enzyme-adapter-react-16": "1.3.0",
+    "enzyme-to-json": "3.3.4",
     "eslint": "5.4.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-airbnb-base": "13.1.0",
@@ -194,6 +197,7 @@
     "offline-plugin": "5.0.5",
     "plop": "2.1.0",
     "prettier": "1.14.2",
+    "react-test-renderer": "16.4.2",
     "style-loader": "0.22.1",
     "stylelint": "9.5.0",
     "stylelint-config-recommended": "2.1.0",
