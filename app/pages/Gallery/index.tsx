@@ -16,7 +16,7 @@ const IMAGES = [
   { id: 4, title: 'Crimson', color: 'Crimson' },
 ];
 
-const Thumbnail = ({ color }) => (
+const Thumbnail = ({ color }: { color: string }) => (
   <div
     style={{
       width: 50,
@@ -26,7 +26,7 @@ const Thumbnail = ({ color }) => (
   />
 );
 
-const Image = ({ color }) => (
+const Image = ({ color }: { color: string }) => (
   <div
     style={{
       width: '100%',

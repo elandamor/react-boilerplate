@@ -42,7 +42,7 @@ const handleUpload = (files, observer) =>
     let i = files.length;
     const promises = [];
 
-    // eslint-disable-next-line no-plusplus
+    // tslint:disable-next-line:no-increment-decrement
     while (i--) {
       promises.push(uploadFile(files[i], observer));
     }

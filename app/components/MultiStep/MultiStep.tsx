@@ -37,7 +37,7 @@ interface IState {
   [key: string]: any;
 }
 
-const getNavStates = (indx, length) => {
+const getNavStates = (indx: number, length: number) => {
   const styles = [];
 
   for (let i = 0; i < length; i += 1) {
@@ -52,7 +52,7 @@ const getNavStates = (indx, length) => {
   return { styles, current: indx };
 };
 
-const checkNavState = (currentStep, stepsLength) => {
+const checkNavState = (currentStep: number, stepsLength: number) => {
   if (currentStep > 0 && currentStep < stepsLength - 1) {
     return {
       showDoneBtn: false,
@@ -99,13 +99,13 @@ class MultiStep extends Component<IProps, IState> {
     this.componentIsMounted = false;
   }
 
-  public setState(nextState, cb?: () => void) {
+  public setState(nextState: any, cb?: () => void) {
     if (this.componentIsMounted) {
       super.setState(nextState, cb);
     }
   }
 
-  public setNavState = (next) => {
+  public setNavState = (next: number) => {
     this.setState({
       navState: getNavStates(next, this.props.steps.length),
     });
@@ -115,13 +115,13 @@ class MultiStep extends Component<IProps, IState> {
     this.setState(checkNavState(next, this.props.steps.length));
   };
 
-  public handleKeyDown = (event) => {
+  public handleKeyDown = (event: any) => {
     if (event.which === 13) {
       this.next();
     }
   };
 
-  public handleClick = (event) => {
+  public handleClick = (event: any) => {
     const { steps } = this.props;
 
     if (

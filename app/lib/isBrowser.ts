@@ -6,6 +6,7 @@ const hasWindow =
 
 // eslint-disable-next-line no-confusing-arrow
 const isBrowser = () =>
+  // @ts-ignore
   !isNil(isBrowser.override) ? isBrowser.override : hasDocument && hasWindow;
 
 export default isBrowser;

@@ -42,14 +42,6 @@ interface IState {
 }
 
 class Portal extends Component<IProps, IState> {
-  protected static defaultProps: IDefaultProps = {
-    styles: {
-      container: null,
-      inner: null,
-      overlay: null,
-    },
-  };
-
   protected wrapper: any;
 
   constructor(props: IProps) {
@@ -61,11 +53,11 @@ class Portal extends Component<IProps, IState> {
   }
 
   public componentDidMount() {
-    portalContainer.appendChild(this.wrapper);
+    portalContainer && portalContainer.appendChild(this.wrapper);
   }
 
   public componentWillUnmount() {
-    portalContainer.removeChild(this.wrapper);
+    portalContainer && portalContainer.removeChild(this.wrapper);
   }
 
   public render() {
@@ -80,12 +72,14 @@ class Portal extends Component<IProps, IState> {
     });
 
     return ReactDOM.createPortal(
-      <Wrapper {...(styles.container ? { style: styles.container } : {})}>
+      <Wrapper
+        {...(styles && styles.container ? { style: styles.container } : {})}
+      >
         <Scrim
           onClick={onClose}
-          {...(styles.overlay ? { style: styles.overlay } : {})}
+          {...(styles && styles.overlay ? { style: styles.overlay } : {})}
         />
-        <Inner {...(styles.inner ? { style: styles.inner } : {})}>
+        <Inner {...(styles && styles.inner ? { style: styles.inner } : {})}>
           {React.Children.toArray(childrenWithProps)}
         </Inner>
       </Wrapper>,

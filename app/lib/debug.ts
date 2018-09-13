@@ -2,7 +2,7 @@ import _debug from 'debug';
 import isBrowser from './isBrowser';
 
 if (isBrowser() && process.env.NODE_ENV !== 'production') {
-/* Heads Up!
+  /* Heads Up!
  * https://github.com/visionmedia/debug/pull/331
  *
  * debug now clears storage on load, grab the debug settings before require('debug').
@@ -34,7 +34,8 @@ if (isBrowser() && process.env.NODE_ENV !== 'production') {
  * debug('Some message')
  * @returns {Function}
  */
-export const makeDebugger = (namespace) => _debug(`reactBoilerplate:${namespace}`);
+export const makeDebugger = (namespace) =>
+  _debug(`reactBoilerplate:${namespace}`);
 
 /**
  * Default debugger, simple log.

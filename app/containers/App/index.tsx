@@ -10,7 +10,7 @@ import routes from './routes';
 // Styles
 import Wrapper from './styles';
 
-export const breakpoints = (width) => {
+export const breakpoints = (width: number) => {
   if (width < 600) {
     return 'v-xsmall';
   }
@@ -84,7 +84,7 @@ class App extends Component<IProps, IState> {
     this.componentIsMounted = true;
   }
 
-  public componentWillUpdate(nextProps) {
+  public componentWillUpdate(nextProps: IProps) {
     const { location } = this.props;
     // set previousLocation if props.location is not modal
     if (
@@ -99,7 +99,7 @@ class App extends Component<IProps, IState> {
     this.componentIsMounted = false;
   }
 
-  public setState(nextState, cb?: () => void) {
+  public setState(nextState: any, cb?: () => void) {
     if (this.componentIsMounted) {
       super.setState(nextState, cb);
     }

@@ -46,33 +46,15 @@ interface IProps extends IDefaultProps {
 }
 
 interface IState {
-  isOpen: boolean;
-  popup: boolean;
+  isOpen?: boolean;
+  popup?: boolean;
 }
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Modal extends PureComponent<IProps, IState> {
-  protected static defaultProps: IDefaultProps = {
-    closeOnDocumentClick: true,
-    closeOnEscape: true,
-    defaultOpen: false,
-    modalStyles: {
-      container: {},
-      inner: {},
-      overlay: {},
-    },
-    offsetX: 0,
-    offsetY: 0,
-    onClose: () => null,
-    onOpen: () => null,
-    open: false,
-    popup: false,
-    position: 'bottom center',
-  };
-
   protected componentIsMounted: boolean;
-  protected content: HTMLElement;
-  protected helper: HTMLElement;
+  protected content: HTMLDivElement;
+  protected helper: HTMLDivElement;
   protected trigger: HTMLElement;
 
   constructor(props: IProps) {
@@ -108,7 +90,7 @@ class Modal extends PureComponent<IProps, IState> {
     }
   }
 
-  public componentWillReceiveProps(nextProps) {
+  public componentWillReceiveProps(nextProps: IProps) {
     if (this.props.open === nextProps.open) {
       return;
     }
@@ -124,7 +106,7 @@ class Modal extends PureComponent<IProps, IState> {
     this.componentIsMounted = false;
   }
 
-  public setState(nextState, cb?: () => void) {
+  public setState(nextState: IState, cb?: () => void) {
     if (this.componentIsMounted) {
       super.setState(nextState, cb);
     }
@@ -137,7 +119,7 @@ class Modal extends PureComponent<IProps, IState> {
     const trigger = this.props.trigger
       ? React.cloneElement(this.props.trigger, {
           onClick: this.toggleModal,
-          ref: (c) => (this.trigger = c),
+          ref: (c: HTMLElement) => (this.trigger = c),
         })
       : null;
 
@@ -153,18 +135,18 @@ class Modal extends PureComponent<IProps, IState> {
                 <div
                   key="H"
                   style={{ position: 'absolute', top: '0px', left: '0px' }}
-                  ref={(c) => (this.helper = c)}
+                  ref={(c: HTMLDivElement) => (this.helper = c)}
                 />
                 <Scrim
                   onClick={this.closeModal}
-                  {...(modalStyles.overlay
+                  {...(modalStyles && modalStyles.overlay
                     ? { style: modalStyles.overlay }
                     : {})}
                 />
               </Fragment>
             )}
             <ErrorBoundary>
-              <div ref={(c) => (this.content = c)}>
+              <div ref={(c: HTMLDivElement) => (this.content = c)}>
                 <T onClose={this.closeModal} styles={modalStyles}>
                   {children}
                 </T>
@@ -177,28 +159,18 @@ class Modal extends PureComponent<IProps, IState> {
   }
 
   private closeModal = () => {
-    this.setState(
-      {
-        isOpen: false,
-      },
-      () => {
-        this.props.onClose();
-        noScroll.off();
-      },
-    );
+    this.setState({ isOpen: false }, () => {
+      this.props.onClose && this.props.onClose();
+      noScroll.off();
+    });
   };
 
   private openModal = () => {
-    this.setState(
-      {
-        isOpen: true,
-      },
-      () => {
-        this.setPosition();
-        this.props.onOpen();
-        noScroll.on();
-      },
-    );
+    this.setState({ isOpen: true }, () => {
+      this.setPosition();
+      this.props.onOpen && this.props.onOpen();
+      noScroll.on();
+    });
   };
 
   private toggleModal = () => {
@@ -226,8 +198,8 @@ class Modal extends PureComponent<IProps, IState> {
     });
 
     this.content.style.position = 'absolute';
-    this.content.style.top = cords.top - helper.top + 'px';
-    this.content.style.left = cords.left - helper.left + 'px';
+    this.content.style.top = `${cords.top - helper.top}px`;
+    this.content.style.left = `${cords.left - helper.left}px`;
 
     if (
       window

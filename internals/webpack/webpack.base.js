@@ -26,10 +26,6 @@ module.exports = (options) => ({
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
-            options: options.babelQuery,
-          },
-          {
             loader: 'ts-loader',
             options: {
               // disable type checker - we will use it in fork plugin
@@ -37,14 +33,6 @@ module.exports = (options) => ({
             },
           },
         ],
-      },
-      {
-        test: /\.js$/, // Transform all .js files required somewhere with Babel
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: options.babelQuery,
-        },
       },
       {
         // Preprocess our own .css files

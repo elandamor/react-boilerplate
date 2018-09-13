@@ -33,13 +33,6 @@ interface IState {
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Popup extends Component<IProps, IState> {
-  protected static defaultProps: IDefaultProps = {
-    styles: {
-      container: null,
-      overlay: null,
-    },
-  };
-
   constructor(props: IProps) {
     super(props);
 
@@ -52,7 +45,7 @@ class Popup extends Component<IProps, IState> {
     return (
       <Wrapper
         className={classNames('c-popup', className)}
-        {...(styles.container ? { style: styles.container } : {})}
+        {...(styles && styles.container ? { style: styles.container } : {})}
       >
         {children({ onClose: this.props.onClose })}
       </Wrapper>

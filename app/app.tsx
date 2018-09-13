@@ -60,7 +60,7 @@ const render = () => {
   );
 };
 
-if (module.hot) {
+if (module.hot && MOUNT_NODE) {
   // Hot reloadable React components and translation json files
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
@@ -75,7 +75,6 @@ if (!global.Intl) {
   new Promise((resolve) => {
     resolve(import('intl'));
   })
-    .then(() => Promise.all([import('intl/locale-data/jsonp/en.js')]))
     .then(() => render())
     .catch((err) => {
       throw err;

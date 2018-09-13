@@ -30,7 +30,7 @@ class ErrorBoundary extends Component<IProps, IState> {
     };
   }
 
-  public componentDidCatch(error, errorInfo) {
+  public componentDidCatch(error: object, errorInfo: object) {
     this.setState({
       hasError: true,
     });

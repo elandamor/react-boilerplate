@@ -5,7 +5,12 @@ import Icon from '../Icon';
 // Styles
 import Wrapper from './styles';
 
-const Arrow = (props) => {
+interface IArrowProps {
+  direction: string;
+  onClick?: () => void;
+}
+
+const Arrow = (props: IArrowProps) => {
   const { direction, onClick } = props;
 
   return (
