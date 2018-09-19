@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import React, { Component } from 'react';
 import Measure from 'react-measure';
-import { Route, RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 // Components
-import { ErrorBoundary, Modal, Navigation, Routes } from '../../components';
+import { ErrorBoundary, Routes } from '../../components';
 // Routes
 import routes from './routes';
 // Styles
@@ -30,31 +30,29 @@ export const breakpoints = (width: number) => {
 };
 
 /* tslint:disable:object-literal-sort-keys */
-const themeDark = {
-  isDark: true,
-  palette: {
-    bodyBackground: '#1F1F27',
-    brandPrimary: '#25252D',
-    cardBackground: '#25252D',
-    cardBorderColor: '#414148',
-  },
-};
-
 const themeLight = {
   isDark: false,
   palette: {
-    bodyBackground: '#fafafa',
-    brandPrimary: '#ffffff',
-    cardBackground: '#ffffff',
+    bodyBackground: '#FAFAFA',
+    brandPrimary: '#FFFFFF',
+    cardBackground: '#FFFFFF',
     cardBorderColor: '#E4E6E9',
   },
 };
 /* tslint:enable:object-literal-sort-keys */
 
-import { makeDebugger } from '../../lib';
-const debug = makeDebugger('App');
+// import { makeDebugger } from '../../lib';
+// const debug = makeDebugger('App');
 
 export interface IProps extends RouteComponentProps<any> {}
+
+interface IState {
+  bounds: {
+    height: number;
+    width: number;
+  };
+  theme: object;
+}
 
 /**
  * @render react
@@ -86,7 +84,7 @@ class App extends Component<IProps, IState> {
 
   public componentWillUpdate(nextProps: IProps) {
     const { location } = this.props;
-    // set previousLocation if props.location is not modal
+
     if (
       nextProps.history.action !== 'POP' &&
       (!location.state || !location.state.modal)
@@ -130,25 +128,11 @@ class App extends Component<IProps, IState> {
               className={classNames('c-app__container', breakpoints(width))}
               innerRef={measureRef}
             >
-              <Navigation
-                links={[
-                  { exact: true, href: '/', label: 'Home' },
-                  { href: '/gallery', label: 'Gallery' },
-                ]}
-              />
               <ErrorBoundary>
                 <Routes
                   location={isModal ? this.previousLocation : location}
                   routes={routes}
                 />
-                {isModal ? (
-                  <Route
-                    path="/img/:id"
-                    render={({ history }) => (
-                      <Modal defaultOpen onClose={() => history.goBack()} />
-                    )}
-                  />
-                ) : null}
               </ErrorBoundary>
             </Wrapper>
           )}
@@ -156,14 +140,6 @@ class App extends Component<IProps, IState> {
       </ThemeProvider>
     );
   }
-}
-
-interface IState {
-  bounds: {
-    height: number;
-    width: number;
-  };
-  theme: object;
 }
 
 export default withRouter(App);

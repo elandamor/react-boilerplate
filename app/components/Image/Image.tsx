@@ -8,7 +8,7 @@ import Wrapper from './styles';
  * @name Image component
  * @description Image component.
  * @example
- * <Image />
+ * <Image src="image.jpg" />
  */
 
 interface IProps {
@@ -24,10 +24,5 @@ const Image: SFC<IProps> = ({ className, src, ...rest }) => (
     {...rest}
   />
 );
-
-Image.defaultProps = {
-  className: '',
-  src: '',
-};
 
 export default Image;

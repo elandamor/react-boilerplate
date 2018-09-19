@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Form /> should display a Form 1`] = `
+<form
+  className="c-form "
+  onKeyDown={[Function]}
+  onSubmit={[Function]}
+>
+  <div
+    className="c-input-wrapper "
+  >
+    <label
+      htmlFor="username"
+    >
+      <span
+        className="a-label"
+      >
+        Username
+      </span>
+      <input
+        className="a-input"
+        id="username"
+        name="username"
+        onChange={[Function]}
+        type="text"
+      />
+    </label>
+  </div>
+  <button
+    className="c-btn "
+    onClick={[Function]}
+  >
+    Submit
+  </button>
+</form>
+`;

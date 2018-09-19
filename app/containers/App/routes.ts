@@ -1,6 +1,5 @@
 // tslint:disable:object-literal-sort-keys
-import { Gallery, Home } from '../../pages';
-import { Viewer } from '../../pages/Gallery';
+import { Home } from '../../pages';
 
 import { IRouteProps } from '../../components/Routes';
 
@@ -9,14 +8,6 @@ const routes: IRouteProps[] = [
     exact: true,
     path: '/',
     component: Home,
-  },
-  {
-    path: '/gallery',
-    component: Gallery,
-  },
-  {
-    path: '/img/:id',
-    component: Viewer,
   },
 ];
 

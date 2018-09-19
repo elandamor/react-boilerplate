@@ -6,12 +6,13 @@ import Icon from '../Icon';
 import Wrapper from './styles';
 
 interface IArrowProps {
-  direction: string;
+  direction?: string;
+  icon: string;
   onClick?: () => void;
 }
 
 const Arrow = (props: IArrowProps) => {
-  const { direction, onClick } = props;
+  const { direction, icon, onClick } = props;
 
   return (
     <div
@@ -23,14 +24,14 @@ const Arrow = (props: IArrowProps) => {
       role="button"
       tabIndex={0}
     >
-      <Icon icon="add" />
+      <Icon icon={icon} />
     </div>
   );
 };
 
 const defaultSettings = {
-  nextArrow: <Arrow direction="next" />,
-  prevArrow: <Arrow direction="prev" />,
+  nextArrow: <Arrow direction="next" icon="next" />,
+  prevArrow: <Arrow direction="prev" icon="previous" />,
   slidesToScroll: 1,
   slidesToShow: 1,
   speed: 300,

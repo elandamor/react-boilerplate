@@ -34,7 +34,7 @@ if (isBrowser() && process.env.NODE_ENV !== 'production') {
  * debug('Some message')
  * @returns {Function}
  */
-export const makeDebugger = (namespace) =>
+export const makeDebugger = (namespace: string) =>
   _debug(`reactBoilerplate:${namespace}`);
 
 /**

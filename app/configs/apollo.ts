@@ -25,6 +25,7 @@ const httpLink = new BatchHttpLink({
   uri: API_URI,
 });
 
+// @ts-ignore
 const wsLink = new WebSocketLink({
   options: {
     connectionParams: {

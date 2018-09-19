@@ -1,10 +1,14 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+// Button.spec.tsx
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import 'jest-styled-components';
 
-// import Button from '../index';
+import Button from './index';
 
 describe('<Button />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('should display a button', () => {
+    const component = renderer.create(<Button onClick={() => null} />).toJSON();
+
+    expect(component).toMatchSnapshot();
   });
 });

@@ -1,5 +1,5 @@
 /* eslint-disable react/prefer-stateless-function */
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 // Styles

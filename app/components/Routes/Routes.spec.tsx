@@ -1,10 +1,10 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+// Routes.spec.tsx
+// import * as React from 'react';
+// import * as renderer from 'react-test-renderer';
+// import 'jest-styled-components';
 
-// import Routes from '../index';
+// import Routes from './index';
 
-describe('<Routes />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
-  });
-});
+// describe('<Routes />', () => {
+//   it('should display a Routes component', () => undefined);
+// });

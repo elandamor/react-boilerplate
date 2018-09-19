@@ -2,24 +2,18 @@
  * Home
  */
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 // Styles
 import Wrapper from './styles';
-import { Modal } from '../../components';
 
-class Home extends PureComponent<{}, {}> {
+class Home extends Component<{}, {}> {
   protected wrapper: any;
 
   public render() {
     return (
       <Wrapper>
-        <Helmet>
-          <title>Home</title>
-        </Helmet>
-        <Modal defaultOpen trigger={<button>Modal</button>}>
-          hello
-        </Modal>
+        <Helmet title="Home | react-boilerplate" />
       </Wrapper>
     );
   }

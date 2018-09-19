@@ -1,10 +1,16 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+// Image.spec.tsx
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import 'jest-styled-components';
 
-// import Image from '../index';
+import Image from './index';
 
 describe('<Image />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('should display an image', () => {
+    const component = renderer
+      .create(<Image src="../../images/icon-512x512.png" />)
+      .toJSON();
+
+    expect(component).toMatchSnapshot();
   });
 });

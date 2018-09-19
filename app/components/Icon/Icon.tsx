@@ -25,7 +25,10 @@ interface IProps {
 const Icon: SFC<IProps> = ({ className, icon, size, viewBox }) => (
   <Wrapper className={classNames('c-icon', className)} aria-hidden="true">
     <svg height={`${size}`} width={`${size}`} viewBox={`${viewBox}`}>
-      {ICONS[icon] && ICONS[icon].split(',').map((p: string) => <path d={p} />)}
+      {ICONS[icon] &&
+        ICONS[icon]
+          .split(',')
+          .map((p: string, idx: number) => <path key={idx} d={p} />)}
     </svg>
   </Wrapper>
 );

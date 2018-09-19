@@ -5,8 +5,6 @@
  * code.
  */
 
-// Needed for redux-saga es6 generator support
-import 'babel-polyfill';
 import bugsnag from 'bugsnag-js';
 import createPlugin from 'bugsnag-react';
 

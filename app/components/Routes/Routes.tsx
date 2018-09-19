@@ -38,6 +38,7 @@ const Routes: SFC<IProps> = ({ location, routes }) => (
           path={path}
           render={(props) => (
             // pass the sub-routes down to keep nesting
+            // @ts-ignore
             <Component routes={routes} {...props} />
           )}
         />

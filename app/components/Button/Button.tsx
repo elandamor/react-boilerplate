@@ -18,16 +18,9 @@ interface IProps {
 }
 
 const Button: SFC<IProps> = ({ children, className, onClick: handleClick }) => (
-  <Wrapper
-    className={classNames('c-btn', className)}
-    onClick={handleClick}
-  >
+  <Wrapper className={classNames('c-btn', className)} onClick={handleClick}>
     {children}
   </Wrapper>
 );
-
-Button.defaultProps = {
-  className: '',
-};
 
 export default Button;

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navigation /> should display a navigation component 1`] = `
+<nav
+  className="c-nav "
+>
+  <ul>
+    <li>
+      <a
+        aria-current="page"
+        className="a-nav-item -active"
+        href="/"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Home
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={null}
+        className="a-nav-item"
+        href="/about"
+        onClick={[Function]}
+      >
+        About Us
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

@@ -1,8 +1,8 @@
 const cloudName = process.env.UPLOAD_BUCKET;
-const unsignedUploadPreset = process.env.UPLOAD_PRESET;
+const unsignedUploadPreset = process.env.UPLOAD_PRESET || '';
 
 // eslint-disable-next-line no-unused-vars
-export const uploadFile = (file, observer) =>
+export const uploadFile = (file: any, observer: any) =>
   new Promise((resolve) => {
     const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
     const xhr = new XMLHttpRequest();
@@ -37,7 +37,7 @@ export const uploadFile = (file, observer) =>
     xhr.send(fd);
   });
 
-const handleUpload = (files, observer) =>
+const handleUpload = (files: any, observer: any) =>
   new Promise((resolve) => {
     let i = files.length;
     const promises = [];

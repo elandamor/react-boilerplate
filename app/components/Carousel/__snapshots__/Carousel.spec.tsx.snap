@@ -1,0 +1,326 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Carousel /> should display a Carousel 1`] = `
+.c1 {
+  margin: 0 auto;
+  position: relative;
+}
+
+.c1 svg {
+  vertical-align: inherit;
+}
+
+.c0 {
+  opacity: 0;
+  outline: none;
+  position: relative;
+}
+
+.c0.slick-initialized {
+  opacity: 1;
+}
+
+.c0 .c-arrow {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  bottom: -48px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 64px;
+  outline: none;
+  position: absolute;
+  width: 48px;
+  z-index: 0;
+}
+
+.c0 .c-arrow:before {
+  display: none;
+}
+
+.c0 .c-arrow .icon,
+.c0 .c-arrow .icon > svg {
+  height: 20px;
+  width: 20px;
+}
+
+.c0 .c-arrow--prev {
+  left: 12px;
+}
+
+.c0 .c-arrow--next {
+  right: 12px;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.c0 .slick-dots {
+  bottom: -48px;
+}
+
+.c0 .slick-dots li button::before {
+  font-size: 12px;
+}
+
+<div
+  className="slick-slider c-carousel c0 slick-initialized"
+  dir="ltr"
+>
+  <div
+    className="c-arrow c-arrow--prev"
+    onClick={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <i
+      aria-hidden="true"
+      className="c-icon c1"
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+      />
+    </i>
+  </div>
+  <div
+    className="slick-list"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={null}
+    onMouseMove={null}
+    onMouseUp={[Function]}
+    onTouchCancel={null}
+    onTouchEnd={[Function]}
+    onTouchMove={null}
+    onTouchStart={[Function]}
+    style={Object {}}
+  >
+    <div
+      className="slick-track"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      style={
+        Object {
+          "WebkitTransform": "translate3d(0px, 0px, 0px)",
+          "WebkitTransition": "",
+          "msTransform": "translateX(0px)",
+          "opacity": 1,
+          "transform": "translate3d(0px, 0px, 0px)",
+          "transition": "",
+        }
+      }
+    >
+      <div
+        aria-hidden={true}
+        className="slick-slide slick-cloned"
+        data-index={-1}
+        onClick={[Function]}
+        style={
+          Object {
+            "width": 0,
+          }
+        }
+        tabIndex="-1"
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "width": "100%",
+              }
+            }
+            tabIndex={-1}
+          >
+            Slide 3
+          </div>
+        </div>
+      </div>
+      <div
+        aria-hidden={false}
+        className="slick-slide slick-active slick-current"
+        data-index={0}
+        onClick={[Function]}
+        style={
+          Object {
+            "outline": "none",
+            "width": 0,
+          }
+        }
+        tabIndex="-1"
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "width": "100%",
+              }
+            }
+            tabIndex={-1}
+          >
+            Slide 1
+          </div>
+        </div>
+      </div>
+      <div
+        aria-hidden={true}
+        className="slick-slide"
+        data-index={1}
+        onClick={[Function]}
+        style={
+          Object {
+            "outline": "none",
+            "width": 0,
+          }
+        }
+        tabIndex="-1"
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "width": "100%",
+              }
+            }
+            tabIndex={-1}
+          >
+            Slide 2
+          </div>
+        </div>
+      </div>
+      <div
+        aria-hidden={true}
+        className="slick-slide"
+        data-index={2}
+        onClick={[Function]}
+        style={
+          Object {
+            "outline": "none",
+            "width": 0,
+          }
+        }
+        tabIndex="-1"
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "width": "100%",
+              }
+            }
+            tabIndex={-1}
+          >
+            Slide 3
+          </div>
+        </div>
+      </div>
+      <div
+        aria-hidden={true}
+        className="slick-slide slick-cloned"
+        data-index={3}
+        onClick={[Function]}
+        style={
+          Object {
+            "width": 0,
+          }
+        }
+        tabIndex="-1"
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "width": "100%",
+              }
+            }
+            tabIndex={-1}
+          >
+            Slide 1
+          </div>
+        </div>
+      </div>
+      <div
+        aria-hidden={true}
+        className="slick-slide slick-cloned"
+        data-index={4}
+        onClick={[Function]}
+        style={
+          Object {
+            "width": 0,
+          }
+        }
+        tabIndex="-1"
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "width": "100%",
+              }
+            }
+            tabIndex={-1}
+          >
+            Slide 2
+          </div>
+        </div>
+      </div>
+      <div
+        aria-hidden={true}
+        className="slick-slide slick-cloned"
+        data-index={5}
+        onClick={[Function]}
+        style={
+          Object {
+            "width": 0,
+          }
+        }
+        tabIndex="-1"
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "width": "100%",
+              }
+            }
+            tabIndex={-1}
+          >
+            Slide 3
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c-arrow c-arrow--next"
+    onClick={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <i
+      aria-hidden="true"
+      className="c-icon c1"
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+      />
+    </i>
+  </div>
+</div>
+`;

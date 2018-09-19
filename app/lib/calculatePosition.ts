@@ -17,11 +17,11 @@
 */
 
 export default function calculatePosition(
-  triggerBounding,
-  ContentBounding,
-  position,
-  arrow,
-  offset,
+  triggerBounding: any,
+  ContentBounding: any,
+  position: any,
+  arrow: any,
+  offset: any,
 ) {
   const margin = arrow ? 8 : 0;
   const MarginX = margin + offset.offsetX;
