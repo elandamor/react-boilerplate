@@ -1,4 +1,4 @@
-const formatMessage = (errorType, operation) => {
+const formatMessage = (errorType: any, operation: any) => {
   const headerCss = [
     'color: gray; font-weight: lighter', // title
     'color: red;', // operationType

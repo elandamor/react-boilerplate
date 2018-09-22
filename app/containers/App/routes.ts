@@ -1,9 +1,14 @@
 // tslint:disable:object-literal-sort-keys
-import Home from '../../pages/Home/Loadable';
+import { Home } from '../../pages';
 
-const routes = [{
-  path: '/',
-  component: Home,
-}];
+import { IRouteProps } from '../../components/Routes';
+
+const routes: IRouteProps[] = [
+  {
+    exact: true,
+    path: '/',
+    component: Home,
+  },
+];
 
 export default routes;

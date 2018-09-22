@@ -7,9 +7,7 @@ import { RetryLink } from 'apollo-link-retry';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
-// Custom packages
-import errorLink from '../packages/apollo-link-error';
-import loggerLink from '../packages/apollo-link-logger';
+import { errorLink, loggerLink } from '../packages';
 
 const API_URI =
   process.env.NODE_ENV === 'production'
@@ -27,6 +25,7 @@ const httpLink = new BatchHttpLink({
   uri: API_URI,
 });
 
+// @ts-ignore
 const wsLink = new WebSocketLink({
   options: {
     connectionParams: {
@@ -54,7 +53,6 @@ interface IDefinition {
 }
 
 const link = split(
-  // split based on operation type
   ({ query }) => {
     const { kind, operation }: IDefinition = getMainDefinition(query);
     return kind === 'OperationDefinition' && operation === 'subscription';
