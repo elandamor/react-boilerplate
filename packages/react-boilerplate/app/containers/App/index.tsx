@@ -1,17 +1,16 @@
 import classNames from 'classnames';
 import React, { Component } from 'react';
 import Measure from 'react-measure';
-import { withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 // Components
-import ErrorBoundary from '../../components/ErrorBoundary';
-import Routes from '../../components/Routes';
+import { ErrorBoundary, Routes } from '../../components';
 // Routes
 import routes from './routes';
 // Styles
 import Wrapper from './styles';
 
-export const breakpoints = (width) => {
+export const breakpoints = (width: number) => {
   if (width < 600) {
     return 'v-xsmall';
   }
@@ -31,29 +30,29 @@ export const breakpoints = (width) => {
 };
 
 /* tslint:disable:object-literal-sort-keys */
-const themeDark = {
-  isDark: true,
-  palette: {
-    bodyBackground: '#1F1F27',
-    brandPrimary: '#25252D',
-    cardBackground: '#25252D',
-    cardBorderColor: '#414148',
-  },
-};
-
 const themeLight = {
   isDark: false,
   palette: {
-    bodyBackground: '#fafafa',
-    brandPrimary: '#ffffff',
-    cardBackground: '#ffffff',
+    bodyBackground: '#FAFAFA',
+    brandPrimary: '#FFFFFF',
+    cardBackground: '#FFFFFF',
     cardBorderColor: '#E4E6E9',
   },
 };
 /* tslint:enable:object-literal-sort-keys */
 
-import { makeDebugger } from '../../lib';
-const debug = makeDebugger('app');
+// import { makeDebugger } from '../../lib';
+// const debug = makeDebugger('App');
+
+export interface IProps extends RouteComponentProps<any> {}
+
+interface IState {
+  bounds: {
+    height: number;
+    width: number;
+  };
+  theme: object;
+}
 
 /**
  * @render react
@@ -61,11 +60,11 @@ const debug = makeDebugger('app');
  * @description The skeleton around the actual pages, and should only
  * contain code that should be seen on all pages. (e.g. navigation bar).
  */
-
-class App extends Component<{}, IState> {
+class App extends Component<IProps, IState> {
   protected componentIsMounted: boolean;
+  protected previousLocation: object;
 
-  constructor(props) {
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
@@ -75,20 +74,46 @@ class App extends Component<{}, IState> {
       },
       theme: themeLight,
     };
+
+    this.previousLocation = props.location;
   }
 
   public componentDidMount() {
     this.componentIsMounted = true;
   }
 
+  public componentWillUpdate(nextProps: IProps) {
+    const { location } = this.props;
+
+    if (
+      nextProps.history.action !== 'POP' &&
+      (!location.state || !location.state.modal)
+    ) {
+      this.previousLocation = this.props.location;
+    }
+  }
+
   public componentWillUnmount() {
     this.componentIsMounted = false;
   }
 
+  public setState(nextState: any, cb?: () => void) {
+    if (this.componentIsMounted) {
+      super.setState(nextState, cb);
+    }
+  }
+
   public render() {
+    const { location } = this.props;
     const {
       bounds: { width },
     } = this.state;
+
+    const isModal = !!(
+      location.state &&
+      location.state.modal &&
+      this.previousLocation !== location
+    );
 
     return (
       <ThemeProvider theme={this.state.theme}>
@@ -104,7 +129,10 @@ class App extends Component<{}, IState> {
               innerRef={measureRef}
             >
               <ErrorBoundary>
-                <Routes routes={routes} />
+                <Routes
+                  location={isModal ? this.previousLocation : location}
+                  routes={routes}
+                />
               </ErrorBoundary>
             </Wrapper>
           )}
@@ -112,14 +140,6 @@ class App extends Component<{}, IState> {
       </ThemeProvider>
     );
   }
-}
-
-interface IState {
-  bounds: {
-    height: number;
-    width: number;
-  };
-  theme: object;
 }
 
 export default withRouter(App);

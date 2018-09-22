@@ -5,37 +5,33 @@ import Icon from '../Icon';
 // Styles
 import Wrapper from './styles';
 
-function Next(props) {
-  const { onClick } = props;
-  return (
-    <div
-      className="c-arrow c-arrow--next"
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-    >
-      <Icon icon="add" />
-    </div>
-  );
+interface IArrowProps {
+  direction?: string;
+  icon: string;
+  onClick?: () => void;
 }
 
-function Prev(props) {
-  const { onClick } = props;
+const Arrow = (props: IArrowProps) => {
+  const { direction, icon, onClick } = props;
+
   return (
     <div
-      className="c-arrow c-arrow--prev"
+      className={classNames(
+        'c-arrow',
+        direction === 'next' ? 'c-arrow--next' : 'c-arrow--prev',
+      )}
       onClick={onClick}
       role="button"
       tabIndex={0}
     >
-      <Icon icon="remove" />
+      <Icon icon={icon} />
     </div>
   );
-}
+};
 
 const defaultSettings = {
-  nextArrow: <Next />,
-  prevArrow: <Prev />,
+  nextArrow: <Arrow direction="next" icon="next" />,
+  prevArrow: <Arrow direction="prev" icon="previous" />,
   slidesToScroll: 1,
   slidesToShow: 1,
   speed: 300,

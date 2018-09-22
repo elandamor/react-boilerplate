@@ -2,24 +2,29 @@
 import { ApolloLink } from 'apollo-link';
 import formatMessage from './formatMessage';
 
-const loggerLink = new ApolloLink((operation, forward) => {
-  const startTime = new Date().getTime();
+const loggerLink = new ApolloLink(
+  (operation, forward): any => {
+    const startTime = new Date().getTime();
 
-  return forward(operation).map((result) => {
-    const operationType = operation.query.definitions[0].kind;
-    const ellapsed = new Date().getTime() - startTime;
+    return (
+      forward &&
+      forward(operation).map((result) => {
+        const operationType = operation.query.definitions[0].kind;
+        const ellapsed = new Date().getTime() - startTime;
 
-    const group = formatMessage(operationType, operation, ellapsed);
+        const group = formatMessage(operationType, operation, ellapsed);
 
-    console.groupCollapsed(...group);
+        console.groupCollapsed(...group);
 
-    console.log('INIT', operation);
-    console.log('RESULT', result);
+        console.info('INIT', operation);
+        console.info('RESULT', result);
 
-    console.groupEnd();
+        console.groupEnd();
 
-    return result;
-  });
-});
+        return result;
+      })
+    );
+  },
+);
 
 export default loggerLink;

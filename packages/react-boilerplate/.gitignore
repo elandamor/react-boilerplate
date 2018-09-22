@@ -11,8 +11,4 @@ stats.json
 
 *.log
 
-*-lock.json
-*.lock
-
-
 app/third-party/

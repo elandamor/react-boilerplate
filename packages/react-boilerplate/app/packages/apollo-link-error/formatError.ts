@@ -1,4 +1,4 @@
-const formatError = (message, path?: any) => {
+const formatError = (message: string, path?: any) => {
   let headerCss = [
     'color: gray; font-weight: lighter', // title
     'color: #333; font-weight: 600', // message

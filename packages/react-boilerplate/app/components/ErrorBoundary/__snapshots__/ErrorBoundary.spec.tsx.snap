@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ErrorBoundary /> should display a ErrorBoundary 1`] = `
+<h1>
+  Something went wrong.
+</h1>
+`;
