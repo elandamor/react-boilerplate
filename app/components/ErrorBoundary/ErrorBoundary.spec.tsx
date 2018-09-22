@@ -17,6 +17,8 @@ class ComponentThatWillFail extends React.Component {
 
 describe('<ErrorBoundary />', () => {
   it('should display a ErrorBoundary', () => {
+    spyOn(console, 'error');
+
     const component = renderer
       .create(
         <ErrorBoundary>
