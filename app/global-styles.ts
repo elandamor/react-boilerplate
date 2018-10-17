@@ -1,4 +1,4 @@
-import { injectGlobal, keyframes } from 'styled-components';
+import { createGlobalStyle, keyframes } from 'styled-components';
 
 const shiftRightwards = keyframes`
   0% {
@@ -19,7 +19,7 @@ const shiftRightwards = keyframes`
 `;
 
 // tslint:disable-next-line:no-unused-expression
-injectGlobal`
+createGlobalStyle`
   * {
     -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;

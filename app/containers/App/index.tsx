@@ -126,7 +126,8 @@ class App extends Component<IProps, IState> {
           {({ measureRef }) => (
             <Wrapper
               className={classNames('c-app__container', breakpoints(width))}
-              innerRef={measureRef}
+              // @ts-ignore
+              ref={measureRef}
             >
               <ErrorBoundary>
                 <Routes
