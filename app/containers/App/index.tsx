@@ -4,12 +4,15 @@ import Measure from 'react-measure';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 // Components
-import { ErrorBoundary, Header, Routes } from '../../components';
+import { ErrorBoundary, Routes } from '../../components';
 // Routes
 import routes from './routes';
 // Styles
 import GlobalStyles from '../../global-styles';
 import Wrapper from './styles';
+
+// import { makeDebugger } from '../../lib';
+// const debug = makeDebugger('App');
 
 export const breakpoints = (width: number) => {
   if (width < 600) {
@@ -41,9 +44,6 @@ const themeLight = {
   },
 };
 /* tslint:enable:object-literal-sort-keys */
-
-// import { makeDebugger } from '../../lib';
-// const debug = makeDebugger('App');
 
 export interface IProps extends RouteComponentProps<any> {}
 
@@ -132,16 +132,10 @@ class App extends Component<IProps, IState> {
             >
               <GlobalStyles />
               <ErrorBoundary>
-                <Header />
-              </ErrorBoundary>
-              <ErrorBoundary>
                 <Routes
                   location={isModal ? this.previousLocation : location}
                   routes={routes}
                 />
-              </ErrorBoundary>
-              <ErrorBoundary>
-                <div className="c-app__nav" />
               </ErrorBoundary>
             </Wrapper>
           )}
