@@ -1,25 +1,6 @@
-import { createGlobalStyle, keyframes } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-const shiftRightwards = keyframes`
-  0% {
-    transform: translateX(-100%)
-  }
-
-  40% {
-    transform: translateX(0)
-  }
-
-  60% {
-    transform: translateX(0)
-  }
-
-  100% {
-    transform: translateX(100%)
-  }
-`;
-
-// tslint:disable-next-line:no-unused-expression
-createGlobalStyle`
+export default createGlobalStyle`
   * {
     -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
@@ -47,9 +28,9 @@ createGlobalStyle`
   html,
   body {
     -moz-osx-font-smoothing: grayscale;
-    -moz-font-feature-settings: 'liga', 'kern' 1;
     -webkit-font-smoothing: antialiased;
     background-color: var(--body-background);
+    font-feature-settings: 'liga', 'kern' 1;
     font-kerning: normal;
     font-weight: 400;
     height: 100%;
@@ -71,21 +52,13 @@ createGlobalStyle`
       font-family: Georgia,serif;
     }
 
-    &.fontsLoaded {
+    &.fontLoaded {
       font-family: 'Montserrat',-apple-system,BlinkMacSystemFont,Segoe UI
         ,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 
       h1, h2, h3, h4, h5, h6 {
         font-family: Merriweather,Georgia,serif;
       }
-    }
-  }
-
-  .-loading {
-    .c-loadingBar {
-      display: block;
-      animation: ${shiftRightwards} 1s ease-in-out infinite;
-      animation-delay: .8s;
     }
   }
 

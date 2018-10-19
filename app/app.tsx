@@ -28,9 +28,6 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=[name].[ext]!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
-// Import CSS reset and Global Styles
-import './global-styles';
-
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
 const montserratObserver = new FontFaceObserver('Montserrat', {});
