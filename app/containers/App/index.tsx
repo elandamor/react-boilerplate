@@ -4,10 +4,11 @@ import Measure from 'react-measure';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 // Components
-import { ErrorBoundary, Routes } from '../../components';
+import { ErrorBoundary, Header, Routes } from '../../components';
 // Routes
 import routes from './routes';
 // Styles
+import GlobalStyles from '../../global-styles';
 import Wrapper from './styles';
 
 export const breakpoints = (width: number) => {
@@ -129,11 +130,18 @@ class App extends Component<IProps, IState> {
               // @ts-ignore
               ref={measureRef}
             >
+              <GlobalStyles />
+              <ErrorBoundary>
+                <Header />
+              </ErrorBoundary>
               <ErrorBoundary>
                 <Routes
                   location={isModal ? this.previousLocation : location}
                   routes={routes}
                 />
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <div className="c-app__nav" />
               </ErrorBoundary>
             </Wrapper>
           )}
