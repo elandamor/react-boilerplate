@@ -6,6 +6,8 @@ const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
+const styledComponentsTransformer = createStyledComponentsTransformer();
 
 module.exports = (options) => ({
   entry: options.entry,
@@ -30,6 +32,7 @@ module.exports = (options) => ({
             options: {
               // disable type checker - we will use it in fork plugin
               transpileOnly: true,
+              getCustomTransformers: () => ({ before: [styledComponentsTransformer] }),
             },
           },
         ],
