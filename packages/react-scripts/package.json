@@ -27,13 +27,6 @@
   "scripts": {
     "prepublish": "npm version patch"
   },
-  "lint-staged": {
-    "**/*.{ts,tsx}": [
-      "prettier --write",
-      "tslint --fix",
-      "git add"
-    ]
-  },
   "dependencies": {
     "@storybook/cli": "3.4.11",
     "@types/classnames": "2.2.6",
@@ -122,6 +115,10 @@
     "webpack-dev-middleware": "3.4.0",
     "webpack-hot-middleware": "2.24.3",
     "webpack-pwa-manifest": "3.7.1"
+  },
+  "devDependencies": {
+    "react": "16.5.2",
+    "react-dom": "16.5.2"
   },
   "optionalDependencies": {
     "fsevents": "1.2.4"
