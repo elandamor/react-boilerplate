@@ -25,6 +25,8 @@
     "react-scripts": "./bin/react-scripts.js"
   },
   "scripts": {
+    "build": "node ./bin/react-scripts.js build",
+    "start": "node ./bin/react-scripts.js start",
     "prepublish": "npm version patch"
   },
   "dependencies": {
