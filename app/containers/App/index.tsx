@@ -1,10 +1,11 @@
 import classNames from 'classnames';
-import React, { Component } from 'react';
+// @ts-ignore
+import React, { Component, Suspense } from 'react';
 import Measure from 'react-measure';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 // Components
-import { ErrorBoundary, Routes } from '../../components';
+import { ErrorBoundary, LoadingBar, Routes } from '../../components';
 // Routes
 import routes from './routes';
 // Styles
@@ -132,10 +133,12 @@ class App extends Component<IProps, IState> {
             >
               <GlobalStyles />
               <ErrorBoundary>
-                <Routes
-                  location={isModal ? this.previousLocation : location}
-                  routes={routes}
-                />
+                <Suspense fallback={<LoadingBar />}>
+                  <Routes
+                    location={isModal ? this.previousLocation : location}
+                    routes={routes}
+                  />
+                </Suspense>
               </ErrorBoundary>
             </Wrapper>
           )}
