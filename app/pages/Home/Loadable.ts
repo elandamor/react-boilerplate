@@ -4,9 +4,7 @@
  *
  */
 
-import Loadable from 'react-loadable';
+import React from 'react';
 
-export default Loadable({
-  loader: () => import('.'),
-  loading: () => null,
-});
+// @ts-ignore
+export default React.lazy(() => import('./index'));
