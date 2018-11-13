@@ -1,7 +1,4 @@
 import React, { {{{ type }}} } from 'react';
-{{#if wantHeaders}}
-import { Helmet } from 'react-helmet';
-{{/if}}
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
@@ -22,14 +19,8 @@ interface IState {
   [key: string]: any;
 }
 
-class {{ properCase name }} extends Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-
-    this.state = {
-      // State goes here
-    };
-  }
+class {{ properCase name }} extends {{{ type }}}<IProps, IState> {
+  state:IState = {}
 
   public render() {
     const { className } = this.props;

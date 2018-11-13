@@ -55,22 +55,17 @@ module.exports = {
 
     const actions = [{
       type: 'add',
-      path: '../../app/containers/{{properCase name}}/index.ts',
-      templateFile: './container/index.hbs',
-      abortOnFail: true,
-    }, {
-      type: 'add',
-      path: '../../app/containers/{{properCase name}}/{{properCase name}}.tsx',
+      path: '../../app/containers/{{properCase name}}/index.tsx',
       templateFile: componentTemplate,
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/containers/{{properCase name}}/{{properCase name}}.spec.ts',
+      path: '../../app/containers/{{properCase name}}/{{properCase name}}.spec.tsx',
       templateFile: './container/spec.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/containers/{{properCase name}}/styles.js',
+      path: '../../app/containers/{{properCase name}}/styles.ts',
       templateFile: './component/styles.hbs',
     }];
 

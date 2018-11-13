@@ -10,8 +10,8 @@ module.exports = {
     type: 'list',
     name: 'type',
     message: 'Select the base component type:',
-    default: 'React.PureComponent',
-    choices: () => ['React.PureComponent', 'React.Component'],
+    default: 'PureComponent',
+    choices: () => ['PureComponent', 'Component'],
   }, {
     type: 'input',
     name: 'name',
@@ -26,28 +26,27 @@ module.exports = {
     },
   }],
   actions: () => {
-    // Generate index.js, index.test.js and styles.js
-    const componentTemplate = './page/class.js.hbs';
+    const componentTemplate = './page/index.hbs';
 
     const actions = [{
       type: 'add',
-      path: '../../app/pages/{{properCase name}}/index.js',
+      path: '../../app/pages/{{properCase name}}/index.tsx',
       templateFile: componentTemplate,
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/pages/{{properCase name}}/tests/index.test.js',
-      templateFile: './page/test.js.hbs',
+      path: '../../app/pages/{{properCase name}}/{{properCase name}}.spec.tsx',
+      templateFile: './page/spec.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/pages/{{properCase name}}/Loadable.js',
-      templateFile: './component/loadable.js.hbs',
+      path: '../../app/pages/{{properCase name}}/Loadable.ts',
+      templateFile: './component/loadable.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/pages/{{properCase name}}/styles.js',
-      templateFile: './page/styles.js.hbs',
+      path: '../../app/pages/{{properCase name}}/styles.ts',
+      templateFile: './page/styles.hbs',
       abortOnFail: true,
     }];
 

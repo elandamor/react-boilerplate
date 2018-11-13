@@ -1,12 +1,13 @@
 import React, { {{{ type }}} } from 'react';
+import { Helmet } from 'react-helmet';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
 
 /**
  * @render react
- * @name {{ properCase name }} container
- * @description {{ properCase name }} container.
+ * @name {{ properCase name }} page
+ * @description {{ properCase name }} page.
  * @example
  * <{{ properCase name }} />
  */
@@ -26,7 +27,12 @@ class {{ properCase name }} extends {{{ type }}}<IProps, IState> {
     const { className } = this.props;
 
     return (
-      <Wrapper className={classNames('', className)} />
+      <Wrapper className={classNames('', className)}>
+        <Helmet>
+          <title>{{properCase name}}</title>
+          <meta name="description" content="Description of {{properCase name}}" />
+        </Helmet>
+      </Wrapper>
     );
   }
 }

@@ -15,7 +15,7 @@ module.exports = {
     name: 'type',
     message: 'Select the type of component',
     default: 'Stateless Function',
-    choices: () => ['Component', 'PureComponent', 'Stateless Function'],
+    choices: () => ['Stateless Function', 'PureComponent', 'Component'],
   }, {
     type: 'input',
     name: 'name',
@@ -54,17 +54,12 @@ module.exports = {
 
     const actions = [{
       type: 'add',
-      path: '../../app/components/{{properCase name}}/index.ts',
-      templateFile: './component/index.hbs',
-      abortOnFail: true,
-    }, {
-      type: 'add',
-      path: '../../app/components/{{properCase name}}/{{properCase name}}.tsx',
+      path: '../../app/components/{{properCase name}}/index.tsx',
       templateFile: componentTemplate,
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/components/{{properCase name}}/{{properCase name}}.spec.ts',
+      path: '../../app/components/{{properCase name}}/{{properCase name}}.spec.tsx',
       templateFile: './component/spec.hbs',
       abortOnFail: true,
     }, {
