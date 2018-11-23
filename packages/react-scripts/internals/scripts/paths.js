@@ -6,30 +6,32 @@
  * LICENSE file in the root directory of this source tree.
  */
 // @remove-on-eject-end
-'use strict';
-
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
 
 // Make sure any symlinks in the project folder are resolved:
 const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
 const envPublicUrl = process.env.PUBLIC_URL;
 
 function ensureSlash(inputPath, needsSlash) {
   const hasSlash = inputPath.endsWith('/');
+  
   if (hasSlash && !needsSlash) {
     return inputPath.substr(0, inputPath.length - 1);
-  } else if (!hasSlash && needsSlash) {
-    return `${inputPath}/`;
-  } else {
-    return inputPath;
   }
+  
+  if (!hasSlash && needsSlash) {
+    return `${inputPath}/`;
+  }
+
+  return inputPath;
 }
 
-const getPublicUrl = appPackageJson =>
+const getPublicUrl = (appPackageJson) => 
+  // eslint-disable-next-line global-require
   envPublicUrl || require(appPackageJson).homepage;
 
 // We use `PUBLIC_URL` environment variable or "homepage" field to infer
@@ -46,7 +48,7 @@ function getServedPath(appPackageJson) {
 }
 
 // @remove-on-eject-begin
-const resolveOwn = relativePath => path.resolve(__dirname, '../..', relativePath);
+const resolveOwn = (relativePath) => path.resolve(__dirname, '../..', relativePath);
 
 // config before eject: we're in ./node_modules/react-scripts/config/
 module.exports = {
@@ -69,6 +71,7 @@ module.exports = {
 };
 
 const ownPackageJson = require('../../package.json');
+
 const reactScriptsPath = resolveApp(`node_modules/${ownPackageJson.name}`);
 const reactScriptsLinked =
   fs.existsSync(reactScriptsPath) &&

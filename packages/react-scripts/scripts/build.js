@@ -1,18 +1,45 @@
-const { execSync } = require('child_process');
-const { relative } = require('path');
+/* eslint-disable no-console */
+const chalk = require('chalk');
+const webpack = require('webpack');
+const paths = require('../internals/scripts/paths');
+const config = require('../internals/webpack/webpack.prod');
+const checkRequiredFiles = require('../utils/checkRequiredFiles');
+const FileSizeReporter = require('../utils/FileSizeReporter');
 
-const script = relative(process.cwd(), 'internals/webpack/webpack.prod.js');
+const { measureFileSizesBeforeBuild, printFileSizesAfterBuild } = FileSizeReporter;
 
-function initBuild() {
-  try {
-    execSync(
-      `cross-env NODE_ENV=production webpack --config ${script} --color -p --progress --hide-modules --display-optimization-bailout`,
-      { stdio: 'inherit' }
-    );
-    return true;
-  } catch (e) {
-    return false;
-  }
+// These sizes are pretty large. We'll warn for bundles exceeding them.
+const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
+const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
+
+// Warn and crash if required files are missing
+if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+  process.exit(1);
 }
 
-initBuild();
+const compiler = webpack(config);
+
+console.log('Creating an optimized production build...');
+
+compiler.run((err, stats) => {
+  if (err) {
+    return false;
+  }
+
+  console.log(chalk.green('Compiled successfully.\n'));
+
+  measureFileSizesBeforeBuild(paths.appBuild)
+  .then((previousFileSizes) => {
+    console.log('File sizes after gzip:\n');
+    printFileSizesAfterBuild(
+      stats,
+      previousFileSizes,
+      paths.appBuild,
+      WARN_AFTER_BUNDLE_GZIP_SIZE,
+      WARN_AFTER_CHUNK_GZIP_SIZE
+    );
+    console.log();    
+  });
+
+  return true;
+});

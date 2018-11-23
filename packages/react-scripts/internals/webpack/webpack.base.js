@@ -7,8 +7,9 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
-const styledComponentsTransformer = createStyledComponentsTransformer();
 const paths = require('../scripts/paths');
+
+const styledComponentsTransformer = createStyledComponentsTransformer();
 
 module.exports = (options) => ({
   entry: options.entry,
@@ -119,6 +120,7 @@ module.exports = (options) => ({
     new ForkTsCheckerWebpackPlugin({
       checkSyntacticErrors: true,
       memoryLimit: 256,
+      silent: true,
       tsconfig: paths.appTsConfig,
     }),
   ]),

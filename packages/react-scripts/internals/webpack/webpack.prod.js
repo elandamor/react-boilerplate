@@ -32,6 +32,7 @@ module.exports = require('./webpack.base')({
   plugins: [
     new CleanWebpackPlugin([path.resolve(process.cwd(), 'build')], {
       allowExternal: true,
+      verbose: false, 
     }),
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({
