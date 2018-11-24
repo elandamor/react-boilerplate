@@ -1,8 +1,8 @@
 const { execSync } = require('child_process');
-const { relative } = require('path');
+const path = require('path');
 
 const args = process.argv.slice(2);
-const script = relative(process.cwd(), 'internals/generators/index.js');
+const script = path.join(__dirname, '../internals/generators/index.js');
 
 function initGenerator() {
   try {
