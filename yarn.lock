@@ -8213,10 +8213,10 @@ pbkdf2@^3.0.3:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-pd-react-scripts@0.0.29:
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/pd-react-scripts/-/pd-react-scripts-0.0.29.tgz#ea0cf3835b1b69af207f84b50762613073acff2c"
-  integrity sha512-7Yo0oKNvKgCNOrWzNii3Sd8jzyXhUGrQNnW5uFZduhZ6iFOLRAn3ZfvCAybf6HjvO4MVLcbo4mfzpZtF4wnpCg==
+pd-react-scripts@0.0.32:
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/pd-react-scripts/-/pd-react-scripts-0.0.32.tgz#d1f649cae3335683cc37757d6740808236b60c87"
+  integrity sha512-pkCLEV3ZmfOJjjME8tyiV+Cu101kvCzIOEFZV56ZdJMfUsgKB1iPS7jd16H5MThYX7KnHzelN289Cuh8SMmaaA==
   dependencies:
     "@types/classnames" "2.2.6"
     "@types/debug" "0.0.31"
