@@ -25,7 +25,7 @@ module.exports = {
   appIndexJs: resolveApp('app/app.tsx'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('app'),
-  appTsConfig: resolveOwn('tsconfig.json'),
+  appTsConfig: resolveApp('tsconfig.json'),
 };
 
 const ownPackageJson = require('../package.json');
@@ -35,8 +35,11 @@ const reactScriptsLinked =
   fs.existsSync(reactScriptsPath) &&
   fs.lstatSync(reactScriptsPath).isSymbolicLink();
 
-// config before publish: we're in ./packages/react-scripts/internals
-if (!reactScriptsLinked) {
+const publishedPath = path.join('node_modules', 'pd-react-scripts', 'internals');
+const reactScriptsPublished = __dirname.indexOf(publishedPath) !== -1;
+
+// config before publish: we're in ./internals
+if (!reactScriptsLinked && !reactScriptsPublished) {
   module.exports = {
     dotenv: resolveOwn('template/.env'),
     appPath: resolveApp('.'),
