@@ -6,6 +6,7 @@
 
 'use strict';
 
+const path = require('path');
 const componentExists = require('../utils/componentExists');
 
 module.exports = {
@@ -54,17 +55,17 @@ module.exports = {
 
     const actions = [{
       type: 'add',
-      path: '../../app/components/{{properCase name}}/index.tsx',
+      path: path.join(process.cwd(), 'app/components/{{properCase name}}/index.tsx'),
       templateFile: componentTemplate,
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/components/{{properCase name}}/{{properCase name}}.spec.tsx',
+      path: path.join(process.cwd(), 'app/components/{{properCase name}}/{{properCase name}}.spec.tsx'),
       templateFile: './component/spec.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/components/{{properCase name}}/styles.ts',
+      path: path.join(process.cwd(), 'app/components/{{properCase name}}/styles.ts'),
       templateFile: './component/styles.hbs',
     }];
 
@@ -72,7 +73,7 @@ module.exports = {
     if (data.wantLoadable) {
       actions.push({
         type: 'add',
-        path: '../../app/components/{{properCase name}}/Loadable.ts',
+        path: path.join(process.cwd(), 'app/components/{{properCase name}}/Loadable.ts'),
         templateFile: './component/loadable.hbs',
         abortOnFail: true,
       });

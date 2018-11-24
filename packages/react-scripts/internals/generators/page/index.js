@@ -2,6 +2,7 @@
  * Container Generator
  */
 
+const path = require('path');
 const componentExists = require('../utils/componentExists');
 
 module.exports = {
@@ -30,22 +31,22 @@ module.exports = {
 
     const actions = [{
       type: 'add',
-      path: '../../app/pages/{{properCase name}}/index.tsx',
+      path: path.join(process.cwd(), 'app/pages/{{properCase name}}/index.tsx'),
       templateFile: componentTemplate,
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/pages/{{properCase name}}/{{properCase name}}.spec.tsx',
+      path: path.join(process.cwd(), 'app/pages/{{properCase name}}/{{properCase name}}.spec.tsx'),
       templateFile: './page/spec.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/pages/{{properCase name}}/Loadable.ts',
+      path: path.join(process.cwd(), 'app/pages/{{properCase name}}/Loadable.ts'),
       templateFile: './component/loadable.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/pages/{{properCase name}}/styles.ts',
+      path: path.join(process.cwd(), 'app/pages/{{properCase name}}/styles.ts'),
       templateFile: './page/styles.hbs',
       abortOnFail: true,
     }];
