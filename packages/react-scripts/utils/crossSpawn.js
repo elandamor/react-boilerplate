@@ -5,8 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-'use strict';
-
-var crossSpawn = require('cross-spawn');
+const crossSpawn = require('cross-spawn');
 
 module.exports = crossSpawn;
