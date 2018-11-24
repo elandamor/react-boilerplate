@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 // @remove-on-eject-begin
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -6,7 +7,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 // @remove-on-eject-end
-'use strict';
 
 const fs = require('fs');
 const path = require('path');
@@ -15,7 +15,7 @@ const paths = require('./paths');
 // Make sure that including paths.js after env.js will read .env variables.
 delete require.cache[require.resolve('./paths')];
 
-const NODE_ENV = process.env.NODE_ENV;
+const { NODE_ENV } = process.env;
 if (!NODE_ENV) {
   throw new Error(
     'The NODE_ENV environment variable is required but was not specified.'
@@ -23,7 +23,7 @@ if (!NODE_ENV) {
 }
 
 // https://github.com/bkeepers/dotenv#what-other-env-files-can-i-use
-var dotenvFiles = [
+const dotenvFiles = [
   `${paths.dotenv}.${NODE_ENV}.local`,
   `${paths.dotenv}.${NODE_ENV}`,
   // Don't include `.env.local` for `test` environment
@@ -38,7 +38,7 @@ var dotenvFiles = [
 // that have already been set.  Variable expansion is supported in .env files.
 // https://github.com/motdotla/dotenv
 // https://github.com/motdotla/dotenv-expand
-dotenvFiles.forEach(dotenvFile => {
+dotenvFiles.forEach((dotenvFile) => {
   if (fs.existsSync(dotenvFile)) {
     require('dotenv-expand')(
       require('dotenv').config({
@@ -60,8 +60,8 @@ dotenvFiles.forEach(dotenvFile => {
 const appDirectory = fs.realpathSync(process.cwd());
 process.env.NODE_PATH = (process.env.NODE_PATH || '')
   .split(path.delimiter)
-  .filter(folder => folder && !path.isAbsolute(folder))
-  .map(folder => path.resolve(appDirectory, folder))
+  .filter((folder) => folder && !path.isAbsolute(folder))
+  .map((folder) => path.resolve(appDirectory, folder))
   .join(path.delimiter);
 
 // Grab NODE_ENV and REACT_APP_* environment variables and prepare them to be
@@ -70,9 +70,10 @@ const REACT_APP = /^REACT_APP_/i;
 
 function getClientEnvironment(publicUrl) {
   const raw = Object.keys(process.env)
-    .filter(key => REACT_APP.test(key))
+    .filter((key) => REACT_APP.test(key))
     .reduce(
       (env, key) => {
+        // eslint-disable-next-line no-param-reassign
         env[key] = process.env[key];
         return env;
       },
@@ -90,6 +91,7 @@ function getClientEnvironment(publicUrl) {
   // Stringify all values so we can feed into Webpack DefinePlugin
   const stringified = {
     'process.env': Object.keys(raw).reduce((env, key) => {
+      // eslint-disable-next-line no-param-reassign
       env[key] = JSON.stringify(raw[key]);
       return env;
     }, {}),

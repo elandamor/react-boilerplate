@@ -59,6 +59,7 @@
     "cross-env": "5.2.0",
     "css-loader": "1.0.1",
     "debug": "4.1.0",
+    "dotenv-expand": "4.2.0",
     "dotenv-webpack": "1.5.7",
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.7.0",
