@@ -2913,6 +2913,11 @@ dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
+dotenv-expand@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-4.2.0.tgz#def1f1ca5d6059d24a766e587942c21106ce1275"
+  integrity sha1-3vHxyl1gWdJKdm5YeULCEQbOEnU=
+
 dotenv-webpack@1.5.7:
   version "1.5.7"
   resolved "https://registry.yarnpkg.com/dotenv-webpack/-/dotenv-webpack-1.5.7.tgz#c44395ab21d1fd28d79a90942a7b14b1debd145f"
@@ -8213,10 +8218,10 @@ pbkdf2@^3.0.3:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-pd-react-scripts@0.0.32:
-  version "0.0.32"
-  resolved "https://registry.yarnpkg.com/pd-react-scripts/-/pd-react-scripts-0.0.32.tgz#d1f649cae3335683cc37757d6740808236b60c87"
-  integrity sha512-pkCLEV3ZmfOJjjME8tyiV+Cu101kvCzIOEFZV56ZdJMfUsgKB1iPS7jd16H5MThYX7KnHzelN289Cuh8SMmaaA==
+pd-react-scripts@0.0.34:
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/pd-react-scripts/-/pd-react-scripts-0.0.34.tgz#901bd2ad6c2d37d1b386296197443dcdf2651855"
+  integrity sha512-GZ22HCP4vgQYzZeJBrSCpx/bDteEAcCDaWMQlfWeVYs1jHlZOTUKd80KZeaKWlpEfJA5PzooDy6bsSnlqTF0sg==
   dependencies:
     "@types/classnames" "2.2.6"
     "@types/debug" "0.0.31"
@@ -8246,6 +8251,7 @@ pd-react-scripts@0.0.32:
     cross-env "5.2.0"
     css-loader "1.0.1"
     debug "4.1.0"
+    dotenv-expand "4.2.0"
     dotenv-webpack "1.5.7"
     enzyme "3.7.0"
     enzyme-adapter-react-16 "1.7.0"

@@ -38,6 +38,6 @@
     "whatwg-fetch": "3.0.0"
   },
   "devDependencies": {
-    "pd-react-scripts": "0.0.32"
+    "pd-react-scripts": "0.0.34"
   }
 }
