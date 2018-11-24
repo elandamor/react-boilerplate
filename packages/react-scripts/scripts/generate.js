@@ -3,6 +3,7 @@ const path = require('path');
 
 const args = process.argv.slice(2);
 const script = path.join(__dirname, '../internals/generators/index.js');
+console.log({ args, script });
 
 function initGenerator() {
   try {
