@@ -21,6 +21,7 @@ export default createGlobalStyle`
 
   :root {
     --body-background: ${(props: any) => props.theme.palette.backgroundColor};
+    --brand-success: #34e79a;
   }
 
   html,

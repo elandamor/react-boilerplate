@@ -4,6 +4,8 @@
 
 import React, { Component } from 'react';
 // import { Helmet } from 'react-helmet';
+// Components
+import { LoadingBar } from '../../components';
 // Styles
 import Wrapper from './styles';
 
@@ -14,7 +16,9 @@ import Wrapper from './styles';
 class Home extends Component<{}, {}> {
   public render() {
     return (
-      <Wrapper />
+      <Wrapper>
+        <LoadingBar loading />
+      </Wrapper>
     );
   }
 }
