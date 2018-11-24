@@ -7,12 +7,13 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const OfflinePlugin = require('offline-plugin');
 const { HashedModuleIdsPlugin } = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const paths = require('../paths');
 
 module.exports = require('./webpack.base')({
   mode: 'production',
 
   // In production, we skip all hot-reloading stuff
-  entry: [path.join(process.cwd(), 'app/app.tsx')],
+  entry: [paths.appIndexJs],
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
@@ -30,7 +31,7 @@ module.exports = require('./webpack.base')({
   },
 
   plugins: [
-    new CleanWebpackPlugin([path.resolve(process.cwd(), 'build')], {
+    new CleanWebpackPlugin([paths.appBuild], {
       allowExternal: true,
       verbose: false, 
     }),

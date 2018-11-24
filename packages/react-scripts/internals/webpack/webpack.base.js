@@ -2,12 +2,11 @@
  * COMMON WEBPACK CONFIGURATION
  */
 /* eslint-disable import/no-extraneous-dependencies */
-const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
-const paths = require('../scripts/paths');
+const paths = require('../paths');
 
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
@@ -16,7 +15,7 @@ module.exports = (options) => ({
   output: Object.assign(
     {
       // Compile into js/build.js
-      path: path.resolve(process.cwd(), 'build'),
+      path: paths.appBuild,
       publicPath: '/',
     },
     options.output,
