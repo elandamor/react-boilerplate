@@ -20,12 +20,10 @@
     "esModuleInterop": true
   },
   "include": [
-    "app/**/*",
+    "app/**/*"
   ],
   "exclude": [
     "build",
-    "internals",
-    "node_modules",
-    "server"
+    "node_modules"
   ]
 }

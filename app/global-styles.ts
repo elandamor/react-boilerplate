@@ -4,7 +4,6 @@ export default createGlobalStyle`
   * {
     -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
-    /* outline: thin dashed red; */
   }
 
   *::-webkit-scrollbar {
@@ -21,7 +20,7 @@ export default createGlobalStyle`
   }
 
   :root {
-    --body-background: #fafafa;
+    --body-background: ${(props: any) => props.theme.palette.backgroundColor};
     --brand-success: #34e79a;
   }
 
@@ -48,40 +47,9 @@ export default createGlobalStyle`
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen
       ,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 
-    h1, h2, h3, h4, h5, h6 {
-      font-family: Georgia,serif;
-    }
-
     &.fontLoaded {
       font-family: 'Montserrat',-apple-system,BlinkMacSystemFont,Segoe UI
         ,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
-
-      h1, h2, h3, h4, h5, h6 {
-        font-family: Merriweather,Georgia,serif;
-      }
     }
-  }
-
-  .-fw400 {
-    font-weight: 400;
-  }
-
-  .-fw500 {
-    font-weight: 500;
-  }
-
-  .-fw700 {
-    font-weight: 700;
-  }
-
-  .-fw900 {
-    font-weight: 900;
-  }
-
-  .sr-only {
-    height: 0;
-    opacity: 0;
-    position: absolute;
-    width: 0;
   }
 `;

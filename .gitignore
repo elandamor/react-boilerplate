@@ -10,5 +10,3 @@ stats.json
 .env*
 
 *.log
-
-app/third-party/
