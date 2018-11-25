@@ -16,15 +16,14 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "include": [
-    "app/**/*",
+    "app/**/*"
   ],
   "exclude": [
     "build",
-    "internals",
-    "node_modules",
-    "server"
+    "node_modules"
   ]
 }

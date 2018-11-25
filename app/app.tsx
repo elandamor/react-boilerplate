@@ -1,23 +1,16 @@
 /**
- * app.js
+ * app.tsx
  *
  * This is the entry file for the application, only setup and boilerplate
  * code.
  */
 
-import bugsnag from 'bugsnag-js';
-import createPlugin from 'bugsnag-react';
-
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { ApolloProvider } from 'react-apollo';
 import FontFaceObserver from 'fontfaceobserver';
 import 'sanitize.css/sanitize.css';
-
-// Import apollo client
-import client from './configs/apollo';
 
 // Import root app
 import App from './containers/App';
@@ -28,32 +21,22 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=[name].[ext]!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
-// Import CSS reset and Global Styles
-import './global-styles';
-
-// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
+// Observe loading of Montserrat (to remove Montserrat, remove the <link> tag in
 // the index.html file and this observer)
 const montserratObserver = new FontFaceObserver('Montserrat', {});
 
-// When Open Sans is loaded, add a font-family using Open Sans to the body
+// When Montserrat is loaded, add a font-family using Montserrat to the body
 montserratObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 });
-
-const bugsnagClient = bugsnag('9d24977be84737cd07c89c02221caf9a');
-const BugSnag = bugsnagClient.use(createPlugin(React));
 
 const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
   ReactDOM.render(
-    <BugSnag>
-      <ApolloProvider client={client}>
-        <Router>
-          <App />
-        </Router>
-      </ApolloProvider>
-    </BugSnag>,
+    <Router>
+      <App />
+    </Router>,
     MOUNT_NODE,
   );
 };

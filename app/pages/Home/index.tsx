@@ -3,17 +3,21 @@
  */
 
 import React, { Component } from 'react';
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
+// Components
+import { LoadingBar } from '../../components';
 // Styles
 import Wrapper from './styles';
 
-class Home extends Component<{}, {}> {
-  protected wrapper: any;
+// For debugging only.
+// import { makeDebugger } from '../../lib';
+// const debug = makeDebugger('Home');
 
+class Home extends Component<{}, {}> {
   public render() {
     return (
       <Wrapper>
-        <Helmet title="Home | react-boilerplate" />
+        <LoadingBar loading />
       </Wrapper>
     );
   }
