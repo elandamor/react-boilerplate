@@ -1,7 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
-// Important modules this config uses
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const OfflinePlugin = require('offline-plugin');
@@ -37,7 +33,7 @@ module.exports = require('./webpack.base')({
     }),
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({
-      template: 'app/index.html',
+      template: paths.appHtml,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -91,7 +87,7 @@ module.exports = require('./webpack.base')({
       theme_color: '#b1624d',
       icons: [
         {
-          src: path.resolve('app/images/icon-512x512.png'),
+          src: paths.appIcon,
           sizes: [72, 96, 120, 128, 144, 152, 167, 180, 192, 384, 512],
         },
       ],
