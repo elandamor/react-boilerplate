@@ -115,7 +115,10 @@ module.exports = (options) => ({
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
-    new Dotenv(),
+    new Dotenv({
+      path: paths.dotenv,
+      
+    }),
     new ForkTsCheckerWebpackPlugin({
       checkSyntacticErrors: true,
       memoryLimit: 256,
