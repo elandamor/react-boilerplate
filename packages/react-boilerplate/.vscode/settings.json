@@ -4,7 +4,7 @@
   "files.exclude": {
     "node_modules": true,
     "**/node_modules": true,
-    "**/node_modules/**": true,
+    "**/node_modules/**": true
   },
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
