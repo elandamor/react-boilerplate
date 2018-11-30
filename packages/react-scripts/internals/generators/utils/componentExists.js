@@ -5,10 +5,10 @@
  */
 
 const fs = require('fs');
-const path = require('path');
+const paths = require('../../paths');
 
-const pageComponents = fs.readdirSync(path.join(process.cwd(), 'app/components'));
-const pageContainers = fs.readdirSync(path.join(process.cwd(), 'app/containers'));
+const pageComponents = fs.readdirSync(paths.appComponents);
+const pageContainers = fs.readdirSync(paths.appContainers);
 const components = pageComponents.concat(pageContainers);
 
 function componentExists(comp) {

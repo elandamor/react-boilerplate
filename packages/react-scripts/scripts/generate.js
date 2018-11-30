@@ -5,11 +5,10 @@ const args = process.argv.slice(2);
 const script = path.join(__dirname, '../internals/generators/index.js');
 
 function initGenerator() {
+  const command = `plop --plopfile ${script} ${args[0] || ''}`;
+
   try {
-    execSync(
-      `plop --plopfile ${script} ${args[1] || ''}`,
-      { stdio: 'inherit' }
-    );
+    execSync(command, { stdio: 'inherit' });
     return true;
   } catch (e) {
     return false;
