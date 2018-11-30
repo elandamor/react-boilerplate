@@ -1,6 +1,6 @@
 {
   "name": "pd-react-scripts",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "description": "Configuration and scripts for react-boilerplate",
   "author": "Thandolwethu Mpofu",
   "license": "MIT",
@@ -27,7 +27,6 @@
   "scripts": {
     "build": "node ./bin/react-scripts.js build",
     "generate": "node ./bin/react-scripts.js generate",
-    "prepublish": "npm version patch",
     "start": "cross-env NODE_ENV='development' node ./bin/react-scripts.js start",
     "start:prod": "cross-env NODE_ENV='production' node ./bin/react-scripts.js start",
     "test": "node ./bin/react-scripts.js test"
@@ -146,5 +145,6 @@
   },
   "optionalDependencies": {
     "fsevents": "2.0.1"
-  }
+  },
+  "gitHead": "c673e0c3f71c9c709bb9b0b2062a123bfb52344b"
 }
