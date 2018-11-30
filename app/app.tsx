@@ -21,13 +21,14 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=[name].[ext]!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
-// Observe loading of Montserrat (to remove Montserrat, remove the <link> tag in
-// the index.html file and this observer)
+// Observe loading of font(s) - to remove font(s), remove typeface imports in
+// global-styles.ts and remove th(is/ese) observer(s)
+const merriweatherObserver = new FontFaceObserver('Merriweather', {});
 const montserratObserver = new FontFaceObserver('Montserrat', {});
 
-// When Montserrat is loaded, add a font-family using Montserrat to the body
-montserratObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
+// When font(s) h(as/ave) been loaded, add font-family(s) to the body
+Promise.all([merriweatherObserver.load(), montserratObserver.load()]).then(() => {
+  document.body.classList.add('fontsLoaded');
 });
 
 const MOUNT_NODE = document.getElementById('app');
