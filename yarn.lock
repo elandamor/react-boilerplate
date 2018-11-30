@@ -4682,6 +4682,11 @@ har-validator@~5.1.0:
     ajv "^6.5.5"
     har-schema "^2.0.0"
 
+harmony-reflect@^1.4.6:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/harmony-reflect/-/harmony-reflect-1.6.1.tgz#c108d4f2bb451efef7a37861fdbdae72c9bdefa9"
+  integrity sha512-WJTeyp0JzGtHcuMsi7rw2VwtkvLa+JyfEKJCFyfcS0+CDkjQ5lHPu7zEhFZP+PDSRrEgXa5Ah0l1MbgbE41XjA==
+
 has-ansi@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91"
@@ -5011,6 +5016,13 @@ icss-utils@^2.1.0:
   integrity sha1-g/Cg7DeL8yRheLbCrZE28TWxyWI=
   dependencies:
     postcss "^6.0.1"
+
+identity-obj-proxy@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/identity-obj-proxy/-/identity-obj-proxy-3.0.0.tgz#94d2bda96084453ef36fbc5aaec37e0f79f1fc14"
+  integrity sha1-lNK9qWCERT7zb7xarsN+D3nx/BQ=
+  dependencies:
+    harmony-reflect "^1.4.6"
 
 ieee754@^1.1.4:
   version "1.1.12"
@@ -8271,10 +8283,10 @@ pbkdf2@^3.0.3:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-pd-react-scripts@0.0.37:
-  version "0.0.37"
-  resolved "https://registry.yarnpkg.com/pd-react-scripts/-/pd-react-scripts-0.0.37.tgz#cb42fa6a0166478c4d1f1a6de37421632f104665"
-  integrity sha512-cxBId4Y/zcruQTlMxp6gF88MCAapzUD8sLchTYBTlRx0K1cSwAwEpJXcKJeF0XzWRpriTJ6mhe24OsD/L69S6Q==
+pd-react-scripts@0.0.38:
+  version "0.0.38"
+  resolved "https://registry.yarnpkg.com/pd-react-scripts/-/pd-react-scripts-0.0.38.tgz#2cba6c67973b247d979d430ccf33084d0cb933c2"
+  integrity sha512-SqGzhCh4xXMoCLLTr1p60QOeY/eAWCy0CY1rxN4qZS+ojwnvQ6DGGkjwPC24RcaswrJZXdhYUwJeENSDPmIz6w==
   dependencies:
     "@types/classnames" "2.2.6"
     "@types/debug" "0.0.31"
@@ -8325,6 +8337,7 @@ pd-react-scripts@0.0.37:
     html-loader "0.5.5"
     html-webpack-plugin "3.2.0"
     husky "1.2.0"
+    identity-obj-proxy "3.0.0"
     image-webpack-loader "4.5.0"
     ip "1.1.5"
     jest "23.6.0"
