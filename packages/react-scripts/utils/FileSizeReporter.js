@@ -1,10 +1,11 @@
-/* eslint-disable no-console */
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
+/* eslint-disable no-console */
 
 const fs = require('fs');
 const path = require('path');
@@ -54,6 +55,7 @@ function measureFileSizesBeforeBuild(buildFolder) {
   return new Promise((resolve) => {
     recursive(buildFolder, (err, fileNames) => {
       let sizes;
+
       if (!err && fileNames) {
         sizes = fileNames.filter(canReadAsset).reduce((memo, fileName) => {
           const contents = fs.readFileSync(fileName);
@@ -63,6 +65,7 @@ function measureFileSizesBeforeBuild(buildFolder) {
           return memo;
         }, {});
       }
+
       resolve({
         root: buildFolder,
         sizes: sizes || {},
@@ -90,6 +93,7 @@ function printFileSizesAfterBuild(
           const size = gzipSize(fileContents);
           const previousSize = sizes[removeFileNameHash(root, asset.name)];
           const difference = getDifferenceLabel(size, previousSize);
+
           return {
             folder: path.join(
               path.basename(buildFolder),
@@ -110,21 +114,26 @@ function printFileSizesAfterBuild(
   );
 
   let suggestBundleSplitting = false;
+
   assets.forEach((asset) => {
     let { sizeLabel } = asset;
     const sizeLength = stripAnsi(sizeLabel).length;
+
     if (sizeLength < longestSizeLabelLength) {
       const rightPadding = ' '.repeat(longestSizeLabelLength - sizeLength);
       sizeLabel += rightPadding;
     }
+
     const isMainBundle = asset.name.indexOf('main.') === 0;
     const maxRecommendedSize = isMainBundle
       ? maxBundleGzipSize
       : maxChunkGzipSize;
     const isLarge = maxRecommendedSize && asset.size > maxRecommendedSize;
+
     if (isLarge && path.extname(asset.name) === '.js') {
       suggestBundleSplitting = true;
     }
+
     console.log(
       `  ${ 
         isLarge ? chalk.yellow(sizeLabel) : sizeLabel 

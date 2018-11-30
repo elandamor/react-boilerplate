@@ -23,7 +23,7 @@ const app = express();
 // app.use('/api', myApi);
 
 // In production generate required files if missing
-if (!isDev && !checkRequiredFiles([(paths.appBuild)], { silent: true })) {
+if (!isDev && !checkRequiredFiles([paths.appBuild], { silent: true })) {
   const command = `node ${path.join(__dirname, '../bin/react-scripts.js')} build --silent`;
 
   try {
