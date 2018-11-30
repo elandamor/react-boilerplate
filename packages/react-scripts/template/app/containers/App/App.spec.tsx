@@ -10,7 +10,7 @@ describe('<App />', () => {
   it('should render App without crashing', () => {
     const component = renderer.create(
       <Router>
-        <App />        
+        <App />
       </Router>
     ).toJSON();
 

@@ -4,7 +4,20 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "build": "cd ./packages/react-scripts && node ./bin/react-scripts build",
+    "generate": "cd ./packages/react-scripts && node ./bin/react-scripts generate",
+    "start": "cd ./packages/react-scripts && node ./bin/react-scripts start",
+    "test": "cd ./packages/react-scripts && node ./bin/react-scripts test"
+  },
   "devDependencies": {
-    "lerna": "3.5.1"
+    "eslint": "5.9.0",
+    "husky": "1.2.0",
+    "jest": "23.6.0",
+    "lerna": "3.5.1",
+    "lerna-changelog": "0.8.2",
+    "lint-staged": "8.1.0",
+    "prettier": "1.15.3",
+    "puppeteer": "1.11.0"
   }
 }
