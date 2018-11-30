@@ -27,9 +27,10 @@
   "scripts": {
     "build": "node ./bin/react-scripts.js build",
     "generate": "node ./bin/react-scripts.js generate",
+    "prepublish": "npm version patch",
     "start": "cross-env NODE_ENV='development' node ./bin/react-scripts.js start",
     "start:prod": "cross-env NODE_ENV='production' node ./bin/react-scripts.js start",
-    "prepublish": "npm version patch"
+    "test": "node ./bin/react-scripts.js test"
   },
   "dependencies": {
     "@types/classnames": "2.2.6",

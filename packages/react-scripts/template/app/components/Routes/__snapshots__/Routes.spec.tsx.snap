@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoadingBar /> should display a loading bar 1`] = `
+exports[`<Routes /> should render Routes without crashing 1`] = `
 .c0 {
   background: var(--brand-success,#000000);
   display: none;
@@ -24,6 +24,6 @@ exports[`<LoadingBar /> should display a loading bar 1`] = `
 }
 
 <div
-  className="c-loadingBar c0"
+  className="c-loadingBar -loading c0"
 />
 `;
