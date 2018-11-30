@@ -1,6 +1,8 @@
 /* eslint-disable consistent-return, import/order */
 
 const express = require('express');
+const { execSync } = require('child_process');
+const path = require('path');
 const logger = require('./logger');
 
 const argv = require('./argv');
@@ -12,16 +14,28 @@ const ngrok =
   (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel
     ? require('ngrok')
     : false;
-const { resolve } = require('path');
+const paths = require('../internals/paths');
+const checkRequiredFiles = require('../utils/checkRequiredFiles');
 
 const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
+// In production generate required files if missing
+if (!isDev && !checkRequiredFiles([(paths.appBuild)], { silent: true })) {
+  const command = `node ${path.join(__dirname, '../bin/react-scripts.js')} build --silent`;
+
+  try {
+    execSync(command, { stdio: 'inherit' });
+  } catch (e) {
+    process.exit(1);
+  }
+}
+
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
-  outputPath: resolve(process.cwd(), 'build'),
+  outputPath: paths.appBuild,
   publicPath: '/',
 });
 
