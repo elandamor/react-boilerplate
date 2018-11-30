@@ -14,12 +14,11 @@ module.exports = (options) => ({
   entry: options.entry,
   output: Object.assign(
     {
-      // Compile into js/build.js
       path: paths.appBuild,
       publicPath: '/',
     },
     options.output,
-  ), // Merge with env dependent settings
+  ),
   mode: options.mode,
   optimization: options.optimization,
   module: {

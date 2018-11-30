@@ -48,12 +48,19 @@ module.exports = (resolve, rootDir) => {
     testEnvironment: 'jsdom',
     testURL: 'http://localhost',
     transform: {
-      "^.+\\.tsx?$": "ts-jest"
+      "^.+\\.tsx?$": "ts-jest",
+      '^.+\\.css$': resolve('internals/jest/cssTransform.js'),
+      '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': resolve(
+        'internals/jest/fileTransform.js'
+      ),
     },
     transformIgnorePatterns: [
       '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
       '^.+\\.module\\.(css|sass|scss)$',
     ],
+    moduleNameMapper: {
+      '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
+    },
     moduleFileExtensions: [
       "ts",
       "tsx",
