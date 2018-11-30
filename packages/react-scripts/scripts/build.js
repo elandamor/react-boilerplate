@@ -17,20 +17,29 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
 
+const args = process.argv.slice(2);
+
 const compiler = webpack(config);
 
 console.log('Creating an optimized production build...');
 
 compiler.run((err, stats) => {
   if (err) {
+    console.log(chalk.red('An error occured during compilation.'));
     return false;
   }
 
-  console.log(chalk.green('Compiled successfully.\n'));
+  console.log(chalk.green('Compiled successfully.'));
+
+  if (args.includes('--silent')) {
+    return true;
+  }
 
   measureFileSizesBeforeBuild(paths.appBuild)
   .then((previousFileSizes) => {
-    console.log('File sizes after gzip:\n');
+    console.log();    
+    console.log('File sizes after gzip:');
+    console.log();    
     printFileSizesAfterBuild(
       stats,
       previousFileSizes,
