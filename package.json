@@ -6,8 +6,8 @@
   ],
   "scripts": {
     "build": "cd ./packages/react-scripts && node ./bin/react-scripts build",
-    "create-react-boilerplate": "node tasks/rb.js",
     "generate": "cd ./packages/react-scripts && node ./bin/react-scripts generate",
+    "setup": "node tasks/setup.js",
     "start": "cd ./packages/react-scripts && node ./bin/react-scripts start",
     "test": "cd ./packages/react-scripts && node ./bin/react-scripts test"
   },
