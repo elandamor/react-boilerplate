@@ -10,7 +10,7 @@
   },
   "resolutions": {
     "@types/node": "8.10.30",
-    "@types/react": "16.7.10",
+    "@types/react": "16.7.11",
     "@types/react-router-dom": "4.3.1"
   },
   "files": [
@@ -34,15 +34,12 @@
   "dependencies": {
     "@types/classnames": "2.2.6",
     "@types/debug": "0.0.31",
-    "@types/enzyme": "3.1.15",
-    "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/fontfaceobserver": "0.0.6",
     "@types/graphql": "14.0.3",
     "@types/intl": "1.2.0",
     "@types/jest": "23.3.10",
     "@types/lodash": "4.14.118",
-    "@types/puppeteer": "1.10.1",
-    "@types/react": "16.7.10",
+    "@types/react": "16.7.11",
     "@types/react-dom": "16.0.11",
     "@types/react-helmet": "5.0.7",
     "@types/react-measure": "2.0.4",
@@ -62,9 +59,6 @@
     "css-loader": "1.0.1",
     "debug": "4.1.0",
     "dotenv-webpack": "1.5.7",
-    "enzyme": "3.7.0",
-    "enzyme-adapter-react-16": "1.7.0",
-    "enzyme-to-json": "3.3.4",
     "eslint": "5.9.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-config-prettier": "3.3.0",
@@ -95,7 +89,6 @@
     "offline-plugin": "5.0.6",
     "plop": "2.1.0",
     "prettier": "1.15.3",
-    "puppeteer": "1.11.0",
     "raf": "3.4.1",
     "react-test-renderer": "16.6.3",
     "recursive-readdir": "^2.2.2",
