@@ -38,15 +38,14 @@ const reactScriptsLinked =
   fs.existsSync(reactScriptsPath) &&
   fs.lstatSync(reactScriptsPath).isSymbolicLink();
 
-const publishedPath = path.join('node_modules', 'pd-react-scripts', 'internals');
-const reactScriptsPublished = __dirname.indexOf(publishedPath) !== -1;
-
-// config before publish: we're in ./internals
-if (!reactScriptsLinked && !reactScriptsPublished) {
+// config before publish: we're in ./packages/react-scripts/internals
+if (!reactScriptsLinked &&
+  __dirname.indexOf(path.join('packages', 'react-scripts', 'internals')) !== -1
+) {
   module.exports = {
     dotenv: resolveOwn('template/.env'),
     appPath: resolveApp('.'),
-    appBuild: resolveOwn('build'),
+    appBuild: resolveOwn('../../build'),
     appComponents: resolveApp('template/app/components'),
     appContainers: resolveApp('template/app/containers'),
     appHtml: resolveOwn('template/app/index.html'),
