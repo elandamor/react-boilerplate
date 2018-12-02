@@ -11,14 +11,15 @@ const getPackageName = require('./getPackageName');
 const install = require('./install');
 const setCaretRangeForRuntimeDeps = require('./setCaretRangeForRuntimeDeps');
 
+// TODO: Dependencies should be in their own file, for better maintainability
 const dependencies = [
   "classnames@2.2.6",
   "fontfaceobserver@2.0.13",
   "history@4.7.2",
   "hoist-non-react-statics@3.2.0",
   "intl@1.2.5",
-  "react@16.6.3",
-  "react-dom@16.6.3",
+  "react",
+  "react-dom",
   "react-helmet@5.2.0",
   "react-measure@2.1.3",
   "react-router-dom@4.3.1",
@@ -30,7 +31,7 @@ const dependencies = [
 ];
 
 const devDependencies = [
-  "react-scripts"
+  "pd-react-scripts"
 ];
 
 function run(
@@ -44,25 +45,21 @@ function run(
   usePnp
 ) {
   const packageToInstall = getInstallPackage(version, originalDirectory);
-  const allDependencies = dependencies.concat(devDependencies);
+  const allDependencies = {
+    dependencies,
+    devDependencies
+  };
 
   console.log('Installing packages. This might take a couple of minutes.');
+  console.log();
   getPackageName(packageToInstall)
     .then((packageName) =>
       checkIfOnline(useYarn).then((isOnline) => ({
         isOnline,
         packageName,
-      }))
-    )
+      })))
     .then((info) => {
       const { isOnline, packageName } = info;
-
-      console.log(
-        `Installing ${chalk.cyan('react')}, ${chalk.cyan(
-          'react-dom'
-        )}, and ${chalk.cyan(packageName)}...`
-      );
-      console.log();
 
       return install(
         root,
@@ -79,8 +76,6 @@ function run(
 
       const nodeArgs = [];
 
-      return;
-
       await executeNodeScript(
         {
           cwd: process.cwd(),
@@ -92,15 +87,6 @@ function run(
         init.apply(null, JSON.parse(process.argv[1]));
       `
       );
-
-      if (version === 'react-scripts@0.9.x') {
-        console.log(
-          chalk.yellow(
-            `\nNote: the project was bootstrapped with an old unsupported version of tools.\n` +
-              `Please update to Node >=6 and npm >=3 to get supported tools in new projects.\n`
-          )
-        );
-      }
     })
     .catch((reason) => {
       console.log();

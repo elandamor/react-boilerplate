@@ -1,3 +1,5 @@
+const { unpack } = require('tar-pack');
+
 function extractStream(stream, dest) {
   return new Promise((resolve, reject) => {
     stream.pipe(

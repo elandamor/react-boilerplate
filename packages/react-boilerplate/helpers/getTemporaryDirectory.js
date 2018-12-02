@@ -1,3 +1,5 @@
+const tmp = require('tmp');
+
 function getTemporaryDirectory() {
   return new Promise((resolve, reject) => {
     // Unsafe cleanup lets us recursively delete the directory if it contains

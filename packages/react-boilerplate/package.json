@@ -5,12 +5,14 @@
   "repository": "elandamor/react-boilerplate",
   "license": "MIT",
   "engines": {
-    "node": ">=4"
+    "npm": ">=6",
+    "node": ">=8"
   },
   "bugs": {
     "url": "https://github.com/elandamor/react-boilerplate/issues"
   },
   "files": [
+    "helpers",
     "index.js",
     "reactBoilerplate.js"
   ],

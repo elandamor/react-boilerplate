@@ -1,3 +1,8 @@
+const dns = require('dns');
+const url = require('url');
+
+const getProxy = require('./getProxy');
+
 function checkIfOnline(useYarn) {
   if (!useYarn) {
     // Don't ping the Yarn registry.

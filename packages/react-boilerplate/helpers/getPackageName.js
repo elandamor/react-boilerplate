@@ -1,3 +1,12 @@
+/* eslint-disable no-console */
+const chalk = require('chalk');
+const fs = require('fs-extra');
+const path = require('path');
+const hyperquest = require('hyperquest');
+
+const extractStream = require('./extractStream');
+const getTemporaryDirectory = require('./getTemporaryDirectory');
+
 // Extract package name from tarball url or path.
 function getPackageName(installPackage) {
   if (installPackage.match(/^.+\.(tgz|tar\.gz)$/)) {

@@ -1,3 +1,5 @@
+const spawn = require('cross-spawn');
+
 function executeNodeScript({ cwd, args }, data, source) {
   return new Promise((resolve, reject) => {
     const child = spawn(

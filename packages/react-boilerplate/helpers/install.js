@@ -2,7 +2,9 @@
 const chalk = require('chalk');
 const spawn = require('cross-spawn');
 
-function install(root, useYarn, usePnp, dependencies, verbose, isOnline) {
+function install(root, useYarn, usePnp, allDependencies, verbose, isOnline) {
+  const { dependencies, devDependencies } = allDependencies;
+
   return new Promise((resolve, reject) => {
     let command;
     let args;
@@ -15,7 +17,7 @@ function install(root, useYarn, usePnp, dependencies, verbose, isOnline) {
       if (usePnp) {
         args.push('--enable-pnp');
       }
-      [].push.apply(args, dependencies);
+      [].push.apply(args, dependencies.concat(devDependencies));
 
       // Explicitly set cwd() to work around issues like
       // https://github.com/facebook/create-react-app/issues/3326.
@@ -38,7 +40,7 @@ function install(root, useYarn, usePnp, dependencies, verbose, isOnline) {
         '--save-exact',
         '--loglevel',
         'error',
-      ].concat(dependencies);
+      ].concat(dependencies).concat(devDependencies);
 
       if (usePnp) {
         console.log(chalk.yellow("NPM doesn't support PnP."));

@@ -1,3 +1,7 @@
+/* eslint-disable no-console */
+const chalk = require('chalk');
+const spawn = require('cross-spawn');
+
 function checkThatNpmCanReadCwd() {
   const cwd = process.cwd();
   let childOutput = null;

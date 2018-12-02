@@ -1,3 +1,7 @@
+/* eslint-disable no-console */
+const chalk = require('chalk');
+const semver = require('semver');
+
 function makeCaretRange(dependencies, name) {
   const version = dependencies[name];
 

@@ -1,3 +1,5 @@
+const { execSync } = require('child_process');
+
 function getProxy() {
   if (process.env.https_proxy) {
     return process.env.https_proxy;

@@ -1,3 +1,6 @@
+const { execSync } = require('child_process');
+const semver = require('semver');
+
 function checkYarnVersion() {
   let hasMinYarnPnp = false;
   let yarnVersion = null;

@@ -7,21 +7,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// const validateProjectName = require('validate-npm-package-name');
 const chalk = require('chalk');
 const commander = require('commander');
-// const fs = require('fs-extra');
-// const path = require('path');
-// const { execSync } = require('child_process');
-// const spawn = require('cross-spawn');
-// const semver = require('semver');
-// const dns = require('dns');
-// const tmp = require('tmp');
-// const { unpack } = require('tar-pack');
-// const url = require('url');
-// const hyperquest = require('hyperquest');
 const envinfo = require('envinfo');
-// const os = require('os');
 
 const createApp = require('./helpers/createApp');
 
@@ -86,22 +74,21 @@ const program = new commander.Command(packageJson.name)
 
 if (program.info) {
   console.log(chalk.bold('\nEnvironment Info:'));
-  return envinfo
-    .run(
-      {
-        System: ['OS', 'CPU'],
-        Binaries: ['Node', 'npm', 'Yarn'],
-        Browsers: ['Chrome', 'Edge', 'Internet Explorer', 'Firefox', 'Safari'],
-        npmPackages: ['react', 'react-dom', 'react-scripts'],
-        npmGlobalPackages: ['create-react-app'],
-      },
-      {
-        clipboard: false,
-        duplicates: true,
-        showNotFound: true,
-      }
-    )
-    .then(console.log);
+  return envinfo.run(
+    {
+      System: ['OS', 'CPU'],
+      Binaries: ['Node', 'npm', 'Yarn'],
+      Browsers: ['Chrome', 'Edge', 'Internet Explorer', 'Firefox', 'Safari'],
+      npmPackages: ['react', 'react-dom', 'react-scripts'],
+      npmGlobalPackages: ['create-react-app'],
+    },
+    {
+      clipboard: false,
+      duplicates: true,
+      showNotFound: true,
+    }
+  )
+  .then(console.log);
 }
 
 if (typeof projectName === 'undefined') {
