@@ -56,28 +56,6 @@ module.exports = (options) => ({
         use: 'file-loader',
       },
       {
-        test: /\.(gif|jpe?g|png|svg|webp)$/i,
-        use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-                quality: 65,
-              },
-              pngquant: {
-                quality: '65-90',
-                speed: 4,
-              },
-              webp: {
-                quality: 75,
-              },
-            },
-          },
-        ],
-      },
-      {
         test: /\.html$/,
         use: 'html-loader',
       },
@@ -86,7 +64,7 @@ module.exports = (options) => ({
         use: 'json-loader',
       },
       {
-        test: /\.(mp4|webm)$/,
+        test: /\.(gif|jpe?g|png|svg|webp|mp4|webm)$/,
         use: {
           loader: 'url-loader',
           options: {
@@ -116,7 +94,7 @@ module.exports = (options) => ({
     }),
     new Dotenv({
       path: paths.dotenv,
-      
+
     }),
     new ForkTsCheckerWebpackPlugin({
       checkSyntacticErrors: true,
