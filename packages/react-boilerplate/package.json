@@ -14,7 +14,8 @@
   "files": [
     "helpers",
     "index.js",
-    "reactBoilerplate.js"
+    "reactBoilerplate.js",
+    "yarn.lock.cached"
   ],
   "bin": {
     "react-boilerplate": "./index.js"

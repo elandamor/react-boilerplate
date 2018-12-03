@@ -1,11 +1,11 @@
 {
-  "name": "root",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
     "build": "cd ./packages/react-scripts && node ./bin/react-scripts build",
+    "compile:lockfile": "node tasks/compile-lockfile.js",
     "generate": "cd ./packages/react-scripts && node ./bin/react-scripts generate",
     "setup": "node tasks/setup.js",
     "start": "cd ./packages/react-scripts && node ./bin/react-scripts start",
