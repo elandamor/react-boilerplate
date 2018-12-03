@@ -26,9 +26,13 @@ module.exports = {
   appHtml: resolveApp('app/index.html'),
   appIcon: resolveApp('app/images/icon-512x512.png'),
   appIndexJs: resolveApp('app/app.tsx'),
+  appNodeModules: resolveApp('node_modules'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('app'),
   appTsConfig: resolveApp('tsconfig.json'),
+  // These properties only exist before ejecting:
+  ownPath: resolveOwn('.'),
+  ownNodeModules: resolveOwn('node_modules'), // This is empty on npm 3
 };
 
 const ownPackageJson = require('../package.json');
@@ -51,9 +55,13 @@ if (!reactScriptsLinked &&
     appHtml: resolveOwn('template/app/index.html'),
     appIcon: resolveApp('template/app/images/icon-512x512.png'),
     appIndexJs: resolveOwn('template/app/app.tsx'),
+    appNodeModules: resolveOwn('node_modules'),
     appPackageJson: resolveOwn('package.json'),
     appSrc: resolveOwn('template/app'),
     appTsConfig: resolveOwn('template/tsconfig.json'),
+    // These properties only exist before ejecting:
+    ownPath: resolveOwn('.'),
+    ownNodeModules: resolveOwn('node_modules'),
   };
 }
 // @remove-on-eject-end

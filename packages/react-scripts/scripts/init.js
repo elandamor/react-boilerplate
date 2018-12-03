@@ -22,6 +22,8 @@ const execSync = require('child_process');
 const os = require('os');
 const spawn = require('cross-spawn');
 
+const verifyTypeScriptSetup = require('../utils/verifyTypeScriptSetup');
+
 function isInGitRepository() {
   try {
     execSync('git rev-parse --is-inside-work-tree', { stdio: 'ignore' });
@@ -106,7 +108,7 @@ module.exports = function init(
   const reactScriptsVersion = appPackage.dependencies['pd-react-scripts'];
 
   // Move react-scripts to devDependencies
-  delete appPackage.dependencies['pd-react-scripts']; 
+  delete appPackage.dependencies['pd-react-scripts'];
   appPackage.devDependencies = {
     'pd-react-scripts': reactScriptsVersion
   };
@@ -136,6 +138,9 @@ module.exports = function init(
     );
     return;
   }
+
+  console.log('Verifying typescript setup');
+  verifyTypeScriptSetup();
 
   let command;
   let args;
@@ -177,6 +182,8 @@ module.exports = function init(
       return;
     }
   }
+
+  verifyTypeScriptSetup();
 
   if (tryGitInit(appPath)) {
     console.log();
