@@ -26,7 +26,7 @@ function verifyNoTypeScript() {
     console.warn(
       chalk.yellow(
         `We detected TypeScript in your project (${chalk.bold(
-          `src${path.sep}${typescriptFiles[0]}`
+          `app${path.sep}${typescriptFiles[0]}`
         )}) and created a ${chalk.bold('tsconfig.json')} file for you.`
       )
     );
@@ -216,9 +216,9 @@ function verifyTypeScriptSetup() {
 
   // tsconfig will have the merged "include" and "exclude" by this point
   if (parsedTsConfig.include == null) {
-    appTsConfig.include = ['src'];
+    appTsConfig.include = ['app'];
     messages.push(
-      `${chalk.cyan('include')} should be ${chalk.cyan.bold('src')}`
+      `${chalk.cyan('include')} should be ${chalk.cyan.bold('app')}`
     );
   }
 
