@@ -78,6 +78,13 @@ function createApp(
     }
   }
 
+  if (useYarn) {
+    fs.copySync(
+      require.resolve('../yarn.lock.cached'),
+      path.join(root, 'yarn.lock')
+    );
+  }
+
   run(
     root,
     appName,
