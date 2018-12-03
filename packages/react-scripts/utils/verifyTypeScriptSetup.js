@@ -86,6 +86,8 @@ function verifyTypeScriptSetup() {
   }
 
   const compilerOptions = {
+    outDir: { value: 'build' },
+    rootDir: { value: 'app' },
     // These are suggested values and will be set when not present in the
     // tsconfig.json
     // 'parsedValue' matches the output value from ts.parseJsonConfigFileContent()
@@ -93,12 +95,14 @@ function verifyTypeScriptSetup() {
       parsedValue: ts.ScriptTarget.ES5,
       suggested: 'es5',
     },
+    lib: { value: ["es6", "dom", "esnext"] },
     allowJs: { suggested: true },
     skipLibCheck: { suggested: false },
     esModuleInterop: { suggested: true },
     allowSyntheticDefaultImports: { suggested: true },
     strict: { suggested: true },
     forceConsistentCasingInFileNames: { suggested: true },
+    noUnusedLocals: { suggested: true },
 
     // These values are required and cannot be changed by the user
     // Keep this in sync with the webpack config
@@ -117,8 +121,7 @@ function verifyTypeScriptSetup() {
     noEmit: { value: true },
     jsx: {
       parsedValue: ts.JsxEmit.Preserve,
-      value: 'preserve',
-      reason: 'JSX is compiled by Babel',
+      value: 'react',
     },
     // We do not support absolute imports, though this may come as a future
     // enhancement
@@ -216,9 +219,16 @@ function verifyTypeScriptSetup() {
 
   // tsconfig will have the merged "include" and "exclude" by this point
   if (parsedTsConfig.include == null) {
-    appTsConfig.include = ['app'];
+    appTsConfig.include = ['app/**/*'];
     messages.push(
       `${chalk.cyan('include')} should be ${chalk.cyan.bold('app')}`
+    );
+  }
+
+  if (parsedTsConfig.exclude == null) {
+    appTsConfig.exclude = ['build', 'node_modules'];
+    messages.push(
+      `${chalk.cyan('exclude')} should be ${chalk.cyan.bold('build, node_modules')}`
     );
   }
 
