@@ -1,46 +1,24 @@
 {
-  "name": "react-boilerplate",
-  "version": "0.1.0",
-  "description": "A highly scalable, offline-first foundation with the best developer experience and a focus on performance and best practices.",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/elandamor/react-boilerplate.git"
-  },
-  "author": "Thandolwethu Mpofu",
-  "license": "MIT",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "react-scripts build",
-    "generate": "react-scripts generate",
-    "start": "cross-env NODE_ENV=development react-scripts start",
-    "start:prod": "cross-env NODE_ENV=production react-scripts start",
-    "test": "react-scripts test"
-  },
-  "lint-staged": {
-    "**/*.{ts,tsx}": [
-      "prettier --write",
-      "tslint --fix",
-      "git add"
-    ]
-  },
-  "dependencies": {
-    "classnames": "2.2.6",
-    "fontfaceobserver": "2.0.13",
-    "history": "4.7.2",
-    "hoist-non-react-statics": "3.2.0",
-    "intl": "1.2.5",
-    "react": "16.6.3",
-    "react-dom": "16.6.3",
-    "react-helmet": "5.2.0",
-    "react-measure": "2.1.3",
-    "react-router-dom": "4.3.1",
-    "sanitize.css": "8.0.0",
-    "styled-components": "4.1.2",
-    "typeface-merriweather": "0.0.54",
-    "typeface-montserrat": "0.0.54",
-    "whatwg-fetch": "3.0.0"
+    "build": "cd ./packages/react-scripts && node ./bin/react-scripts build",
+    "compile:lockfile": "node tasks/compile-lockfile.js",
+    "generate": "cd ./packages/react-scripts && node ./bin/react-scripts generate",
+    "setup": "node tasks/setup.js",
+    "start": "cd ./packages/react-scripts && node ./bin/react-scripts start",
+    "test": "cd ./packages/react-scripts && node ./bin/react-scripts test"
   },
   "devDependencies": {
-    "pd-react-scripts": "0.0.38"
+    "eslint": "5.9.0",
+    "husky": "1.2.0",
+    "jest": "23.6.0",
+    "lerna": "3.5.1",
+    "lerna-changelog": "0.8.2",
+    "lint-staged": "8.1.0",
+    "prettier": "1.15.3",
+    "puppeteer": "1.11.0"
   }
 }

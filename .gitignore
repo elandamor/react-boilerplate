@@ -1,12 +1,14 @@
-coverage
+.idea/
+.vscode/
+node_modules/
 build
-node_modules
-stats.json
-
-# Cruft
 .DS_Store
-.idea
-
-.env*
-
-*.log
+*.tgz
+my-app*
+template/app/__snapshots__/
+lerna-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/.changelog
+.npm/
