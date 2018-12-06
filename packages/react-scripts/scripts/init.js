@@ -139,7 +139,6 @@ module.exports = function init(
     return;
   }
 
-  console.log('Verifying typescript setup');
   verifyTypeScriptSetup();
 
   let command;
