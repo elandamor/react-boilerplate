@@ -6,8 +6,8 @@ import Wrapper from './styles';
 
 /**
  * @render react
- * @name Home page
- * @description Home page.
+ * @name NotFound page
+ * @description NotFound page.
  */
 
 interface IProps {
@@ -18,7 +18,7 @@ interface IState {
   [key: string]: any;
 }
 
-class Home extends Component<IProps, IState> {
+class NotFound extends Component<IProps, IState> {
   state:IState = {}
 
   public render() {
@@ -27,12 +27,12 @@ class Home extends Component<IProps, IState> {
     return (
       <Wrapper className={classNames('', className)}>
         <Helmet>
-          <title>Home</title>
-          <meta name="description" content="Description of Home" />
+          <title>NotFound</title>
+          <meta name="description" content="Description of NotFound" />
         </Helmet>
       </Wrapper>
     );
   }
 }
 
-export default Home;
+export default NotFound;
