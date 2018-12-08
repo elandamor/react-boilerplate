@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-// @ts-ignore
 import React, { Component, Suspense } from 'react';
 import Measure from 'react-measure';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
@@ -12,27 +11,8 @@ import routes from './routes';
 import GlobalStyles from '../../global-styles';
 import Wrapper from './styles';
 
-// import { makeDebugger } from '../../lib';
-// const debug = makeDebugger('App');
-
-export const breakpoints = (width: number) => {
-  if (width < 600) {
-    return 'v-xsmall';
-  }
-  if (width >= 600 && width < 1024) {
-    return 'v-small';
-  }
-  if (width >= 1024 && width < 1440) {
-    return 'v-medium';
-  }
-  if (width >= 1440 && width < 1920) {
-    return 'v-large';
-  }
-  if (width >= 1920) {
-    return 'v-xlarge';
-  }
-  return 'v-unknown';
-};
+import { breakpoints, makeDebugger } from '../../utils';
+const debug = makeDebugger('App');
 
 /* tslint:disable:object-literal-sort-keys */
 const themeLight = {
@@ -82,6 +62,8 @@ class App extends Component<IProps, IState> {
 
   public componentDidMount() {
     this.componentIsMounted = true;
+
+    debug('componentIsMounted');
   }
 
   public componentWillUpdate(nextProps: IProps) {
