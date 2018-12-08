@@ -28,6 +28,7 @@ module.exports = {
   appIndexJs: resolveApp('app/app.tsx'),
   appNodeModules: resolveApp('node_modules'),
   appPackageJson: resolveApp('package.json'),
+  appPages: resolveApp('app/pages'),
   appSrc: resolveApp('app'),
   appTsConfig: resolveApp('tsconfig.json'),
   // These properties only exist before ejecting:
@@ -57,6 +58,7 @@ if (!reactScriptsLinked &&
     appIndexJs: resolveOwn('template/app/app.tsx'),
     appNodeModules: resolveOwn('node_modules'),
     appPackageJson: resolveOwn('package.json'),
+    appPages: resolveApp('template/app/pages'),
     appSrc: resolveOwn('template/app'),
     appTsConfig: resolveOwn('template/tsconfig.json'),
     // These properties only exist before ejecting:
