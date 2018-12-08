@@ -8,7 +8,8 @@ const routes: IRouteProps[] = [
     exact: true,
     path: '/',
     component: Home,
-  }, {
+  },
+  {
     path: '*',
     component: NotFound,
   },

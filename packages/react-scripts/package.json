@@ -24,13 +24,6 @@
   "bin": {
     "react-scripts": "./bin/react-scripts.js"
   },
-  "scripts": {
-    "build": "node ./bin/react-scripts.js build",
-    "generate": "node ./bin/react-scripts.js generate",
-    "start": "cross-env NODE_ENV='development' node ./bin/react-scripts.js start",
-    "start:prod": "cross-env NODE_ENV='production' node ./bin/react-scripts.js start",
-    "test": "node ./bin/react-scripts.js test"
-  },
   "dependencies": {
     "@types/classnames": "2.2.6",
     "@types/debug": "0.0.31",
