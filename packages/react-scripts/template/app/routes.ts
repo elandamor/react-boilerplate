@@ -1,7 +1,7 @@
 // tslint:disable:object-literal-sort-keys
-import { Home, NotFound } from '../../pages';
+import { Home, NotFound } from './pages';
 
-import { IRouteProps } from '../../components/Routes';
+import { IRouteProps } from './components/Routes';
 
 const routes: IRouteProps[] = [
   {

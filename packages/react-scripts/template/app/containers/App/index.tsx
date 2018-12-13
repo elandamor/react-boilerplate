@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 // Components
 import { ErrorBoundary, LoadingBar, Routes } from '../../components';
 // Routes
-import routes from './routes';
+import routes from '../../routes';
 // Styles
 import GlobalStyles from '../../global-styles';
 import Wrapper from './styles';
@@ -14,8 +14,18 @@ import Wrapper from './styles';
 import { breakpoints, makeDebugger } from '../../utils';
 const debug = makeDebugger('App');
 
+const defaultTheme = {
+  breakpoints: {
+    small: '600px',
+    medium: '1024px',
+    large: '1440px',
+    xLarge: '1920px',
+  },
+};
+
 /* tslint:disable:object-literal-sort-keys */
 const themeLight = {
+  ...defaultTheme,
   isDark: false,
   palette: {
     bodyBackground: '#FAFAFA',
