@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> should display a form input 1`] = `
+<div
+  className="c-input__wrapper "
+>
+  <label
+    htmlFor="username"
+  >
+    <span
+      className="a-label"
+    >
+      Username
+    </span>
+    <input
+      className="a-input"
+      id="username"
+      name="username"
+      onChange={[Function]}
+      type="text"
+    />
+  </label>
+</div>
+`;
