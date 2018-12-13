@@ -134,5 +134,12 @@
   "optionalDependencies": {
     "fsevents": "2.0.1"
   },
+  "stylelint": {
+    "processors": ["stylelint-processor-styled-components"],
+    "extends": [
+      "stylelint-config-recommended",
+      "stylelint-config-styled-components"
+    ]
+  },
   "gitHead": "ff0d22a778c3c9c20394d39c5aa7f66e45c6337b"
 }
