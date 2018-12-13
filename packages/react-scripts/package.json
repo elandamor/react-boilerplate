@@ -1,6 +1,6 @@
 {
   "name": "pd-react-scripts",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Configuration and scripts for react-boilerplate",
   "author": "Thandolwethu Mpofu",
   "license": "MIT",
@@ -135,7 +135,9 @@
     "fsevents": "2.0.1"
   },
   "stylelint": {
-    "processors": ["stylelint-processor-styled-components"],
+    "processors": [
+      "stylelint-processor-styled-components"
+    ],
     "extends": [
       "stylelint-config-recommended",
       "stylelint-config-styled-components"
