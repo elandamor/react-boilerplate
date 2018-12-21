@@ -10,14 +10,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import FontFaceObserver from 'fontfaceobserver';
-import { ApolloProvider } from 'react-apollo';
 import 'sanitize.css/sanitize.css';
 
 // Import root app
 import App from './containers/App';
-
-// Import apollo client
-import client from './apollo.config';
 
 // Load the favicon
 /* eslint-disable import/no-unresolved, import/extensions */
@@ -38,11 +34,9 @@ const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
   ReactDOM.render(
-    <ApolloProvider client={client}>
-      <Router>
-        <App />
-      </Router>
-    </ApolloProvider>,
+    <Router>
+      <App />
+    </Router>,
     MOUNT_NODE,
   );
 };

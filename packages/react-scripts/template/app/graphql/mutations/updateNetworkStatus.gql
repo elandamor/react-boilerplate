@@ -1,3 +1,0 @@
-mutation updateNetworkStatus($isConnected: Boolean!) {
-  updateNetworkStatus(isConnected: $isConnected) @client
-}

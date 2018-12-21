@@ -1,33 +1,41 @@
 import classNames from 'classnames';
+// @ts-ignore
 import React, { Component, Suspense } from 'react';
 import Measure from 'react-measure';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 // Components
 import { ErrorBoundary, LoadingBar, Routes } from '../../components';
-// Contexts
-import NetworkStatusProvider from '../../contexts/networkStatus.context';
 // Routes
-import routes from '../../routes';
+import routes from './routes';
 // Styles
 import GlobalStyles from '../../global-styles';
 import Wrapper from './styles';
 
-import { breakpoints, makeDebugger } from '../../utils';
-const debug = makeDebugger('App');
+// import { makeDebugger } from '../../lib';
+// const debug = makeDebugger('App');
 
-const defaultTheme = {
-  breakpoints: {
-    small: '600px',
-    medium: '1024px',
-    large: '1440px',
-    xLarge: '1920px',
-  },
+export const breakpoints = (width: number) => {
+  if (width < 600) {
+    return 'v-xsmall';
+  }
+  if (width >= 600 && width < 1024) {
+    return 'v-small';
+  }
+  if (width >= 1024 && width < 1440) {
+    return 'v-medium';
+  }
+  if (width >= 1440 && width < 1920) {
+    return 'v-large';
+  }
+  if (width >= 1920) {
+    return 'v-xlarge';
+  }
+  return 'v-unknown';
 };
 
 /* tslint:disable:object-literal-sort-keys */
 const themeLight = {
-  ...defaultTheme,
   isDark: false,
   palette: {
     bodyBackground: '#FAFAFA',
@@ -74,7 +82,6 @@ class App extends Component<IProps, IState> {
 
   public componentDidMount() {
     this.componentIsMounted = true;
-    debug('componentIsMounted');
   }
 
   public componentWillUpdate(nextProps: IProps) {
@@ -112,32 +119,30 @@ class App extends Component<IProps, IState> {
 
     return (
       <ThemeProvider theme={this.state.theme}>
-        <NetworkStatusProvider>
-          <Measure
-            bounds
-            onResize={(contentRect) => {
-              this.setState({ bounds: contentRect.bounds });
-            }}
-          >
-            {({ measureRef }) => (
-              <Wrapper
-                className={classNames('c-app__container', breakpoints(width))}
-                // @ts-ignore
-                ref={measureRef}
-              >
-                <GlobalStyles />
-                <ErrorBoundary>
-                  <Suspense fallback={<LoadingBar loading />}>
-                    <Routes
-                      location={isModal ? this.previousLocation : location}
-                      routes={routes}
-                    />
-                  </Suspense>
-                </ErrorBoundary>
-              </Wrapper>
-            )}
-          </Measure>
-        </NetworkStatusProvider>
+        <Measure
+          bounds
+          onResize={(contentRect) => {
+            this.setState({ bounds: contentRect.bounds });
+          }}
+        >
+          {({ measureRef }) => (
+            <Wrapper
+              className={classNames('c-app__container', breakpoints(width))}
+              // @ts-ignore
+              ref={measureRef}
+            >
+              <GlobalStyles />
+              <ErrorBoundary>
+                <Suspense fallback={<LoadingBar loading />}>
+                  <Routes
+                    location={isModal ? this.previousLocation : location}
+                    routes={routes}
+                  />
+                </Suspense>
+              </ErrorBoundary>
+            </Wrapper>
+          )}
+        </Measure>
       </ThemeProvider>
     );
   }

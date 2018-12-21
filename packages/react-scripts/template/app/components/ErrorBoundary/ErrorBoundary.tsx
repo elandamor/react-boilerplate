@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // For debugging only.
-import { makeDebugger } from '../../utils';
+import { makeDebugger } from '../../lib';
 const debug = makeDebugger('ErrorBoundary');
 
 /**

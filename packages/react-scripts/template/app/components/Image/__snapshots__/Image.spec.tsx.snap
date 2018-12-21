@@ -27,6 +27,7 @@ exports[`<Image /> should display an image 1`] = `
 
 <img
   className="a-image c0"
+  data-src="../../images/icon-512x512.png"
   src="../../images/icon-512x512.png"
 />
 `;
