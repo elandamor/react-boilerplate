@@ -1,0 +1,5 @@
+query getNetworkStatus {
+  networkStatus @client {
+    isConnected
+  }
+}

@@ -5,6 +5,8 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 // Components
 import { ErrorBoundary, LoadingBar, Routes } from '../../components';
+// Contexts
+import NetworkStatusProvider from '../../contexts/networkStatus.context';
 // Routes
 import routes from '../../routes';
 // Styles
@@ -72,7 +74,6 @@ class App extends Component<IProps, IState> {
 
   public componentDidMount() {
     this.componentIsMounted = true;
-
     debug('componentIsMounted');
   }
 
@@ -111,30 +112,32 @@ class App extends Component<IProps, IState> {
 
     return (
       <ThemeProvider theme={this.state.theme}>
-        <Measure
-          bounds
-          onResize={(contentRect) => {
-            this.setState({ bounds: contentRect.bounds });
-          }}
-        >
-          {({ measureRef }) => (
-            <Wrapper
-              className={classNames('c-app__container', breakpoints(width))}
-              // @ts-ignore
-              ref={measureRef}
-            >
-              <GlobalStyles />
-              <ErrorBoundary>
-                <Suspense fallback={<LoadingBar loading />}>
-                  <Routes
-                    location={isModal ? this.previousLocation : location}
-                    routes={routes}
-                  />
-                </Suspense>
-              </ErrorBoundary>
-            </Wrapper>
-          )}
-        </Measure>
+        <NetworkStatusProvider>
+          <Measure
+            bounds
+            onResize={(contentRect) => {
+              this.setState({ bounds: contentRect.bounds });
+            }}
+          >
+            {({ measureRef }) => (
+              <Wrapper
+                className={classNames('c-app__container', breakpoints(width))}
+                // @ts-ignore
+                ref={measureRef}
+              >
+                <GlobalStyles />
+                <ErrorBoundary>
+                  <Suspense fallback={<LoadingBar loading />}>
+                    <Routes
+                      location={isModal ? this.previousLocation : location}
+                      routes={routes}
+                    />
+                  </Suspense>
+                </ErrorBoundary>
+              </Wrapper>
+            )}
+          </Measure>
+        </NetworkStatusProvider>
       </ThemeProvider>
     );
   }
