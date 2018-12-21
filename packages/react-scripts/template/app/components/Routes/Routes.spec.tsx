@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import 'jest-styled-components';
 
 import Routes from './index';
-import routes from '../../containers/App/routes';
+import routes from '../../routes';
 import LoadingBar from '../LoadingBar';
 
 describe('<Routes />', () => {

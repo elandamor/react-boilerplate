@@ -1,29 +1,24 @@
 {
   "compilerOptions": {
-    "outDir": "build",
-    "module": "esnext",
-    "target": "es5",
-    "lib": ["es6", "dom", "esnext"],
-    "sourceMap": true,
     "allowJs": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "rootDir": "app",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "lib": ["es6", "dom", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
     "noImplicitReturns": true,
     "noImplicitThis": false,
     "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "outDir": "build",
+    "rootDir": "app",
+    "sourceMap": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "target": "es5"
   },
-  "include": [
-    "app/**/*"
-  ],
-  "exclude": [
-    "build",
-    "node_modules"
-  ]
+  "include": ["app/**/*"],
+  "exclude": ["build", "node_modules"]
 }
