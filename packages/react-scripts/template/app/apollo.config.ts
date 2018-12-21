@@ -6,11 +6,30 @@ import { HttpLink } from 'apollo-link-http';
 import { persistCache } from 'apollo-cache-persist';
 import localForage from 'localforage';
 
-const API_URI = 'http://localhost:4000';
+const API_URI = process.env.APOLLO_HTTP_URI;
 
-const defaultState = {};
+const defaultState = {
+  networkStatus: {
+    __typename: 'NetworkStatus',
+    isConnected: true,
+  }
+};
 
-const resolvers = {};
+const resolvers = {
+  Mutation: {
+    // @ts-ignore
+    updateNetworkStatus: (_, { isConnected }, { cache }) => {
+      const data = {
+        networkStatus: {
+          __typename: 'NetworkStatus',
+          isConnected
+        },
+      };
+      cache.writeData({ data });
+      return null;
+    },
+  }
+};
 
 const cache = new InMemoryCache();
 
