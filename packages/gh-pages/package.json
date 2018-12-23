@@ -2,7 +2,7 @@
   "name": "react-boilerplate-gh-pages",
   "private": true,
   "description": "gh-pages for react-boilerplate with Gatsby",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Thandolwethu Mpofu <mpofuthandolwethu@gmail.com>",
   "dependencies": {
     "gatsby": "^2.0.53",
