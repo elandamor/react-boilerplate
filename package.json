@@ -6,9 +6,11 @@
   "scripts": {
     "build": "cd ./packages/react-scripts && node ./bin/react-scripts build",
     "compile:lockfile": "node tasks/compile-lockfile.js",
+    "deploy:gh-pages": "cd ./packages/gh-pages && npm run deploy",
     "generate": "cd ./packages/react-scripts && node ./bin/react-scripts generate",
     "setup": "node tasks/setup.js",
     "start": "cd ./packages/react-scripts && node ./bin/react-scripts start",
+    "start:gh-pages": "cd ./packages/gh-pages && npm run start",
     "test": "cd ./packages/react-scripts && node ./bin/react-scripts test"
   },
   "devDependencies": {
