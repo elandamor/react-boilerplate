@@ -1,22 +1,5 @@
 {
-  "env": {
-    "browser": true,
-    "node": true,
-    "jest": true,
-    "es6": true
-  },
-  "extends": [
-    "airbnb-base",
-    "prettier"
-  ],
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module"
-  },
-  "plugins": [
-    "prettier"
-  ],
+  "extends": "airbnb",
   "rules": {
     "arrow-parens": [2, "always"],
     "function-paren-newline": [2, "consistent"],
@@ -27,12 +10,5 @@
     "no-console": 1,
     "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
     "object-curly-newline": [2, { "consistent": true }]
-  },
-  "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "./internals/webpack/webpack.prod.js"
-      }
-    }
   }
 }
