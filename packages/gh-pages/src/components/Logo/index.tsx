@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { SFC } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 // Styles
 import Wrapper from './styles';
+
+interface IProps {
+  className?: string;
+  noanimation?: boolean;
+}
 
 /**
  * @render react
@@ -12,7 +17,7 @@ import Wrapper from './styles';
  * <Logo />
  */
 
-const Logo = ({ className, noanimation }) => (
+const Logo:SFC<IProps> = ({ className, noanimation }) => (
   <Wrapper className={classNames('c-logo', className, {
     '-noanimation': noanimation,
   })}>
@@ -22,10 +27,5 @@ const Logo = ({ className, noanimation }) => (
     </div>
   </Wrapper>
 );
-
-Logo.propTypes = {
-  className: PropTypes.string,
-  noanimation: PropTypes.bool,
-};
 
 export default Logo;

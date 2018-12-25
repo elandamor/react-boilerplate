@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   width: 64px;
 
   svg {
-    color: #eaeaea;
+    color: #aeaeae;
     height: 24px;
     width: 24px;
   }

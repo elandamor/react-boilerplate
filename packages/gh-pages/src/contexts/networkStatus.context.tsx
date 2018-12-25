@@ -18,9 +18,13 @@ export const NetworkStatusContext = React.createContext(DEFAULT_STATE);
 
 // TODO: Make sure (on/off)Line status works cross-browser
 class Provider extends React.Component {
-  getNetworkStatus = true;
+  constructor() {
+    super();
 
-  state = DEFAULT_STATE;
+    this.state = DEFAULT_STATE;
+
+    this.getNetworkStatus = true;
+  }
 
   componentDidMount() {
     if (navigator.onLine) {

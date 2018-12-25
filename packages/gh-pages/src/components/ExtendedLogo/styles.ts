@@ -1,7 +1,3 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Banner, Layout, Logo } from '../components';
-
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -10,9 +6,31 @@ const Wrapper = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  opacity: .5;
-  overflow: hidden;
+  opacity: .6;
   position: fixed;
+  top: 50%;
+
+  &:not(.-grayscale) {
+    opacity: 1;
+
+    .c-logo {
+      .react:after,
+      .react:before,
+      .react-inner {
+        border: thin solid #61dafb;
+        opacity: 0.2;
+      }
+    }
+
+    .c-logo:first-child {
+      .react:after,
+      .react:before,
+      .react-inner {
+        border-width: 3px;
+        opacity: 1;
+      }
+    }
+  }
 
   .c-logo {
     height: 90vw;
@@ -21,12 +39,6 @@ const Wrapper = styled.div`
     z-index: 0;
 
     &:first-child {
-      .react:after,
-      .react:before,
-      .react-inner {
-        border: thin solid #61dafb;
-      }
-
       z-index: 1;
     }
 
@@ -61,7 +73,7 @@ const Wrapper = styled.div`
     .react:after,
     .react:before,
     .react-inner {
-      border: thin solid #e9e9e9;
+      border: thin solid #eaeaea;
     }
 
     .react-innerdot {
@@ -77,24 +89,4 @@ const Wrapper = styled.div`
   }
 `;
 
-const IndexPage = () => (
-  <Layout>
-    <Helmet>
-      <title>React Boilerplate - Built with love by @elandamor</title>
-      <meta name="description" content="A scalable, offline-first foundation for your next React project, with a focus on performance and best practices." />
-    </Helmet>
-    <Wrapper>
-      <Logo noanimation />
-      <Logo noanimation />
-      <Logo noanimation />
-      <Logo noanimation />
-      <Logo noanimation />
-      <Logo noanimation />
-      <Logo noanimation />
-      <Logo noanimation />
-    </Wrapper>
-    <Banner />
-  </Layout>
-)
-
-export default IndexPage
+export default Wrapper;
