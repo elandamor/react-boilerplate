@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { SFC } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 // Styles
 import Wrapper from './styles';
 
 import Logo from '../Logo';
+
+interface IProps {
+  className?: string;
+  grayscale?: boolean;
+};
 
 /**
  * @render react
@@ -14,7 +19,7 @@ import Logo from '../Logo';
  * <ExtendedLogo />
  */
 
-const ExtendedLogo = ({ className, grayscale }) => (
+const ExtendedLogo:SFC<IProps> = ({ className, grayscale }) => (
   <Wrapper
     className={classNames('c-extendedLogo', className, {
       '-grayscale': grayscale,
@@ -30,15 +35,5 @@ const ExtendedLogo = ({ className, grayscale }) => (
     <Logo noanimation />
   </Wrapper>
 );
-
-ExtendedLogo.propTypes = {
-  className: PropTypes.string,
-  grayscale: PropTypes.bool,
-};
-
-ExtendedLogo.defaultProps = {
-  className: '',
-  grayscale: false,
-};
 
 export default ExtendedLogo;

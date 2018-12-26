@@ -1,27 +1,27 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
 import { Banner, ExtendedLogo, Layout, Mouse } from '../components';
 
 const Wrapper = styled.div`
   -webkit-overflow-scrolling: touch;
-  perspective: 1px;
-  transform-style: preserve-3d;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
+  perspective: 1px;
   scroll-behavior: smooth;
+  transform-style: preserve-3d;
 `;
 
 const Parallax = styled.div`
+  align-items: center;
   display: flex;
   flex: 1 0 auto;
-  position: relative;
-  z-index: -1;
   height: 100vh;
   justify-content: center;
-  align-items: center;
+  position: relative;
   transform: translateZ(-1px) scale(2);
+  z-index: -1;
 `;
 
 const Content = styled.main`
@@ -69,4 +69,4 @@ const IndexPage = () => (
   </Layout>
 );
 
-export default IndexPage;
+export default memo(IndexPage);
