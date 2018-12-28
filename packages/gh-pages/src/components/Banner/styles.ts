@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   flex-shrink: 0;
   padding: 5rem 1.5rem;
   font-size: 1rem;
-  line-height: 1.35;
+  line-height: 1.5;
   text-align: center;
   color: #7d93aa;
   background-image: linear-gradient(transparent, #dae6f1);
@@ -42,6 +42,7 @@ const Wrapper = styled.div`
 `;
 
 export const Heading = styled.h1`
+  line-height: 1;
   margin: 0;
 `;
 
