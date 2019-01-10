@@ -4,13 +4,8 @@ import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
 
-/**
- * @render react
- * @name {{ properCase name }} page
- * @description {{ properCase name }} page.
- * @example
- * <{{ properCase name }} />
- */
+// import { makeDebugger } from '../../utils';
+// const debug = makeDebugger('{{ properCase name }}');
 
 interface IProps {
   className?: string;
@@ -19,6 +14,14 @@ interface IProps {
 interface IState {
   [key: string]: any;
 }
+
+/**
+ * @render react
+ * @name {{ properCase name }} page
+ * @description {{ properCase name }} page.
+ * @example
+ * <{{ properCase name }} />
+ */
 
 class {{ properCase name }} extends {{{ type }}}<IProps, IState> {
   state:IState = {}

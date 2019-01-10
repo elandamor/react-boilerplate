@@ -3,6 +3,13 @@ import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
 
+// import { makeDebugger } from '../../utils';
+// const debug = makeDebugger('{{ properCase name }}');
+
+interface IProps {
+  className?: string;
+};
+
 /**
  * @render react
  * @name {{ properCase name }} component
@@ -10,10 +17,6 @@ import Wrapper from './styles';
  * @example
  * <{{ properCase name }} />
  */
-
-interface IProps {
-  className?: string;
-};
 
 const {{ properCase name }}: SFC<IProps> = ({ className }) => (
   <Wrapper className={classNames('', className)} />
