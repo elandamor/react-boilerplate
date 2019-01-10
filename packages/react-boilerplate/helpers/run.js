@@ -13,36 +13,35 @@ const setCaretRangeForRuntimeDeps = require('./setCaretRangeForRuntimeDeps');
 
 // TODO: Dependencies should be in their own file, for better maintainability
 const dependencies = [
-  "apollo-cache-inmemory@1.3.12",
-  "apollo-cache-persist@0.1.1",
-  "apollo-client@2.4.8",
-  "apollo-link@1.2.6",
-  "apollo-link-http@1.5.9",
-  "apollo-link-state@0.4.2",
-  "classnames@2.2.6",
-  "fontfaceobserver@2.1.0",
-  "graphql@14.0.2",
-  "graphql-tag@2.10.0",
-  "history@4.7.2",
-  "hoist-non-react-statics@3.2.1",
-  "intl@1.2.5",
-  "localforage@1.7.3",
-  "react@16.7.0",
-  "react-apollo@2.3.3",
-  "react-dom@16.7.0",
-  "react-feather@1.1.5",
-  "react-helmet@5.2.0",
-  "react-measure@2.1.3",
-  "react-router-dom@4.3.1",
-  "sanitize.css@8.0.0",
-  "styled-components@4.1.3",
-  "typeface-merriweather@0.0.54",
-  "typeface-montserrat@0.0.54",
-  "whatwg-fetch@3.0.0"
+  'apollo-cache-inmemory@1.3.12',
+  'apollo-cache-persist@0.1.1',
+  'apollo-client@2.4.8',
+  'apollo-link@1.2.6',
+  'apollo-link-http@1.5.9',
+  'apollo-link-state@0.4.2',
+  'classnames@2.2.6',
+  'fontfaceobserver@2.1.0',
+  'graphql@14.0.2',
+  'history@4.7.2',
+  'hoist-non-react-statics@3.2.1',
+  'intl@1.2.5',
+  'localforage@1.7.3',
+  'react@16.7.0',
+  'react-apollo@2.3.3',
+  'react-dom@16.7.0',
+  'react-feather@1.1.5',
+  'react-helmet@5.2.0',
+  'react-measure@2.1.3',
+  'react-router-dom@4.3.1',
+  'sanitize.css@8.0.0',
+  'styled-components@4.1.3',
+  'typeface-merriweather@0.0.54',
+  'typeface-montserrat@0.0.54',
+  'whatwg-fetch@3.0.0',
 ];
 
 const devDependencies = [
-  "pd-react-scripts"
+  'pd-react-scripts',
 ];
 
 function run(
@@ -53,22 +52,21 @@ function run(
   originalDirectory,
   template,
   useYarn,
-  usePnp
+  usePnp,
 ) {
   const packageToInstall = getInstallPackage(version, originalDirectory);
   const allDependencies = {
     dependencies,
-    devDependencies
+    devDependencies,
   };
 
   console.log('Installing packages. This might take a couple of minutes.');
   console.log();
   getPackageName(packageToInstall)
-    .then((packageName) =>
-      checkIfOnline(useYarn).then((isOnline) => ({
-        isOnline,
-        packageName,
-      })))
+    .then((packageName) => checkIfOnline(useYarn).then((isOnline) => ({
+      isOnline,
+      packageName,
+    })))
     .then((info) => {
       const { isOnline, packageName } = info;
 
@@ -78,7 +76,7 @@ function run(
         usePnp,
         allDependencies,
         verbose,
-        isOnline
+        isOnline,
       ).then(() => packageName);
     })
     .then(async (packageName) => {
@@ -96,7 +94,7 @@ function run(
         `
         var init = require('${packageName}/scripts/init.js');
         init.apply(null, JSON.parse(process.argv[1]));
-      `
+      `,
       );
     })
     .catch((reason) => {
@@ -127,8 +125,8 @@ function run(
         // Delete target folder if empty
         console.log(
           `Deleting ${chalk.cyan(`${appName}/`)} from ${chalk.cyan(
-            path.resolve(root, '..')
-          )}`
+            path.resolve(root, '..'),
+          )}`,
         );
         process.chdir(path.resolve(root, '..'));
         fs.removeSync(path.join(root));

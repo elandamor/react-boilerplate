@@ -1,5 +1,4 @@
 import React, { SFC } from 'react';
-import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 // Contexts
@@ -9,7 +8,7 @@ import './index.css';
 
 interface IProps {
   children: any;
-  data: {
+  data?: {
     site: {
       siteMetadata: {
         author: string;
