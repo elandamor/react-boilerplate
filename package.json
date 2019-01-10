@@ -12,9 +12,11 @@
     "setup": "node tasks/setup.js",
     "start": "cd ./packages/react-scripts && node ./bin/react-scripts start",
     "start:gh-pages": "cd ./packages/gh-pages && npm run start",
+    "start:prod": "cd ./packages/react-scripts && cross-env NODE_ENV=production node ./bin/react-scripts start",
     "test": "cd ./packages/react-scripts && node ./bin/react-scripts test"
   },
   "devDependencies": {
+    "cross-env": "5.2.0",
     "eslint": "5.11.1",
     "eslint-config-airbnb": "17.1.0",
     "eslint-plugin-import": "2.14.0",
