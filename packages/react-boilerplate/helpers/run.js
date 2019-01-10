@@ -21,7 +21,7 @@ const dependencies = [
   'apollo-link-state@0.4.2',
   'classnames@2.2.6',
   'fontfaceobserver@2.1.0',
-  'graphql-tag@2.10.0',
+  'graphql@14.0.2',
   'history@4.7.2',
   'hoist-non-react-statics@3.2.1',
   'intl@1.2.5',

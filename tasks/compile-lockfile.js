@@ -25,14 +25,15 @@ try {
   // eslint-disable-next-line global-require, prefer-destructuring
   const dependencies = require('pd-react-scripts/package.json').dependencies;
   const descriptors = Object.keys(dependencies).map(
-    (dep) => `${dep}@${dependencies[dep]}`
+    (dep) => `${dep}@${dependencies[dep]}`,
   );
 
   // Run "yarn add" with all the dependencies of react-scripts
   cprocess.execFileSync('yarn', ['add', ...descriptors], { cwd: temp });
 
   // Store the generated lockfile in react-boilerplate
-  // We can't store it inside react-scripts, because we need it even before react-scripts is installed
+  // We can't store it inside react-scripts, because we need it even before
+  // react-scripts is installed
   fse.copySync(
     path.join(temp, 'yarn.lock'),
     path.join(
@@ -40,8 +41,8 @@ try {
       '..',
       'packages',
       'react-boilerplate',
-      'yarn.lock.cached'
-    )
+      'yarn.lock.cached',
+    ),
   );
 } finally {
   fse.removeSync(temp);

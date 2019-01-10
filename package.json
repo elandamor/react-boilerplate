@@ -8,6 +8,7 @@
     "compile:lockfile": "node tasks/compile-lockfile.js",
     "deploy:gh-pages": "cd ./packages/gh-pages && npm run deploy",
     "generate": "cd ./packages/react-scripts && node ./bin/react-scripts generate",
+    "publish": "tasks/publish.sh",
     "setup": "node tasks/setup.js",
     "start": "cd ./packages/react-scripts && node ./bin/react-scripts start",
     "start:gh-pages": "cd ./packages/gh-pages && npm run start",
