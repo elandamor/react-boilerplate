@@ -9,7 +9,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import FontFaceObserver from 'fontfaceobserver';
 import { ApolloProvider } from 'react-apollo';
 import 'sanitize.css/sanitize.css';
 
@@ -23,16 +22,6 @@ import client from './apollo.config';
 /* eslint-disable import/no-unresolved, import/extensions */
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 /* eslint-enable import/no-unresolved, import/extensions */
-
-// Observe loading of font(s) - to remove font(s), remove typeface imports in
-// global-styles.ts and remove th(is/ese) observer(s)
-const merriweatherObserver = new FontFaceObserver('Merriweather', {});
-const montserratObserver = new FontFaceObserver('Montserrat', {});
-
-// When font(s) h(as/ave) been loaded, add font-family(s) to the body
-Promise.all([merriweatherObserver.load(), montserratObserver.load()]).then(() => {
-  document.body.classList.add('fontsLoaded');
-});
 
 const MOUNT_NODE = document.getElementById('app');
 
