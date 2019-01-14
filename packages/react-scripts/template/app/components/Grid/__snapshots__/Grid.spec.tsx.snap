@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Grid /> should display a grid 1`] = `
+.c0 {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 20px;
+}
+
+@media screen and (max-width:1024px) {
+  .c0 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+}
+
+<div
+  className="c-grid c0"
+>
+  <div>
+    1
+  </div>
+  <div>
+    2
+  </div>
+  <div>
+    3
+  </div>
+</div>
+`;

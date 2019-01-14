@@ -1,10 +1,26 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+// OfflineIndicator.spec.tsx
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import 'jest-styled-components';
+import 'whatwg-fetch';
 
-// import OfflineIndicator from '../index';
+import { ThemeProvider } from 'styled-components';
+
+import OfflineIndicator from './index';
+import { themeLight } from '../../containers/App';
+
+const theme = {
+  ...themeLight,
+};
 
 describe('<OfflineIndicator />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('should display an offline indicator', () => {
+    const component = renderer.create(
+      <ThemeProvider theme={theme}>
+        <OfflineIndicator />
+      </ThemeProvider>
+    ).toJSON();
+
+    expect(component).toMatchSnapshot();
   });
 });

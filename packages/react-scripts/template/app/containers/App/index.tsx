@@ -26,7 +26,7 @@ const defaultTheme = {
 };
 
 /* tslint:disable:object-literal-sort-keys */
-const themeLight = {
+export const themeLight = {
   ...defaultTheme,
   isDark: false,
   palette: {

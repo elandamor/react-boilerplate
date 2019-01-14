@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import 'jest-styled-components';
+import 'whatwg-fetch';
 
 import Routes from './index';
 import routes from '../../routes';
