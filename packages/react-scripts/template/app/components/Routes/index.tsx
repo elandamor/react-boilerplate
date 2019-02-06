@@ -25,6 +25,7 @@ interface IProps {
  *  ]}
  * />
  */
+
 const Routes: SFC<IProps> = ({ location, routes }) => (
   <Switch location={location}>
     {routes.map(

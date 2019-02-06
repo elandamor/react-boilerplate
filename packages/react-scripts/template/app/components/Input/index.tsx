@@ -3,19 +3,6 @@ import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
 
-/**
- * @render react
- * @name Input component
- * @description Input component.
- * @example
- * <Input
- *  id="text"
- *  label="Text"
- *  name="text"
- *  type="text"
- * />
- */
-
 interface IProps {
   className?: string;
   checked?: boolean;
@@ -39,6 +26,19 @@ interface IProps {
     | 'number';
   value?: any;
 };
+
+/**
+ * @render react
+ * @name Input component
+ * @description Input component.
+ * @example
+ * <Input
+ *  id="text"
+ *  label="Text"
+ *  name="text"
+ *  type="text"
+ * />
+ */
 
 const Input: SFC<IProps> = ({
   checked,

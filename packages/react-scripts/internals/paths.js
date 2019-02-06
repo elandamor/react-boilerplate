@@ -14,7 +14,8 @@ const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
 // @remove-on-eject-begin
-const resolveOwn = (relativePath) => path.resolve(__dirname, '..', relativePath);
+const resolveOwn = (relativePath) =>
+  path.resolve(__dirname, '..', relativePath);
 
 // config before eject: we're in ./node_modules/pd-react-scripts/internals/
 module.exports = {
@@ -44,13 +45,14 @@ const reactScriptsLinked =
   fs.lstatSync(reactScriptsPath).isSymbolicLink();
 
 // config before publish: we're in ./packages/react-scripts/internals
-if (!reactScriptsLinked &&
+if (
+  !reactScriptsLinked &&
   __dirname.indexOf(path.join('packages', 'react-scripts', 'internals')) !== -1
 ) {
   module.exports = {
     dotenv: resolveOwn('template/.env'),
     appPath: resolveApp('.'),
-    appBuild: resolveOwn('../../build'),
+    appBuild: resolveOwn('template/build'),
     appComponents: resolveApp('template/app/components'),
     appContainers: resolveApp('template/app/containers'),
     appHtml: resolveOwn('template/app/index.html'),

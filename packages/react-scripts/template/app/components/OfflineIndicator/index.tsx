@@ -4,6 +4,10 @@ import { WifiOff } from 'react-feather';
 // Styles
 import Wrapper from './styles';
 
+interface IProps {
+  className?: string;
+};
+
 /**
  * @render react
  * @name OfflineIndicator component
@@ -11,10 +15,6 @@ import Wrapper from './styles';
  * @example
  * <OfflineIndicator />
  */
-
-interface IProps {
-  className?: string;
-};
 
 const OfflineIndicator: SFC<IProps> = ({ className }) => (
   <Wrapper className={classNames('', className)}>

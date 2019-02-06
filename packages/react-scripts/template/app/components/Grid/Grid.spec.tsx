@@ -1,7 +1,6 @@
 // Grid.spec.tsx
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import 'jest-styled-components';
+import { cleanup, render } from 'react-testing-library';
 import 'whatwg-fetch';
 
 import { ThemeProvider } from 'styled-components';
@@ -9,13 +8,15 @@ import { ThemeProvider } from 'styled-components';
 import Grid from './index';
 import { themeLight } from '../../containers/App';
 
+afterEach(cleanup);
+
 const theme = {
   ...themeLight,
 };
 
-describe('<Grid />', () => {
+describe('Grid', () => {
   it('should display a grid', () => {
-    const component = renderer.create(
+    render(
       <ThemeProvider theme={theme}>
         <Grid columns={2}>
           <div>1</div>
@@ -23,8 +24,6 @@ describe('<Grid />', () => {
           <div>3</div>
         </Grid>
       </ThemeProvider>
-    ).toJSON();
-
-    expect(component).toMatchSnapshot();
+    );
   });
 });

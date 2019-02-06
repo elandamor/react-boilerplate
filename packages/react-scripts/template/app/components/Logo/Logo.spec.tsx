@@ -1,7 +1,6 @@
 // Logo.spec.tsx
-import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import 'jest-styled-components';
+import React from 'react';
+import { render } from 'react-testing-library';
 import 'whatwg-fetch';
 
 import { ThemeProvider } from 'styled-components';
@@ -13,14 +12,14 @@ const theme = {
   ...themeLight,
 };
 
-describe('<Logo />', () => {
-  it('should display a logo', () => {
-    const component = renderer.create(
+describe('Logo', () => {
+  it('should render a logo', () => {
+    const { container: { firstChild: logoNode } } = render(
       <ThemeProvider theme={theme}>
         <Logo />
       </ThemeProvider>
-    ).toJSON();
+    );
 
-    expect(component).toMatchSnapshot();
+    expect(logoNode).toBeDefined();
   });
 });

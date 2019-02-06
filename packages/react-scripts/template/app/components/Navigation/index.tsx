@@ -4,6 +4,18 @@ import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
 
+type Link = {
+  className?: string,
+  exact?: boolean,
+  href: string,
+  label: string,
+};
+
+interface IProps {
+  className?: string;
+  links: Link[];
+}
+
 /**
  * @render react
  * @name Navigation component
@@ -17,19 +29,6 @@ import Wrapper from './styles';
  *    ]}
  * />
  */
-
-// tslint:disable-next-line:interface-over-type-literal
-type Link = {
-  className?: string,
-  exact?: boolean,
-  href: string,
-  label: string,
-};
-
-interface IProps {
-  className?: string;
-  links: Link[];
-}
 
 const Navigation: SFC<IProps> = ({ className, links }) => (
   <Wrapper className={classNames('c-nav', className)}>
