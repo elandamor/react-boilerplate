@@ -3,6 +3,13 @@ import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
 
+export interface IProps {
+  children: any;
+  className?: string;
+  columns: number;
+  gap?: number;
+};
+
 /**
  * @render react
  * @name Grid component
@@ -16,13 +23,6 @@ import Wrapper from './styles';
  *  <Component />
  * </Grid>
  */
-
-export interface IProps {
-  children: any;
-  className?: string;
-  columns: number;
-  gap?: number;
-};
 
 const Grid: SFC<IProps> = ({ children, className, columns, gap }) => (
   <Wrapper

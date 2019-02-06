@@ -59,6 +59,9 @@ module.exports = (resolve, rootDir) => {
       '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
       '^.+\\.module\\.(css|sass|scss)$',
     ],
+    'ts-jest': {
+      diagnostics: false,
+    },
     moduleNameMapper: {
       '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     },

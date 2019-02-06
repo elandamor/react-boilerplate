@@ -1,7 +1,6 @@
 // OfflineIndicator.spec.tsx
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import 'jest-styled-components';
+import { render } from 'react-testing-library';
 import 'whatwg-fetch';
 
 import { ThemeProvider } from 'styled-components';
@@ -14,13 +13,11 @@ const theme = {
 };
 
 describe('<OfflineIndicator />', () => {
-  it('should display an offline indicator', () => {
-    const component = renderer.create(
+  it('should render an offline indicator', () => {
+    render(
       <ThemeProvider theme={theme}>
         <OfflineIndicator />
       </ThemeProvider>
-    ).toJSON();
-
-    expect(component).toMatchSnapshot();
+    );
   });
 });

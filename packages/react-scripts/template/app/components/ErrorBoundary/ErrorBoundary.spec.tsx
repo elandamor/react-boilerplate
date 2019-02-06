@@ -1,9 +1,10 @@
 // ErrorBoundary.spec.tsx
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import 'jest-styled-components';
+import { cleanup, render } from 'react-testing-library';
 
 import ErrorBoundary from './index';
+
+afterEach(cleanup);
 
 class ComponentThatWillFail extends React.Component {
   componentDidMount() {
@@ -15,18 +16,28 @@ class ComponentThatWillFail extends React.Component {
   }
 }
 
-describe('<ErrorBoundary />', () => {
-  it('should display a ErrorBoundary', () => {
+describe('Error Boundary', () => {
+  it('should display default ErrorBoundary', () => {
     spyOn(console, 'error');
 
-    const component = renderer
-      .create(
-        <ErrorBoundary>
-          <ComponentThatWillFail />
-        </ErrorBoundary>,
-      )
-      .toJSON();
+    render(
+      <ErrorBoundary>
+        <ComponentThatWillFail />
+      </ErrorBoundary>
+    );
+  });
 
-    expect(component).toMatchSnapshot();
+  it('should display ErrorBoundary with custom fallback', () => {
+    spyOn(console, 'error');
+
+    render(
+      <ErrorBoundary
+        template={(
+          <h1>Oops! Something went wrong.</h1>
+        )}
+      >
+        <ComponentThatWillFail />
+      </ErrorBoundary>
+    );
   });
 });

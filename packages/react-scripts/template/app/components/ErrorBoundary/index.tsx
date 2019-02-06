@@ -4,6 +4,15 @@ import React, { Component } from 'react';
 import { makeDebugger } from '../../utils';
 const debug = makeDebugger('ErrorBoundary');
 
+interface IProps {
+  className?: string;
+  template?: any;
+}
+
+interface IState {
+  hasError: boolean;
+}
+
 /**
  * @render react
  * @name ErrorBoundary container
@@ -12,22 +21,10 @@ const debug = makeDebugger('ErrorBoundary');
  * <ErrorBoundary />
  */
 
-interface IProps {
-  className?: string;
-}
-
-interface IState {
-  hasError: boolean;
-}
-
 // eslint-disable-next-line react/prefer-stateless-function
 class ErrorBoundary extends Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-
-    this.state = {
-      hasError: false,
-    };
+  state = {
+    hasError: false,
   }
 
   public componentDidCatch(error: object, errorInfo: object) {
@@ -39,10 +36,11 @@ class ErrorBoundary extends Component<IProps, IState> {
   }
 
   public render() {
+    const { template } = this.props;
     const { hasError } = this.state;
 
     if (hasError) {
-      return <h1>Something went wrong.</h1>;
+      return template || <h1>Something went wrong.</h1>;
     }
 
     return this.props.children;

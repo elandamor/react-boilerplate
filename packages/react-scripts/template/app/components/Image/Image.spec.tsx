@@ -1,16 +1,13 @@
 // Image.spec.tsx
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import 'jest-styled-components';
+import { cleanup, render } from 'react-testing-library';
 
 import Image from './index';
 
-describe('<Image />', () => {
-  it('should display an image', () => {
-    const component = renderer
-      .create(<Image src="../../images/icon-512x512.png" />)
-      .toJSON();
+afterEach(cleanup);
 
-    expect(component).toMatchSnapshot();
+describe('Image', () => {
+  it('should display an image', () => {
+    render(<Image src="../../images/icon-512x512.png" />);
   });
 });

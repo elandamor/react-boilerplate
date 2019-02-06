@@ -5,6 +5,11 @@ import { NetworkStatusContext } from '../../contexts/networkStatus.context';
 // Styles
 import Wrapper from './styles';
 
+export interface IProps {
+  className?: string;
+  offline?: boolean;
+};
+
 /**
  * @render react
  * @name Logo component
@@ -12,11 +17,6 @@ import Wrapper from './styles';
  * @example
  * <Logo />
  */
-
-export interface IProps {
-  className?: string;
-  offline?: boolean;
-};
 
 const Logo: SFC<IProps> = ({ className }) => (
   <NetworkStatusContext.Consumer>

@@ -3,6 +3,12 @@ import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
 
+interface IProps {
+  as?: string,
+  className?: string;
+  src: string;
+}
+
 /**
  * @render react
  * @name Image component
@@ -10,12 +16,6 @@ import Wrapper from './styles';
  * @example
  * <Image src="image.png" />
  */
-
-interface IProps {
-  as?: string,
-  className?: string;
-  src: string;
-}
 
 const Image: SFC<IProps> = ({ as: T, className, src, ...rest }) => (
   T ? (
