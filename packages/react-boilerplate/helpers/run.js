@@ -3,10 +3,6 @@ const chalk = require('chalk');
 const fs = require('fs-extra');
 const path = require('path');
 
-// Extract the dependencies from react-scripts (which is a workspace)
-const reactScriptsDevDependencies = require('pd-react-scripts/package.json')
-  .devDependencies;
-
 const checkIfOnline = require('./checkIfOnline');
 const checkNodeVersion = require('./checkNodeVersion');
 const executeNodeScript = require('./executeNodeScript');
@@ -15,10 +11,33 @@ const getPackageName = require('./getPackageName');
 const install = require('./install');
 const setCaretRangeForRuntimeDeps = require('./setCaretRangeForRuntimeDeps');
 
-const dependencies = Object.keys(reactScriptsDevDependencies).map(
-  (dep) => `${dep}@${reactScriptsDevDependencies[dep]}`
-);
-const devDependencies = ['pd-react-scripts'];
+const dependencies = [
+  'apollo-cache-inmemory@1.4.2',
+  'apollo-cache-persist@0.1.1',
+  'apollo-client@2.4.12',
+  'apollo-link@1.2.8',
+  'apollo-link-http@1.5.11',
+  'apollo-link-state@0.4.2',
+  'classnames@2.2.6',
+  'graphql@14.1.1',
+  'history@4.7.2',
+  'hoist-non-react-statics@3.3.0',
+  'intl@1.2.5',
+  'localforage@1.7.3',
+  'react@16.8.1',
+  'react-apollo@2.4.1',
+  'react-dom@16.8.1',
+  'react-feather@1.1.6',
+  'react-helmet@5.2.0',
+  'react-measure@2.2.4',
+  'react-router-dom@4.3.1',
+  'sanitize.css@8.0.0',
+  'styled-components@4.1.3',
+  'typeface-merriweather@0.0.54',
+  'typeface-montserrat@0.0.54',
+  'whatwg-fetch@3.0.0',
+];
+const devDependencies = ['pd-react-scripts@latest'];
 
 function run(
   root,
@@ -28,7 +47,7 @@ function run(
   originalDirectory,
   template,
   useYarn,
-  usePnp
+  usePnp,
 ) {
   const packageToInstall = getInstallPackage(version, originalDirectory);
   const allDependencies = {
