@@ -52,7 +52,7 @@ module.exports = (resolve, rootDir) => {
       '^.+\\.tsx?$': 'ts-jest',
       '^.+\\.css$': resolve('internals/jest/cssTransform.js'),
       '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': resolve(
-        'internals/jest/fileTransform.js'
+        'internals/jest/fileTransform.js',
       ),
     },
     transformIgnorePatterns: [
@@ -92,39 +92,38 @@ module.exports = (resolve, rootDir) => {
     });
     const unsupportedKeys = Object.keys(overrides);
     if (unsupportedKeys.length) {
-      const isOverridingSetupFile =
-        unsupportedKeys.indexOf('setupTestFrameworkScriptFile') > -1;
+      const isOverridingSetupFile = unsupportedKeys.indexOf('setupTestFrameworkScriptFile') > -1;
 
       if (isOverridingSetupFile) {
         console.error(
           chalk.red(
             `We detected ${chalk.bold(
-              'setupTestFrameworkScriptFile'
-            )} in your package.json.\n\n` +
-              `Remove it from Jest configuration, and put the initialization code in ${chalk.bold(
-                'app/setupTests.js'
-              )}.\nThis file will be loaded automatically.\n`
-          )
+              'setupTestFrameworkScriptFile',
+            )} in your package.json.\n\n`
+            + `Remove it from Jest configuration, and put the initialization code in ${chalk.bold(
+              'app/setupTests.js',
+            )}.\nThis file will be loaded automatically.\n`,
+          ),
         );
       } else {
         console.error(
           chalk.red(
-            `${'\nOut of the box, react-boilerplate only supports overriding ' +
-              'these Jest options:\n\n'}${supportedKeys
+            `${'\nOut of the box, react-boilerplate only supports overriding '
+            + 'these Jest options:\n\n'}${supportedKeys
               .map((key) => chalk.bold(`  \u2022 ${key}`))
-              .join('\n')}.\n\n` +
-              'These options in your package.json Jest configuration ' +
-              `are not currently supported by react-boilerplate:\n\n${unsupportedKeys
+              .join('\n')}.\n\n`
+              + 'These options in your package.json Jest configuration '
+              + `are not currently supported by react-boilerplate:\n\n${unsupportedKeys
                 .map((key) => chalk.bold(`  \u2022 ${key}`))
                 .join(
-                  '\n'
-                )}\n\nIf you wish to override other Jest options, you need to ` +
-              `eject from the default setup. You can do so by running ${chalk.bold(
-                'npm run eject'
-              )} but remember that this is a one-way operation. ` +
-              'You may also file an issue with react-boilerplate to discuss ' +
-              'supporting more options out of the box.\n'
-          )
+                  '\n',
+                )}\n\nIf you wish to override other Jest options, you need to `
+              + `eject from the default setup. You can do so by running ${chalk.bold(
+                'npm run eject',
+              )} but remember that this is a one-way operation. `
+              + 'You may also file an issue with react-boilerplate to discuss '
+              + 'supporting more options out of the box.\n',
+          ),
         );
       }
 

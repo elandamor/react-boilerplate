@@ -6,6 +6,7 @@
   "scripts": {
     "build": "cd ./packages/react-scripts && node ./bin/react-scripts build",
     "changelog": "lerna-changelog",
+    "cm": "npx git-cz",
     "compile:lockfile": "node tasks/compile-lockfile.js",
     "deploy:gh-pages": "cd ./packages/gh-pages && npm run deploy",
     "generate": "cd ./packages/react-scripts && node ./bin/react-scripts generate",

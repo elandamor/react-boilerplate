@@ -13,7 +13,7 @@ const chalk = require('chalk');
 
 function checkRequiredFiles(files, options = {}) {
   let currentFilePath;
-  
+
   try {
     files.forEach((filePath) => {
       currentFilePath = filePath;

@@ -81,10 +81,10 @@ module.exports = function init(
   appName,
   verbose,
   originalDirectory,
-  template
+  template,
 ) {
   const ownPath = path.dirname(
-    require.resolve(path.join(__dirname, '..', 'package.json'))
+    require.resolve(path.join(__dirname, '..', 'package.json')),
   );
   const appPackage = require(path.join(appPath, 'package.json'));
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
@@ -110,19 +110,19 @@ module.exports = function init(
   // Move react-scripts to devDependencies
   delete appPackage.dependencies['pd-react-scripts'];
   appPackage.devDependencies = {
-    'pd-react-scripts': reactScriptsVersion
+    'pd-react-scripts': reactScriptsVersion,
   };
 
   fs.writeFileSync(
     path.join(appPath, 'package.json'),
-    JSON.stringify(appPackage, null, 2) + os.EOL
+    JSON.stringify(appPackage, null, 2) + os.EOL,
   );
 
   const readmeExists = fs.existsSync(path.join(appPath, 'README.md'));
   if (readmeExists) {
     fs.renameSync(
       path.join(appPath, 'README.md'),
-      path.join(appPath, 'README.old.md')
+      path.join(appPath, 'README.old.md'),
     );
   }
 
@@ -134,7 +134,7 @@ module.exports = function init(
     fs.copySync(templatePath, appPath);
   } else {
     console.error(
-      `Could not locate supplied template: ${chalk.green(templatePath)}`
+      `Could not locate supplied template: ${chalk.green(templatePath)}`,
     );
     return;
   }
@@ -156,13 +156,12 @@ module.exports = function init(
   // Install additional template dependencies, if present
   const templateDependenciesPath = path.join(
     appPath,
-    '.template.dependencies.json'
+    '.template.dependencies.json',
   );
   if (fs.existsSync(templateDependenciesPath)) {
     const templateDependencies = require(templateDependenciesPath).dependencies;
     args = args.concat(
-      Object.keys(templateDependencies).map((key) =>
-        `${key}@${templateDependencies[key]}`)
+      Object.keys(templateDependencies).map((key) => `${key}@${templateDependencies[key]}`),
     );
     fs.unlinkSync(templateDependenciesPath);
   }
@@ -210,7 +209,7 @@ module.exports = function init(
   console.log('    Starts the development server.');
   console.log();
   console.log(
-    chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}build`)
+    chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}build`),
   );
   console.log('    Bundles the app into static files for production.');
   console.log();
@@ -218,13 +217,13 @@ module.exports = function init(
   console.log('    Starts the test runner.');
   console.log();
   console.log(
-    chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}eject`)
+    chalk.cyan(`  ${displayedCommand} ${useYarn ? '' : 'run '}eject`),
   );
   console.log(
-    '    Removes this tool and copies build dependencies, configuration files'
+    '    Removes this tool and copies build dependencies, configuration files',
   );
   console.log(
-    '    and scripts into the app directory. If you do this, you can’t go back!'
+    '    and scripts into the app directory. If you do this, you can’t go back!',
   );
   console.log();
   console.log('We suggest that you begin by typing:');
@@ -235,8 +234,8 @@ module.exports = function init(
     console.log();
     console.log(
       chalk.yellow(
-        'You had a `README.md` file, we renamed it to `README.old.md`'
-      )
+        'You had a `README.md` file, we renamed it to `README.old.md`',
+      ),
     );
   }
   console.log();
@@ -247,7 +246,7 @@ function isReactInstalled(appPackage) {
   const dependencies = appPackage.dependencies || {};
 
   return (
-    typeof dependencies.react !== 'undefined' &&
-    typeof dependencies['react-dom'] !== 'undefined'
+    typeof dependencies.react !== 'undefined'
+    && typeof dependencies['react-dom'] !== 'undefined'
   );
 }

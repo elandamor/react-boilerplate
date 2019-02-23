@@ -57,9 +57,9 @@ function isInMercurialRepository() {
 
 // Watch unless on CI, in coverage mode, or explicitly running all tests
 if (
-  !process.env.CI &&
-  argv.indexOf('--coverage') === -1 &&
-  argv.indexOf('--watchAll') === -1
+  !process.env.CI
+  && argv.indexOf('--coverage') === -1
+  && argv.indexOf('--watchAll') === -1
 ) {
   // https://github.com/facebook/create-react-app/issues/5210
   const hasSourceControl = isInGitRepository() || isInMercurialRepository();
@@ -77,37 +77,38 @@ argv.push(
     createJestConfig(
       (relativePath) => path.resolve(__dirname, '..', relativePath),
       path.resolve(paths.appSrc, '..'),
-      false
-    )
-  )
+      false,
+    ),
+  ),
 );
 
 // This is a very dirty workaround for https://github.com/facebook/jest/issues/5913.
 // We're trying to resolve the environment ourselves because Jest does it incorrectly.
 // TODO: remove this as soon as it's fixed in Jest.
+// eslint-disable-next-line import/order
 const resolve = require('resolve');
 
 function resolveJestDefaultEnvironment(name) {
   const jestDir = path.dirname(
     resolve.sync('jest', {
       basedir: __dirname,
-    })
+    }),
   );
   const jestCLIDir = path.dirname(
     resolve.sync('jest-cli', {
       basedir: jestDir,
-    })
+    }),
   );
   const jestConfigDir = path.dirname(
     resolve.sync('jest-config', {
       basedir: jestCLIDir,
-    })
+    }),
   );
   return resolve.sync(name, {
     basedir: jestConfigDir,
   });
 }
-let cleanArgv = [];
+const cleanArgv = [];
 let env = 'jsdom';
 let next;
 do {

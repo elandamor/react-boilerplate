@@ -29,7 +29,7 @@ module.exports = require('./webpack.base')({
   plugins: [
     new CleanWebpackPlugin([paths.appBuild], {
       allowExternal: true,
-      verbose: false, 
+      verbose: false,
     }),
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({
@@ -101,7 +101,6 @@ module.exports = require('./webpack.base')({
   ],
 
   performance: {
-    assetFilter: (assetFilename) =>
-      !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
+    assetFilter: (assetFilename) => !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
   },
 });

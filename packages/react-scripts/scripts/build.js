@@ -36,19 +36,19 @@ compiler.run((err, stats) => {
   }
 
   measureFileSizesBeforeBuild(paths.appBuild)
-  .then((previousFileSizes) => {
-    console.log();    
-    console.log('File sizes after gzip:');
-    console.log();    
-    printFileSizesAfterBuild(
-      stats,
-      previousFileSizes,
-      paths.appBuild,
-      WARN_AFTER_BUNDLE_GZIP_SIZE,
-      WARN_AFTER_CHUNK_GZIP_SIZE
-    );
-    console.log();    
-  });
+    .then((previousFileSizes) => {
+      console.log();
+      console.log('File sizes after gzip:');
+      console.log();
+      printFileSizesAfterBuild(
+        stats,
+        previousFileSizes,
+        paths.appBuild,
+        WARN_AFTER_BUNDLE_GZIP_SIZE,
+        WARN_AFTER_CHUNK_GZIP_SIZE,
+      );
+      console.log();
+    });
 
   return true;
 });

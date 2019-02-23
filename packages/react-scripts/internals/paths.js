@@ -14,8 +14,7 @@ const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
 // @remove-on-eject-begin
-const resolveOwn = (relativePath) =>
-  path.resolve(__dirname, '..', relativePath);
+const resolveOwn = (relativePath) => path.resolve(__dirname, '..', relativePath);
 
 // config before eject: we're in ./node_modules/pd-react-scripts/internals/
 module.exports = {
@@ -40,14 +39,13 @@ module.exports = {
 const ownPackageJson = require('../package.json');
 
 const reactScriptsPath = resolveApp(`node_modules/${ownPackageJson.name}`);
-const reactScriptsLinked =
-  fs.existsSync(reactScriptsPath) &&
-  fs.lstatSync(reactScriptsPath).isSymbolicLink();
+const reactScriptsLinked = fs.existsSync(reactScriptsPath)
+  && fs.lstatSync(reactScriptsPath).isSymbolicLink();
 
 // config before publish: we're in ./packages/react-scripts/internals
 if (
-  !reactScriptsLinked &&
-  __dirname.indexOf(path.join('packages', 'react-scripts', 'internals')) !== -1
+  !reactScriptsLinked
+  && __dirname.indexOf(path.join('packages', 'react-scripts', 'internals')) !== -1
 ) {
   module.exports = {
     dotenv: resolveOwn('template/.env'),

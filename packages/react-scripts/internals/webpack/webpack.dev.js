@@ -26,7 +26,7 @@ module.exports = require('./webpack.base')({
   entry: [
     'eventsource-polyfill', // Necessary for hot reloading with IE
     'webpack-hot-middleware/client?reload=true',
-    paths.appIndexJs
+    paths.appIndexJs,
   ],
 
   // Don't use hashes in dev mode for better performance
@@ -41,7 +41,6 @@ module.exports = require('./webpack.base')({
 
   // Add development plugins
   plugins,
-  // plugins: dependencyHandlers().concat(plugins), // eslint-disable-line no-use-before-define
 
   // Emit a source map for easier debugging
   // See https://webpack.js.org/configuration/devtool/#devtool

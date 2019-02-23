@@ -10,10 +10,9 @@ const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
 
 const isDev = process.env.NODE_ENV !== 'production';
-const ngrok =
-  (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel
-    ? require('ngrok')
-    : false;
+const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel
+  ? require('ngrok')
+  : false;
 const paths = require('../internals/paths');
 const checkRequiredFiles = require('../utils/checkRequiredFiles');
 
