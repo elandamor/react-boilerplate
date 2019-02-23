@@ -58,9 +58,8 @@ function run(
   console.log('Installing packages. This might take a couple of minutes.');
   console.log();
   getPackageName(packageToInstall)
-    .then((packageName) =>
-      checkIfOnline(useYarn).then((isOnline) => ({ isOnline, packageName }))
-    )
+    .then((packageName) => checkIfOnline(useYarn)
+      .then((isOnline) => ({ isOnline, packageName })))
     .then((info) => {
       const { isOnline, packageName } = info;
 
@@ -70,7 +69,7 @@ function run(
         usePnp,
         allDependencies,
         verbose,
-        isOnline
+        isOnline,
       ).then(() => packageName);
     })
     .then(async (packageName) => {
@@ -86,9 +85,9 @@ function run(
         },
         [root, appName, verbose, originalDirectory, template],
         `
-        var init = require('${packageName}/scripts/init.js');
-        init.apply(null, JSON.parse(process.argv[1]));
-      `
+          var init = require('${packageName}/scripts/init.js');
+          init.apply(null, JSON.parse(process.argv[1]));
+        `,
       );
     })
     .catch((reason) => {
@@ -119,8 +118,8 @@ function run(
         // Delete target folder if empty
         console.log(
           `Deleting ${chalk.cyan(`${appName}/`)} from ${chalk.cyan(
-            path.resolve(root, '..')
-          )}`
+            path.resolve(root, '..'),
+          )}`,
         );
         process.chdir(path.resolve(root, '..'));
         fs.removeSync(path.join(root));

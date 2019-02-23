@@ -30,7 +30,7 @@ function checkNodeVersion(packageName) {
           'Please update your version of Node.'
       ),
       process.version,
-      packageJson.engines.node
+      packageJson.engines.node,
     );
     process.exit(1);
   }

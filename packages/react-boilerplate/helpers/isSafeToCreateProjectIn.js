@@ -43,9 +43,7 @@ function isSafeToCreateProjectIn(root, name) {
     // IntelliJ IDEA creates module files before CRA is launched
     .filter((file) => !/\.iml$/.test(file))
     // Don't treat log files from previous installation as conflicts
-    .filter(
-      (file) => !errorLogFilePatterns.some((pattern) => file.indexOf(pattern) === 0)
-    );
+    .filter((file) => !errorLogFilePatterns.some((pattern) => file.indexOf(pattern) === 0));
 
   if (conflicts.length > 0) {
     console.log(
@@ -57,9 +55,7 @@ function isSafeToCreateProjectIn(root, name) {
       console.log(`  ${file}`);
     }
     console.log();
-    console.log(
-      'Either try using a new directory name, or remove the files listed above.'
-    );
+    console.log('Either try using a new directory name, or remove the files listed above.');
 
     return false;
   }

@@ -27,19 +27,14 @@ function getPackageName(installPackage) {
         return packageName;
       })
       .catch((err) => {
-        // The package name could be with or without semver version, e.g. react-scripts-0.2.0-alpha.1.tgz
+        // The package name could be with or without semver version,
+        // e.g. react-scripts-0.2.0-alpha.1.tgz
         // However, this function returns package name only without semver version.
-        console.log(
-          `Could not extract the package name from the archive: ${err.message}`
-        );
+        console.log(`Could not extract the package name from the archive: ${err.message}`);
         const assumedProjectName = installPackage.match(
           /^.+\/(.+?)(?:-\d+.+)?\.(tgz|tar\.gz)$/
         )[1];
-        console.log(
-          `Based on the filename, assuming it is "${chalk.cyan(
-            assumedProjectName
-          )}"`
-        );
+        console.log(`Based on the filename, assuming it is "${chalk.cyan(assumedProjectName)}"`);
         return Promise.resolve(assumedProjectName);
       });
   // eslint-disable-next-line no-else-return

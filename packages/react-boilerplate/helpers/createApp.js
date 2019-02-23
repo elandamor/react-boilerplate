@@ -19,7 +19,7 @@ function createApp(
   useNpm,
   usePnp,
   useTypescript,
-  template
+  template,
 ) {
   const root = path.resolve(name);
   const appName = path.basename(root);
@@ -41,7 +41,7 @@ function createApp(
   };
   fs.writeFileSync(
     path.join(root, 'package.json'),
-    JSON.stringify(packageJson, null, 2) + os.EOL
+    JSON.stringify(packageJson, null, 2) + os.EOL,
   );
 
   const useYarn = useNpm ? false : shouldUseYarn();
@@ -54,11 +54,9 @@ function createApp(
   if (!semver.satisfies(process.version, '>=8.0.0')) {
     console.log(
       chalk.yellow(
-        `You are using Node ${
-          process.version
-        } which is currently not supported.\n\n` +
-          `Please update to Node 8 or higher.\n`
-      )
+        `You are using Node ${process.version} which is currently not
+        supported.\n\nPlease update to Node 8 or higher.\n`,
+      ),
     );
   }
 
@@ -68,11 +66,9 @@ function createApp(
       if (npmInfo.npmVersion) {
         console.log(
           chalk.yellow(
-            `You are using npm ${
-              npmInfo.npmVersion
-            } which is currently not supported.\n\n` +
-              `Please update to npm 6 or higher.\n`
-          )
+            `You are using npm ${npmInfo.npmVersion} which is currently not
+            supported.\n\nPlease update to npm 6 or higher.\n`,
+          ),
         );
       }
     }
@@ -81,7 +77,7 @@ function createApp(
   if (useYarn) {
     fs.copySync(
       require.resolve('../yarn.lock.cached'),
-      path.join(root, 'yarn.lock')
+      path.join(root, 'yarn.lock'),
     );
   }
 
@@ -94,7 +90,7 @@ function createApp(
     template,
     useYarn,
     usePnp,
-    useTypescript
+    useTypescript,
   );
 }
 

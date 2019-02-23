@@ -9,7 +9,7 @@ function extractStream(stream, dest) {
         } else {
           resolve(dest);
         }
-      })
+      }),
     );
   });
 }

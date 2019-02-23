@@ -14,9 +14,8 @@ function makeCaretRange(dependencies, name) {
 
   if (!semver.validRange(patchedVersion)) {
     console.error(
-      `Unable to patch ${name} dependency version because version ${chalk.red(
-        version
-      )} will become invalid ${chalk.red(patchedVersion)}`
+      `Unable to patch ${name} dependency version because version
+      ${chalk.red(version)} will become invalid ${chalk.red(patchedVersion)}`,
     );
     patchedVersion = version;
   }
