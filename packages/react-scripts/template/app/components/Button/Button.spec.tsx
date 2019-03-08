@@ -10,7 +10,6 @@ afterEach(cleanup);
 describe('Button', () => {
   it('should render with text', () => {
     const props = {
-      onClick: () => null,
       text: 'Test',
     };
 

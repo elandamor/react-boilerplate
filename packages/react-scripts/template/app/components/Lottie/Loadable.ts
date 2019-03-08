@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for Image
+ * Asynchronously loads the component for Lottie
  *
  */
 

@@ -27,8 +27,8 @@ function verifyNoTypeScript() {
       chalk.yellow(
         `We detected TypeScript in your project
         (${chalk.bold(`app${path.sep}${typescriptFiles[0]}`)}) and created a
-        ${chalk.bold('tsconfig.json')} file for you.`,
-      ),
+        ${chalk.bold('tsconfig.json')} file for you.`
+      )
     );
     console.warn();
     return false;
@@ -60,8 +60,8 @@ function verifyTypeScriptSetup() {
     console.error(
       chalk.bold.red(
         `It looks like you're trying to use TypeScript but do not have
-        ${chalk.bold('typescript')} installed.`,
-      ),
+        ${chalk.bold('typescript')} installed.`
+      )
     );
     console.error(
       chalk.bold(
@@ -71,16 +71,16 @@ function verifyTypeScriptSetup() {
         `${chalk.cyan.bold(
           isYarn
             ? 'yarn add -D typescript'
-            : 'npm install --save-dev typescript',
-        )}.`,
-      ),
+            : 'npm install --save-dev typescript'
+        )}.`
+      )
     );
     console.error(
       chalk.bold(
         `If you are not trying to use TypeScript, please remove the ${chalk.cyan(
-          'tsconfig.json',
-        )} file from your package root (and any TypeScript files).`,
-      ),
+          'tsconfig.json'
+        )} file from your package root (and any TypeScript files).`
+      )
     );
     console.error();
     process.exit(1);
@@ -93,9 +93,9 @@ function verifyTypeScriptSetup() {
     forceConsistentCasingInFileNames: { suggested: true },
     jsx: {
       parsedValue: ts.JsxEmit.Preserve,
-      value: 'react',
+      value: 'preserve',
     },
-    lib: { value: ['es6', 'dom', 'esnext'] },
+    lib: { value: ['dom', 'dom.iterable', 'esnext'] },
     // These values are required and cannot be changed by the user
     // Keep this in sync with the webpack config
     module: {
@@ -139,7 +139,7 @@ function verifyTypeScriptSetup() {
   try {
     const { config: readTsConfig, error } = ts.readConfigFile(
       paths.appTsConfig,
-      ts.sys.readFile,
+      ts.sys.readFile
     );
 
     if (error) {
@@ -156,13 +156,13 @@ function verifyTypeScriptSetup() {
       result = ts.parseJsonConfigFileContent(
         config,
         ts.sys,
-        path.dirname(paths.appTsConfig),
+        path.dirname(paths.appTsConfig)
       );
     });
 
     if (result.errors && result.errors.length) {
       throw new Error(
-        ts.formatDiagnostic(result.errors[0], formatDiagnosticHost),
+        ts.formatDiagnostic(result.errors[0], formatDiagnosticHost)
       );
     }
 
@@ -172,8 +172,8 @@ function verifyTypeScriptSetup() {
       chalk.red.bold(
         'Could not parse',
         `${chalk.cyan('tsconfig.json')}.`,
-        'Please make sure it contains syntactically correct JSON.',
-      ),
+        'Please make sure it contains syntactically correct JSON.'
+      )
     );
     console.error(e && e.message ? `Details: ${e.message}` : '');
     process.exit(1);
@@ -196,27 +196,27 @@ function verifyTypeScriptSetup() {
         appTsConfig.compilerOptions[option] = suggested;
         messages.push(
           `${coloredOption} to be ${chalk.bold(
-            'suggested',
-          )} value: ${chalk.cyan.bold(suggested)} (this can be changed)`,
+            'suggested'
+          )} value: ${chalk.cyan.bold(suggested)} (this can be changed)`
         );
       }
     } else if (parsedCompilerOptions[option] !== valueToCheck) {
       appTsConfig.compilerOptions[option] = value;
       messages.push(
         `${coloredOption} ${chalk.bold(
-          valueToCheck == null ? 'must not' : 'must',
+          valueToCheck == null ? 'must not' : 'must'
         )} be ${valueToCheck == null ? 'set' : chalk.cyan.bold(value)}${
           reason != null ? ` (${reason})` : ''
-        }`,
+        }`
       );
     }
   }
 
   // tsconfig will have the merged "include" and "exclude" by this point
   if (parsedTsConfig.include == null) {
-    appTsConfig.include = ['app/**/*'];
+    appTsConfig.include = ['app'];
     messages.push(
-      `${chalk.cyan('include')} should be ${chalk.cyan.bold('app')}`,
+      `${chalk.cyan('include')} should be ${chalk.cyan.bold('app')}`
     );
   }
 
@@ -224,8 +224,8 @@ function verifyTypeScriptSetup() {
     appTsConfig.exclude = ['build', 'node_modules'];
     messages.push(
       `${chalk.cyan('exclude')} should be ${chalk.cyan.bold(
-        'build, node_modules',
-      )}`,
+        'build, node_modules'
+      )}`
     );
   }
 
@@ -235,8 +235,8 @@ function verifyTypeScriptSetup() {
         chalk.bold(
           'Your',
           chalk.cyan('tsconfig.json'),
-          'has been populated with default values.',
-        ),
+          'has been populated with default values.'
+        )
       );
       console.log();
     } else {
@@ -244,8 +244,8 @@ function verifyTypeScriptSetup() {
         chalk.bold(
           'The following changes are being made to your',
           chalk.cyan('tsconfig.json'),
-          'file:',
-        ),
+          'file:'
+        )
       );
       messages.forEach((message) => {
         console.warn(`  - ${message}`);
@@ -255,13 +255,13 @@ function verifyTypeScriptSetup() {
     writeJson(paths.appTsConfig, appTsConfig);
   }
 
-  // // Reference `react-scripts` types
-  // if (!fs.existsSync(paths.appTypeDeclarations)) {
-  //   fs.writeFileSync(
-  //     paths.appTypeDeclarations,
-  //     `/// <reference types="react-scripts" />${os.EOL}`
-  //   );
-  // }
+  // Reference `react-scripts` types
+  if (!fs.existsSync(paths.appTypeDeclarations)) {
+    fs.writeFileSync(
+      paths.appTypeDeclarations,
+      `/// <reference types="react-scripts" />${os.EOL}`
+    );
+  }
 }
 
 module.exports = verifyTypeScriptSetup;

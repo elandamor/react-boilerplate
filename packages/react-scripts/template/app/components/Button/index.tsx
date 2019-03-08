@@ -5,7 +5,7 @@ import Wrapper from './styles';
 
 interface IProps {
   className?: string;
-  onClick(e: MouseEvent<HTMLElement>): void;
+  onClick?: (e: MouseEvent<HTMLElement>) => void;
   primary?: boolean;
   text?: string;
 }
@@ -30,5 +30,9 @@ const Button: SFC<IProps> = ({
     {text}
   </Wrapper>
 );
+
+Button.defaultProps = {
+  onClick: () => console.log('Clicked'),
+}
 
 export default Button;

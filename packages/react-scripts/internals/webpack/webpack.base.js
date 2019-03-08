@@ -5,7 +5,9 @@
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
+const resolve = require('resolve');
+const createStyledComponentsTransformer = require('typescript-plugin-styled-components')
+  .default;
 const paths = require('../paths');
 
 const styledComponentsTransformer = createStyledComponentsTransformer();
@@ -17,7 +19,7 @@ module.exports = (options) => ({
       path: paths.appBuild,
       publicPath: '/',
     },
-    options.output,
+    options.output
   ),
   mode: options.mode,
   optimization: options.optimization,
@@ -32,7 +34,9 @@ module.exports = (options) => ({
             options: {
               // disable type checker - we will use it in fork plugin
               transpileOnly: true,
-              getCustomTransformers: () => ({ before: [styledComponentsTransformer] }),
+              getCustomTransformers: () => ({
+                before: [styledComponentsTransformer],
+              }),
             },
           },
         ],
@@ -94,13 +98,33 @@ module.exports = (options) => ({
     }),
     new Dotenv({
       path: paths.dotenv,
-
     }),
     new ForkTsCheckerWebpackPlugin({
       checkSyntacticErrors: true,
       memoryLimit: 256,
       silent: true,
       tsconfig: paths.appTsConfig,
+      // typescript: resolve.sync('typescript', {
+      //   basedir: paths.appNodeModules,
+      // }),
+      async: false,
+      compilerOptions: {
+        module: 'esnext',
+        moduleResolution: 'node',
+        resolveJsonModule: true,
+        isolatedModules: true,
+        noEmit: true,
+        jsx: 'preserve',
+      },
+      reportFiles: [
+        '**',
+        '!**/*.json',
+        '!**/__tests__/**',
+        '!**/?(*.)(spec|test).*',
+        '!**/src/setupProxy.*',
+        '!**/src/setupTests.*',
+      ],
+      watch: paths.appSrc,
     }),
   ]),
   resolve: {
