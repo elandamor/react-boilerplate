@@ -1,19 +1,11 @@
 import { ApolloClient } from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { withClientState } from 'apollo-link-state';
 import { HttpLink } from 'apollo-link-http';
 import { persistCache } from 'apollo-cache-persist';
 import localForage from 'localforage';
 
 const API_URI = process.env.APOLLO_HTTP_URI;
-
-const defaultState = {
-  networkStatus: {
-    __typename: 'NetworkStatus',
-    isConnected: true,
-  },
-};
 
 const resolvers = {
   Mutation: {
@@ -33,13 +25,11 @@ const resolvers = {
 
 const cache = new InMemoryCache();
 
-const stateLink = withClientState({ cache, resolvers, defaults: defaultState });
-
 const httpLink = new HttpLink({
   uri: API_URI,
 });
 
-const devHttpLink = ApolloLink.from([stateLink, httpLink]);
+const devHttpLink = ApolloLink.from([httpLink]);
 
 persistCache({
   cache,
@@ -48,8 +38,18 @@ persistCache({
 });
 
 const client = new ApolloClient({
-  link: devHttpLink,
   cache,
+  link: devHttpLink,
+  resolvers,
+});
+
+cache.writeData({
+  data: {
+    networkStatus: {
+      __typename: 'NetworkStatus',
+      isConnected: true,
+    },
+  },
 });
 
 export default client;
