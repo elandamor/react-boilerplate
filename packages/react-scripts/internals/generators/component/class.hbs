@@ -1,4 +1,4 @@
-import React, { {{{ type }}} } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
@@ -22,7 +22,7 @@ interface IState {
  * <{{ properCase name }} />
  */
 
-class {{ properCase name }} extends {{{ type }}}<IProps, IState> {
+class {{ properCase name }} extends Component<IProps, IState> {
   state:IState = {}
 
   public render() {

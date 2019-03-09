@@ -5,15 +5,14 @@ import Wrapper from './styles';
 
 interface IProps {
   className?: string;
-  onClick(e: MouseEvent<HTMLElement>): void;
-  primary?: boolean;
+  onClick?: (event: MouseEvent<HTMLElement>) => void;
   text?: string;
 }
 
 /**
  * @render react
  * @name Button component
- * @description Button component.
+ * @description Defines a clickable button.
  * @example
  * <Button text="Test" />
  */
@@ -30,5 +29,9 @@ const Button: FC<IProps> = ({
     {text}
   </Wrapper>
 );
+
+Button.defaultProps = {
+  onClick: () => null,
+};
 
 export default Button;

@@ -6,7 +6,7 @@ import { render } from 'react-testing-library';
 import Navigation from './index';
 
 describe('Navigation', () => {
-  it('should render a navigation component', () => {
+  it('should render without crashing', () => {
     const props = {
       links: [
         { exact: true, href: '/', label: 'Home' },
