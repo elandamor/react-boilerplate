@@ -1,12 +1,11 @@
 import styled , { keyframes } from 'styled-components';
-import { IProps } from './index';
 
 const spin = keyframes`
   0% { transform: rotate(0deg) }
   100% { transform: rotate(360deg) }
 `;
 
-const Wrapper = styled.div<IProps>`
+const Wrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
@@ -25,7 +24,7 @@ const Wrapper = styled.div<IProps>`
       right: 0px;
       bottom: 0px;
       border-radius: 50%;
-      border: 6px solid ${({ offline, theme }) => offline ? theme.palette.cardBorderColor : '#61dafb' };
+      border: 6px solid #61dafb;
 
       transform: rotate(120deg);
   }
@@ -37,7 +36,7 @@ const Wrapper = styled.div<IProps>`
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: ${({ offline, theme }) => offline ? theme.palette.cardBorderColor : '#61dafb' };
+    background: #61dafb;
     margin-top: -10px;
     margin-left: -10px;
   }
@@ -59,7 +58,7 @@ const Wrapper = styled.div<IProps>`
       right: 0px;
       bottom: 0px;
       border-radius: 50%;
-      border: 6px solid ${({ offline, theme }) => offline ? theme.palette.cardBorderColor : '#61dafb' };
+      border: 6px solid #61dafb;
       transform: rotate(-120deg);
 
     }

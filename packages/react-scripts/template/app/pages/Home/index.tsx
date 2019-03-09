@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { Logo } from '../../components';
 // Styles
 import Wrapper from './styles';
+import { NetworkStatusContext } from '../../contexts/networkStatus.context';
 
 /**
  * @render react
@@ -32,7 +33,11 @@ class Home extends Component<IProps, IState> {
           <title>React Boilerplate - Built with love by @elandamor</title>
           <meta name="description" content="Description of Home" />
         </Helmet>
-        <Logo />
+        <NetworkStatusContext.Consumer>
+          {({ offline }) => (
+            <Logo offline={offline} />
+          )}
+        </NetworkStatusContext.Consumer>
       </Wrapper>
     );
   }
