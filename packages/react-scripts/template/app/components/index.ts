@@ -1,5 +1,6 @@
 export { default as Button } from './Button';
 export { default as ErrorBoundary } from './ErrorBoundary';
+export { default as Flex } from './Flex';
 export { default as Grid } from './Grid';
 export { default as Image } from './Image';
 export { default as Input } from './Input';
