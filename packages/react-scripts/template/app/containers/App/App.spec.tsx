@@ -15,7 +15,7 @@ describe('App', () => {
         <Router>
           <App />
         </Router>
-      </ApolloProvider>
+      </ApolloProvider>,
     );
   });
 });

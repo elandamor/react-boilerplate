@@ -25,7 +25,7 @@ interface IState {
 class ErrorBoundary extends Component<IProps, IState> {
   state = {
     hasError: false,
-  }
+  };
 
   public componentDidCatch(error: object, errorInfo: object) {
     this.setState({

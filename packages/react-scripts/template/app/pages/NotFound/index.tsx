@@ -19,7 +19,7 @@ interface IState {
 }
 
 class NotFound extends Component<IProps, IState> {
-  state:IState = {}
+  state: IState = {};
 
   public render() {
     const { className } = this.props;

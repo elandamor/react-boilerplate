@@ -15,7 +15,7 @@ describe('Routes', () => {
         <React.Suspense fallback={<LoadingBar loading />}>
           <Routes routes={routes} />
         </React.Suspense>
-      </Router>
+      </Router>,
     );
   });
 });

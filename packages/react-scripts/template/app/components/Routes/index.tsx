@@ -28,24 +28,23 @@ interface IProps {
 
 const Routes: FC<IProps> = ({ location, routes }) => (
   <Switch location={location}>
-    {
-      routes.map((
-          { component: Component, exact, path, routes }: IRouteProps,
-          index: number,
-        ) => (
-          <Route
-            {...(exact ? { exact } : {})}
-            key={index}
-            path={path}
-            render={(props: IRouteProps) => (
-              // pass the sub-routes down to keep nesting
-              // @ts-ignore
-              <Component routes={routes} {...props} />
-            )}
-          />
-        ),
-      )
-    }
+    {routes.map(
+      (
+        { component: Component, exact, path, routes }: IRouteProps,
+        index: number,
+      ) => (
+        <Route
+          {...(exact ? { exact } : {})}
+          key={index}
+          path={path}
+          render={(props: IRouteProps) => (
+            // pass the sub-routes down to keep nesting
+            // @ts-ignore
+            <Component routes={routes} {...props} />
+          )}
+        />
+      ),
+    )}
   </Switch>
 );
 

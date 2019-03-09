@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import Wrapper from './styles';
 
 type Link = {
-  className?: string,
-  exact?: boolean,
-  href: string,
-  label: string,
+  className?: string;
+  exact?: boolean;
+  href: string;
+  label: string;
 };
 
 interface IProps {
@@ -33,20 +33,18 @@ interface IProps {
 const Navigation: FC<IProps> = ({ className, links }) => (
   <Wrapper className={classNames('c-nav', className)}>
     <ul>
-      {
-        links.map((link: Link, index: number) => (
-          <li key={index}>
-            <NavLink
-              exact={link.exact}
-              activeClassName="-active"
-              className={classNames('a-nav-item', link.className)}
-              to={link.href}
-            >
-              {link.label}
-            </NavLink>
-          </li>
-        ))
-      }
+      {links.map((link: Link, index: number) => (
+        <li key={index}>
+          <NavLink
+            exact={link.exact}
+            activeClassName="-active"
+            className={classNames('a-nav-item', link.className)}
+            to={link.href}
+          >
+            {link.label}
+          </NavLink>
+        </li>
+      ))}
     </ul>
   </Wrapper>
 );

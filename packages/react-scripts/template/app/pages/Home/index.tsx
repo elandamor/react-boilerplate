@@ -21,7 +21,7 @@ interface IState {
 }
 
 class Home extends Component<IProps, IState> {
-  state:IState = {}
+  state: IState = {};
 
   public render() {
     const { className } = this.props;

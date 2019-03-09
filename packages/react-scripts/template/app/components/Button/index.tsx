@@ -17,15 +17,8 @@ interface IProps {
  * <Button text="Test" />
  */
 
-const Button: FC<IProps> = ({
-  className,
-  onClick: handleClick,
-  text
-}) => (
-  <Wrapper
-    className={classNames('c-btn', className)}
-    onClick={handleClick}
-  >
+const Button: FC<IProps> = ({ className, onClick: handleClick, text }) => (
+  <Wrapper className={classNames('c-btn', className)} onClick={handleClick}>
     {text}
   </Wrapper>
 );

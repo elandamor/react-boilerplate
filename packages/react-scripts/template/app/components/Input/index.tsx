@@ -25,7 +25,7 @@ interface IProps {
     | 'radio'
     | 'number';
   value?: any;
-};
+}
 
 /**
  * @render react
@@ -49,7 +49,9 @@ const Input: FC<IProps> = ({
   ...rest
 }) => (
   <Wrapper
-    className={classNames('c-input__wrapper', className, { '-active': checked })}
+    className={classNames('c-input__wrapper', className, {
+      '-active': checked,
+    })}
   >
     <label htmlFor={id}>
       <span

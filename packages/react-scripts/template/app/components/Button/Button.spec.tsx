@@ -32,7 +32,9 @@ describe('Button', () => {
       return <Button {...props} />;
     }
 
-    const { container: { firstChild: buttonNode } } = render(<Counter />);
+    const {
+      container: { firstChild: buttonNode },
+    } = render(<Counter />);
 
     // @ts-ignore
     fireEvent.click(buttonNode);

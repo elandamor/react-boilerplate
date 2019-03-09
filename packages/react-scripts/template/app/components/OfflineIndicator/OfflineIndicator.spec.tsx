@@ -17,7 +17,7 @@ describe('<OfflineIndicator />', () => {
     render(
       <ThemeProvider theme={theme}>
         <OfflineIndicator />
-      </ThemeProvider>
+      </ThemeProvider>,
     );
   });
 });

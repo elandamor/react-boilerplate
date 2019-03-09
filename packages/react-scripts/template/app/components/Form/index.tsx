@@ -10,7 +10,7 @@ interface IProps {
   children: JSX.Element | JSX.Element[];
   className?: string;
   onSubmit?: (event?: React.FormEvent<HTMLFormElement>) => void;
-};
+}
 
 /**
  * @render react
@@ -31,11 +31,7 @@ interface IProps {
  *  </Form>
  */
 
-const Form: FC<IProps> = ({
-  children,
-  className,
-  onSubmit: handleSubmit,
-}) => (
+const Form: FC<IProps> = ({ children, className, onSubmit: handleSubmit }) => (
   <Wrapper
     children={children}
     className={classNames('c-form', className)}
@@ -47,9 +43,9 @@ const Form: FC<IProps> = ({
        * So, prevent `enter` from triggering `onClick` on any buttons and
        * instead trigger onSubmit
        */
-      if (event.key === "Enter") {
+      if (event.key === 'Enter') {
         // @ts-ignore
-        if (event.target.type !== "textarea") {
+        if (event.target.type !== 'textarea') {
           event.preventDefault();
         }
       }

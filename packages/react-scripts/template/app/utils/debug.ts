@@ -3,11 +3,11 @@ import isBrowser from './isBrowser';
 
 if (isBrowser() && process.env.NODE_ENV !== 'production') {
   /* Heads Up!
- * https://github.com/visionmedia/debug/pull/331
- *
- * debug now clears storage on load, grab the debug settings before require('debug').
- * try/catch here as Safari throws on localStorage access in private mode or with cookies disabled.
- */
+   * https://github.com/visionmedia/debug/pull/331
+   *
+   * debug now clears storage on load, grab the debug settings before require('debug').
+   * try/catch here as Safari throws on localStorage access in private mode or with cookies disabled.
+   */
 
   let DEBUG;
 

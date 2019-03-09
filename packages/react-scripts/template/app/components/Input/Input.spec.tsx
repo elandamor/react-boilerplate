@@ -45,7 +45,7 @@ describe('Input', () => {
           value={name}
         />
       );
-    };
+    }
 
     const payload = {
       name: 'Elandamor',

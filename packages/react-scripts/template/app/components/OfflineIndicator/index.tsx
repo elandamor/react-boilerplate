@@ -6,7 +6,7 @@ import Wrapper from './styles';
 
 interface IProps {
   className?: string;
-};
+}
 
 /**
  * @render react

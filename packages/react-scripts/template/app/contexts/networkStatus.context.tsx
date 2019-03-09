@@ -21,8 +21,8 @@ const DEFAULT_STATE = {
 export const NetworkStatusContext = React.createContext(DEFAULT_STATE);
 
 interface IProps {
-  networkStatus?: string,
-  children: any,
+  networkStatus?: string;
+  children: any;
 }
 
 // TODO: Make sure (on/off)Line status works cross-browser
@@ -55,19 +55,19 @@ class Provider extends React.Component<IProps, {}> {
         data: {
           networkStatus: {
             __typename: 'NetworkStatus',
-            isConnected: Boolean(networkStatus === 'online')
+            isConnected: Boolean(networkStatus === 'online'),
           },
-        }
+        },
       });
     }
 
     this.setState({
       networkStatus: {
         __typename: 'NetworkStatus',
-        isConnected: Boolean(networkStatus === 'online')
-      }
+        isConnected: Boolean(networkStatus === 'online'),
+      },
     });
-  }
+  };
 
   public render() {
     return (
@@ -79,11 +79,7 @@ class Provider extends React.Component<IProps, {}> {
       >
         <React.Fragment>
           {this.props.children}
-          {
-            !this.state.networkStatus.isConnected && (
-              <OfflineIndicator />
-            )
-          }
+          {!this.state.networkStatus.isConnected && <OfflineIndicator />}
         </React.Fragment>
       </NetworkStatusContext.Provider>
     );
@@ -122,6 +118,6 @@ const mapNetworkStatusToProps = ({ data }: any) => {
 
 export default compose(
   graphql(getNetworkStatusGQL, {
-    props: (mapNetworkStatusToProps),
+    props: mapNetworkStatusToProps,
   }),
 )(Provider);

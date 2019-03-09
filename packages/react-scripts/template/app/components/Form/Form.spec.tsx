@@ -1,17 +1,17 @@
 // Form.spec.tsx
-import * as React from "react";
-import { cleanup, fireEvent, render } from "react-testing-library";
-import "jest-dom/extend-expect";
+import * as React from 'react';
+import { cleanup, fireEvent, render } from 'react-testing-library';
+import 'jest-dom/extend-expect';
 
-import Button from "../Button";
-import Input from "../Input";
+import Button from '../Button';
+import Input from '../Input';
 
-import Form from "./index";
+import Form from './index';
 
 afterEach(cleanup);
 
-describe("Form", () => {
-  it("should render without crashing", () => {
+describe('Form', () => {
+  it('should render without crashing', () => {
     render(
       <Form>
         <Input
@@ -23,13 +23,13 @@ describe("Form", () => {
           value="Elandamor"
         />
         <Button text="Submit" />
-      </Form>
+      </Form>,
     );
   });
 
-  it("should handle onSubmit event", () => {
+  it('should handle onSubmit event', () => {
     function BookingForm({ onSubmit: handleSubmit }: any) {
-      const [name, setName] = React.useState("");
+      const [name, setName] = React.useState('');
 
       return (
         <Form onSubmit={() => handleSubmit({ name })}>
@@ -47,14 +47,14 @@ describe("Form", () => {
     }
 
     const handleSubmit = jest.fn();
-    const payload = { name: "Elandamor" };
+    const payload = { name: 'Elandamor' };
 
     const { getByLabelText, getByText } = render(
-      <BookingForm onSubmit={handleSubmit} />
+      <BookingForm onSubmit={handleSubmit} />,
     );
 
-    const nameTextfieldNode: any = getByLabelText("Name");
-    const submitButtonNode = getByText("Submit");
+    const nameTextfieldNode: any = getByLabelText('Name');
+    const submitButtonNode = getByText('Submit');
 
     fireEvent.change(nameTextfieldNode, { target: { value: payload.name } });
     fireEvent.click(submitButtonNode);

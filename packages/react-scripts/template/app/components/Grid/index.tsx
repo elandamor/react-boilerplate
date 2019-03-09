@@ -8,7 +8,7 @@ export interface IProps {
   className?: string;
   columns: number;
   gap?: number;
-};
+}
 
 /**
  * @render react

@@ -12,7 +12,7 @@ const defaultState = {
   networkStatus: {
     __typename: 'NetworkStatus',
     isConnected: true,
-  }
+  },
 };
 
 const resolvers = {
@@ -22,13 +22,13 @@ const resolvers = {
       const data = {
         networkStatus: {
           __typename: 'NetworkStatus',
-          isConnected
+          isConnected,
         },
       };
       cache.writeData({ data });
       return null;
     },
-  }
+  },
 };
 
 const cache = new InMemoryCache();
@@ -39,10 +39,7 @@ const httpLink = new HttpLink({
   uri: API_URI,
 });
 
-const devHttpLink = ApolloLink.from([
-  stateLink,
-  httpLink,
-]);
+const devHttpLink = ApolloLink.from([stateLink, httpLink]);
 
 persistCache({
   cache,

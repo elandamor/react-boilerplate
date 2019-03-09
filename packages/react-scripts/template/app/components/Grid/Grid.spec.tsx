@@ -23,7 +23,7 @@ describe('Grid', () => {
           <div>2</div>
           <div>3</div>
         </Grid>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
   });
 });

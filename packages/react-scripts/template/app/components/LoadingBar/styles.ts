@@ -1,4 +1,4 @@
-import styled , { css, keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { IProps } from './index';
 
 const shiftRightwards = keyframes`
@@ -19,11 +19,13 @@ const Wrapper = styled.div`
   transform: translateX(100%);
   z-index: 10;
 
-  ${(props: IProps) => props.loading && css`
-    animation: ${shiftRightwards} 1s ease-in-out infinite;
-    animation-delay: .8s;
-    display: block;
-  `};
+  ${(props: IProps) =>
+    props.loading &&
+    css`
+      animation: ${shiftRightwards} 1s ease-in-out infinite;
+      animation-delay: 0.8s;
+      display: block;
+    `};
 `;
 
 export default Wrapper;

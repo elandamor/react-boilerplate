@@ -23,7 +23,7 @@ describe('Error Boundary', () => {
     render(
       <ErrorBoundary>
         <ComponentThatWillFail />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
   });
 
@@ -31,13 +31,9 @@ describe('Error Boundary', () => {
     spyOn(console, 'error');
 
     render(
-      <ErrorBoundary
-        template={(
-          <h1>Oops! Something went wrong.</h1>
-        )}
-      >
+      <ErrorBoundary template={<h1>Oops! Something went wrong.</h1>}>
         <ComponentThatWillFail />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
   });
 });

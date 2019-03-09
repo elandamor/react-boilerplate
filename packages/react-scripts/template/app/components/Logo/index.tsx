@@ -5,7 +5,7 @@ import Wrapper from './styles';
 
 export interface IProps {
   className?: string;
-};
+}
 
 /**
  * @render react
@@ -18,8 +18,8 @@ export interface IProps {
 const Logo: FC<IProps> = ({ className }) => (
   <Wrapper className={classNames('c-logo', className)}>
     <div id="react">
-      <div id="react-inner"></div>
-      <div id="react-innerdot"></div>
+      <div id="react-inner" />
+      <div id="react-innerdot" />
     </div>
   </Wrapper>
 );

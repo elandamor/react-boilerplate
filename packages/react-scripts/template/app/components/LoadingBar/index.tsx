@@ -19,7 +19,7 @@ export interface IProps {
 const LoadingBar: FC<IProps> = ({ className, loading }) => (
   <Wrapper
     className={classNames('c-loadingBar', className)}
-    {...( loading ? { 'data-loading': true } : { 'data-loading': false } )}
+    {...(loading ? { 'data-loading': true } : { 'data-loading': false })}
   />
 );
 

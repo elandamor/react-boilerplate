@@ -1,4 +1,4 @@
-import styled , { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const spin = keyframes`
   0% { transform: rotate(0deg) }
@@ -19,14 +19,14 @@ const Wrapper = styled.div`
 
   #react-inner {
     position: absolute;
-      top: 0px;
-      left: 0px;
-      right: 0px;
-      bottom: 0px;
-      border-radius: 50%;
-      border: 6px solid #61dafb;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border-radius: 50%;
+    border: 6px solid #61dafb;
 
-      transform: rotate(120deg);
+    transform: rotate(120deg);
   }
 
   #react-innerdot {
@@ -51,7 +51,7 @@ const Wrapper = styled.div`
     z-index: 11;
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0px;
       left: 0px;
@@ -60,11 +60,10 @@ const Wrapper = styled.div`
       border-radius: 50%;
       border: 6px solid #61dafb;
       transform: rotate(-120deg);
-
     }
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0px;
       left: 0px;

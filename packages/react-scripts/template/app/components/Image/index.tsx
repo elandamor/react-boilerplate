@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Wrapper from './styles';
 
 interface IProps {
-  as?: string,
+  as?: string;
   className?: string;
   src: string;
 }
@@ -17,7 +17,7 @@ interface IProps {
  * <Image src="image.png" />
  */
 
-const Image: FC<IProps> = ({ as: T, className, src, ...rest }) => (
+const Image: FC<IProps> = ({ as: T, className, src, ...rest }) =>
   T ? (
     // @ts-ignore
     <T
@@ -26,12 +26,7 @@ const Image: FC<IProps> = ({ as: T, className, src, ...rest }) => (
       {...rest}
     />
   ) : (
-    <Wrapper
-      className={classNames('a-image', className)}
-      src={src}
-      {...rest}
-    />
-  )
-);
+    <Wrapper className={classNames('a-image', className)} src={src} {...rest} />
+  );
 
 export default Image;
