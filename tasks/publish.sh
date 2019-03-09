@@ -27,6 +27,7 @@ cd ..
 root_path=$PWD
 
 if [ -z $CI ]; then
+  yarn compile:dependencies
   yarn compile:lockfile
 fi
 
