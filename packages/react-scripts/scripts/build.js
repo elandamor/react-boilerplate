@@ -1,4 +1,8 @@
 /* eslint-disable no-console */
+
+// Do this as the first thing so that any code reading it knows the right env.
+process.env.NODE_ENV = 'production';
+
 const chalk = require('chalk');
 const webpack = require('webpack');
 const paths = require('../internals/paths');
@@ -6,7 +10,10 @@ const config = require('../internals/webpack/webpack.prod');
 const checkRequiredFiles = require('../utils/checkRequiredFiles');
 const FileSizeReporter = require('../utils/FileSizeReporter');
 
-const { measureFileSizesBeforeBuild, printFileSizesAfterBuild } = FileSizeReporter;
+const {
+  measureFileSizesBeforeBuild,
+  printFileSizesAfterBuild,
+} = FileSizeReporter;
 
 // These sizes are pretty large. We'll warn for bundles exceeding them.
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
@@ -35,11 +42,10 @@ compiler.run((err, stats) => {
     return true;
   }
 
-  measureFileSizesBeforeBuild(paths.appBuild)
-  .then((previousFileSizes) => {
-    console.log();    
+  measureFileSizesBeforeBuild(paths.appBuild).then((previousFileSizes) => {
+    console.log();
     console.log('File sizes after gzip:');
-    console.log();    
+    console.log();
     printFileSizesAfterBuild(
       stats,
       previousFileSizes,
@@ -47,7 +53,7 @@ compiler.run((err, stats) => {
       WARN_AFTER_BUNDLE_GZIP_SIZE,
       WARN_AFTER_CHUNK_GZIP_SIZE
     );
-    console.log();    
+    console.log();
   });
 
   return true;
