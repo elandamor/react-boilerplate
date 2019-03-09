@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
@@ -40,7 +40,7 @@ interface IProps {
  * />
  */
 
-const Input: SFC<IProps> = ({
+const Input: FC<IProps> = ({
   checked,
   className,
   id,

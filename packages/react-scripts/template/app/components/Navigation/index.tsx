@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 // Styles
@@ -30,7 +30,7 @@ interface IProps {
  * />
  */
 
-const Navigation: SFC<IProps> = ({ className, links }) => (
+const Navigation: FC<IProps> = ({ className, links }) => (
   <Wrapper className={classNames('c-nav', className)}>
     <ul>
       {

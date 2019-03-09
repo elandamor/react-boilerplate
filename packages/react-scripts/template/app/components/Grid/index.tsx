@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
@@ -24,7 +24,7 @@ export interface IProps {
  * </Grid>
  */
 
-const Grid: SFC<IProps> = ({ children, className, columns, gap }) => (
+const Grid: FC<IProps> = ({ children, className, columns, gap }) => (
   <Wrapper
     className={classNames('c-grid', className)}
     columns={columns}

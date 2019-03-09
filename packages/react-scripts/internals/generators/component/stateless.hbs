@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
@@ -18,7 +18,7 @@ interface IProps {
  * <{{ properCase name }} />
  */
 
-const {{ properCase name }}: SFC<IProps> = ({ className }) => (
+const {{ properCase name }}: FC<IProps> = ({ className }) => (
   <Wrapper className={classNames('', className)} />
 );
 

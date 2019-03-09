@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
@@ -17,7 +17,7 @@ interface IProps {
  * <Image src="image.png" />
  */
 
-const Image: SFC<IProps> = ({ as: T, className, src, ...rest }) => (
+const Image: FC<IProps> = ({ as: T, className, src, ...rest }) => (
   T ? (
     // @ts-ignore
     <T

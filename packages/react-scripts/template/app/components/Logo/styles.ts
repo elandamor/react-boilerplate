@@ -71,7 +71,7 @@ const Wrapper = styled.div`
       right: 0px;
       bottom: 0px;
       border-radius: 50%;
-      border: 6px solid ${({ offline, theme }) => offline ? theme.palette.cardBorderColor : '#61dafb' };
+      border: 6px solid #61dafb;
     }
   }
 `;

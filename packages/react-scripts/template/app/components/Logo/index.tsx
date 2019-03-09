@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
@@ -15,7 +15,7 @@ export interface IProps {
  * <Logo />
  */
 
-const Logo: SFC<IProps> = ({ className }) => (
+const Logo: FC<IProps> = ({ className }) => (
   <Wrapper className={classNames('c-logo', className)}>
     <div id="react">
       <div id="react-inner"></div>

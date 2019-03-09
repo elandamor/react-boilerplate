@@ -1,4 +1,4 @@
-import React, { MouseEvent, SFC } from 'react';
+import React, { MouseEvent, FC } from 'react';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
@@ -18,7 +18,7 @@ interface IProps {
  * <Button text="Test" />
  */
 
-const Button: SFC<IProps> = ({
+const Button: FC<IProps> = ({
   className,
   onClick: handleClick,
   text

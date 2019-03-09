@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FC } from 'react';
 import { Route, RouteProps, Switch } from 'react-router-dom';
 
 export interface IRouteProps extends RouteProps {
@@ -26,7 +26,7 @@ interface IProps {
  * />
  */
 
-const Routes: SFC<IProps> = ({ location, routes }) => (
+const Routes: FC<IProps> = ({ location, routes }) => (
   <Switch location={location}>
     {routes.map(
       (

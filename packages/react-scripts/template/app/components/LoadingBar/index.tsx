@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
@@ -16,7 +16,7 @@ export interface IProps {
  * <LoadingBar loading />
  */
 
-const LoadingBar: SFC<IProps> = ({ className, loading }) => (
+const LoadingBar: FC<IProps> = ({ className, loading }) => (
   <Wrapper
     className={classNames('c-loadingBar', className)}
     {...( loading ? { 'data-loading': true } : { 'data-loading': false } )}

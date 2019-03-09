@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 import { WifiOff } from 'react-feather';
 // Styles
@@ -16,7 +16,7 @@ interface IProps {
  * <OfflineIndicator />
  */
 
-const OfflineIndicator: SFC<IProps> = ({ className }) => (
+const OfflineIndicator: FC<IProps> = ({ className }) => (
   <Wrapper className={classNames('', className)}>
     <WifiOff />
   </Wrapper>
