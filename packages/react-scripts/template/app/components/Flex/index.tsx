@@ -1,7 +1,7 @@
-import React, { FC } from "react";
-import classNames from "classnames";
+import React, { FC } from 'react';
+import classNames from 'classnames';
 // Styles
-import Wrapper from "./styles";
+import Wrapper from './styles';
 
 export interface IProps {
   className?: string;
@@ -17,7 +17,7 @@ export interface IProps {
  */
 
 const Flex: FC<IProps> = ({ children, className, ...rest }) => (
-  <Wrapper className={classNames("c-flex", className)} {...rest}>
+  <Wrapper className={classNames('c-flex', className)} {...rest}>
     {children}
   </Wrapper>
 );

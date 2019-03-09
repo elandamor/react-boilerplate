@@ -21,8 +21,7 @@ const LoadingBar: FC<IProps> = ({ className, loading }) => (
     className={classNames('c-loadingBar', className)}
     {...(loading
       ? { 'data-loading': true, loading: true }
-      : { 'data-loading': false, loading: false }
-    )}
+      : { 'data-loading': false, loading: false })}
   />
 );
 
