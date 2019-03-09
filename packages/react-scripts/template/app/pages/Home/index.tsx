@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import classNames from 'classnames';
-// Components
-import { Logo } from '../../components';
 // Styles
 import Wrapper from './styles';
 
@@ -32,7 +30,6 @@ class Home extends Component<IProps, IState> {
           <title>React Boilerplate - Built with love by @elandamor</title>
           <meta name="description" content="Description of Home" />
         </Helmet>
-        <Logo />
       </Wrapper>
     );
   }
