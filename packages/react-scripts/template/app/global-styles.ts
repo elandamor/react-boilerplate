@@ -46,12 +46,7 @@ export default createGlobalStyle`
   }
 
   body {
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen
+    font-family: 'Montserrat',-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen
       ,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
-
-    &.fontsLoaded {
-      font-family: 'Montserrat',-apple-system,BlinkMacSystemFont,Segoe UI
-        ,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
-    }
   }
 `;
