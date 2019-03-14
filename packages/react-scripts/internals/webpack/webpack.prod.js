@@ -1,3 +1,4 @@
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const OfflinePlugin = require('offline-plugin');
@@ -7,7 +8,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const InlineChunkHtmlPlugin = require('../../utils/InlineChunkHtmlPlugin');
 const paths = require('../paths');
 
-module.exports = require('./webpack.base')({
+module.exports = merge(require('./webpack.base'), {
   mode: 'production',
 
   // In production, we skip all hot-reloading stuff
