@@ -12,3 +12,4 @@ export { default as MultiStep } from './MultiStep';
 export { default as Navigation } from './Navigation';
 export { default as OfflineIndicator } from './OfflineIndicator';
 export { default as Routes } from './Routes';
+export { default as Spacer } from './Spacer';
