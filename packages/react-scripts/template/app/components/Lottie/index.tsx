@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import Lottie from 'react-lottie';
+import ILottie from 'react-lottie';
 // Styles
 import Wrapper from './styles';
 
@@ -8,8 +8,12 @@ import Wrapper from './styles';
 // const debug = makeDebugger('Lottie');
 
 interface IProps {
-  animationData: any;
+  animationData: object;
+  autoplay?: boolean;
   className?: string;
+  height?: number;
+  loop?: boolean;
+  width?: number;
 };
 
 /**
@@ -20,11 +24,18 @@ interface IProps {
  * <Lottie />
  */
 
-const Lottie: FC<IProps> = ({ animationData, className }) => {
+const Lottie: FC<IProps> = ({
+  animationData,
+  autoplay,
+  className,
+  height,
+  loop,
+  width
+}) => {
   const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
+    loop,
+    autoplay,
+    animationData,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice'
     }
@@ -32,12 +43,20 @@ const Lottie: FC<IProps> = ({ animationData, className }) => {
 
   return (
     <Wrapper className={classNames('', className)}>
-      <Lottie options={defaultOptions}
-        height={400}
-        width={400}
+      <ILottie
+        options={defaultOptions}
+        height={height}
+        width={width}
       />
     </Wrapper>
   );
+};
+
+Lottie.defaultProps = {
+  autoplay: true,
+  height: 400,
+  loop: true,
+  width: 400,
 };
 
 export default Lottie;
