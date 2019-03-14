@@ -1,11 +1,12 @@
-import React, { FC } from 'react';
-import classNames from 'classnames';
-// Styles
-import Wrapper from './styles';
+import styled from 'styled-components';
 
 export interface IProps {
+  align?: string;
   className?: string;
-  [key: string]: any;
+  direction?: string;
+  justify?: string;
+  marginRight?: string;
+  size?: number;
 }
 
 /**
@@ -16,10 +17,13 @@ export interface IProps {
  *  <Flex />
  */
 
-const Flex: FC<IProps> = ({ children, className, ...rest }) => (
-  <Wrapper className={classNames('c-flex', className)} {...rest}>
-    {children}
-  </Wrapper>
-);
+const Flex = styled.div`
+  align-items: ${({ align }: IProps) => align || 'stretch'};
+  display: flex;
+  flex: ${({ size }: IProps) => size || '1'};
+  flex-direction: ${({ direction }: IProps) => direction || 'row'};
+  justify-content: ${({ justify }: IProps) => justify || 'flex-start'};
+  margin-right: ${({ marginRight }: IProps) => marginRight + 'px' || '0px'};
+`;
 
 export default Flex;
