@@ -7,6 +7,7 @@ import Button from '../Button';
 import Input from '../Input';
 
 import Form from './index';
+import { useFormInput } from '../../hooks';
 
 afterEach(cleanup);
 
@@ -29,7 +30,7 @@ describe('Form', () => {
 
   it('should handle onSubmit event', () => {
     function BookingForm({ onSubmit: handleSubmit }: any) {
-      const [name, setName] = React.useState('');
+      const name = useFormInput('');
 
       return (
         <Form onSubmit={() => handleSubmit({ name })}>
@@ -37,9 +38,8 @@ describe('Form', () => {
             id="name"
             label="Name"
             name="name"
-            onChange={(event) => setName(event.target.value)}
             type="text"
-            value={name}
+            {...name}
           />
           <Button text="Submit" />
         </Form>
