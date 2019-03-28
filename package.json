@@ -14,6 +14,7 @@
     "prettify": "prettier --config .prettierrc --write '**/template/**/*.{ts,tsx}'",
     "setup": "node tasks/setup.js",
     "start": "cd ./packages/react-scripts && node ./bin/react-scripts start",
+    "storybook": "cd ./packages/react-scripts && npm run storybook",
     "start:gh-pages": "cd ./packages/gh-pages && npm run start",
     "start:prod": "cd ./packages/react-scripts && cross-env NODE_ENV=production node ./bin/react-scripts start",
     "test": "cd ./packages/react-scripts && node ./bin/react-scripts test"
