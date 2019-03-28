@@ -13,6 +13,7 @@ interface IProps {
   className?: string;
   height?: number;
   loop?: boolean;
+  size?: number;
   width?: number;
 };
 
@@ -30,6 +31,7 @@ const Lottie: FC<IProps> = ({
   className,
   height,
   loop,
+  size,
   width
 }) => {
   const defaultOptions = {
@@ -45,8 +47,8 @@ const Lottie: FC<IProps> = ({
     <Wrapper className={classNames('', className)}>
       <ILottie
         options={defaultOptions}
-        height={height}
-        width={width}
+        height={size || height}
+        width={size || width}
       />
     </Wrapper>
   );
