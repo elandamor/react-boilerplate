@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   width: 64px;
 
   svg {
-    color: ${({ theme }) => theme.palette.cardBorderColor};
+    color: ${({ theme }) => theme.colors.cardBorderColor};
     height: 24px;
     width: 24px;
   }
