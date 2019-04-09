@@ -12,6 +12,7 @@
     "generate": "cd ./packages/react-scripts && node ./bin/react-scripts generate",
     "publish": "tasks/publish.sh",
     "prettify": "prettier --config .prettierrc --write '**/template/**/*.{ts,tsx}'",
+    "sb": "cd ./packages/react-scripts && npm run storybook",
     "setup": "node tasks/setup.js",
     "start": "cd ./packages/react-scripts && node ./bin/react-scripts start",
     "storybook": "cd ./packages/react-scripts && npm run storybook",
