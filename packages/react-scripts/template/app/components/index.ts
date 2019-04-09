@@ -1,4 +1,5 @@
 export { default as Button } from './Button';
+export { default as Chip } from './Chip';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as Flex } from './Flex';
 export { default as Form } from './Form';
