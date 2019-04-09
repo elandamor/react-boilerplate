@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
+import { space } from 'styled-system';
 import { IButtonProps } from './index';
 import { THEME } from '../../global-styles';
 
 const Wrapper = styled.button`
+  ${space};
   align-items: center;
   background: transparent;
   border: none;
@@ -12,9 +14,6 @@ const Wrapper = styled.button`
   font-size: ${THEME.fontSizes[1]}px;
   justify-content: center;
   letter-spacing: .0892857143em;
-  margin: ${({ marginTop, marginRight, marginBottom, marginLeft }: IButtonProps) =>
-    `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`
-  };
   min-height: ${THEME.space[4] + (THEME.space[1] / 2)}px;
   min-width: ${THEME.space[8]}px;
   opacity: ${({ disabled, raised }: IButtonProps) => raised && disabled ? '0.38' : '1'};
@@ -24,9 +23,14 @@ const Wrapper = styled.button`
   text-transform: uppercase;
   z-index: 1;
 
+  i {
+    pointer-events: none;
+    z-index: 1;
+  }
+
   i, i > svg {
-    height: 18px;
-    width: 18px;
+    height: ${({ iconSize }: IButtonProps) => iconSize ? iconSize : '18'}px;
+    width: ${({ iconSize }: IButtonProps) => iconSize ? iconSize : '18'}px;
   }
 
   label {
@@ -53,9 +57,6 @@ const Wrapper = styled.button`
     left: 0;
     top: 0;
     width: 100%;
-  }
-
-  &:before {
     z-index: 0;
   }
 
@@ -125,6 +126,12 @@ const Wrapper = styled.button`
   ${({ icon, iconPosition, outlined, raised }: IButtonProps) =>
     icon && iconPosition === 'right' && (outlined || raised) && css`
       padding-right: ${THEME.space[1] + (THEME.space[1] / 2)}px;
+    `
+  };
+
+  ${({ iconOnly }: IButtonProps) => iconOnly && css`
+      min-width: 40px;
+      padding: 0;
     `
   };
 `;

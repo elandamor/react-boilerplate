@@ -8,16 +8,18 @@ export interface IButtonProps {
   className?: string;
   disabled?: boolean;
   icon?: JSX.Element;
+  iconOnly?: boolean;
   iconPosition?: string;
-  marginBottom?: number;
-  marginLeft?: number;
-  marginRight?: number;
-  marginTop?: number;
+  iconSize?: number;
+  ml?: number | string;
+  mr?: number | string;
+  mx?: number | string;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
   outlined?: boolean;
   raised?: boolean;
   text?: string;
   textColor?: string;
+  type?: 'button' | 'submit';
 }
 
 /**
@@ -40,19 +42,17 @@ const Button: FC<IButtonProps> = ({
     {...rest}
   >
     {rest.icon && rest.iconPosition === 'left' && <i>{rest.icon}</i>}
-    <label>{text}</label>
+    {!rest.iconOnly && <label>{text}</label>}
     {rest.icon && rest.iconPosition === 'right' && <i>{rest.icon}</i>}
   </Wrapper>
 );
 
 Button.defaultProps = {
+  iconOnly: false,
   iconPosition: 'left',
-  marginBottom: 0,
-  marginLeft: 0,
-  marginRight: 0,
-  marginTop: 0,
   onClick: () => null,
   text: 'Button',
+  type: 'button',
 };
 
 export default Button;
