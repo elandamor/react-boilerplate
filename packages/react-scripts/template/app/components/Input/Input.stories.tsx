@@ -13,6 +13,7 @@ storiesOf('Input', module)
     placeholder="Name"
     type="text"
     helperText="Helper text"
+    helperTextPosition="bottom"
     sronly
   />
 ))

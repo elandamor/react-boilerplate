@@ -8,6 +8,7 @@ export interface IInputProps {
   className?: string;
   checked?: boolean;
   helperText?: string;
+  helperTextPosition?: string;
   id: string;
   label: string;
   name: string;
@@ -75,6 +76,7 @@ const Input: FC<IInputProps> = ({
           (rest.type !== 'checkbox' && rest.type !== 'radio')
           && renderLabel(label, sronly)
         }
+        { rest.helperTextPosition === 'top' && helperText && <HelperText>{helperText}</HelperText>}
         {
           rest.type === 'textarea'
           ? (<textarea id={id} className="a-textarea" {...rest} />)
@@ -89,7 +91,7 @@ const Input: FC<IInputProps> = ({
             </React.Fragment>
           )
         }
-        { helperText && <HelperText>{helperText}</HelperText>}
+        { rest.helperTextPosition === 'bottom' && helperText && <HelperText>{helperText}</HelperText>}
       </label>
     </Wrapper>
   );
