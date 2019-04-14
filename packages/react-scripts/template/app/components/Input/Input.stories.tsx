@@ -10,11 +10,7 @@ storiesOf('Input', module)
     label="Name"
     name="name"
     onChange={() => null}
-    placeholder="Name"
     type="text"
-    helperText="Helper text"
-    helperTextPosition="bottom"
-    sronly
   />
 ))
 .add('checkbox', () => (
@@ -43,5 +39,23 @@ storiesOf('Input', module)
     onChange={() => null}
     type="checkbox"
     as="toggle"
+  />
+))
+.add('dropzone', () => (
+  <Input
+    id="file"
+    label="File"
+    name="file"
+    onChange={() => null}
+    type="file"
+  />
+))
+.add('select', () => (
+  <Input
+    id="select"
+    label="Select"
+    name="select"
+    onChange={() => null}
+    type="select"
   />
 ))

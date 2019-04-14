@@ -2,17 +2,9 @@ import styled, { css } from 'styled-components';
 import { IInputProps } from './index';
 import { THEME } from '../../global-styles';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<IInputProps>`
   margin-bottom: ${THEME.space[2]}px;
   position: relative;
-
-  .a-label {
-    &.sr-only {
-      height: 0;
-      opacity: 0;
-      position: absolute;
-    }
-  }
 
   .a-checkbox,
   .a-radio {
@@ -28,39 +20,33 @@ const Wrapper = styled.div`
   }
 
   .a-checkbox {
-    ${({ as }: IInputProps) => as === 'toggle' && css`
+    ${({ as }) => as === 'toggle' && css`
       border: none;
       height: 1.25rem;
       width: 2rem;
-    `}
 
-    &::after, &::before {
-      ${({ as }: IInputProps) => as === 'toggle' && css`
+      &::after, &::before {
         content: '';
         top: 0;
         left: 0;
         position: absolute;
-      `}
-    }
+      }
 
-    &::before {
-      ${({ as }: IInputProps) => as === 'toggle' && css`
+      &::before {
         width: 100%;
         height: 100%;
         border-radius: 0.75rem;
         background: #dbdbdb;
-      `}
-    }
+      }
 
-    &::after {
-      ${({ as }: IInputProps) => as === 'toggle' && css`
+      &::after {
         width: 1rem;
         height: 1rem;
         margin: 0.15rem;
         border-radius: 50%;
         background: #ffffff;
-      `}
-    }
+      }
+    `}
   }
 
   input, textarea {
@@ -70,9 +56,10 @@ const Wrapper = styled.div`
     font-size: ${THEME.fontSizes[2]}px;
     padding: ${THEME.space[2]}px ${THEME.space[1] + THEME.space[1] / 2}px;
     position: relative;
+    width: 100%;
     z-index: 1;
 
-    ${({ type }: IInputProps) => (type === 'checkbox' || type === 'radio')
+    ${({ type }) => (type === 'checkbox' || type === 'radio')
     && css`
       top: 0;
       left: 0;
@@ -104,14 +91,14 @@ const Wrapper = styled.div`
       background-size: 75%;
 
       &::before {
-        ${({ as }: IInputProps) => as === 'toggle' && css`
+        ${({ as }) => as === 'toggle' && css`
           background: ${THEME.colors.success};
           border-color: ${THEME.colors.success};
         `}
       }
 
       &::after {
-        ${({ as }: IInputProps) => as === 'toggle' && css`
+        ${({ as }) => as === 'toggle' && css`
           left: auto;
           right: 0;
         `}
@@ -137,7 +124,7 @@ const Wrapper = styled.div`
     }
   }
 
-  ${({ readonly }: IInputProps) => readonly && css`
+  ${({ readonly }) => readonly && css`
     opacity: 0.38;
     pointer-events: none;
   `}

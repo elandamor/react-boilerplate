@@ -1,4 +1,5 @@
 import React, { FC, Suspense } from 'react';
+import classNames from 'classnames';
 // Styles
 import Wrapper, { HelperText } from './styles';
 import Checkbox from '../Checkbox/Loadable';
@@ -65,7 +66,7 @@ const Input: FC<IInputProps> = ({
   const renderInput = () => {
     switch (rest.type) {
       case 'checkbox':
-        return <Checkbox onChange={handleChange} />
+        return <Checkbox onChange={handleChange} {...rest} />
       case 'file':
         return <Dropzone onChange={handleChange} {...rest} />;
       case 'select':
@@ -78,7 +79,11 @@ const Input: FC<IInputProps> = ({
   };
 
   return (
-    <Wrapper {...rest}>
+    <Wrapper
+      className={classNames('c-input__wrapper', className, {
+        '-active': checked,
+      })}
+    >
       <label htmlFor={id}>
         {
           (rest.type !== 'checkbox' && rest.type !== 'radio')
