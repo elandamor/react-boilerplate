@@ -1,15 +1,11 @@
 import styled from 'styled-components';
-import { IProps } from './index';
+import { IGridProps } from './index';
+import { THEME } from '../../global-styles';
 
-const Wrapper = styled.div<IProps>`
+const Wrapper = styled.div<IGridProps>`
   display: grid;
   grid-template-columns: repeat(${({ columns }) => columns}, 1fr);
-  grid-gap: ${({ gap }) => (gap ? `${gap}px` : '20px')};
-
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.medium}) {
-    display: flex;
-    flex-wrap: wrap;
-  }
+  grid-gap: ${({ gap }) => (gap ? gap : THEME.space[3])}px;
 `;
 
 export default Wrapper;

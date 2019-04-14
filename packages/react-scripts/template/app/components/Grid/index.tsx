@@ -3,8 +3,8 @@ import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
 
-export interface IProps {
-  children: any;
+export interface IGridProps {
+  children: React.ReactNode;
   className?: string;
   columns: number;
   gap?: number;
@@ -17,14 +17,14 @@ export interface IProps {
  * @example
  * <Grid
  *  columns={2}
- *  gap={20}
+ *  gap={24}
  * >
  *  <Component />
  *  <Component />
  * </Grid>
  */
 
-const Grid: FC<IProps> = ({ children, className, columns, gap }) => (
+const Grid: FC<IGridProps> = ({ children, className, columns, gap }) => (
   <Wrapper
     className={classNames('c-grid', className)}
     columns={columns}
