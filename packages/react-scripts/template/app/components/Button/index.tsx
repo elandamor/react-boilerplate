@@ -2,12 +2,15 @@ import React, { MouseEvent, FC } from 'react';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
+import { THEME } from '../../global-styles';
 
 export interface IButtonProps {
+  ariaLabel?: string;
   backgroundColor?: string;
   className?: string;
+  color?: string;
   disabled?: boolean;
-  icon?: JSX.Element;
+  icon?: React.ReactNode;
   iconOnly?: boolean;
   iconPosition?: string;
   iconSize?: number;
@@ -37,6 +40,7 @@ const Button: FC<IButtonProps> = ({
   ...rest
 }) => (
   <Wrapper
+    aria-label={rest.ariaLabel || text}
     className={classNames('c-btn', className)}
     onClick={handleClick}
     {...rest}
@@ -48,6 +52,7 @@ const Button: FC<IButtonProps> = ({
 );
 
 Button.defaultProps = {
+  color: THEME.colors.black,
   iconOnly: false,
   iconPosition: 'left',
   onClick: () => null,
