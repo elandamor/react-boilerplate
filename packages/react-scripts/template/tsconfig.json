@@ -14,12 +14,12 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "outDir": "build",
-    "rootDir": "app",
+    "rootDir": "src",
     "sourceMap": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "es5"
   },
-  "include": ["app/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["build", "node_modules"]
 }

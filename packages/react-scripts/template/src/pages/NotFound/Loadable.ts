@@ -1,9 +1,10 @@
 /**
  *
- * Asynchronously loads the component for {{ properCase name }}
+ * Asynchronously loads the component for NotFound
  *
  */
 
 import React from 'react';
+
 
 export default React.lazy(() => import('./index'));
