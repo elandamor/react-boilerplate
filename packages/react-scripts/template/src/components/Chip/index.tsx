@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
+import { FontSizeProps } from 'styled-system';
 // Styles
 import Wrapper, { ChipIcon, ChipRemove, ChipText } from './styles';
 import { XCircle } from 'react-feather';
@@ -7,7 +8,7 @@ import { XCircle } from 'react-feather';
 // import { makeDebugger } from '../../utils';
 // const debug = makeDebugger('Chip');
 
-export interface IChipProps {
+export interface IChipProps extends FontSizeProps {
   className?: string;
   icon?: React.ReactNode;
   onRemove?: (event: React.MouseEvent) => void;
@@ -28,11 +29,12 @@ const Chip: FC<IChipProps> = ({
   icon,
   onRemove: handleRemove,
   showRemove,
-  text
+  text,
+  ...rest
 }) => (
   <Wrapper className={classNames('c-chip', className)} showRemove={showRemove}>
     {icon && <ChipIcon>{icon}</ChipIcon>}
-    <ChipText>{text}</ChipText>
+    <ChipText {...rest}>{text}</ChipText>
     {showRemove && (
       <ChipRemove
         iconOnly

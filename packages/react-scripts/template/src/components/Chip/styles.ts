@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components';
+import { fontSize } from 'styled-system';
 import Button from '../Button';
 import { THEME } from '../../global-styles';
 import { IChipProps } from './index';
 
 const Wrapper = styled.div`
+  ${fontSize};
   align-items: center;
   background-color: ${THEME.colors.blacks[3]};
   border-radius: ${THEME.space[2]}px;
@@ -27,8 +29,9 @@ const Wrapper = styled.div`
 
 export const ChipIcon = styled.i``;
 
-export const ChipText = styled.span``;
-
+export const ChipText = styled.span`
+  ${fontSize};
+`;
 
 export const ChipRemove = styled(Button)`
   --size: ${THEME.space[4]}px;
