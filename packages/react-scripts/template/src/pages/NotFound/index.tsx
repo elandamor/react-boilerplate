@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
-import { H3, Inner } from '../../components';
+import { H3, Inner, GoBackButton } from '../../components';
 
 /**
  * @render react
@@ -31,7 +31,8 @@ class NotFound extends Component<IProps, IState> {
           <title>NotFound</title>
           <meta name="description" content="Description of NotFound" />
         </Helmet>
-        <Inner>
+        <Inner p={3}>
+          <GoBackButton m={-2} />
           <H3 mb={0}>Oops!</H3>
           <p>The page you're looking for doesn't exist.</p>
         </Inner>
