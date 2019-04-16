@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { THEME } from "../../global-styles";
 import { space, SpaceProps } from 'styled-system';
+import { THEME } from "../../global-styles";
 
 /**
  * @render react

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { space, SpaceProps } from 'styled-system';
 import { THEME } from "../../global-styles";
 
 /**
@@ -9,7 +10,8 @@ import { THEME } from "../../global-styles";
  *  <H2>Heading</H2>
  */
 
-const H2 = styled.h2`
+const H2 = styled.h2<SpaceProps>`
+  ${space};
   color: ${({ color, theme }) => color || theme.colors.textColorDark};
   font-size: ${({ theme }) => theme.fontSizes[8]}px;
   font-weight: ${THEME.fontWeights[2]};
