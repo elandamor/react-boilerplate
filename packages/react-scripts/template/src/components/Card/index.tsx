@@ -49,7 +49,7 @@ const Card: FC<ICardProps> = ({
     </Suspense>
     <Content className="c-content" contentPadding={contentPadding}>
       {title && (
-        <Title className="a-title">
+        <Title m={0}>
           {icon && icon}
           {title}
         </Title>
