@@ -7,21 +7,6 @@ import localForage from 'localforage';
 
 const API_URI = process.env.APOLLO_HTTP_URI;
 
-const resolvers = {
-  Mutation: {
-    updateNetworkStatus: (_: any, { isConnected }: any, { cache }: any) => {
-      const data = {
-        networkStatus: {
-          __typename: 'NetworkStatus',
-          isConnected,
-        },
-      };
-      cache.writeData({ data });
-      return null;
-    },
-  },
-};
-
 const cache = new InMemoryCache();
 
 const httpLink = new HttpLink({
@@ -39,16 +24,6 @@ persistCache({
 const client = new ApolloClient({
   cache,
   link: devHttpLink,
-  resolvers,
-});
-
-cache.writeData({
-  data: {
-    networkStatus: {
-      __typename: 'NetworkStatus',
-      isConnected: true,
-    },
-  },
 });
 
 export default client;
