@@ -1,10 +1,11 @@
 import React, { MouseEvent, FC } from 'react';
 import classNames from 'classnames';
+import { ColorProps, SpaceProps } from 'styled-system';
 // Styles
 import Wrapper from './styles';
 import { THEME } from '../../global-styles';
 
-export interface IButtonProps {
+export interface IButtonProps extends ColorProps, SpaceProps {
   ariaLabel?: string;
   backgroundColor?: string;
   className?: string;
@@ -14,9 +15,6 @@ export interface IButtonProps {
   iconOnly?: boolean;
   iconPosition?: string;
   iconSize?: number;
-  ml?: number | string;
-  mr?: number | string;
-  mx?: number | string;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
   outlined?: boolean;
   raised?: boolean;

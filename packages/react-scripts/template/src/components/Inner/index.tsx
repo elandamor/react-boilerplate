@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { space, SpaceProps } from 'styled-system';
 
-export interface IInnerProps {}
+export interface IInnerProps extends SpaceProps {}
 
 /**
  * @render react
@@ -10,7 +11,8 @@ export interface IInnerProps {}
  *  <Inner />
  */
 
-const Inner = styled.div`
+const Inner = styled.div<IInnerProps>`
+  ${space};
   margin: 0 auto;
   max-width: 1024px;
   width: 100%;

@@ -4,6 +4,7 @@ export { default as Chip } from './Chip';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as Flex } from './Flex';
 export { default as Form } from './Form';
+export { default as GoBackButton } from './GoBackButton';
 export { default as Grid } from './Grid';
 export { default as H1 } from './H1';
 export { default as H2 } from './H2';
