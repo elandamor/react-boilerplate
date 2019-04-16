@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import classNames from 'classnames';
+import { FontSizeProps } from 'styled-system';
 // Styles
 import Wrapper from './styles';
 import Chip from '../Chip';
@@ -7,7 +8,7 @@ import Chip from '../Chip';
 // import { makeDebugger } from '../../utils';
 // const debug = makeDebugger('Chips');
 
-interface IChipsProps {
+interface IChipsProps extends FontSizeProps {
   className?: string;
   createChipKeys?: number[];
   getChipValue?: Function;
@@ -58,6 +59,7 @@ const Chips: FC<IChipsProps> = (props) => {
       return (
         React.cloneElement(renderChip(chip), {
           onRemove: removeChip(idx),
+          fontSize: props.fontSize,
           index: idx,
           key: `chip${idx}`,
           showRemove: true,

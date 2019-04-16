@@ -7,5 +7,5 @@ const data = ['Apple', 'Samsung', 'Huawei'];
 
 storiesOf('Chips', module)
 .add('default', () => (
-  <Chips value={data} />
+  <Chips fontSize={1} value={data} />
 ))
