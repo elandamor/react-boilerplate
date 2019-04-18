@@ -58,11 +58,6 @@ module.exports = {
         use: 'html-loader',
       },
       {
-        test: /\.json$/,
-        loader: 'json-loader',
-        type: 'javascript/auto',
-      },
-      {
         test: /\.(gif|jpe?g|png|svg|webp|mp4|webm)$/,
         use: {
           loader: 'url-loader',
