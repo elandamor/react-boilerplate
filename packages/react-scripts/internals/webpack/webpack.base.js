@@ -91,7 +91,6 @@ module.exports = {
     }),
     new ForkTsCheckerWebpackPlugin({
       checkSyntacticErrors: true,
-      memoryLimit: 256,
       silent: true,
       tsconfig: paths.appTsConfig,
     }),
