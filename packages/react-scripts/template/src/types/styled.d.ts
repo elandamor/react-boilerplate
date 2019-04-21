@@ -1,7 +1,8 @@
 import 'styled-components';
 
 declare module 'styled-components' {
-  export interface IDefaultTheme {
+  export interface DefaultTheme {
+    isDark?: boolean;
     borders: any[];
     breakpoints: number[];
     colors: {

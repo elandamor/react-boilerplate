@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import Snackbar from './index';
 import Button from '../Button';
-import { THEME } from '../../global-styles';
+import theme from '../../theme';
 
 storiesOf('Snackbar', module)
 .add('single-line message', () => <Snackbar text="Single-line message." />)
@@ -13,7 +13,7 @@ storiesOf('Snackbar', module)
     pr={1}
     py="6px"
     text="Single-line message with action."
-    actions={<Button color={THEME.colors.primaryLight} text="Action" />}
+    actions={<Button color={theme.colors.primaryLight} text="Action" />}
   />
 ))
 .add('single-line message with action (leading)', () => (
@@ -22,7 +22,7 @@ storiesOf('Snackbar', module)
     pr={1}
     py="6px"
     text="Single-line message with action."
-    actions={<Button color={THEME.colors.primaryLight} text="Action" />}
+    actions={<Button color={theme.colors.primaryLight} text="Action" />}
   />
 ))
 
