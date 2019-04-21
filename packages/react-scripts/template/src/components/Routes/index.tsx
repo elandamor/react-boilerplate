@@ -39,6 +39,7 @@ const Routes: FC<IProps> = ({ location, routes }) => (
           path={path}
           render={(props: IRouteProps) => (
             // pass the sub-routes down to keep nesting
+            // @ts-ignore
             <Component routes={routes} {...props} />
           )}
         />
