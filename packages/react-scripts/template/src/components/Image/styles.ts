@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
+import { IImageProps } from './index';
 
 const fadeIn = keyframes`
   from {
@@ -6,7 +7,7 @@ const fadeIn = keyframes`
   }
 `;
 
-const Wrapper = styled.img`
+const Wrapper = styled.img<IImageProps>`
   background-color: #e8e8e8;
   height: auto;
   width: 100%;
@@ -26,6 +27,13 @@ const Wrapper = styled.img`
     animation-name: ${fadeIn};
     visibility: visible;
   }
+
+  ${(props) => props.as && css`
+    background-image: url(${props.src});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  `}
 `;
 
 export default Wrapper;

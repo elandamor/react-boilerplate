@@ -3,8 +3,8 @@ import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
 
-interface IProps {
-  as?: string;
+export interface IImageProps {
+  as?: any;
   className?: string;
   src: string;
 }
@@ -17,16 +17,15 @@ interface IProps {
  * <Image src="image.png" />
  */
 
-const Image: FC<IProps> = ({ as: T, className, src, ...rest }) =>
-  T ? (
+const Image: FC<IImageProps> = ({ className, ...rest }) => (
+  <Wrapper
+    className={classNames('a-image', className)}
+    {...rest}
+  />
+);
 
-    <T
-      className={classNames('a-image -as', className)}
-      style={{ backgroundImage: `url(${src})` }}
-      {...rest}
-    />
-  ) : (
-    <Wrapper className={classNames('a-image', className)} src={src} {...rest} />
-  );
+Image.defaultProps = {
+  as: 'img',
+}
 
 export default Image;
