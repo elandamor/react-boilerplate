@@ -1,11 +1,8 @@
 // Button.spec.tsx
 import * as React from 'react';
-import { cleanup, fireEvent, render } from 'react-testing-library';
-import 'jest-dom/extend-expect';
+import { fireEvent, render } from 'react-testing-library';
 
 import Button from './index';
-
-afterEach(cleanup);
 
 describe('Button', () => {
   it('should render with text', () => {

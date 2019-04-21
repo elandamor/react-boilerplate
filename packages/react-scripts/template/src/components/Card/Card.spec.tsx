@@ -1,13 +1,10 @@
 // Card.spec.tsx
 import * as React from "react";
-import { cleanup, render } from "react-testing-library";
-import "jest-dom/extend-expect";
+import { render } from "react-testing-library";
 
 import Card from "./index";
 import { ThemeProvider } from "styled-components";
 import theme from '../../theme';
-
-afterEach(cleanup);
 
 describe("Card", () => {
   it("should render without crashing", () => {

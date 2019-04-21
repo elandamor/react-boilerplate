@@ -1,7 +1,6 @@
 // OfflineIndicator.spec.tsx
 import * as React from 'react';
 import { render } from 'react-testing-library';
-import 'whatwg-fetch';
 
 import { ThemeProvider } from 'styled-components';
 

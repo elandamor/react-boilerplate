@@ -1,10 +1,8 @@
 // LoadingBar.spec.tsx
 import * as React from 'react';
-import { cleanup, render } from 'react-testing-library';
+import { render } from 'react-testing-library';
 
 import LoadingBar from './index';
-
-afterEach(cleanup);
 
 describe('LoadingBar', () => {
   it('should render loading bar (not loading)', () => {

@@ -1,14 +1,11 @@
 // Grid.spec.tsx
 import * as React from 'react';
-import { cleanup, render } from 'react-testing-library';
-import 'whatwg-fetch';
+import { render } from 'react-testing-library';
 
 import { ThemeProvider } from 'styled-components';
 
 import Grid from './index';
 import theme from '../../theme';
-
-afterEach(cleanup);
 
 describe('Grid', () => {
   it('should display a grid', () => {

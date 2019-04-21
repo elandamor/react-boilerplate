@@ -1,10 +1,8 @@
 // Input.spec.tsx
 import * as React from 'react';
-import { cleanup, fireEvent, render } from 'react-testing-library';
+import { fireEvent, render } from 'react-testing-library';
 
 import Input from './index';
-
-afterEach(cleanup);
 
 describe('Input', () => {
   it('should render a text input', () => {

@@ -1,10 +1,8 @@
 // ErrorBoundary.spec.tsx
 import * as React from 'react';
-import { cleanup, render } from 'react-testing-library';
+import { render } from 'react-testing-library';
 
 import ErrorBoundary from './index';
-
-afterEach(cleanup);
 
 class ComponentThatWillFail extends React.Component {
   componentDidMount() {

@@ -1,14 +1,11 @@
 // Form.spec.tsx
 import * as React from 'react';
-import { cleanup, fireEvent, render } from 'react-testing-library';
-import 'jest-dom/extend-expect';
+import { fireEvent, render } from 'react-testing-library';
 
 import Button from '../Button';
 import Input from '../Input';
 
 import Form from './index';
-
-afterEach(cleanup);
 
 describe('Form', () => {
   it('should render without crashing', () => {
