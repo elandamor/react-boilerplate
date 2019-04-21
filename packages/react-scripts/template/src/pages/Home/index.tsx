@@ -6,6 +6,7 @@ import Wrapper from './styles';
 import { Lottie } from '../../components';
 import assets from '../../assets';
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * @render react
@@ -23,12 +24,14 @@ const Home: FC<IHomeProps> = (props) => {
   return (
     <Wrapper className={classNames('', className)}>
       <Helmet title="React Boilerplate - Built with love by @elandamor" />
-      <Lottie
-        animationData={assets.lottie.reactLogo}
-        height={200}
-        loop={false}
-        width={200}
-      />
+      <Link to="/about">
+        <Lottie
+          animationData={assets.lottie.reactLogo}
+          height={200}
+          loop={false}
+          width={200}
+        />
+      </Link>
     </Wrapper>
   );
 }
