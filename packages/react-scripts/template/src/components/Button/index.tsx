@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { ColorProps, SpaceProps } from 'styled-system';
 // Styles
 import Wrapper from './styles';
-import { THEME } from '../../global-styles';
 
 export interface IButtonProps extends ColorProps, SpaceProps {
   ariaLabel?: string;
@@ -33,14 +32,12 @@ export interface IButtonProps extends ColorProps, SpaceProps {
 
 const Button: FC<IButtonProps> = ({
   className,
-  onClick: handleClick,
   text,
   ...rest
 }) => (
   <Wrapper
     aria-label={rest.ariaLabel || text}
     className={classNames('c-btn', className)}
-    onClick={handleClick}
     {...rest}
   >
     {rest.icon && rest.iconPosition === 'left' && <i>{rest.icon}</i>}
@@ -50,7 +47,7 @@ const Button: FC<IButtonProps> = ({
 );
 
 Button.defaultProps = {
-  color: THEME.colors.black,
+  color: 'text',
   iconOnly: false,
   iconPosition: 'left',
   onClick: () => null,

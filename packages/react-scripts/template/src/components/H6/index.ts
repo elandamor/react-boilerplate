@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { space, SpaceProps } from 'styled-system';
-import { THEME } from '../../global-styles';
+import theme from '../../theme';
 
 /**
  * @render react
@@ -12,10 +12,10 @@ import { THEME } from '../../global-styles';
 
 const H6 = styled.h6<SpaceProps>`
   ${space};
-  color: ${({ color }) => color || THEME.colors.textColorDark};
-  font-size: ${THEME.fontSizes[4]}px;
-  font-weight: ${THEME.fontWeights[4]};
-  letter-spacing: ${THEME.letterSpacings[3]}rem;
+  color: ${({ color }) => color || theme.colors.textColorDark};
+  font-size: ${theme.fontSizes[4]}px;
+  font-weight: ${theme.fontWeights[4]};
+  letter-spacing: ${theme.letterSpacings[3]}rem;
 `;
 
 export default H6;

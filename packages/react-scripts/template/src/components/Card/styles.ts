@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { ICardProps } from "./index";
-import { THEME } from '../../global-styles';
+import theme from '../../theme';
 import H6 from '../H6';
 
 const Wrapper = styled.div<ICardProps>`
@@ -64,14 +64,15 @@ export const Content = styled.div<ICardProps>`
 `;
 
 export const Description = styled.p`
-  font-size: ${THEME.fontSizes[2]}px;
-  color: ${THEME.colors.blacks[8]};
+  font-size: ${theme.fontSizes[2]}px;
+  color: ${({ theme }) => theme.isDark
+    ? theme.colors.whites[8] : theme.colors.blacks[8]};
   line-height: 1.5;
 `;
 
 export const Title = styled(H6)`
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.textColorDark};
+  color: ${({ theme }) => theme.colors.text};
 
   svg {
     margin-bottom: -6px;

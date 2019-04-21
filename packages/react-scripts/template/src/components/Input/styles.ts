@@ -1,19 +1,19 @@
 import styled, { css } from 'styled-components';
 import { IInputProps } from './index';
-import { THEME } from '../../global-styles';
+import theme from '../../theme';
 
 const Wrapper = styled.div<IInputProps>`
-  margin-bottom: ${THEME.space[2]}px;
+  margin-bottom: ${theme.space[2]}px;
   position: relative;
 
   .a-checkbox,
   .a-radio {
-    border: ${THEME.borders[2]} #969696;
+    border: ${theme.borders[2]} #969696;
     border-radius: 50%;
     cursor: pointer;
     display: inline-block;
     height: 1.25rem;
-    margin-right: ${THEME.space[1]}px;
+    margin-right: ${theme.space[1]}px;
     position: relative;
     vertical-align: middle;
     width: 1.25rem;
@@ -51,10 +51,10 @@ const Wrapper = styled.div<IInputProps>`
 
   input, textarea {
     background: transparent;
-    border: ${THEME.borders[1]} #aaaaaa;
-    border-radius: ${THEME.space[1] / 2}px;
-    font-size: ${THEME.fontSizes[2]}px;
-    padding: ${THEME.space[2]}px ${THEME.space[1] + THEME.space[1] / 2}px;
+    border: ${theme.borders[1]} #aaaaaa;
+    border-radius: ${theme.space[1] / 2}px;
+    font-size: ${theme.fontSizes[2]}px;
+    padding: ${theme.space[2]}px ${theme.space[1] + theme.space[1] / 2}px;
     position: relative;
     width: 100%;
     z-index: 1;
@@ -73,7 +73,7 @@ const Wrapper = styled.div<IInputProps>`
 
     &:focus,
     &:hover {
-      border: ${THEME.borders[1]} ${THEME.colors.primary};
+      border: ${theme.borders[1]} ${theme.colors.primary};
       outline: none;
     }
 
@@ -82,18 +82,18 @@ const Wrapper = styled.div<IInputProps>`
     }
 
     &:hover ~ .a-radio {
-      border: ${THEME.borders[2]} #4a4a4a;
+      border: ${theme.borders[2]} #4a4a4a;
     }
 
     &:checked ~ .a-checkbox {
-      border-color: ${THEME.colors.primary};
-      background: ${THEME.colors.primary} url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSIyMCA2IDkgMTcgNCAxMiI+PC9wb2x5bGluZT48L3N2Zz4=) center no-repeat;
+      border-color: ${theme.colors.primary};
+      background: ${theme.colors.primary} url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSIyMCA2IDkgMTcgNCAxMiI+PC9wb2x5bGluZT48L3N2Zz4=) center no-repeat;
       background-size: 75%;
 
       &::before {
         ${({ as }) => as === 'toggle' && css`
-          background: ${THEME.colors.success};
-          border-color: ${THEME.colors.success};
+          background: ${theme.colors.success};
+          border-color: ${theme.colors.success};
         `}
       }
 
@@ -106,7 +106,7 @@ const Wrapper = styled.div<IInputProps>`
     }
 
     &:checked ~ .a-radio {
-      border: ${THEME.borders[2]} #1785ff;
+      border: ${theme.borders[2]} #1785ff;
 
       &::after {
         content: '';
@@ -140,14 +140,15 @@ const Wrapper = styled.div<IInputProps>`
 `;
 
 export const HelperText = styled.span`
-  color: ${THEME.colors.blacks[8]};
+  color: ${({ theme }) => theme.isDark
+    ? theme.colors.whites[8] : theme.colors.blacks[8]};
   display: block;
-  font-size: ${THEME.fontSizes[0]}px;
+  font-size: ${theme.fontSizes[0]}px;
   padding:
-    ${THEME.space[1] / 2}px
-    ${THEME.space[1] + THEME.space[1] / 2}px
+    ${theme.space[1] / 2}px
+    ${theme.space[1] + theme.space[1] / 2}px
     0
-    ${THEME.space[1] + THEME.space[1] / 2}px;
+    ${theme.space[1] + theme.space[1] / 2}px;
 `;
 
 export default Wrapper;

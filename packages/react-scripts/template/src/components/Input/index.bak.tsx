@@ -8,7 +8,7 @@ import Label from '../Label';
 import LoadingBar from '../LoadingBar';
 import Select from '../Select/Loadable';
 import Spacer from '../Spacer';
-import { THEME } from '../../global-styles';
+import theme from '../../theme';
 
 export interface IInputProps {
   as?: string;
@@ -90,7 +90,7 @@ const Input: FC<IInputProps> = ({
           && (
             <React.Fragment>
               {renderLabel()}
-              <Spacer spacing={THEME.space[1]} />
+              <Spacer spacing={theme.space[1]} />
             </React.Fragment>
           )
         }

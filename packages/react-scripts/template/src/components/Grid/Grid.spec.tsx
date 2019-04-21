@@ -6,14 +6,14 @@ import 'whatwg-fetch';
 import { ThemeProvider } from 'styled-components';
 
 import Grid from './index';
-import { THEME } from '../../global-styles';
+import theme from '../../theme';
 
 afterEach(cleanup);
 
 describe('Grid', () => {
   it('should display a grid', () => {
     render(
-      <ThemeProvider theme={THEME}>
+      <ThemeProvider theme={theme}>
         <Grid columns={2}>
           <div>1</div>
           <div>2</div>

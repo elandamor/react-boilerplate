@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { THEME } from '../../global-styles';
+import theme from '../../theme';
 
 const Wrapper = styled.div`
   align-items: center;
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
   &:focus,
   &:hover {
-    border: ${THEME.borders[1]} ${THEME.colors.primary};
+    border: ${theme.borders[1]} ${theme.colors.primary};
     outline: none;
   }
 

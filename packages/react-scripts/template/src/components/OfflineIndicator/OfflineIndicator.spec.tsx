@@ -6,12 +6,12 @@ import 'whatwg-fetch';
 import { ThemeProvider } from 'styled-components';
 
 import OfflineIndicator from './index';
-import { THEME } from '../../global-styles';
+import theme from '../../theme';
 
 describe('<OfflineIndicator />', () => {
   it('should render an offline indicator', () => {
     render(
-      <ThemeProvider theme={THEME}>
+      <ThemeProvider theme={theme}>
         <OfflineIndicator />
       </ThemeProvider>,
     );

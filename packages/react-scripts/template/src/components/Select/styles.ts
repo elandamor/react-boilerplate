@@ -1,23 +1,23 @@
 import styled from 'styled-components';
-import { THEME } from '../../global-styles';
+import theme from '../../theme';
 
 const Wrapper = styled.div`
-  font-size: ${THEME.fontSizes[1]}px;
+  font-size: ${theme.fontSizes[1]}px;
   font-weight: 400;
 
   .c-select__control {
-    border: ${THEME.borders[1]} #aaaaaa;
+    border: ${theme.borders[1]} #aaaaaa;
     box-shadow: none;
 
     &:focus,
     &:hover {
-      border: ${THEME.borders[1]} ${THEME.colors.primary};
+      border: ${theme.borders[1]} ${theme.colors.primary};
       outline: none;
     }
   }
 
   .c-select__single-value {
-    color: ${THEME.colors.black};
+    color: ${({ theme }) => theme.colors.text};
   }
 
   .c-select__input input {

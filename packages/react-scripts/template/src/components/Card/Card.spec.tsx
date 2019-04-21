@@ -5,14 +5,14 @@ import "jest-dom/extend-expect";
 
 import Card from "./index";
 import { ThemeProvider } from "styled-components";
-import { THEME } from "../../global-styles";
+import theme from '../../theme';
 
 afterEach(cleanup);
 
 describe("Card", () => {
   it("should render without crashing", () => {
     render(
-      <ThemeProvider theme={THEME}>
+      <ThemeProvider theme={theme}>
         <Card />
       </ThemeProvider>
     );
@@ -24,7 +24,7 @@ describe("Card", () => {
     };
 
     render(
-      <ThemeProvider theme={THEME}>
+      <ThemeProvider theme={theme}>
         <Card {...props} />
       </ThemeProvider>
     );
@@ -37,7 +37,7 @@ describe("Card", () => {
     };
 
     const { getByText } = render(
-      <ThemeProvider theme={THEME}>
+      <ThemeProvider theme={theme}>
         <Card {...props} />
       </ThemeProvider>
     );
@@ -55,7 +55,7 @@ describe("Card", () => {
     };
 
     const { getByText } = render(
-      <ThemeProvider theme={THEME}>
+      <ThemeProvider theme={theme}>
         <Card {...props} />
       </ThemeProvider>
     );
