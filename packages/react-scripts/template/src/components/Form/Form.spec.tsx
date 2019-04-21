@@ -40,7 +40,7 @@ describe('Form', () => {
             id="name"
             label="Name"
             name="name"
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => setName(event.currentTarget.value)}
             type="text"
             value={name}
           />

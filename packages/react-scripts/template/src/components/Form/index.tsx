@@ -45,7 +45,7 @@ const Form: FC<IProps> = ({ children, className, onSubmit: handleSubmit }) => (
        */
       if (event.key === 'Enter') {
 
-        if (event.target.type !== 'textarea') {
+        if (event.currentTarget.type !== 'textarea') {
           event.preventDefault();
         }
       }
