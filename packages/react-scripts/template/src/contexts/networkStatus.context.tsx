@@ -28,14 +28,14 @@ const Provider: FC<IProps> = (props) => {
   }
 
   useEffect(() => {
-    if (navigator.onLine) { online() } else { offline() };
+    if (!navigator.onLine) { offline() };
 
-    window.addEventListener('online', () => online());
-    window.addEventListener('offline', () => offline());
+    window.addEventListener('online', online);
+    window.addEventListener('offline', offline);
 
     return () => {
-      window.removeEventListener('online', () => online());
-      window.removeEventListener('offline', () => offline());
+      window.removeEventListener('online', online);
+      window.removeEventListener('offline', offline);
     };
   }, []);
 
