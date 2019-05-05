@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { space, SpaceProps } from 'styled-system';
-import theme from '../../theme';
+import { color, fontSize, space, StyledSystemProps } from 'styled-system';
 
 /**
  * @render react
@@ -10,12 +9,15 @@ import theme from '../../theme';
  *  <H5>Heading</H5>
  */
 
-const H5 = styled.h5<SpaceProps>`
+const H5 = styled.h5<StyledSystemProps>`
+  ${color};
+  ${fontSize};
   ${space};
-  color: ${({ color, theme }) => color || theme.colors.textColorDark};
-  font-size: ${({ theme }) => theme.fontSizes[5]}px;
-  font-weight: ${theme.fontWeights[3]};
-  letter-spacing: ${theme.letterSpacings[2]}rem;
 `;
+
+H5.defaultProps = {
+  color: 'text',
+  fontSize: [4,5],
+}
 
 export default H5;
