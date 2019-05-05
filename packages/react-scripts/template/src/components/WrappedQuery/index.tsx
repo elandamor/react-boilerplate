@@ -3,7 +3,10 @@ import { Query, QueryProps, QueryResult } from 'react-apollo';
 
 import LoadingBar from '../LoadingBar';
 
-interface IWrappedQueryProps extends QueryProps {};
+interface IWrappedQueryProps extends QueryProps {
+  loader?: React.ReactNode;
+  overrideStates?: boolean;
+};
 
 /**
  * @render react
@@ -16,12 +19,19 @@ interface IWrappedQueryProps extends QueryProps {};
 const WrappedQuery: FC<IWrappedQueryProps> = ({ children, ...rest }) => (
   <Query {...rest}>
     {(result: QueryResult) => {
-      if (result.loading) return <LoadingBar loading />;
-      if (result.error) return <span>{`Error!: ${result.error}`}</span>;
+      if (!rest.overrideStates) {
+        if (result.loading) { return rest.loader || <LoadingBar /> };
+        if (result.error) return <span>{`Error!: ${result.error}`}</span>;
+      }
 
       return children(result);
     }}
   </Query>
 );
+
+WrappedQuery.defaultProps = {
+  loader: undefined,
+  overrideStates: false,
+};
 
 export default WrappedQuery;
