@@ -3,6 +3,7 @@
  */
 /* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
+const resolve = require('resolve');
 const Dotenv = require('dotenv-webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components')
@@ -90,13 +91,25 @@ module.exports = {
       path: paths.dotenv,
     }),
     new ForkTsCheckerWebpackPlugin({
+      typescript: resolve.sync('typescript', {
+        basedir: paths.appNodeModules,
+      }),
+      useTypescriptIncrementalApi: true,
       checkSyntacticErrors: true,
-      silent: true,
       tsconfig: paths.appTsConfig,
+      reportFiles: [
+        '**',
+        '!**/*.json',
+        '!**/__tests__/**',
+        '!**/?(*.)(spec|test).*',
+        '!**/src/setupTests.*',
+      ],
+      watch: paths.appSrc,
+      silent: true,
     }),
   ],
   resolve: {
-    modules: ['app', 'node_modules'],
+    modules: ['node_modules', paths.appSrc],
     extensions: ['.js', '.jsx', '.react.js', '.ts', '.tsx'],
     mainFields: ['browser', 'jsnext:main', 'main'],
   },
