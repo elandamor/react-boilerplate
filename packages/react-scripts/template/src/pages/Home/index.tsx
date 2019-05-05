@@ -1,30 +1,31 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import classNames from 'classnames';
+import { Link, RouteComponentProps } from 'react-router-dom';
 // Styles
 import Wrapper from './styles';
 import { Lottie } from '../../components';
 import assets from '../../assets';
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
 
 /**
  * @render react
  * @name Home page
- * @description Home page.
+ * @description Landing page for the web app.
  */
 
-interface IHomeProps {
-  className?: string;
-}
+interface IHomeProps extends RouteComponentProps {}
 
-const Home: FC<IHomeProps> = (props) => {
-  const { className } = props;
-
+const Home = (props: IHomeProps) => {
   return (
-    <Wrapper className={classNames('', className)}>
+    <Wrapper>
       <Helmet title="React Boilerplate - Built with love by @elandamor" />
-      <Link to="/about">
+      <Link
+        to={{
+          pathname: '/about',
+          state: {
+            showBackButton: true,
+          }
+        }}
+      >
         <Lottie
           animationData={assets.lottie.reactLogo}
           height={200}
