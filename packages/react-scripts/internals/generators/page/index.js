@@ -67,7 +67,7 @@ module.exports = {
         type: 'add',
         path: path.join(
           paths.appPages,
-          '{{properCase name}}/{{properCase name}}.spec.tsx',
+          '{{properCase name}}/{{properCase name}}.spec.tsx'
         ),
         templateFile: './page/spec.hbs',
         abortOnFail: true,
@@ -86,7 +86,7 @@ module.exports = {
       },
       {
         type: 'modify',
-        path: path.join(paths.appContainers, 'App/routes.ts'),
+        path: path.join(paths.appSrc, 'routes.ts'),
         pattern: /(\s{\n\s{0,}path: '\*',)/g,
         template: trimTemplateFile('../route/route.hbs'),
       },
