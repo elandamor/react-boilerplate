@@ -1,8 +1,7 @@
-import React, { FC, Suspense } from "react";
+import React, { FC } from "react";
 import classNames from "classnames";
 // Components
 import Image from "../Image/Loadable";
-import LoadingBar from "../LoadingBar";
 // Styles
 import Wrapper, { Content, Description, Title } from "./styles";
 
@@ -44,9 +43,7 @@ const Card: FC<ICardProps> = ({
     onClick={onClick}
     {...rest}
   >
-    <Suspense fallback={<LoadingBar loading />}>
-      {image && <Image as="div" src={image} />}
-    </Suspense>
+    {image && <Image as="div" src={image} />}
     <Content className="c-content" contentPadding={contentPadding}>
       {title && (
         <Title m={0}>

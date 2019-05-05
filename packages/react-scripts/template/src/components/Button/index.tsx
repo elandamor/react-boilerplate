@@ -1,25 +1,24 @@
-import React, { MouseEvent, FC } from 'react';
-import classNames from 'classnames';
-import { ColorProps, SpaceProps } from 'styled-system';
+import React, { FC } from 'react';
+import { StyledSystemProps } from 'styled-system';
 // Styles
 import Wrapper from './styles';
 
-export interface IButtonProps extends ColorProps, SpaceProps {
+export interface IButtonProps extends StyledSystemProps {
   ariaLabel?: string;
-  backgroundColor?: string;
-  className?: string;
-  color?: string;
   disabled?: boolean;
   icon?: React.ReactNode;
   iconOnly?: boolean;
-  iconPosition?: string;
   iconSize?: number;
-  onClick?: (event: MouseEvent<HTMLElement>) => void;
-  outlined?: boolean;
-  raised?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   text?: string;
-  textColor?: string;
   type?: 'button' | 'submit';
+  // Variants
+  flat?: boolean;
+  outlined?: boolean;
+  primary?: boolean;
+  raised?: boolean;
+  secondary?: boolean;
+  variant?: 'flat' | 'outlined' | 'primary' | 'raised' | 'secondary' | 'text';
 }
 
 /**
@@ -30,29 +29,26 @@ export interface IButtonProps extends ColorProps, SpaceProps {
  * <Button text="Test" />
  */
 
-const Button: FC<IButtonProps> = ({
-  className,
-  text,
-  ...rest
-}) => (
-  <Wrapper
-    aria-label={rest.ariaLabel || text}
-    className={classNames('c-btn', className)}
-    {...rest}
-  >
-    {rest.icon && rest.iconPosition === 'left' && <i>{rest.icon}</i>}
+const Button: FC<IButtonProps> = ({ text, ...rest }) => (
+  // @ts-ignore
+  <Wrapper {...rest}>
+    {rest.icon && <i>{rest.icon}</i>}
     {!rest.iconOnly && <label>{text}</label>}
-    {rest.icon && rest.iconPosition === 'right' && <i>{rest.icon}</i>}
   </Wrapper>
 );
 
 Button.defaultProps = {
+  ariaLabel: 'Button',
+  bg: 'transparent',
   color: 'text',
+  disabled: false,
   iconOnly: false,
-  iconPosition: 'left',
+  iconSize: 18,
+  minWidth: 64,
   onClick: () => null,
   text: 'Button',
   type: 'button',
+  variant: 'text',
 };
 
 export default Button;

@@ -93,7 +93,7 @@ const Input: FC<IInputProps> = ({
           rest.helperTextPosition === 'top' && helperText
           && <HelperText>{helperText}</HelperText>
         }
-        <Suspense fallback={<LoadingBar loading />}>{ renderInput() }</Suspense>
+        <Suspense fallback={<LoadingBar />}>{ renderInput() }</Suspense>
         {
           (rest.type === 'checkbox' || rest.type === 'radio')
           && (

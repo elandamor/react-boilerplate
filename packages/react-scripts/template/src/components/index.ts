@@ -1,3 +1,5 @@
+export { default as Accordion } from './Accordion';
+export { default as AnimatedWrapper } from './AnimatedWrapper';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
 export { default as Chip } from './Chip';
@@ -12,6 +14,7 @@ export { default as H3 } from './H3';
 export { default as H4 } from './H4';
 export { default as H5 } from './H5';
 export { default as H6 } from './H6';
+export { default as Header } from './Header';
 export { default as Image } from './Image';
 export { default as Inner } from './Inner';
 export { default as Input } from './Input';

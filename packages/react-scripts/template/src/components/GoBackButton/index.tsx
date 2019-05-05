@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import { withRouter, RouteComponentProps } from 'react-router';
 import { ArrowLeft } from 'react-feather';
 // Styles
 import Wrapper from './styles';
+import { useRouter } from '../../hooks';
 
 // import { makeDebugger } from '../../utils';
 // const debug = makeDebugger('GoBackButton');
 
-interface IProps extends RouteComponentProps {
+interface IGoBackButtonProps {
   className?: string;
 };
 
@@ -20,14 +20,22 @@ interface IProps extends RouteComponentProps {
  * <GoBackButton />
  */
 
-const GoBackButton: FC<IProps> = ({ className, history, ...rest }) => (
-  <Wrapper
-    {...rest}
-    className={classNames('c-btn--back', className)}
-    icon={<ArrowLeft />}
-    onClick={() => history.goBack()}
-    iconOnly
-  />
-);
+const GoBackButton = ({ className, ...rest }: IGoBackButtonProps) => {
+  const { history } = useRouter();
 
-export default withRouter(GoBackButton);
+  return (
+    <Wrapper
+      className={classNames('c-btn--back', className)}
+      icon={<ArrowLeft />}
+      onClick={() => history.goBack()}
+      iconSize={24}
+      iconOnly
+      minWidth={56}
+      size={56}
+      borderRadius="50%"
+      {...rest}
+    />
+  );
+}
+
+export default GoBackButton;

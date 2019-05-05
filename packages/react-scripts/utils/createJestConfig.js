@@ -40,7 +40,7 @@ module.exports = (resolve, rootDir) => {
     //     : require.resolve('react-app-polyfill/jsdom'),
     // ],
 
-    setupTestFrameworkScriptFile: setupTestsFile,
+    setupFilesAfterEnv: [setupTestsFile],
     testMatch: [
       '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
       '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}',

@@ -2,24 +2,30 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
+    "isolatedModules": true,
     "jsx": "react",
     "lib": ["es6", "dom", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
+    "noEmit": true,
     "noImplicitReturns": true,
     "noImplicitThis": false,
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "outDir": "build",
+    "resolveJsonModule": true,
     "rootDir": "src",
+    "skipLibCheck": true,
     "sourceMap": true,
+    "strict": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "es5"
   },
-  "include": ["src/**/*"],
-  "exclude": ["build", "node_modules"]
+  "include": ["src"],
+  "exclude": ["build", "node_modules", "src/setupTests.ts"]
 }

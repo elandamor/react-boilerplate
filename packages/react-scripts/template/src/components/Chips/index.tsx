@@ -4,6 +4,7 @@ import { FontSizeProps } from 'styled-system';
 // Styles
 import Wrapper from './styles';
 import Chip from '../Chip';
+import { KEYBOARD_CODE } from '../../constants';
 
 // import { makeDebugger } from '../../utils';
 // const debug = makeDebugger('Chips');
@@ -94,8 +95,8 @@ const Chips: FC<IChipsProps> = (props) => {
       shiftKey: event.shiftKey,
     });
    */
-  const onKeyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.keyCode === 13 && state.value.trim()) {
+  const onKeyUpHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.keyCode === KEYBOARD_CODE.ENTER && state.value.trim()) {
       addChip(state.value);
     }
 
@@ -106,16 +107,17 @@ const Chips: FC<IChipsProps> = (props) => {
 
   function onBackspace() {
     if (state.value === '' && state.chips.length > 0) {
+      const lastChip = state.chips[state.chips.length - 1];
       const nextChips = state.chips.slice(0, -1);
 
-      setState({ ...state, chips: nextChips });
+      setState({ ...state, chips: nextChips, value: lastChip });
     }
   }
 
   const inputProps = {
     value: state.value,
     onChange,
-    onKeyDown: onKeyDownHandler,
+    onKeyUp: onKeyUpHandler,
   };
 
   return (

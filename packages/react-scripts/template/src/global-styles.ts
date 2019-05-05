@@ -9,8 +9,8 @@ export default createGlobalStyle`
   }
 
   *::-webkit-scrollbar {
-    width: 4px !important;
-    height: 2px !important;
+    width: ${theme.space[1] / 2}px !important;
+    height: ${theme.space[1] / 4}px !important;
   }
 
   *::-webkit-scrollbar-thumb {
@@ -33,8 +33,8 @@ export default createGlobalStyle`
     font-feature-settings: 'liga', 'kern' 1;
     font-kerning: normal;
     font-weight: ${theme.fontWeights[3]};
-    height: 100%;
     margin: 0;
+    height: 100%;
     padding: 0;
     text-rendering: optimizeLegibility;
     width: 100%;
@@ -47,11 +47,5 @@ export default createGlobalStyle`
   [href] {
     color: ${({ theme }) => theme.colors.link};
     text-decoration: none;
-  }
-
-  [sronly], .sr-only {
-    height: 0;
-    opacity: 0;
-    position: absolute;
   }
 `;

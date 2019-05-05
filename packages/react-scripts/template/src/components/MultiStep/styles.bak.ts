@@ -28,7 +28,7 @@ export const Track = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: ${theme.minWidths[0]}px;
+  min-width: ${theme.colors.minWidths[0]}px;
   position: relative;
 
   .side-nav {
@@ -41,7 +41,7 @@ export const Track = styled.li`
         ? 'row' : 'column'
       };
       justify-content: center;
-      min-height: ${theme.space[4]}px;
+      min-height: ${theme.colors.space[4]}px;
     }
 
     &__circle {
@@ -49,24 +49,24 @@ export const Track = styled.li`
       background-color: ${({ theme }) => theme.colors.cardBorderColor};
       border-radius: 50%;
       display: flex;
-      height: ${theme.space[4]}px;
+      height: ${theme.colors.space[4]}px;
       justify-content: center;
-      margin: ${theme.space[3]}px;
-      width: ${theme.space[4]}px;
+      margin: ${theme.colors.space[3]}px;
+      width: ${theme.colors.space[4]}px;
 
       &-inner {
         background-color: ${({ theme }) => theme.colors.surface};
         border-radius: 50%;
         display: block;
-        height: ${theme.space[3]}px;
-        width: ${theme.space[3]}px;
+        height: ${theme.colors.space[3]}px;
+        width: ${theme.colors.space[3]}px;
       }
     }
 
     &__line {
-      background-color: ${({ theme }) => theme.colors.primary};
+      background-color: ${({ theme }) => theme.colors.cardBorderColor};
       border-radius: 2px;
-      height: ${theme.space[1] / 2}px;
+      height: ${theme.colors.space[1] / 2}px;
       position: absolute;
       right: -25%;
       visibility: hidden;
@@ -75,7 +75,7 @@ export const Track = styled.li`
       ${(props: { verticalTrack: boolean }) => props.verticalTrack && css`
         bottom: -12.5%;
         height: 25%;
-        width: ${theme.space[1] / 2}px;
+        width: ${theme.colors.space[1] / 2}px;
         right: auto;
       `};
     }
@@ -83,7 +83,7 @@ export const Track = styled.li`
 
   &.-done {
     .side-nav__circle {
-      background-color: ${({ theme }) => theme.colors.primary};
+      background-color: ${({ theme }) => theme.colors.cardBorderColor};
     }
   }
 
@@ -105,12 +105,12 @@ export const Track = styled.li`
 
   &:hover {
     .side-nav__circle {
-      background-color: ${({ theme }) => theme.colors.primaryDark};
+      background-color: ${theme.colors.blacks[5]};
     }
 
     .-done {
       .side-nav__circle {
-        background-color: ${theme.colors.primaryDark};
+        background-color: ${theme.colors.blacks[5]};
       }
     }
   }

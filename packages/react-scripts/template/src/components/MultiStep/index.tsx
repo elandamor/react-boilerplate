@@ -3,6 +3,7 @@ import classNames from 'classnames';
 // Styles
 import Wrapper, { Navigation, Track, Tracks } from './styles';
 import Button from '../Button';
+import { KEYBOARD_CODE } from '../../constants';
 
 // import { makeDebugger } from '../../utils';
 // const debug = makeDebugger('MultiStep');
@@ -24,6 +25,7 @@ interface IProps {
  * @render react
  * @name MultiStep component
  * @description MultiStep component.
+ * @todo Make code more readable
  * @example
  * <MultiStep
  *    steps={[
@@ -66,12 +68,12 @@ const MultiStep: FC<IProps> = ({
   }
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    return event.which === 13 ? next(steps.length) : {};
+    return event.which === KEYBOARD_CODE.ENTER ? next(steps.length) : {};
   }
 
   const renderTracks = () => {
     return (
-
+      // @ts-ignore
       <Tracks verticalTrack={verticalTrack}>
         {
           steps.map((_: any, index: number) => (
@@ -80,7 +82,7 @@ const MultiStep: FC<IProps> = ({
               onClick={handleClick}
               key={index}
               value={index}
-
+              // @ts-ignore
               verticalTrack={verticalTrack}
             >
               <div className="side-nav__wrap">

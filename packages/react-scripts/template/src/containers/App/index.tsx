@@ -5,16 +5,16 @@ import { Normalize } from 'styled-normalize';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
 // Components
-import { ErrorBoundary, LoadingBar, Routes } from '../../components';
+import { ErrorBoundary, Header, LoadingBar, Routes } from 'components';
 // Contexts
-import NetworkStatusProvider from '../../contexts/networkStatus.context';
+import NetworkStatusProvider from 'contexts/networkStatus.context';
 // Routes
-import routes from '../../routes';
+import routes from 'routes';
 // Styles
 import GlobalStyles from '../../global-styles';
 import Wrapper from './styles';
 
-import { useDarkMode } from '../../hooks';
+import { useDarkMode } from 'hooks';
 import baseTheme from '../../theme';
 
 // import { makeDebugger } from '../../utils';
@@ -47,7 +47,10 @@ const App = () => {
           <Normalize />
           <GlobalStyles />
           <ErrorBoundary>
-            <Suspense fallback={<LoadingBar loading />}>
+            <Header />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingBar />}>
               <Routes routes={routes} />
             </Suspense>
           </ErrorBoundary>

@@ -1,20 +1,7 @@
 import styled from 'styled-components';
-import {
-  space,
-  AlignItemsProps,
-  DisplayProps,
-  FlexDirectionProps,
-  JustifyContentProps,
-  SpaceProps,
-} from 'styled-system';
+import { space, StyledSystemProps } from 'styled-system';
 
-export interface IFlexProps extends
-  AlignItemsProps,
-  DisplayProps,
-  FlexDirectionProps,
-  JustifyContentProps,
-  SpaceProps
-{
+export interface IFlexProps extends StyledSystemProps {
   size?: number;
 }
 

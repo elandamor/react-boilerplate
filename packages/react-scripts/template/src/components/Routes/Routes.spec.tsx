@@ -11,7 +11,7 @@ describe('Routes', () => {
   it('should render app routes without crashing', () => {
     render(
       <Router>
-        <React.Suspense fallback={<LoadingBar loading />}>
+        <React.Suspense fallback={<LoadingBar />}>
           <Routes routes={routes} />
         </React.Suspense>
       </Router>,

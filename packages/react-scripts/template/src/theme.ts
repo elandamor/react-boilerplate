@@ -80,6 +80,7 @@ export const THEME: DefaultTheme = {
     modes: {
       dark: {
         background: '#282c35',
+        surface: '#282c35',
         link: '#7395FF',
         text: '#FFFFFF'
       }
@@ -94,9 +95,9 @@ export const THEME: DefaultTheme = {
   fontWeights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
   letterSpacings: [-1.5, -0.5, 0, 0.1, 0.15, 0.25, 0.4, 0.5, 1.25, 1.5],
   // Layout
-  breakpoints: [32, 48, 64], // em
+  breakpoints: [512, 768, 1024],
   maxWidths: [320],
-  minWidths: [320, 344],
+  minWidths: [160, 320, 344],
   space: [0].concat(GENERATORS.spacing(10, LAYOUT.baseline)),
 };
 

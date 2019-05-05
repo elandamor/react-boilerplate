@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { animated } from 'react-spring';
 import Button from '../Button';
 
 const Wrapper = styled(Button)`
@@ -14,5 +15,7 @@ const Wrapper = styled(Button)`
     width: 24px;
   }
 `;
+
+export const AnimatedWrapper = styled(animated.div)``;
 
 export default Wrapper;
