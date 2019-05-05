@@ -5,7 +5,6 @@
   "version": "0.3.2",
   "author": "Thandolwethu Mpofu <mpofuthandolwethu@gmail.com>",
   "dependencies": {
-    "babel-plugin-styled-components": "1.10.0",
     "gatsby": "2.0.77",
     "gatsby-image": "2.0.25",
     "gatsby-plugin-manifest": "2.0.12",
@@ -15,6 +14,7 @@
     "gatsby-plugin-styled-components": "3.0.4",
     "gatsby-source-filesystem": "2.0.12",
     "gatsby-transformer-sharp": "2.1.9",
+    "prop-types": "15.7.2",
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "react-feather": "1.1.5",
@@ -34,6 +34,8 @@
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "devDependencies": {
+    "@babel/core": "7.4.4",
+    "babel-plugin-styled-components": "1.10.0",
     "gatsby-plugin-typescript": "2.0.3",
     "gh-pages": "2.0.1",
     "prettier": "1.15.3",
