@@ -3,7 +3,10 @@ import { Mutation, MutationFn, MutationProps, MutationResult } from 'react-apoll
 
 import LoadingBar from '../LoadingBar';
 
-interface IWrappedMutationProps extends MutationProps {};
+interface IWrappedMutationProps extends MutationProps {
+  loader?: React.ReactNode;
+  overrideStates?: boolean;
+};
 
 /**
  * @render react
@@ -17,11 +20,17 @@ const WrappedMutation: FC<IWrappedMutationProps> = ({ children, ...rest }) => (
   <Mutation {...rest}>
     {(mutateFn: MutationFn, result: MutationResult) => (
       <React.Fragment>
-        {result.loading && <LoadingBar loading />}
+        {!rest.overrideStates && result.loading
+          && (rest.loader || <LoadingBar />)}
         {children(mutateFn, result)}
       </React.Fragment>
     )}
   </Mutation>
 );
+
+WrappedMutation.defaultProps = {
+  loader: undefined,
+  overrideStates: false,
+};
 
 export default WrappedMutation;
