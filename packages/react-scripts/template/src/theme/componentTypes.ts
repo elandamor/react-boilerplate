@@ -1,10 +1,120 @@
-import { compose, color, fontSize, space, fontFamily, fontWeight, lineHeight } from 'styled-system';
-
-export const typography = compose(
+import {
+  compose,
+  alignContent,
+  alignItems,
+  alignSelf,
+  bottom,
   color,
+  display,
+  flex,
+  flexBasis,
+  flexDirection,
+  flexWrap,
   fontFamily,
   fontSize,
+  fontStyle,
   fontWeight,
+  gridArea,
+  gridAutoColumns,
+  gridAutoFlow,
+  gridAutoRows,
+  gridColumn,
+  gridColumnGap,
+  gridGap,
+  gridRow,
+  gridRowGap,
+  gridTemplateAreas,
+  gridTemplateColumns,
+  gridTemplateRows,
+  height,
+  justifyContent,
+  justifyItems,
+  justifySelf,
+  left,
+  letterSpacing,
   lineHeight,
-  space
+  maxHeight,
+  maxWidth,
+  minHeight,
+  minWidth,
+  order,
+  position,
+  right,
+  size,
+  space,
+  textAlign,
+  top,
+  verticalAlign,
+  width,
+  zIndex,
+} from 'styled-system';
+
+export const core = compose(
+  color,
+  fontSize,
+  space,
+  width,
+);
+
+export const flexbox = compose(
+  core,
+  alignContent,
+  alignItems,
+  alignSelf,
+  flexWrap,
+  flexBasis,
+  flexDirection,
+  flex,
+  justifyContent,
+  justifyItems,
+  justifySelf,
+  order,
+);
+
+export const grid = compose(
+  core,
+  gridArea,
+  gridAutoColumns,
+  gridAutoFlow,
+  gridAutoRows,
+  gridColumn,
+  gridColumnGap,
+  gridGap,
+  gridRow,
+  gridRowGap,
+  gridTemplateAreas,
+  gridTemplateColumns,
+  gridTemplateRows,
+);
+
+export const layout = compose(
+  core,
+  display,
+  maxWidth,
+  minWidth,
+  height,
+  maxHeight,
+  minHeight,
+  size,
+  verticalAlign,
+);
+
+export const positioning = compose(
+  core,
+  bottom,
+  left,
+  position,
+  right,
+  top,
+  zIndex,
+);
+
+export const typography = compose(
+  core,
+  fontFamily,
+  fontStyle,
+  fontWeight,
+  letterSpacing,
+  lineHeight,
+  textAlign,
 );
