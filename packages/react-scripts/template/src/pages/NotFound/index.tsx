@@ -2,8 +2,13 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { RouteComponentProps } from 'react-router-dom';
 // Styles
-import Wrapper from './styles';
-import { H2, Inner } from '../../components';
+import { Inner, Page, Spacer, Modal, ScrollView, HorizontalScroller, Table, Box } from '@app/components';
+import H2 from '@app/typography/H2';
+
+import { makeDebugger } from '@app/utils';
+const debug = makeDebugger('NotFound');
+
+interface INotFoundProps extends RouteComponentProps {}
 
 /**
  * @render react
@@ -11,20 +16,22 @@ import { H2, Inner } from '../../components';
  * @description 404 page.
  */
 
-interface INotFoundProps extends RouteComponentProps {}
-
 const NotFound = (props: INotFoundProps) => {
   return (
-    <Wrapper>
+    <Page>
       <Helmet>
         <title>NotFound</title>
         <meta name="description" content="Description of NotFound" />
       </Helmet>
-      <Inner p={3}>
+      <Inner p={2}>
         <H2 mb={0}>Oops!</H2>
-        <p>The page you're looking for doesn't exist.</p>
+        <Modal
+          trigger={<p>The page you're looking for doesn't exist.</p>}
+          fullscreen={false}
+          defaultOpen={true}
+        />
       </Inner>
-    </Wrapper>
+    </Page>
   );
 }
 

@@ -4,10 +4,11 @@ import { Field, Formik } from 'formik';
 
 import Form from './index';
 import Button from '../Button';
+import SingleDatePicker from '../SingleDatePicker';
+import Flex from '../Flex';
 
 const initialValues = {
-  name: '',
-  bio: ''
+  dateOfBirth: null,
 };
 
 storiesOf('Form', module)
@@ -20,11 +21,27 @@ storiesOf('Form', module)
       setTimeout(() => setSubmitting(false), 3000);
     }}
   >
-    {({ isSubmitting }) => (
+    {(formikProps) => (
       <Form>
-        <Field type="text" label="Name" name="name" placeholder="Name"/>
-        <Field component="textarea" name="bio" placeholder="Enter your biography" />
-        <Button type="submit" text="Submit" disabled={isSubmitting} />
+        <Flex>
+          <Flex flexDirection="column" justifyContent="flex-start">
+            <Field
+              name="dateOfBirth"
+              render={({ field }) => (
+                <SingleDatePicker
+                  field={field}
+                  id="dateOfBirth"
+                  date={formikProps.values.dateOfBirth}
+                  form={formikProps}
+                />
+              )}
+            />
+            <Button type="submit" text="Submit" disabled={formikProps.isSubmitting} />
+          </Flex>
+          <Flex>
+            <pre>{JSON.stringify(formikProps, null, 2)}</pre>
+          </Flex>
+        </Flex>
       </Form>
     )}
   </Formik>

@@ -5,22 +5,25 @@ import { Normalize } from 'styled-normalize';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
 // Components
-import { ErrorBoundary, Header, LoadingBar, Routes } from 'components';
+import { ErrorBoundary, Header, LoadingBar, Routes } from '@app/components';
 // Contexts
-import NetworkStatusProvider from 'contexts/networkStatus.context';
+import NetworkStatusProvider from '@app/contexts/networkStatus.context';
 // Routes
-import routes from 'routes';
+import routes from '@app/routes';
 // Styles
-import GlobalStyles from '../../global-styles';
-import Wrapper from './styles';
+import { Wrapper } from './styles';
 
-import { useDarkMode } from 'hooks';
-import baseTheme from '../../theme';
+import GlobalStyles from '@app/global-styles';
 
-// import { makeDebugger } from '../../utils';
+import baseTheme from '@app/theme';
+import { useDarkMode } from '@app/hooks';
+
+// import { makeDebugger } from '@app/utils';
 // const debug = makeDebugger('App');
 
 export interface IAppProps extends RouteComponentProps {}
+
+export const AppContext = React.createContext({});
 
 /**
  * @render react
@@ -30,7 +33,7 @@ export interface IAppProps extends RouteComponentProps {}
  */
 
 const App = () => {
-  const [darkMode] = useDarkMode();
+  const [darkMode, setDarkMode] = useDarkMode();
 
   // Merge the color mode with the base theme to create a new theme object
   const getTheme = (mode: string) => merge({}, baseTheme, {
@@ -43,18 +46,20 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <NetworkStatusProvider>
-        <Wrapper>
-          <Normalize />
-          <GlobalStyles />
-          <ErrorBoundary>
-            <Header />
-          </ErrorBoundary>
-          <ErrorBoundary>
-            <Suspense fallback={<LoadingBar />}>
-              <Routes routes={routes} />
-            </Suspense>
-          </ErrorBoundary>
-        </Wrapper>
+        <AppContext.Provider value={{ darkMode, setDarkMode }}>
+          <Wrapper>
+            <Normalize />
+            <GlobalStyles />
+            <ErrorBoundary>
+              <Header alignItems="center" flex="none" />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Suspense fallback={<LoadingBar />}>
+                <Routes routes={routes} />
+              </Suspense>
+            </ErrorBoundary>
+          </Wrapper>
+        </AppContext.Provider>
       </NetworkStatusProvider>
     </ThemeProvider>
   );

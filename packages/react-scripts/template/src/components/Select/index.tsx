@@ -24,8 +24,8 @@ const Select: FC<IProps> = ({ className, onChange, ...rest }) => {
   const handleChange = (event: any) => {
     onChange({
       target: {
+        ...event,
         name: rest.name,
-        value: {...event},
       },
     })
   };

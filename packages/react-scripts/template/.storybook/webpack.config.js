@@ -1,13 +1,13 @@
 const path = require('path');
+const appSrc = '../src';
 
-module.exports = async ({ config, mode }) => {
+module.exports = async ({ config }) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
     use: [
       {
         loader: require.resolve('ts-loader'),
         options: {
-          // disable type checker - we will use it in fork plugin
           transpileOnly: true,
         },
       },
@@ -15,6 +15,8 @@ module.exports = async ({ config, mode }) => {
   });
 
   config.resolve.extensions.push('.ts', '.tsx');
+  config.resolve.modules.push(appSrc);
+  config.resolve.alias['@app'] = path.resolve(__dirname, appSrc);
 
   return config;
 };

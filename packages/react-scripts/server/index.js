@@ -3,8 +3,8 @@
 const express = require('express');
 const { execSync } = require('child_process');
 const path = require('path');
-const logger = require('./logger');
 
+const logger = require('./logger');
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
@@ -24,7 +24,10 @@ const app = express();
 
 // In production generate required files if missing
 if (!isDev && !checkRequiredFiles([paths.appBuild], { silent: true })) {
-  const command = `node ${path.join(__dirname, '../bin/react-scripts.js')} build --silent`;
+  const command = `node ${path.join(
+    __dirname,
+    '../bin/react-scripts.js'
+  )} build --silent`;
 
   try {
     execSync(command, { stdio: 'inherit' });

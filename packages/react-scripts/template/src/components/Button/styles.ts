@@ -4,11 +4,6 @@ import { IButtonProps } from './index';
 import theme from '../../theme';
 
 const Wrapper = styled.button<IButtonProps>`
-  ${borderRadius};
-  ${color};
-  ${minWidth};
-  ${size};
-  ${space};
   align-items: center;
   background: transparent;
   border: none;
@@ -26,6 +21,11 @@ const Wrapper = styled.button<IButtonProps>`
   position: relative;
   text-transform: uppercase;
   z-index: 1;
+  ${borderRadius};
+  ${color};
+  ${minWidth};
+  ${size};
+  ${space};
 
   i {
     pointer-events: none;

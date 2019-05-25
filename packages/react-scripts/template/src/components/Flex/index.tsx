@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import { space, StyledSystemProps } from 'styled-system';
+import { space, StyledSystemProps, alignItems, display, flex, flexDirection, justifyContent, flexWrap, order, compose } from 'styled-system';
 
-export interface IFlexProps extends StyledSystemProps {
-  size?: number;
-}
+export interface IFlexProps extends StyledSystemProps {}
 
 /**
  * @render react
@@ -15,21 +13,25 @@ export interface IFlexProps extends StyledSystemProps {
  *  </Flex>
  */
 
+export const FlexStyles = compose(
+  alignItems,
+  display,
+  flex,
+  flexDirection,
+  flexWrap,
+  justifyContent,
+  order,
+  space,
+);
+
 const Flex = styled.div<IFlexProps>`
-  ${space};
-  align-items: ${({ alignItems }) => alignItems};
-  display: ${({ display }) => display};
-  flex: ${({ size }) => size};
-  flex-direction: ${({ flexDirection }) => flexDirection};
-  justify-content: ${({ justifyContent }) => justifyContent};
+  ${FlexStyles};
 `;
 
 Flex.defaultProps = {
-  alignItems: 'center',
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'flex-start',
-  size: 1,
+  flex: 1,
 }
 
 export default Flex;

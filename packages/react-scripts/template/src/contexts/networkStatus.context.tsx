@@ -1,9 +1,10 @@
-import React, { FC, useEffect, useState } from 'react';
-// Components
-import { OfflineIndicator } from '../components';
+import React, { FC } from 'react';
+
+// import { OfflineIndicator } from '@app/components';
+import { useNetworkStatus } from '@app/hooks';
 
 const DEFAULT_STATE = {
-  isConnected: true,
+  isOnline: true,
 };
 
 export const NetworkStatusContext = React.createContext(DEFAULT_STATE);
@@ -13,37 +14,13 @@ interface IProps {
 }
 
 const Provider: FC<IProps> = (props) => {
-  const [isConnected, setIsConnected] = useState(DEFAULT_STATE.isConnected);
-
-  const setNetworkStatus = (networkStatus: string) => {
-    setIsConnected(Boolean(networkStatus === 'online'));
-  };
-
-  function offline() {
-    setNetworkStatus('offline');
-  }
-
-  function online() {
-    setNetworkStatus('online');
-  }
-
-  useEffect(() => {
-    if (!navigator.onLine) { offline() };
-
-    window.addEventListener('online', online);
-    window.addEventListener('offline', offline);
-
-    return () => {
-      window.removeEventListener('online', online);
-      window.removeEventListener('offline', offline);
-    };
-  }, []);
+  const { isOnline } = useNetworkStatus();
 
   return (
-    <NetworkStatusContext.Provider value={{ isConnected }}>
+    <NetworkStatusContext.Provider value={{ isOnline }}>
       <React.Fragment>
         {props.children}
-        {!isConnected && <OfflineIndicator />}
+        {/* {!isOnline && <OfflineIndicator />} */}
       </React.Fragment>
     </NetworkStatusContext.Provider>
   );

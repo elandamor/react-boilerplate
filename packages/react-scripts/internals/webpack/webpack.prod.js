@@ -130,10 +130,18 @@ module.exports = merge(require('./webpack.base'), {
       description: 'My React Boilerplate-based project!',
       background_color: '#fafafa',
       theme_color: '#b1624d',
+      start_url: '/?utm_source=a2hs',
+      inject: true,
+      ios: true,
       icons: [
         {
           src: paths.appIcon,
-          sizes: [72, 96, 120, 128, 144, 152, 167, 180, 192, 384, 512],
+          sizes: [72, 96, 128, 144, 192, 384, 512],
+        },
+        {
+          src: paths.appIcon,
+          sizes: [120, 152, 167, 180],
+          ios: true,
         },
       ],
     }),

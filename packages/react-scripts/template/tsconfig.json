@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
+    "baseUrl": "./",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
@@ -17,6 +17,9 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "outDir": "build",
+    "paths": {
+      "@app/*": ["src/*"]
+    },
     "resolveJsonModule": true,
     "rootDir": "src",
     "skipLibCheck": true,

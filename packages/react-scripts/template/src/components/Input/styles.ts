@@ -77,6 +77,10 @@ const Wrapper = styled.div<IInputProps>`
       outline: none;
     }
 
+    &:focus {
+      font-size: ${theme.fontSizes[4]}px;
+    }
+
     &:hover ~ .a-checkbox {
       border-color: #4a4a4a;
     }

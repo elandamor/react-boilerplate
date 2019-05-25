@@ -8,7 +8,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  *::-webkit-scrollbar {
+  /* *::-webkit-scrollbar {
     width: ${theme.space[1] / 2}px !important;
     height: ${theme.space[1] / 4}px !important;
   }
@@ -21,10 +21,11 @@ export default createGlobalStyle`
   *::-webkit-scrollbar-track {
     background: ${({ theme }) => theme.isDark
       ? theme.colors.blacks[7] : theme.colors.whites[7]};
-  }
+  } */
 
   html,
-  body {
+  body,
+  #app {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     background-color: ${({ theme }) => theme.colors.background};

@@ -5,7 +5,7 @@ import { HttpLink } from 'apollo-link-http';
 import { persistCache } from 'apollo-cache-persist';
 import localForage from 'localforage';
 
-const API_URI = process.env.APOLLO_HTTP_URI;
+import { API_URI } from '@app/constants';
 
 const cache = new InMemoryCache();
 

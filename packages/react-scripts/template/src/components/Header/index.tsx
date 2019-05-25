@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import classNames from 'classnames';
 import { StyledSystemProps } from 'styled-system';
 // Styles
@@ -8,6 +8,12 @@ import GoBackButton from '../GoBackButton';
 import Inner from '../Inner';
 import { useTransition } from 'react-spring';
 import AnimatedWrapper from '../AnimatedWrapper';
+import Toggle from '../Toggle';
+import Flex from '../Flex';
+
+import sun from '@app/assets/sun.png';
+import moon from '@app/assets/moon.png';
+import { AppContext } from '@app/containers/App';
 
 // import { makeDebugger } from '../../utils';
 // const debug = makeDebugger('Header');
@@ -26,6 +32,7 @@ interface IHeaderProps extends StyledSystemProps {
 
 const Header: FC<IHeaderProps> = ({ className, ...rest }) => {
   const { location } = useRouter();
+  const { darkMode, setDarkMode } = useContext(AppContext);
 
   const showBackButton = location.state && location.state.showBackButton;
   const backButtonTrans = useTransition(showBackButton, null, {
@@ -36,16 +43,44 @@ const Header: FC<IHeaderProps> = ({ className, ...rest }) => {
 
   return (
     <Wrapper className={classNames('', className)} as="header" {...rest}>
-      <Inner>
-        {
-          showBackButton && backButtonTrans.map(({ item, key, props }) =>
-            item && (
-              <AnimatedWrapper key={key} style={props}>
-                <GoBackButton />
-              </AnimatedWrapper>
+      <Inner as={Flex}>
+        <Flex>
+          {
+            showBackButton && backButtonTrans.map(({ item, key, props }) =>
+              item && (
+                <AnimatedWrapper key={key} style={props}>
+                  <GoBackButton />
+                </AnimatedWrapper>
+              )
             )
-          )
-        }
+          }
+        </Flex>
+        <Flex justifyContent="flex-end">
+          <Toggle
+            icons={{
+              checked: (
+                <img
+                  src={moon}
+                  width="16"
+                  height="16"
+                  role="presentation"
+                  style={{ pointerEvents: 'none' }}
+                />
+              ),
+              unchecked: (
+                <img
+                  src={sun}
+                  width="16"
+                  height="16"
+                  role="presentation"
+                  style={{ pointerEvents: 'none' }}
+                />
+              ),
+            }}
+            checked={darkMode}
+            onChange={() => setDarkMode(!darkMode)}
+          />
+        </Flex>
       </Inner>
     </Wrapper>
   );

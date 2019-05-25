@@ -1,10 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, RouteComponentProps } from 'react-router-dom';
-// Styles
-import Wrapper from './styles';
-import { Lottie } from '../../components';
-import assets from '../../assets';
+
+import { Lottie, Page } from '@app/components';
+import assets from '@app/assets';
 
 /**
  * @render react
@@ -16,7 +15,7 @@ interface IHomeProps extends RouteComponentProps {}
 
 const Home = (props: IHomeProps) => {
   return (
-    <Wrapper>
+    <Page>
       <Helmet title="React Boilerplate - Built with love by @elandamor" />
       <Link
         to={{
@@ -33,7 +32,7 @@ const Home = (props: IHomeProps) => {
           width={200}
         />
       </Link>
-    </Wrapper>
+    </Page>
   );
 }
 

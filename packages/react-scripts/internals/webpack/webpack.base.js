@@ -109,6 +109,9 @@ module.exports = {
     }),
   ],
   resolve: {
+    alias: {
+      '@app': paths.appSrc,
+    },
     modules: ['node_modules', paths.appSrc],
     extensions: ['.js', '.jsx', '.react.js', '.ts', '.tsx'],
     mainFields: ['browser', 'jsnext:main', 'main'],
