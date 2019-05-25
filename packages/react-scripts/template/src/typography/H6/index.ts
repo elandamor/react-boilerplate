@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { StyledSystemProps } from 'styled-system';
-import { headingStyles } from '../index';
+import { typography } from '@app/theme/componentTypes';
 
 /**
  * @render react
@@ -11,7 +11,7 @@ import { headingStyles } from '../index';
  */
 
 const H6 = styled.h6<StyledSystemProps>`
-  ${headingStyles};
+  ${typography};
 `;
 
 H6.defaultProps = {
