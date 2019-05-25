@@ -74,7 +74,7 @@ module.exports = {
       },
       {
         type: 'add',
-        path: path.join(paths.appPages, '{{properCase name}}/Loadable.ts'),
+        path: path.join(paths.appPages, '{{properCase name}}/Loadable.tsx'),
         templateFile: './component/loadable.hbs',
         abortOnFail: true,
       },
