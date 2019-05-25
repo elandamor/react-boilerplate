@@ -1,0 +1,16 @@
+{
+  "extends": ["tslint-config-airbnb-base", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["node_modules/**/*.ts"]
+  },
+  "rules": {
+    "import-name": false,
+    "no-magic-numbers": [true, {"ignore-jsx": true}],
+    "no-unused-variable": true,
+    "no-unused-expression": true,
+    "ordered-imports": [true, { "import-sources-order": "any" }],
+    "quotemark": [true, "single", "jsx-double"],
+    "ter-arrow-parens": [true, "always"],
+    "variable-name": [true, "ban-keywords", "allow-pascal-case"]
+  },
+}

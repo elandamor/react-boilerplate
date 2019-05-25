@@ -3,28 +3,25 @@
  */
 /* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
+const resolve = require('resolve');
 const Dotenv = require('dotenv-webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
+const createStyledComponentsTransformer = require('typescript-plugin-styled-components')
+  .default;
 const paths = require('../paths');
 
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
-module.exports = (options) => ({
-  entry: options.entry,
-  output: Object.assign(
-    {
-      path: paths.appBuild,
-      publicPath: '/',
-    },
-    options.output,
-  ),
-  mode: options.mode,
-  optimization: options.optimization,
+module.exports = {
+  output: {
+    path: paths.appBuild,
+    publicPath: '/',
+  },
   module: {
     rules: [
       {
         test: /\.ts(x?)$/,
+        include: paths.appSrc,
         exclude: /node_modules/,
         use: [
           {
@@ -32,7 +29,9 @@ module.exports = (options) => ({
             options: {
               // disable type checker - we will use it in fork plugin
               transpileOnly: true,
-              getCustomTransformers: () => ({ before: [styledComponentsTransformer] }),
+              getCustomTransformers: () => ({
+                before: [styledComponentsTransformer],
+              }),
             },
           },
         ],
@@ -60,10 +59,6 @@ module.exports = (options) => ({
         use: 'html-loader',
       },
       {
-        test: /\.json$/,
-        use: 'json-loader',
-      },
-      {
         test: /\.(gif|jpe?g|png|svg|webp|mp4|webm)$/,
         use: {
           loader: 'url-loader',
@@ -80,7 +75,7 @@ module.exports = (options) => ({
     ],
   },
   // optimization: options.optimization || {},
-  plugins: options.plugins.concat([
+  plugins: [
     new webpack.ProvidePlugin({
       // make fetch available
       fetch: 'exports-loader?self.fetch!whatwg-fetch',
@@ -94,21 +89,32 @@ module.exports = (options) => ({
     }),
     new Dotenv({
       path: paths.dotenv,
-
     }),
     new ForkTsCheckerWebpackPlugin({
+      typescript: resolve.sync('typescript', {
+        basedir: paths.appNodeModules,
+      }),
+      useTypescriptIncrementalApi: true,
       checkSyntacticErrors: true,
-      memoryLimit: 256,
-      silent: true,
       tsconfig: paths.appTsConfig,
+      reportFiles: [
+        '**',
+        '!**/*.json',
+        '!**/__tests__/**',
+        '!**/?(*.)(spec|test).*',
+        '!**/src/setupTests.*',
+      ],
+      watch: paths.appSrc,
+      silent: true,
     }),
-  ]),
+  ],
   resolve: {
-    modules: ['app', 'node_modules'],
+    alias: {
+      '@app': paths.appSrc,
+    },
+    modules: ['node_modules', paths.appSrc],
     extensions: ['.js', '.jsx', '.react.js', '.ts', '.tsx'],
     mainFields: ['browser', 'jsnext:main', 'main'],
   },
-  devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
-  performance: options.performance || {},
-});
+};

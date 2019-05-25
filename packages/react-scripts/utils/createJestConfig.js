@@ -8,24 +8,24 @@
 
 /* eslint-disable global-require, no-console */
 
-// const fs = require('fs');
+const fs = require('fs');
 const chalk = require('chalk');
 const paths = require('../internals/paths');
 
 module.exports = (resolve, rootDir) => {
   // Use this instead of `paths.testsSetup` to avoid putting
   // an absolute filename into configuration after ejecting.
-  // const setupTestsMatches = paths.testsSetup.match(/app\/setupTests\.(.+)/);
-  // const setupTestsFileExtension =
-  //   (setupTestsMatches && setupTestsMatches[1]) || 'js';
-  // const setupTestsFile = fs.existsSync(paths.testsSetup)
-  //   ? `<rootDir>/app/setupTests.${setupTestsFileExtension}`
-  //   : undefined;
+  const setupTestsMatches = paths.testsSetup.match(/src\/setupTests\.(.+)/);
+  const setupTestsFileExtension =
+    (setupTestsMatches && setupTestsMatches[1]) || 'js';
+  const setupTestsFile = fs.existsSync(paths.testsSetup)
+    ? `<rootDir>/src/setupTests.${setupTestsFileExtension}`
+    : undefined;
 
   // TODO: I don't know if it's safe or not to just use / as path separator
   // in Jest configs. We need help from somebody with Windows to determine this.
   const config = {
-    // collectCoverageFrom: ['app/**/*.{ts,tsx}', '!app/**/*.d.ts'],
+    collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
 
     // TODO: this breaks Yarn PnP on eject.
     // But we can't simply emit this because it'll be an absolute path.
@@ -40,10 +40,10 @@ module.exports = (resolve, rootDir) => {
     //     : require.resolve('react-app-polyfill/jsdom'),
     // ],
 
-    // setupTestFrameworkScriptFile: setupTestsFile,
+    setupFilesAfterEnv: [setupTestsFile],
     testMatch: [
-      '<rootDir>/app/**/__tests__/**/*.{js,jsx,ts,tsx}',
-      '<rootDir>/app/**/?(*.)(spec|test).{js,jsx,ts,tsx}',
+      '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
+      '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}',
     ],
     testEnvironment: 'jsdom',
     testURL: 'http://localhost',
@@ -59,17 +59,16 @@ module.exports = (resolve, rootDir) => {
       '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
       '^.+\\.module\\.(css|sass|scss)$',
     ],
-    'ts-jest': {
-      diagnostics: false,
-    },
     moduleNameMapper: {
       '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     },
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   };
+
   if (rootDir) {
     config.rootDir = rootDir;
   }
+
   const overrides = Object.assign({}, require(paths.appPackageJson).jest);
   const supportedKeys = [
     'collectCoverageFrom',
@@ -102,7 +101,7 @@ module.exports = (resolve, rootDir) => {
               'setupTestFrameworkScriptFile'
             )} in your package.json.\n\n` +
               `Remove it from Jest configuration, and put the initialization code in ${chalk.bold(
-                'app/setupTests.js'
+                'src/setupTests.js'
               )}.\nThis file will be loaded automatically.\n`
           )
         );

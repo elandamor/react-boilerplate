@@ -17,12 +17,10 @@ if (major < 8) {
   // eslint-disable-next-line no-console
   console.error(
     chalk.red(
-      `You are running Node ${
-        currentNodeVersion
-        }.\n` +
-        `React Boilerplate requires Node 8 or higher. \n` +
-        `Please update your version of Node.`
-    )
+      `You are running Node ${currentNodeVersion}.\n`
+      + 'React Boilerplate requires Node 8 or higher. \n'
+      + 'Please update your version of Node.',
+    ),
   );
   process.exit(1);
 }

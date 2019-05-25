@@ -1,6 +1,6 @@
 {
   "name": "pd-react-boilerplate",
-  "version": "0.2.2",
+  "version": "1.0.1",
   "description": "A highly scalable, offline-first foundation with the best developer experience and a focus on performance and best practices.",
   "author": "Thandolwethu Mpofu",
   "repository": "elandamor/react-boilerplate",
@@ -14,6 +14,7 @@
   },
   "files": [
     "helpers",
+    "dependencies.js",
     "index.js",
     "reactBoilerplate.js",
     "yarn.lock.cached"
@@ -33,5 +34,5 @@
     "tmp": "0.0.33",
     "validate-npm-package-name": "3.0.0"
   },
-  "gitHead": "1951464966dab880d340cbca5aeabb9712c8c08c"
+  "gitHead": "8bbe4d1e695583f5a376999c5bff8826bcbf9019"
 }

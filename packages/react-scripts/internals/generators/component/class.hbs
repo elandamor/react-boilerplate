@@ -1,16 +1,16 @@
-import React, { {{{ type }}} } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 // Styles
 import Wrapper from './styles';
 
-// import { makeDebugger } from '../../utils';
+// import { makeDebugger } from '@app/utils';
 // const debug = makeDebugger('{{ properCase name }}');
 
-interface IProps {
+interface I{{ properCase name }}Props {
   className?: string;
 }
 
-interface IState {
+interface I{{ properCase name }}State {
   [key: string]: any;
 }
 
@@ -22,8 +22,8 @@ interface IState {
  * <{{ properCase name }} />
  */
 
-class {{ properCase name }} extends {{{ type }}}<IProps, IState> {
-  state:IState = {}
+class {{ properCase name }} extends Component<I{{ properCase name }}Props, I{{ properCase name }}State> {
+  state:I{{ properCase name }}State = {}
 
   public render() {
     const { className } = this.props;
