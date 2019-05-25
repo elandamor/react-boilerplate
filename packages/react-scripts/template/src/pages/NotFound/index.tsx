@@ -2,8 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { RouteComponentProps } from 'react-router-dom';
 // Styles
-import { Inner, Page, Spacer, Modal, ScrollView, HorizontalScroller, Table, Box } from '@app/components';
-import H2 from '@app/typography/H2';
+import { Inner, Page, Modal } from '@app/components';
+import { H2 } from '@app/typography';
 
 import { makeDebugger } from '@app/utils';
 const debug = makeDebugger('NotFound');
@@ -28,7 +28,7 @@ const NotFound = (props: INotFoundProps) => {
         <Modal
           trigger={<p>The page you're looking for doesn't exist.</p>}
           fullscreen={false}
-          defaultOpen={true}
+          defaultOpen={false}
         />
       </Inner>
     </Page>
