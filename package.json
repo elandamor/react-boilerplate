@@ -19,7 +19,7 @@
     "lerna-changelog": "0.8.2",
     "lint-staged": "8.1.0",
     "prettier": "1.15.3",
-    "puppeteer": "1.11.0"
+    "puppeteer": "1.13.0"
   },
   "husky": {
     "hooks": {
