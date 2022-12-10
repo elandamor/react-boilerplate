@@ -60,7 +60,7 @@
     "eslint-plugin-prettier": "3.0.0",
     "eventsource-polyfill": "0.9.6",
     "exports-loader": "0.7.0",
-    "express": "4.16.4",
+    "express": "4.17.3",
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin": "0.5.2",
     "fs-extra": "7.0.1",
